@@ -7,7 +7,7 @@ const mbl = poles().find((p) => p.id === 'beaute').site_externe;
 ---
 <Base title="Contact : demande d’information ou de devis" description="Contactez Tech Formation Nord à Vendeville : demande d’information, de devis ou d’inscription par formulaire, par téléphone au 03 20 16 09 15 ou par e-mail." breadcrumbs={[{ name: 'Contact', url: '/contact-us/' }]} navActive="contact">
   <section class="page-hero">
-    <div class="container">
+    <div class="container hero-enter">
       <span class="eyebrow">Contact</span>
       <h1>Contactez-nous</h1>
       <p class="lead">Vous avez des questions sur nos formations, nos programmes ou nos modalités d’inscription ? L’équipe de Tech Formation Nord vous accompagne à chaque étape de votre projet.</p>
@@ -49,7 +49,7 @@ const mbl = poles().find((p) => p.id === 'beaute').site_externe;
           <div class="hp-field" aria-hidden="true"><label for="f-site">Ne pas remplir ce champ</label><input id="f-site" name="site_web" type="text" tabindex="-1" autocomplete="off" /></div>
           <input type="hidden" name="t" value="" />
           <div class="field"><label class="choice"><input type="checkbox" name="consentement" value="oui" required /> <span>J’accepte que mes données soient utilisées pour traiter ma demande, conformément à la <a href="/politique-de-confidentialite/">politique de confidentialité</a>. <span class="req" aria-hidden="true">*</span></span></label></div>
-          <div><button class="btn btn--primary" type="submit">Envoyer ma demande</button></div>
+          <div><button class="btn btn--primary" type="submit"><span class="label">Envoyer ma demande</span></button></div>
         </form>
       </div>
       <div class="stack">

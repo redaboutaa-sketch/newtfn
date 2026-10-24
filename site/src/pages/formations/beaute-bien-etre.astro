@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
-import PoleIcon from '../../components/PoleIcon.astro';
+import Picture from '../../components/Picture.astro';
+import IaArt from '../../components/IaArt.astro';
 import Bridge from '../../components/Bridge.astro';
 import Faq from '../../components/Faq.astro';
 import CtaBand from '../../components/CtaBand.astro';
@@ -20,7 +21,7 @@ const faq = [
 <Base title="Formations esthétique, beauté et bien-être près de Lille" description="Formations courtes en esthétique à Vendeville avec Maison Beauxlieux : regard, soins du visage, corps et bien-être, cheveux, ongles. Publics, durées et accès aux programmes." breadcrumbs={[{ name: 'Nos formations', url: '/services/' }, { name: p.nom, url: p.url }]} pole="beaute" navActive="formations">
   <section class="page-hero" data-accent="beaute">
     <div class="container hero-grid">
-      <div>
+      <div class="hero-enter">
         <span class="eyebrow">Pôle esthétique, beauté et bien-être</span>
         <h1>Formations esthétique, beauté et bien-être</h1>
         <p class="lead">Des formations courtes, de 7 à 35 heures, pour maîtriser de nouvelles techniques et enrichir votre carte de prestations. Elles se déroulent à Vendeville, près de Lille, dans les espaces de Maison Beauxlieux.</p>
@@ -29,12 +30,12 @@ const faq = [
           <a class="btn btn--ghost" href="#familles">Parcourir les thématiques</a>
         </div>
       </div>
-      <div style="color:var(--beaute);width:100%;max-width:300px;justify-self:center"><PoleIcon id="beaute" label="Illustration du pôle beauté et bien-être" /></div>
+      <div class="hero-media hero-enter"><Picture id="beaute-ongles" priority sizes="(max-width: 900px) 92vw, 44vw" /></div>
     </div>
   </section>
 
   <section class="section">
-    <div class="container grid grid-3">
+    <div class="container editorial-cols" data-accent="beaute" data-reveal>
       <div>
         <h2 style="font-size:1.3rem">Pour qui ?</h2>
         <ul>{p.publics.map((x: string) => <li>{x}</li>)}</ul>
@@ -63,7 +64,7 @@ const faq = [
     <div class="container">
       <h2 id="familles-titre">Les grandes familles de formations</h2>
       <p class="lead">{toutes.length} formations sont actuellement proposées. Chaque lien ouvre le programme détaillé sur maisonbeauxlieux.com.</p>
-      <div class="grid grid-3" style="margin-top:24px" data-accent="beaute">
+      <div class="grid grid-3" data-reveal style="margin-top:24px" data-accent="beaute">
         {p.familles.map((fam: any) => (
           <article class="card">
             <h3>{fam.nom}</h3>
@@ -82,7 +83,7 @@ const faq = [
   </section>
 
   <section class="section">
-    <div class="container grid grid-2">
+    <div class="container grid grid-2" data-reveal>
       <Bridge pole={p} url={ext.formations_url} label="Consulter les programmes, tarifs et sessions" titre="Programmes détaillés et inscriptions sur Maison Beauxlieux" />
       <aside class="card">
         <h2 style="font-size:1.3rem">Location d’espaces : une offre distincte</h2>
@@ -94,7 +95,7 @@ const faq = [
   </section>
 
   <section class="section section--surface">
-    <div class="container narrow"><Faq items={faq} /></div>
+    <div class="container narrow" data-reveal><Faq items={faq} /></div>
   </section>
   <CtaBand titre="Une question sur une formation beauté ?" texte="Contactez Tech Formation Nord ou directement l’équipe de Maison Beauxlieux pour vérifier les prérequis, les prochaines sessions et les possibilités de financement." sujet="Formation esthétique" />
 </Base>

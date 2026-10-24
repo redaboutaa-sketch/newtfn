@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
-import PoleIcon from '../../components/PoleIcon.astro';
+import Picture from '../../components/Picture.astro';
+import IaArt from '../../components/IaArt.astro';
 import Bridge from '../../components/Bridge.astro';
 import Faq from '../../components/Faq.astro';
 import CtaBand from '../../components/CtaBand.astro';
@@ -26,7 +27,7 @@ const faq = [
 <Base title="Formations intelligence artificielle à Lille : entreprises, TPE, particuliers" description="Formations à l’IA générative près de Lille : usages concrets pour artisans et TPE, équipes en entreprise et particuliers. Publics, objectifs, formats et accès aux programmes." breadcrumbs={[{ name: 'Nos formations', url: '/services/' }, { name: p.nom, url: p.url }]} pole="ia" navActive="formations">
   <section class="page-hero" data-accent="ia">
     <div class="container hero-grid">
-      <div>
+      <div class="hero-enter">
         <span class="eyebrow">Pôle intelligence artificielle et numérique</span>
         <h1>Formations à l’intelligence artificielle</h1>
         <p class="lead">Apprendre à utiliser l’IA générative dans son travail, à partir de ses propres tâches : rédaction, relation client, présence en ligne et organisation. Des formats pour les artisans et TPE, les équipes en entreprise et les particuliers.</p>
@@ -35,7 +36,7 @@ const faq = [
           <a class="btn btn--ghost" href="#publics">Choisir selon votre profil</a>
         </div>
       </div>
-      <div style="color:var(--ia);width:100%;max-width:300px;justify-self:center"><PoleIcon id="ia" label="Illustration du pôle intelligence artificielle" /></div>
+      <div class="hero-media hero-media--art hero-enter"><IaArt /></div>
     </div>
   </section>
 
@@ -43,8 +44,8 @@ const faq = [
     <div class="container">
       <h2 id="usages-titre">Des usages professionnels concrets</h2>
       <p class="lead">Les ateliers partent de cas réels de votre activité et produisent des ressources réutilisables dès le retour au travail.</p>
-      <div class="grid grid-3" style="margin-top:24px" data-accent="ia">
-        {usages.map((u) => <article class="card"><h3 style="font-size:1.1rem">{u.t}</h3><p class="small">{u.d}</p></article>)}
+      <div class="grid grid-3" data-reveal style="margin-top:24px" data-accent="ia">
+        {usages.map((u) => <article class="card card--flat"><h3 style="font-size:1.1rem">{u.t}</h3><p class="small">{u.d}</p></article>)}
       </div>
     </div>
   </section>
@@ -52,7 +53,7 @@ const faq = [
   <section class="section section--surface" id="publics" aria-labelledby="publics-titre">
     <div class="container">
       <h2 id="publics-titre">Une formation selon votre profil</h2>
-      <div class="grid grid-3" style="margin-top:24px" data-accent="ia">
+      <div class="grid grid-3" data-reveal style="margin-top:24px" data-accent="ia">
         {p.familles.map((fam: any) => (
           <article class="card">
             <span class="tag">{fam.nom}</span>
@@ -66,7 +67,7 @@ const faq = [
   </section>
 
   <section class="section">
-    <div class="container grid grid-2">
+    <div class="container grid grid-2" data-reveal>
       <div>
         <h2 style="font-size:1.4rem">Comment se déroule l’accompagnement ?</h2>
         <ol>
@@ -81,7 +82,7 @@ const faq = [
   </section>
 
   <section class="section section--surface">
-    <div class="container narrow"><Faq items={faq} /></div>
+    <div class="container narrow" data-reveal><Faq items={faq} /></div>
   </section>
   <CtaBand titre="Former vos équipes à l’IA ?" texte="Présentez-nous votre activité et vos objectifs : nous vous orientons vers le format adapté et préparons un devis." sujet="Formation intelligence artificielle" />
 </Base>

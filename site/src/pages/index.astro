@@ -1,106 +1,171 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
-import PoleIcon from '../components/PoleIcon.astro';
+import Picture from '../components/Picture.astro';
+import IaArt from '../components/IaArt.astro';
 import CtaBand from '../components/CtaBand.astro';
 import Reviews from '../components/Reviews.astro';
-import { organisme, poles, pole } from '../lib/data';
+import { organisme, pole } from '../lib/data';
 
 const org = organisme();
-const fiches = await getCollection('fiches');
-const fiche = (url: string) => fiches.find((f) => f.data.url === url)!.data;
+const fiches = (await getCollection('fiches')).map((f) => f.data).sort((a, b) => a.ordre - b.ordre);
+const fiche = (url: string) => fiches.find((f) => f.url === url)!;
 const maint = fiche('/service/maintenance/');
 const carro = fiche('/service/interior-cleaning/');
 const msr = fiche('/m-grid-col-3/');
+const auto = pole('automobile');
 const beaute = pole('beaute');
 const ia = pole('ia');
 const cils = beaute.familles.flatMap((f: any) => f.formations).find((x: any) => /Extensions de cils/.test(x.titre));
 const iaTpe = ia.familles.find((x: any) => x.id === 'artisans-tpe');
 const p44992 = maint.programmes[0];
 const p08 = carro.programmes[0];
+const nbBeaute = beaute.familles.reduce((n: number, f: any) => n + f.formations.length, 0);
+
+// Familles automobiles avec leur nombre de modules (données des fiches).
+const autoFamilles = auto.familles.map((fam: any) => {
+  const fs = fiches.filter((f) => f.famille === fam.id);
+  const n = fs.reduce((k, f) => k + (f.type === 'parcours' ? 1 : f.programmes.length), 0);
+  return { ...fam, detail: fam.id === 'reconversion' ? `${fs.length} parcours` : `${n} modules` };
+});
 
 // Sélection de formations réelles, issues des contenus vérifiés.
 const selection = [
-  { pole: 'automobile', accent: 'auto', titre: p44992.titre, meta: [p44992.duree, 'Salariés et tout public'], url: `${maint.url}#prog-${p44992.id}`, ext: false },
-  { pole: 'automobile', accent: 'auto', titre: p08.titre, meta: ['Carrossiers, peintres, préparateurs VO'], url: `${carro.url}#prog-${p08.id}`, ext: false },
-  { pole: 'automobile', accent: 'auto', titre: 'Parcours de reconversion : mécanicien service rapide', meta: ['224 h + 50 h de soft skills', 'Sans prérequis'], url: msr.url, ext: false },
-  { pole: 'beaute', accent: 'beaute', titre: `${cils.titre} (Maison Beauxlieux)`, meta: [cils.duree, 'Professionnels de l’esthétique'], url: cils.url, ext: true },
-  { pole: 'ia', accent: 'ia', titre: 'Formation IA pour artisans et TPE', meta: ['2 journées', 'Présentiel à Lille'], url: iaTpe.lien.url, ext: true },
+  { pole: 'automobile', accent: 'auto', titre: p44992.titre, meta: `${p44992.duree} · salariés et tout public`, url: `${maint.url}#prog-${p44992.id}` },
+  { pole: 'automobile', accent: 'auto', titre: p08.titre, meta: 'Carrossiers, peintres, préparateurs VO', url: `${carro.url}#prog-${p08.id}` },
+  { pole: 'automobile', accent: 'auto', titre: 'Parcours de reconversion : mécanicien service rapide', meta: '224 h + 50 h de soft skills · sans prérequis', url: msr.url },
+  { pole: 'beaute', accent: 'beaute', titre: cils.titre, meta: `${cils.duree} · professionnels de l’esthétique`, url: cils.url, ext: 'Programme sur maisonbeauxlieux.com' },
+  { pole: 'ia', accent: 'ia', titre: 'Formation IA pour artisans et TPE', meta: '2 journées · présentiel à Lille', url: iaTpe.lien.url, ext: 'Programme sur iatechformanord.fr' },
 ];
 ---
 <Base title="Tech Formation Nord — Formations automobile, beauté et IA près de Lille" description="Organisme de formation certifié Qualiopi à Vendeville, près de Lille : formations aux métiers de l’automobile, de l’esthétique et de l’intelligence artificielle, pour salariés, entreprises et reconversions." navActive="accueil">
   <section class="home-hero">
     <div class="container hero-grid">
-      <div>
-      <span class="eyebrow">Organisme de formation à Vendeville, près de Lille</span>
-      <h1>Développez vos compétences dans <span>l’automobile</span>, la beauté et l’intelligence artificielle</h1>
-      <p class="lead">Tech Formation Nord forme les salariés, accompagne les entreprises et prépare les personnes en reconversion, avec des formations pratiques construites autour des gestes et des usages du métier.</p>
-      <ul class="audiences" aria-label="Publics accompagnés">
-        <li>Salariés</li><li>Entreprises et ateliers</li><li>Personnes en reconversion</li><li>Indépendants et TPE</li>
-      </ul>
-      <div class="btn-row">
-        <a class="btn btn--primary" href="/services/">Trouver ma formation</a>
-        <a class="btn btn--ghost" href="/contact-us/#formulaire">Être conseillé</a>
-      </div>
-      {org.qualiopi.afficher && (
-        <div class="trust-strip">
-          <img src={org.qualiopi.logo} alt="Qualiopi — processus certifié — République française" width="430" height="183" />
-          <span>Organisme certifié Qualiopi au titre des actions de formation. <a href="/qualite/">Voir notre certification</a></span>
+      <div class="hero-enter">
+        <span class="eyebrow" style="--i:0">Organisme de formation · Vendeville, près de Lille</span>
+        <h1 style="--i:1">Des formations concrètes <span class="h1-sub">pour l’<em>automobile</em>, la&nbsp;<em>beauté</em> et l’<em>IA</em>.</span></h1>
+        <p class="lead" style="--i:2">Tech Formation Nord forme les salariés, accompagne les entreprises et prépare les personnes en reconversion, avec des formations pratiques construites autour des gestes et des usages du métier.</p>
+        <div class="btn-row">
+          <a class="btn btn--primary" href="/services/">Trouver ma formation</a>
+          <a class="btn btn--ghost" href="/contact-us/#formulaire">Être conseillé</a>
         </div>
-      )}
+        {org.qualiopi.afficher && (
+          <p class="trust-line" style="--i:4">
+            <img src={org.qualiopi.logo} alt="Qualiopi — processus certifié — République française" width="430" height="183" />
+            <span>Organisme certifié Qualiopi au titre des actions de formation. <a href="/qualite/">Voir notre certification</a></span>
+          </p>
+        )}
       </div>
-      <nav class="pole-mosaic" aria-label="Accès direct aux pôles">
-        {poles().map((p) => <a href={p.url} data-accent={p.accent}><PoleIcon id={p.id} /><span>{p.nom}</span></a>)}
+      <nav class="pole-mosaic" aria-label="Nos trois domaines de formation">
+        <a class="pole-panel pole-panel--tall" href={auto.url} data-accent="auto" style="--i:0">
+          <Picture id="auto-cle-portrait" priority sizes="(max-width: 900px) 92vw, 28vw" decorative />
+          <span class="panel-label"><span><span class="panel-kicker">Pôle 01</span><span class="panel-name">Automobile</span></span><span class="panel-arrow" aria-hidden="true">→</span></span>
+        </a>
+        <a class="pole-panel" href={beaute.url} data-accent="beaute" style="--i:1">
+          <Picture id="beaute-ongles" sizes="(max-width: 900px) 46vw, 26vw" decorative />
+          <span class="panel-label"><span><span class="panel-kicker">Pôle 02</span><span class="panel-name">Beauté et bien-être</span></span><span class="panel-arrow" aria-hidden="true">→</span></span>
+        </a>
+        <a class="pole-panel pole-panel--ia" href={ia.url} data-accent="ia" style="--i:2">
+          <IaArt class="ia-art" compact />
+          <span class="panel-label"><span><span class="panel-kicker">Pôle 03</span><span class="panel-name">Intelligence artificielle</span></span><span class="panel-arrow" aria-hidden="true">→</span></span>
+        </a>
       </nav>
     </div>
   </section>
 
+  <nav class="audience-band" aria-label="Accès selon votre situation">
+    <ul class="container">
+      <li><a href="/services/"><strong>Salariés</strong><span>Se perfectionner sur un geste, une technique, un outil.</span></a></li>
+      <li><a href="/entreprises/"><strong>Entreprises</strong><span>Former vos équipes et intégrer de nouveaux collaborateurs.</span></a></li>
+      <li><a href="/infinite-grid-col-2/"><strong>Reconversion</strong><span>Changer de métier vers l’atelier automobile, sans prérequis.</span></a></li>
+      <li><a href={ia.url}><strong>Indépendants et TPE</strong><span>Gagner du temps avec l’IA et soigner sa présence en ligne.</span></a></li>
+    </ul>
+  </nav>
+
   <section class="section" aria-labelledby="poles-titre">
     <div class="container">
-      <span class="eyebrow">Trois domaines de formation</span>
-      <h2 id="poles-titre">Choisissez votre domaine</h2>
-      <div class="grid grid-3" style="margin-top:24px">
-        {poles().map((p) => (
-          <article class="card card--link pole-card" data-accent={p.accent}>
-            <div class="pole-illu"><PoleIcon id={p.id} /></div>
-            <h3><a class="stretched" href={p.url} style="text-decoration:none;color:inherit">{p.nom}</a></h3>
-            <p>{p.accroche}</p>
-            <ul>{p.publics.map((x: string) => <li>{x}</li>)}</ul>
-            <div class="card-foot"><span class="link-arrow" style="color:var(--accent)" aria-hidden="true">Découvrir le pôle</span></div>
-          </article>
-        ))}
+      <div class="section-head" data-reveal>
+        <div><span class="eyebrow">Trois domaines</span><h2 id="poles-titre">Une même exigence&nbsp;: la pratique.</h2></div>
+        <p>Des modules courts pour se perfectionner, des parcours longs pour changer de métier, et des formats adaptés aux entreprises comme aux indépendants.</p>
       </div>
+
+      <article class="feature" data-accent="auto" aria-labelledby="f-auto">
+        <div class="feature-media" data-reveal="mask">
+          <div class="frame"><span data-parallax style="position:absolute;inset:0;display:block"><Picture id="auto-peinture-paysage" sizes="(max-width: 900px) 92vw, 56vw" decorative /></span></div>
+          <div class="inset inset--showroom" aria-hidden="true"><Picture id="auto-showroom-paysage" sizes="20vw" decorative /></div>
+        </div>
+        <div class="feature-body" data-reveal style="--i:1">
+          <span class="num">01 — Automobile</span>
+          <h3 id="f-auto">Maintenance, carrosserie, commerce&nbsp;: le métier dans la main.</h3>
+          <p>{auto.accroche}</p>
+          <ul class="family-list">
+            {autoFamilles.map((f: any) => <li><a href={f.url}>{f.nom} <small>{f.detail}</small></a></li>)}
+          </ul>
+          <a class="link-arrow" href={auto.url}>Découvrir le pôle automobile</a>
+        </div>
+      </article>
+
+      <article class="feature feature--reverse" data-accent="beaute" aria-labelledby="f-beaute">
+        <div class="feature-media" data-reveal="mask">
+          <div class="frame"><Picture id="beaute-ongles" sizes="(max-width: 900px) 92vw, 56vw" decorative /></div>
+        </div>
+        <div class="feature-body" data-reveal style="--i:1">
+          <span class="num">02 — Esthétique, beauté et bien-être</span>
+          <h3 id="f-beaute">Le soin du geste, de 7 à 35 heures.</h3>
+          <p>{beaute.accroche}</p>
+          <ul class="family-list">
+            {beaute.familles.map((f: any) => <li><a href={`${beaute.url}#familles`}>{f.nom} <small>{f.formations.length} formation{f.formations.length > 1 ? 's' : ''}</small></a></li>)}
+          </ul>
+          <a class="link-arrow" href={beaute.url}>Découvrir les {nbBeaute} formations beauté</a>
+        </div>
+      </article>
+
+      <article class="feature" data-accent="ia" aria-labelledby="f-ia">
+        <div class="feature-media" data-reveal="mask">
+          <div class="frame frame--ia"><IaArt /></div>
+        </div>
+        <div class="feature-body" data-reveal style="--i:1">
+          <span class="num">03 — Intelligence artificielle et numérique</span>
+          <h3 id="f-ia">L’IA au service de vos tâches réelles.</h3>
+          <p>{ia.accroche}</p>
+          <ul class="family-list">
+            {ia.familles.map((f: any) => <li><a href={`${ia.url}#publics`}>{f.nom}</a></li>)}
+          </ul>
+          <a class="link-arrow" href={ia.url}>Découvrir le pôle IA</a>
+        </div>
+      </article>
     </div>
   </section>
 
-  <section class="section section--surface" aria-labelledby="selection-titre">
+  <section class="section section--white" aria-labelledby="selection-titre">
     <div class="container">
-      <span class="eyebrow">Exemples de formations</span>
-      <h2 id="selection-titre">Une sélection de nos formations</h2>
-      <p class="lead">Des modules courts pour se perfectionner aux parcours longs de reconversion.</p>
-      <div class="grid grid-3" style="margin-top:24px">
+      <div class="section-head" data-reveal>
+        <div><span class="eyebrow">Exemples</span><h2 id="selection-titre">Une sélection de nos formations</h2></div>
+        <p>Du module de cinq jours au parcours de reconversion. <a class="link-arrow" href="/services/">Voir tout le catalogue</a></p>
+      </div>
+      <ul class="prog-list" data-reveal="fade">
         {selection.map((s) => (
-          <article class="card card--link" data-accent={s.accent}>
-            <span class="tag">{pole(s.pole).nom}</span>
-            <h3 style="font-size:1.08rem"><a class="stretched" href={s.url} style="text-decoration:none;color:inherit" data-track={s.ext ? 'passerelle' : undefined} data-pole={s.ext ? s.pole : undefined}>{s.titre}</a></h3>
-            <ul class="meta-list">{s.meta.map((m) => <li>{m}</li>)}</ul>
-            <div class="card-foot"><span class="link-arrow" aria-hidden="true">{s.ext ? `Voir le programme sur ${new URL(s.url).hostname}` : 'Voir le programme'}</span></div>
-          </article>
+          <li data-accent={s.accent}>
+            <a class="prog-row" href={s.url} data-track={s.ext ? 'passerelle' : undefined} data-pole={s.ext ? s.pole : undefined}>
+              <span class="tag">{pole(s.pole).nom_court}</span>
+              <span class="prog-title">{s.titre}{s.ext && <span class="ext-note">{s.ext} ↗</span>}</span>
+              <span class="prog-meta">{s.meta}</span>
+              <span class="prog-go" aria-hidden="true">→</span>
+            </a>
+          </li>
         ))}
-        <article class="card" style="justify-content:center;align-items:flex-start;background:var(--brand-tint)">
-          <h3>Tout le catalogue</h3>
-          <p>Maintenance, diagnostic, carrosserie, peinture, commerce, esthétique et intelligence artificielle.</p>
-          <a class="btn btn--primary" href="/services/">Voir toutes les formations</a>
-        </article>
-      </div>
+      </ul>
     </div>
   </section>
 
-  <section class="section" aria-labelledby="accomp-titre">
+  <section class="section section--night" aria-labelledby="accomp-titre">
     <div class="container">
-      <h2 id="accomp-titre">Un accompagnement adapté à votre situation</h2>
-      <div class="grid grid-2" style="margin-top:24px">
-        <article class="card">
+      <div class="section-head" data-reveal>
+        <div><span class="eyebrow">Accompagnement</span><h2 id="accomp-titre">Un parcours adapté à votre situation</h2></div>
+        <p>Un entretien préalable permet de vérifier l’adéquation du projet, de personnaliser la formation et d’identifier les financements envisageables.</p>
+      </div>
+      <div class="grid grid-2">
+        <article class="card card--flat" data-accent="auto" data-reveal>
           <h3>Entreprises et ateliers</h3>
           <p>Faire monter en compétences vos techniciens, carrossiers ou conseillers commerciaux, intégrer de nouveaux collaborateurs grâce aux parcours de reconversion, ou former vos équipes aux usages de l’IA.</p>
           <ul>
@@ -108,9 +173,9 @@ const selection = [
             <li>Parcours en alternance entre le centre et l’entreprise</li>
             <li>Dossier pédagogique pour votre demande de prise en charge</li>
           </ul>
-          <div class="card-foot"><a class="link-arrow" href="/entreprises/">Former vos équipes</a></div>
+          <div class="card-foot"><a class="btn btn--on-night" href="/entreprises/">Former vos équipes</a></div>
         </article>
-        <article class="card">
+        <article class="card card--flat" data-accent="beaute" data-reveal style="--i:1">
           <h3>Particuliers et personnes en reconversion</h3>
           <p>Changer de métier, se spécialiser ou ajouter une compétence : un entretien préalable permet de vérifier l’adéquation de votre projet et d’identifier les financements possibles selon votre statut.</p>
           <ul>
@@ -118,38 +183,38 @@ const selection = [
             <li>Parcours de reconversion vers les métiers de l’atelier</li>
             <li>Étude des financements : France Travail, OPCO, financement personnel…</li>
           </ul>
-          <div class="card-foot"><a class="link-arrow" href="/infinite-grid-col-2/">Se reconvertir dans l’automobile</a> &nbsp; <a class="link-arrow" href="/financer-sa-formation/">Financer sa formation</a></div>
+          <div class="card-foot btn-row" style="margin-top:0"><a class="btn btn--on-night" href="/infinite-grid-col-2/">Se reconvertir</a><a class="btn btn--on-night" href="/financer-sa-formation/">Financer sa formation</a></div>
         </article>
       </div>
     </div>
   </section>
 
-  <section class="section section--surface" aria-labelledby="qualite-titre">
+  <section class="section" aria-labelledby="qualite-titre">
     <div class="container grid grid-2" style="align-items:center">
-      <div>
+      <div data-reveal>
         <span class="eyebrow">Qualité</span>
         <h2 id="qualite-titre">Un organisme de formation certifié</h2>
         <p>Tech Formation Nord est certifié Qualiopi par {org.qualiopi.certificateur} (certificat n° {org.qualiopi.numero}). {org.qualiopi.mention}</p>
         <p class="small muted">La certification Qualiopi porte sur les processus de l’organisme. Elle ne constitue ni une certification professionnelle des formations, ni une garantie de prise en charge financière.</p>
-        <div class="btn-row"><a class="btn btn--ghost" href="/qualite/">Notre démarche qualité</a></div>
+        <a class="link-arrow" href="/qualite/">Notre démarche qualité</a>
       </div>
-      <div><Reviews /></div>
+      <div data-reveal style="--i:1"><Reviews /></div>
     </div>
   </section>
 
-  <section class="section" aria-labelledby="centre-titre">
-    <div class="container grid grid-2">
-      <div>
+  <section class="section section--surface" aria-labelledby="centre-titre">
+    <div class="container grid grid-2" style="align-items:center">
+      <div data-reveal>
         <span class="eyebrow">Le centre</span>
         <h2 id="centre-titre">À Vendeville, aux portes de Lille</h2>
         <p>Le centre de formation est situé {org.adresse.rue} à {org.adresse.ville}, au sud de la métropole lilloise, à proximité de l’A1 (sortie 20 Seclin) et desservi par le bus L1. Un parking est disponible sur place.</p>
         <p>Les formations automobiles s’appuient sur des ateliers pratiques et des mises en situation proches des conditions réelles de l’entreprise. Les formations esthétiques se déroulent dans les espaces de Maison Beauxlieux, au 21 bis rue de Faches.</p>
         <div class="btn-row"><a class="btn btn--ghost" href="/about-us/">Découvrir l’organisme</a><a class="btn btn--ghost" href="/informations-pratiques/">Accès et horaires</a></div>
       </div>
-      <div class="card">
+      <div class="card" data-reveal style="--i:1">
         <h3>Nous contacter</h3>
-        <p style="margin-bottom:.4rem"><strong>{org.nom}</strong><br />{org.adresse.rue}<br />{org.adresse.code_postal} {org.adresse.ville}</p>
-        <p style="margin-bottom:.4rem">Téléphone : <a href={`tel:${org.telephone.lien}`} data-place="accueil-contact">{org.telephone.affiche}</a><br />E-mail : <a href={`mailto:${org.email}`} data-place="accueil-contact">{org.email}</a></p>
+        <p style="margin-bottom:.6rem"><strong>{org.nom}</strong><br />{org.adresse.rue}<br />{org.adresse.code_postal} {org.adresse.ville}</p>
+        <p style="margin-bottom:.6rem">Téléphone : <a href={`tel:${org.telephone.lien}`} data-place="accueil-contact">{org.telephone.affiche}</a><br />E-mail : <a href={`mailto:${org.email}`} data-place="accueil-contact">{org.email}</a></p>
         <ul class="small muted" style="list-style:none;padding:0">{org.horaires.map((h: any) => <li>{h.jours} : {h.heures}</li>)}</ul>
         <div class="card-foot"><a class="btn btn--primary" href="/contact-us/#formulaire">Envoyer une demande</a></div>
       </div>

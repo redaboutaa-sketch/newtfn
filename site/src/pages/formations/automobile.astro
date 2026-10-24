@@ -1,7 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
-import PoleIcon from '../../components/PoleIcon.astro';
+import Picture from '../../components/Picture.astro';
+import IaArt from '../../components/IaArt.astro';
 import Faq from '../../components/Faq.astro';
 import CtaBand from '../../components/CtaBand.astro';
 import { pole, organisme } from '../../lib/data';
@@ -23,7 +24,7 @@ const faq = [
 <Base title="Formations automobile près de Lille : maintenance, carrosserie, commerce" description={`Formations aux métiers de l’automobile à Vendeville : ${nbModules} modules en maintenance, diagnostic, carrosserie, peinture et commerce VN/VO, et parcours de reconversion.`} breadcrumbs={[{ name: 'Nos formations', url: '/services/' }, { name: p.nom, url: p.url }]} pole="automobile" navActive="formations">
   <section class="page-hero" data-accent="auto">
     <div class="container hero-grid">
-      <div>
+      <div class="hero-enter">
         <span class="eyebrow">Pôle automobile</span>
         <h1>Formations aux métiers de l’automobile</h1>
         <p class="lead">Maintenance et diagnostic, carrosserie et peinture, commerce de véhicules neufs et d’occasion : Tech Formation Nord forme les professionnels de l’après-vente et prépare les personnes en reconversion aux métiers de l’atelier.</p>
@@ -32,12 +33,12 @@ const faq = [
           <a class="btn btn--ghost" href="/contact-us/?sujet=Formation%20automobile#formulaire">Demander un devis</a>
         </div>
       </div>
-      <div style="color:var(--auto);width:100%;max-width:300px;justify-self:center" data-accent="auto"><PoleIcon id="automobile" label="Illustration du pôle automobile" /></div>
+      <div class="hero-media hero-enter"><Picture id="auto-peinture-paysage" priority sizes="(max-width: 900px) 92vw, 44vw" /></div>
     </div>
   </section>
 
   <section class="section">
-    <div class="container grid grid-3">
+    <div class="container editorial-cols" data-accent="auto" data-reveal>
       <div>
         <h2 style="font-size:1.3rem">Pour qui ?</h2>
         <ul>
@@ -73,7 +74,7 @@ const faq = [
   <section class="section section--surface" id="familles" aria-labelledby="familles-titre">
     <div class="container">
       <h2 id="familles-titre">Les familles de formations</h2>
-      <div class="grid grid-3" style="margin-top:24px" data-accent="auto">
+      <div class="grid grid-3" data-reveal style="margin-top:24px" data-accent="auto">
         {catalogues.map((f) => (
           <article class="card">
             {f.image && <img src={f.image.src} alt="" width="880" height="520" loading="lazy" style="border-radius:var(--radius-sm);margin-bottom:16px;aspect-ratio:16/9;object-fit:cover" />}
@@ -108,7 +109,7 @@ const faq = [
   </section>
 
   <section class="section section--surface">
-    <div class="container narrow"><Faq items={faq} /></div>
+    <div class="container narrow" data-reveal><Faq items={faq} /></div>
   </section>
   <CtaBand titre="Un projet de formation automobile ?" sujet="Formation automobile" />
 </Base>

@@ -1,14 +1,16 @@
 ---
 // URL historique « À propos de nous » conservée.
 import Base from '../layouts/Base.astro';
-import PoleIcon from '../components/PoleIcon.astro';
+import Picture from '../components/Picture.astro';
+import IaArt from '../components/IaArt.astro';
+const thumbs: Record<string, any> = { automobile: 'auto-cle-paysage', beaute: 'beaute-ongles' };
 import CtaBand from '../components/CtaBand.astro';
 import { organisme, poles } from '../lib/data';
 const org = organisme();
 ---
 <Base title="Notre organisme de formation à Vendeville" description="Tech Formation Nord, organisme de formation certifié Qualiopi à Vendeville, près de Lille : notre mission, nos trois pôles de formation, notre démarche qualité et nos coordonnées." breadcrumbs={[{ name: 'Notre organisme', url: '/about-us/' }]} navActive="organisme">
   <section class="page-hero">
-    <div class="container">
+    <div class="container hero-enter">
       <span class="eyebrow">À propos de nous</span>
       <h1>Formez-vous aujourd’hui, accélérez votre carrière demain</h1>
       <p class="lead">Tech Formation Nord est un organisme de formation professionnelle installé à Vendeville, au sud de Lille. D’abord spécialisé dans les métiers de l’automobile, il propose aujourd’hui des formations dans trois domaines.</p>
@@ -16,7 +18,7 @@ const org = organisme();
   </section>
 
   <section class="section">
-    <div class="container grid grid-2">
+    <div class="container grid grid-2" data-reveal>
       <div>
         <h2>Notre mission</h2>
         <p>Former des professionnels compétents et polyvalents, prêts à relever les défis de leur métier. Que vous souhaitiez exceller dans la maintenance, le commerce de véhicules neufs et d’occasion (VN/VO), la carrosserie et la peinture, les techniques esthétiques ou les usages de l’intelligence artificielle, nous vous accompagnons avec des parcours adaptés aux besoins des entreprises.</p>
@@ -32,7 +34,7 @@ const org = organisme();
       <div class="stack">
         {poles().map((p) => (
           <a class="card card--link" href={p.url} data-accent={p.accent} style="flex-direction:row;gap:16px;align-items:center;text-decoration:none;color:inherit">
-            <span style="width:72px;flex:none;color:var(--accent)" aria-hidden="true"><PoleIcon id={p.id} /></span>
+            <span class="pole-thumb" aria-hidden="true">{thumbs[p.id] ? <Picture id={thumbs[p.id]} sizes="112px" decorative /> : <IaArt compact />}</span>
             <span><strong>{p.nom}</strong><br /><span class="small muted">{p.accroche}</span></span>
           </a>
         ))}
@@ -41,7 +43,7 @@ const org = organisme();
   </section>
 
   <section class="section section--surface">
-    <div class="container grid grid-3">
+    <div class="container grid grid-3" data-reveal>
       <div class="card">
         <h2 style="font-size:1.2rem">Qualité</h2>
         <img src={org.qualiopi.logo} alt="Qualiopi — processus certifié — République française" width="430" height="183" loading="lazy" style="width:180px;margin-bottom:12px" />

@@ -10,10 +10,12 @@ const facts = [
 const shortFacts = facts.filter(([, v]) => v.length <= 70);
 const longFacts = facts.filter(([, v]) => v.length > 70);
 const pts = (l: any[]) => l.map((x) => (typeof x === 'string' ? { texte: x, sous: [] } : x));
+const nbDetail = p.contenu.length + p.applications.length;
 ---
 <article class="programme" id={`prog-${p.id}`} aria-labelledby={`t-${p.id}`}>
   <header>
-    <h3 id={`t-${p.id}`}>{p.code && <span class="code">{p.code}</span>}{p.titre}</h3>
+    {p.code && <span class="code">Module {p.code}</span>}
+    <h3 id={`t-${p.id}`}>{p.titre}</h3>
   </header>
   <div class="body">
     {p.contexte.map((t: string) => <p>{t}</p>)}
@@ -21,37 +23,48 @@ const pts = (l: any[]) => l.map((x) => (typeof x === 'string' ? { texte: x, sous
     <dl class="facts">
       {shortFacts.map(([k, v]) => <div><dt>{k}</dt><dd>{v}</dd></div>)}
     </dl>
-    {longFacts.map(([k, v]) => <p><strong>{k} :</strong> {v}</p>)}
+    {longFacts.length > 0 && (
+      <div class="long-facts">{longFacts.map(([k, v]) => <p><strong>{k} :</strong> {v}</p>)}</div>
+    )}
     {p.public && /handicap/i.test(p.public) && (
       <p class="small">Référent handicap : <a href={`tel:${org.referent_handicap.telephone_lien}`} data-place="fiche-handicap">{org.referent_handicap.telephone_affiche}</a> — <a href="/accessibilite-handicap/">accessibilité et handicap</a></p>
     )}
-    {p.objectifs.length > 0 && (<><h4>Objectifs pédagogiques opérationnels</h4><ul>{p.objectifs.map((o: string) => <li>{o}</li>)}</ul></>)}
-    {p.benefices && (<><h4>Bénéfices</h4><p>{p.benefices}</p></>)}
-    {(p.contenu.length > 0 || p.applications.length > 0) && (
-      <>
-        <h4>Points clés de la formation</h4>
-        <div class="cols-2">
-          {p.contenu.length > 0 && (
-            <div>
-              <p><strong>{p.contenu_titre}</strong></p>
-              <ul>{pts(p.contenu).map((c: any) => <li>{c.texte}{c.sous.length > 0 && <ul>{c.sous.map((s: string) => <li>{s}</li>)}</ul>}</li>)}</ul>
-            </div>
+    {p.objectifs.length > 0 && (<><h4>Objectifs pédagogiques opérationnels</h4><ul class="check-list">{p.objectifs.map((o: string) => <li>{o}</li>)}</ul></>)}
+    {p.benefices && <p class="benefit"><strong>Bénéfices</strong> <span>{p.benefices}</span></p>}
+    {(nbDetail > 0 || p.methodes.length > 0 || p.evaluation) && (
+      <details class="prog-more">
+        <summary>Contenu détaillé, méthodes et évaluation{nbDetail > 0 && <span class="muted small" style="font-weight:450;margin-left:auto;padding-right:8px">{nbDetail} points</span>}</summary>
+        <div>
+          {nbDetail > 0 && (
+            <>
+              <h4 style="margin-top:.2em">Points clés de la formation</h4>
+              <div class="cols-2">
+                {p.contenu.length > 0 && (
+                  <div>
+                    <p><strong>{p.contenu_titre}</strong></p>
+                    <ul>{pts(p.contenu).map((c: any) => <li>{c.texte}{c.sous.length > 0 && <ul>{c.sous.map((s: string) => <li>{s}</li>)}</ul>}</li>)}</ul>
+                  </div>
+                )}
+                {p.applications.length > 0 && (
+                  <div>
+                    <p><strong>Les applications pratiques</strong></p>
+                    <ul>{pts(p.applications).map((c: any) => <li>{c.texte}{c.sous.length > 0 && <ul>{c.sous.map((s: string) => <li>{s}</li>)}</ul>}</li>)}</ul>
+                    {p.note_applications && <p class="small muted">{p.note_applications}</p>}
+                  </div>
+                )}
+              </div>
+            </>
           )}
-          {p.applications.length > 0 && (
-            <div>
-              <p><strong>Les applications pratiques</strong></p>
-              <ul>{pts(p.applications).map((c: any) => <li>{c.texte}{c.sous.length > 0 && <ul>{c.sous.map((s: string) => <li>{s}</li>)}</ul>}</li>)}</ul>
-              {p.note_applications && <p class="small muted">{p.note_applications}</p>}
-            </div>
-          )}
+          <div class="cols-2">
+            {p.methodes.length > 0 && (<div><h4>Méthodes utilisées</h4><ul>{p.methodes.map((m: string) => <li>{m}</li>)}</ul></div>)}
+            {p.evaluation && (<div><h4>Modalités d’évaluation</h4><p>{p.evaluation}</p></div>)}
+          </div>
         </div>
-      </>
+      </details>
     )}
-    {p.methodes.length > 0 && (<><h4>Méthodes utilisées</h4><ul>{p.methodes.map((m: string) => <li>{m}</li>)}</ul></>)}
-    {p.evaluation && (<><h4>Modalités d’évaluation</h4><p>{p.evaluation}</p></>)}
-    <div class="btn-row">
+    <div class="prog-foot">
       <a class="btn btn--primary" href={`/contact-us/?sujet=${encodeURIComponent(p.titre)}#formulaire`}>Demander un devis</a>
-      <a class="back-top" href="#sommaire">Retour au sommaire</a>
+      <a class="back-top link-arrow" href="#sommaire">Retour au sommaire</a>
     </div>
   </div>
 </article>

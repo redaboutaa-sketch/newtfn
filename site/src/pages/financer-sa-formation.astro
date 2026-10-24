@@ -17,14 +17,14 @@ const faq = [
 ---
 <Base title="Financer sa formation : OPCO, France Travail, CPF, indépendants" description="Comment financer une formation chez Tech Formation Nord : plan de développement des compétences et OPCO, aides de France Travail, fonds des indépendants, CPF ou financement personnel." breadcrumbs={[{ name: 'Financer sa formation', url: '/financer-sa-formation/' }]} navActive="financement">
   <section class="page-hero">
-    <div class="container">
+    <div class="container hero-enter">
       <span class="eyebrow">Financement</span>
       <h1>Financer sa formation</h1>
       <p class="lead">Plusieurs dispositifs peuvent financer tout ou partie d’une formation, selon votre statut et votre projet. Nous vous aidons à identifier les solutions envisageables avant votre inscription.</p>
     </div>
   </section>
   <section class="section">
-    <div class="container grid grid-2">
+    <div class="container grid grid-2" data-reveal>
       {dispositifs.map((d) => (
         <article class="card">
           <h2 style="font-size:1.2rem">{d.titre}</h2>
@@ -37,6 +37,6 @@ const faq = [
       <p class="callout callout--info">Les tarifs, conditions et éventuels restes à charge sont précisés dans le devis. Aucune prise en charge n’est garantie avant l’accord écrit du financeur.</p>
     </div>
   </section>
-  <section class="section section--surface"><div class="container narrow"><Faq items={faq} /></div></section>
+  <section class="section section--surface"><div class="container narrow" data-reveal><Faq items={faq} /></div></section>
   <CtaBand titre="Étudions ensemble votre financement" sujet="Financement" />
 </Base>

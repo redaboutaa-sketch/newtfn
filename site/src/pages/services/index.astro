@@ -1,7 +1,9 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
-import PoleIcon from '../../components/PoleIcon.astro';
+import Picture from '../../components/Picture.astro';
+import IaArt from '../../components/IaArt.astro';
+const thumbs: Record<string, any> = { automobile: 'auto-cle-paysage', beaute: 'beaute-ongles' };
 import CtaBand from '../../components/CtaBand.astro';
 import { poles } from '../../lib/data';
 
@@ -10,7 +12,7 @@ const ps = poles();
 ---
 <Base title="Catalogue des formations : automobile, beauté et IA" description="Toutes les formations de Tech Formation Nord à Vendeville, près de Lille : maintenance, carrosserie, commerce automobile, reconversion, esthétique et intelligence artificielle." breadcrumbs={[{ name: 'Nos formations', url: '/services/' }]} navActive="formations">
   <section class="page-hero">
-    <div class="container">
+    <div class="container hero-enter">
       <span class="eyebrow">Catalogue</span>
       <h1>Nos formations</h1>
       <p class="lead">Trois domaines, des modules courts de perfectionnement et des parcours longs de reconversion. Choisissez un domaine ou parcourez l’ensemble du catalogue.</p>
@@ -24,7 +26,7 @@ const ps = poles();
     <section class={`section ${i % 2 ? 'section--surface' : ''}`} id={p.id} aria-labelledby={`h-${p.id}`} data-accent={p.accent}>
       <div class="container">
         <div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap">
-          <div style="width:96px;color:var(--accent)" aria-hidden="true"><PoleIcon id={p.id} /></div>
+          <div class="pole-thumb" aria-hidden="true">{thumbs[p.id] ? <Picture id={thumbs[p.id]} sizes="112px" decorative /> : <IaArt compact />}</div>
           <div style="flex:1;min-width:260px">
             <h2 id={`h-${p.id}`} style="margin-bottom:.2em">{p.nom}</h2>
             <p class="muted" style="margin:0">{p.accroche}</p>
@@ -33,31 +35,39 @@ const ps = poles();
         </div>
 
         {p.id === 'automobile' && (
-          <div class="grid grid-2" style="margin-top:28px">
+          <ul class="cat-list" data-reveal style="margin-top:32px">
             {fiches.filter((f) => f.pole === 'automobile').map((f) => (
-              <article class="card">
-                <span class="tag">{f.type === 'parcours' ? 'Parcours de reconversion' : `${f.programmes.length} modules`}</span>
-                <h3><a href={f.url}>{f.titre_court}</a></h3>
-                <p>{f.resume}</p>
+              <li class="cat-row">
+                <div class="cat-main">
+                  <span class="tag">{f.type === 'parcours' ? 'Parcours de reconversion' : `${f.programmes.length} modules`}</span>
+                  <h3><a href={f.url}>{f.titre_court}</a></h3>
+                  <p>{f.resume}</p>
+                </div>
+                <div class="cat-side">
+                  {f.type === 'parcours'
+                    ? <span class="small muted">{f.parcours!.infos.find((i) => i.label === 'Durée')?.valeur}</span>
+                    : <span class="small muted">Tarif sur devis</span>}
+                  <a class="link-arrow" href={f.url}>{f.type === 'parcours' ? 'Voir le parcours' : 'Voir la fiche'}</a>
+                </div>
                 {f.type === 'catalogue' && (
-                  <details class="more">
-                    <summary>Voir les modules</summary>
-                    <ul class="small">{f.programmes.map((m) => <li><a href={`${f.url}#prog-${m.id}`}>{m.code ? `${m.code} – ` : ''}{m.titre}</a></li>)}</ul>
+                  <details class="more cat-more">
+                    <summary>Les {f.programmes.length} modules</summary>
+                    <ol class="cat-modules">{f.programmes.map((m) => <li><a href={`${f.url}#prog-${m.id}`}>{m.code && <span class="muted">{m.code}</span>}{m.titre}</a></li>)}</ol>
                   </details>
                 )}
-              </article>
+              </li>
             ))}
-          </div>
+          </ul>
         )}
 
         {p.id === 'beaute' && (
           <>
-            <div class="grid grid-3" style="margin-top:28px">
+            <div class="beaute-cols" data-reveal style="margin-top:32px">
               {p.familles.map((fam: any) => (
-                <article class="card">
+                <div>
                   <h3>{fam.nom}</h3>
-                  <ul class="small">{fam.formations.map((x: any) => <li><a href={x.url} data-track="passerelle" data-pole="beaute">{x.titre}</a> — {x.duree}</li>)}</ul>
-                </article>
+                  <ul class="prog-list prog-list--compact">{fam.formations.map((x: any) => <li><a class="prog-row" href={x.url} data-track="passerelle" data-pole="beaute"><span class="prog-title">{x.titre}</span><span class="prog-meta">{x.duree}</span><span class="prog-go" aria-hidden="true">↗</span></a></li>)}</ul>
+                </div>
               ))}
             </div>
             <p class="small muted" style="margin-top:16px">Les programmes, tarifs et sessions des formations esthétiques sont publiés sur maisonbeauxlieux.com. <a href={p.url}>En savoir plus sur le pôle beauté</a></p>
@@ -65,7 +75,7 @@ const ps = poles();
         )}
 
         {p.id === 'ia' && (
-          <div class="grid grid-3" style="margin-top:28px">
+          <div class="grid grid-3" data-reveal style="margin-top:28px">
             {p.familles.map((fam: any) => (
               <article class="card">
                 <h3>{fam.nom}</h3>

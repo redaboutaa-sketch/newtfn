@@ -6,6 +6,7 @@ const org = organisme();
 <Base title="Demande envoyée" description="Votre demande a bien été transmise à Tech Formation Nord. Nous revenons vers vous dans les meilleurs délais." noindex breadcrumbs={[{ name: 'Contact', url: '/contact-us/' }, { name: 'Demande envoyée', url: '/contact-us/merci/' }]}>
   <section class="section">
     <div class="container narrow">
+      <div class="success-mark" aria-hidden="true"><svg viewBox="0 0 34 34"><path d="M9 17.5l5.5 5.5L25 12" fill="none" stroke="#17663a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" /></svg></div>
       <h1>Merci, votre demande a bien été envoyée</h1>
       {!isProduction && <p class="form-banner form-banner--test">Préproduction : la demande a été enregistrée en mode test et n’a été transmise à personne.</p>}
       <p class="lead">Nous revenons vers vous dans les meilleurs délais. Pour une question urgente, appelez-nous au <a href={`tel:${org.telephone.lien}`} data-place="merci">{org.telephone.affiche}</a>.</p>

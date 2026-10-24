@@ -81,7 +81,11 @@ const ld = [orgLd, ...(crumbLd ? [crumbLd] : []), ...jsonld];
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
     {isProduction && ANALYTICS.gsc && <meta name="google-site-verification" content={ANALYTICS.gsc} />}
-    <script is:inline>document.documentElement.classList.replace('no-js','js');</script>
+    <link rel="preload" href="/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <script is:inline>
+      // « motion » n'est posé que si le mouvement est autorisé : sans JS, aucun contenu n'est masqué.
+      (function (d) { d.classList.replace('no-js', 'js'); if ('IntersectionObserver' in window && matchMedia('(prefers-reduced-motion: no-preference)').matches) d.classList.add('motion'); })(document.documentElement);
+    </script>
     {ld.map((o) => <script type="application/ld+json" set:html={JSON.stringify(o)} />)}
     {ANALYTICS.provider === 'plausible' && <script defer data-domain={ANALYTICS.domain} src="https://plausible.io/js/script.tagged-events.js"></script>}
   </head>
@@ -115,12 +119,8 @@ const ld = [orgLd, ...(crumbLd ? [crumbLd] : []), ...jsonld];
           else if (href.indexOf('mailto:') === 0) track('clic_email', { emplacement: a.dataset.place || 'page' });
           else if (a.dataset.track === 'passerelle') track('clic_site_specialise', { destination: a.hostname, pole: a.dataset.pole || '' });
         });
-        var t = document.querySelector('.nav-toggle'), n = document.getElementById('main-nav');
-        if (t && n) t.addEventListener('click', function () {
-          var open = n.classList.toggle('is-open');
-          t.setAttribute('aria-expanded', open ? 'true' : 'false');
-        });
       })();
     </script>
+    <script>import '../scripts/motion.ts';</script>
   </body>
 </html>

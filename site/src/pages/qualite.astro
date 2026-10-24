@@ -8,7 +8,7 @@ const q = org.qualiopi;
 <Base title="Qualité et certification Qualiopi" description={`Tech Formation Nord est certifié Qualiopi au titre des actions de formation (certificat n° ${q.numero}, ${q.certificateur}). Périmètre, validité et téléchargement du certificat.`} breadcrumbs={[{ name: 'Notre organisme', url: '/about-us/' }, { name: 'Qualité', url: '/qualite/' }]} navActive="organisme">
   <section class="page-hero">
     <div class="container hero-grid">
-      <div>
+      <div class="hero-enter">
         <span class="eyebrow">Qualité</span>
         <h1>Certification Qualiopi</h1>
         <p class="lead">{q.mention}</p>
@@ -17,7 +17,7 @@ const q = org.qualiopi;
     </div>
   </section>
   <section class="section">
-    <div class="container grid grid-2">
+    <div class="container grid grid-2" data-reveal>
       <div>
         <h2>Notre certificat</h2>
         <table class="info-table">
