@@ -1,0 +1,14 @@
+# Nom d'hôte supplémentaire (provisoire) pour la préproduction, ex. tfn.iatechformanord.fr.
+# Mêmes protections que l'hôte principal : authentification + X-Robots-Tag + noindex.
+# À n'activer qu'une fois l'enregistrement DNS en place (sinon le certificat Let's Encrypt échoue) :
+# docker compose -p tfn-preprod --env-file /etc/techformanord/preprod.env \
+#   -f deploy/docker-compose.preprod.yml -f deploy/docker-compose.preprod.alias.yml up -d
+services:
+  web:
+    labels:
+      traefik.http.routers.tfn-preprod-alias.rule: Host(`${PREPROD_ALIAS_HOST:?PREPROD_ALIAS_HOST requis}`)
+      traefik.http.routers.tfn-preprod-alias.entrypoints: websecure
+      traefik.http.routers.tfn-preprod-alias.tls.certresolver: letsencrypt
+      traefik.http.routers.tfn-preprod-alias.middlewares: tfn-preprod-headers,tfn-preprod-auth
+      traefik.http.routers.tfn-preprod-alias.service: tfn-preprod
+      traefik.http.routers.tfn-preprod.service: tfn-preprod

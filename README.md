@@ -63,6 +63,12 @@ docker compose -p tfn-preprod --env-file /etc/techformanord/preprod.env -f deplo
 ```
 Demandes de test reçues : `https://<PREPROD_HOST>/api/test-inbox`.
 
+**Nom d'hôte provisoire supplémentaire** (ex. `tfn.iatechformanord.fr`, mêmes protections) : créer l'enregistrement DNS A `tfn` → `76.13.44.177` (et AAAA → `2a02:4780:7:f4ca::1`) dans la zone iatechformanord.fr (Hostinger), renseigner `PREPROD_ALIAS_HOST` dans `/etc/techformanord/preprod.env`, puis :
+```bash
+docker compose -p tfn-preprod --env-file /etc/techformanord/preprod.env \
+  -f deploy/docker-compose.preprod.yml -f deploy/docker-compose.preprod.alias.yml up -d
+```
+
 Changer le mot de passe de recette :
 ```bash
 H=$(openssl passwd -apr1 'nouveau-mot-de-passe' | sed 's/\$/\$\$/g')
