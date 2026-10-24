@@ -35,7 +35,7 @@ Courbe commune `cubic-bezier(.2,.7,.2,1)` ; interactions 180–220 ms, révélat
 | Zone | Mouvement |
 |---|---|
 | Hero | entrée coordonnée (surtitre, titre, texte, panneaux) décalée de 60–90 ms ; CTA visibles immédiatement ; images légèrement zoomées qui se posent. |
-| Navigation | soulignement actif qui se déploie ; en-tête compact après 80 px de défilement ; menu mobile en feuille avec piège de focus, fermeture Échap / lien / clic extérieur. |
+| Navigation | soulignement actif qui se déploie ; en-tête compact après 80 px de défilement ; menu mobile en feuille avec piège de focus, fermeture par le bouton, Échap ou un lien. |
 | Pôles | zoom lent de l'image, barre d'accent qui s'allonge, flèche qui avance — au survol **et** au focus clavier. |
 | Défilement | révélations sobres (montée, fondu, masque d'image) une seule fois par élément ; léger effet de profondeur sur 2 images (ordinateur uniquement). |
 | Micro-interactions | boutons, liens fléchés, accordéons (ouverture animée là où le navigateur le permet), champs (focus, erreur `:user-invalid`), état d'envoi du formulaire. |
@@ -48,7 +48,7 @@ Garde-fous : `prefers-reduced-motion` désactive tout mouvement ; sans JavaScrip
 - **Pas de carrousel** : les trois pôles sont visibles simultanément (mosaïque liée à leurs pages).
 - **Photos du geste, pas de visages** : aucune image ne laisse croire qu'il s'agit de nos stagiaires, formateurs ou locaux.
 - **Catalogue en lignes structurées** plutôt qu'en grilles de cartes ; cartes réservées aux blocs de contact et de confiance.
-- **Fiches** : objectifs, public, prérequis, durée, tarif et bénéfices toujours visibles ; contenu détaillé, méthodes et évaluation dans un accordéon (présents dans le HTML, donc indexables et imprimables) ; sommaire latéral suivi au défilement ; ancres `#prog-…` inchangées.
+- **Fiches** : objectifs, public, prérequis, durée, tarif et bénéfices toujours visibles ; contenu détaillé, méthodes et évaluation dans un accordéon (présents dans le HTML, donc indexables) ; sommaire latéral suivi au défilement ; ancres `#prog-…` inchangées.
 - **Nom court des pôles** (`nom_court` dans `poles.yaml`) pour les étiquettes.
 - **Contrastes** : teintes foncées dédiées (`--auto-ink`, `--beaute-ink`, `--ia-ink`) pour les petits textes sur fonds teintés.
 - **Typographie française** : espace insécable avant « : ; ? ! » dans les titres de fiches.
