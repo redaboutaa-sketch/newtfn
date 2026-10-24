@@ -63,7 +63,7 @@ docker compose -p tfn-preprod --env-file /etc/techformanord/preprod.env -f deplo
 ```
 Demandes de test reçues : `https://<PREPROD_HOST>/api/test-inbox`.
 
-**Nom d'hôte provisoire supplémentaire** (ex. `tfn.iatechformanord.fr`, mêmes protections) : créer l'enregistrement DNS A `tfn` → `76.13.44.177` (et AAAA → `2a02:4780:7:f4ca::1`) dans la zone iatechformanord.fr (Hostinger), renseigner `PREPROD_ALIAS_HOST` dans `/etc/techformanord/preprod.env`, puis :
+**Nom d'hôte provisoire supplémentaire** — actif : `https://tfn.iatechformanord.fr`, **accessible sans mot de passe** à la demande de l'organisme, mais non indexable (`X-Robots-Tag` + `noindex`) ; la boîte `/api/test-inbox` y est bloquée (404) et reste consultable uniquement via l'hôte protégé. Mise en place : créer l'enregistrement DNS A `tfn` → `76.13.44.177` (et AAAA → `2a02:4780:7:f4ca::1`) dans la zone iatechformanord.fr (Hostinger), renseigner `PREPROD_ALIAS_HOST` dans `/etc/techformanord/preprod.env`, puis :
 ```bash
 docker compose -p tfn-preprod --env-file /etc/techformanord/preprod.env \
   -f deploy/docker-compose.preprod.yml -f deploy/docker-compose.preprod.alias.yml up -d
