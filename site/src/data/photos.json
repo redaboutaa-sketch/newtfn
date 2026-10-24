@@ -1,0 +1,74 @@
+{
+ "auto-cle-portrait": {
+  "alt": "Main gantée tenant une clé plate, dans un atelier automobile",
+  "widths": [
+   420,
+   720,
+   1000
+  ],
+  "ratio": 0.809,
+  "width": 1000,
+  "height": 1236,
+  "source": "https://techformanord.fr/wp-content/uploads/2024/09/hands-car-mechanic-with-wrench-garage.jpg"
+ },
+ "auto-cle-paysage": {
+  "alt": "Mécanicien tenant une clé plate dans un atelier automobile",
+  "widths": [
+   640,
+   1100,
+   1600
+  ],
+  "ratio": 1.7422,
+  "width": 1600,
+  "height": 918,
+  "source": "https://techformanord.fr/wp-content/uploads/2024/09/hands-car-mechanic-with-wrench-garage.jpg"
+ },
+ "auto-peinture-portrait": {
+  "alt": "Pistolet de peinture en action au-dessus d’un élément de carrosserie",
+  "widths": [
+   420,
+   720,
+   1000
+  ],
+  "ratio": 0.7896,
+  "width": 1000,
+  "height": 1267,
+  "source": "https://techformanord.fr/wp-content/uploads/2024/09/man-painting-car-door-side-view.jpg"
+ },
+ "auto-peinture-paysage": {
+  "alt": "Application de peinture au pistolet sur un élément de carrosserie",
+  "widths": [
+   640,
+   1100,
+   1600
+  ],
+  "ratio": 1.7857,
+  "width": 1600,
+  "height": 896,
+  "source": "https://techformanord.fr/wp-content/uploads/2024/09/man-painting-car-door-side-view.jpg"
+ },
+ "auto-showroom-paysage": {
+  "alt": "Vente d’un véhicule dans un showroom automobile",
+  "widths": [
+   640,
+   1100,
+   1600
+  ],
+  "ratio": 1.5,
+  "width": 1600,
+  "height": 1067,
+  "source": "https://techformanord.fr/wp-content/uploads/2024/09/stylish-elegant-woman-car-salon.jpg"
+ },
+ "beaute-ongles": {
+  "alt": "Outils de manucure et flacons de vernis disposés sur une table",
+  "widths": [
+   420,
+   720,
+   870
+  ],
+  "ratio": 1.7744,
+  "width": 870,
+  "height": 490,
+  "source": "https://maisonbeauxlieux.com/images/section-studio.webp"
+ }
+}

@@ -5,6 +5,7 @@
 - id: automobile
   ordre: 1
   nom: Automobile
+  nom_court: Automobile
   nom_long: Métiers de l'automobile
   url: /formations/automobile/
   accent: auto
@@ -20,6 +21,7 @@
 - id: beaute
   ordre: 2
   nom: Esthétique, beauté et bien-être
+  nom_court: Beauté et bien-être
   nom_long: Esthétique, beauté et bien-être
   url: /formations/beaute-bien-etre/
   accent: beaute
@@ -69,6 +71,7 @@
 - id: ia
   ordre: 3
   nom: Intelligence artificielle et numérique
+  nom_court: IA et numérique
   nom_long: Intelligence artificielle et numérique
   url: /formations/intelligence-artificielle/
   accent: ia

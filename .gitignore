@@ -6,3 +6,4 @@ site/.astro/
 .env.production
 *.log
 deploy/secrets/
+.cache/
