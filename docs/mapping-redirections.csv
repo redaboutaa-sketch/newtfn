@@ -1,0 +1,216 @@
+ancienne_url,nouvelle_url,traitement,code_http,justification
+/,/,conservation,200,Accueil refondu (portail des trois pôles).
+/about-us/,/about-us/,conservation,200,Page « À propos » devenue « Notre organisme ».
+/contact-us/,/contact-us/,conservation,200,"Page contact (formulaire, coordonnées)."
+/infinite-grid-col-2/,/infinite-grid-col-2/,conservation,200,"Page « Reconversion » (menu principal, 82 liens internes) : slug hérité du thème, conservée."
+/m-grid-col-2/,/m-grid-col-2/,conservation,200,Parcours Aide carrossier : contenu repris.
+/m-grid-col-3/,/m-grid-col-3/,conservation,200,Parcours Mécanicien service rapide : contenu repris.
+/service/interior-cleaning/,/service/interior-cleaning/,conservation,200,Fiche Carrosserie peinture (12 modules) : slug hérité du thème mais URL indexée ; conservée.
+/service/maintenance/,/service/maintenance/,conservation,200,Fiche Maintenance (5 modules) : contenu pédagogique intégralement repris.
+/service/wheels-alignment/,/service/wheels-alignment/,conservation,200,Fiche Commerce (2 modules) : slug hérité du thème mais URL indexée et liée depuis 82 pages ; conservée.
+/services/,/services/,conservation,200,Catalogue des formations : devient le catalogue global des trois pôles.
+/2024/09/11/auto-repair-marketing-ideas-to-boost-conversions/,,suppression,410,"Article de démonstration du thème (anglais, sans rapport avec l’organisme) ; aucun équivalent pertinent."
+/2024/09/11/guide-to-year-round-dallas-auto-repair/,,suppression,410,"Article de démonstration du thème (anglais, sans rapport avec l’organisme) ; aucun équivalent pertinent."
+/2024/09/11/how-long-does-it-take-to-change-a-flat-tyre/,,suppression,410,"Article de démonstration du thème (anglais, sans rapport avec l’organisme) ; aucun équivalent pertinent."
+/2024/09/11/how-to-open-an-authorized-car-service-center/,,suppression,410,"Article de démonstration du thème (anglais, sans rapport avec l’organisme) ; aucun équivalent pertinent."
+/2024/09/11/maintaining-your-high-mileage-vehicle/,,suppression,410,"Article de démonstration du thème (anglais, sans rapport avec l’organisme) ; aucun équivalent pertinent."
+/2024/09/11/step-by-step-guide-to-clean-your-carpets/,,suppression,410,"Article de démonstration du thème (anglais, sans rapport avec l’organisme) ; aucun équivalent pertinent."
+/2024/09/11/things-to-know-choosing-a-cleaning-service/,,suppression,410,"Article de démonstration du thème (anglais, sans rapport avec l’organisme) ; aucun équivalent pertinent."
+/2024/09/11/what-are-the-benefits-of-vacuum-cleaning/,,suppression,410,"Article de démonstration du thème (anglais, sans rapport avec l’organisme) ; aucun équivalent pertinent."
+/2024/09/11/when-should-you-get-the-brakes-checked/,,suppression,410,"Article de démonstration du thème (anglais, sans rapport avec l’organisme) ; aucun équivalent pertinent."
+/author/admin0909/,,suppression,410,Archive de taxonomie du thème (libellés sans rapport) ; aucun équivalent pertinent.
+/blog-classic/,,suppression,410,Page de démonstration du thème (Blog Classic) : lorem ipsum ou modèle vide ; aucun équivalent pertinent.
+/blog-grid-col-3/,,suppression,410,Page de démonstration du thème (Blog Grid Col 3) : lorem ipsum ou modèle vide ; aucun équivalent pertinent.
+/blog-grid-col-4/,,suppression,410,Page de démonstration du thème (Blog Grid Col 4) : lorem ipsum ou modèle vide ; aucun équivalent pertinent.
+/blog-m-grid-col-2/,,suppression,410,Page de démonstration du thème (Blog M Grid Col 2) : lorem ipsum ou modèle vide ; aucun équivalent pertinent.
+/blog-m-grid-col-3/,,suppression,410,Page de démonstration du thème (Blog M Grid Col 3) : lorem ipsum ou modèle vide ; aucun équivalent pertinent.
+/blog-m-grid-col-4/,,suppression,410,Page de démonstration du thème (Blog M Grid Col 4) : lorem ipsum ou modèle vide ; aucun équivalent pertinent.
+/blog-masonry-wide/,,suppression,410,Page de démonstration du thème (Blog Masonry Wide) : lorem ipsum ou modèle vide ; aucun équivalent pertinent.
+/blog-pagination-ajax-load/,,suppression,410,Page de démonstration du thème (Blog Pagination Ajax Load) : lorem ipsum ou modèle vide ; aucun équivalent pertinent.
+/blog-pagination-ajax-load/page/1/,,suppression,410,Page de démonstration du thème (sans titre) : lorem ipsum ou modèle vide ; aucun équivalent pertinent.
+/blog-pagination-ajax-load/page/2/,,suppression,410,Page de démonstration du thème (Blog Pagination Ajax Load – Page 2) : lorem ipsum ou modèle vide ; aucun équivalent pertinent.
+/blog-pagination-ajax-load/page/3/,,suppression,410,Page de démonstration du thème (Blog Pagination Ajax Load – Page 3) : lorem ipsum ou modèle vide ; aucun équivalent pertinent.
+/blog-sortable-ajax-load/,,suppression,410,Page de démonstration du thème (Blog Sortable Ajax Load) : lorem ipsum ou modèle vide ; aucun équivalent pertinent.
+/blog-sortable-grid-view/,,suppression,410,Page de démonstration du thème (Blog Sortable Grid View) : lorem ipsum ou modèle vide ; aucun équivalent pertinent.
+/cart/,,suppression,410,Page WooCommerce vide (aucune vente en ligne).
+/category/accessories/,,suppression,410,Archive de taxonomie du thème (libellés sans rapport) ; aucun équivalent pertinent.
+/category/automobile/,,suppression,410,Archive de taxonomie du thème (libellés sans rapport) ; aucun équivalent pertinent.
+/category/electronics/,,suppression,410,Archive de taxonomie du thème (libellés sans rapport) ; aucun équivalent pertinent.
+/category/mechanic/,,suppression,410,Archive de taxonomie du thème (libellés sans rapport) ; aucun équivalent pertinent.
+/category/repaired/,,suppression,410,Archive de taxonomie du thème (libellés sans rapport) ; aucun équivalent pertinent.
+/category/technology/,,suppression,410,Archive de taxonomie du thème (libellés sans rapport) ; aucun équivalent pertinent.
+/checkout/,,suppression,410,Page WooCommerce vide (aucune vente en ligne).
+/comments/feed/,,suppression,410,Flux RSS WordPress sans contenu éditorial utile.
+/contact,/contact-us/,redirection,301,"Redirection existante maintenue, directe."
+/element/,,suppression,410,Page de démonstration du thème (Element) : lorem ipsum ou modèle vide ; aucun équivalent pertinent.
+/faq/,,suppression,410,Page de démonstration du thème (Faq) : lorem ipsum ou modèle vide ; aucun équivalent pertinent.
+/feed/,,suppression,410,Flux RSS WordPress sans contenu éditorial utile.
+/grid-col-2/,,suppression,410,Page de démonstration du thème (Grid Col 2) : lorem ipsum ou modèle vide ; aucun équivalent pertinent.
+/grid-col-3/,,suppression,410,Page de démonstration du thème (Grid Col 3) : lorem ipsum ou modèle vide ; aucun équivalent pertinent.
+/grid-col-4/,,suppression,410,Page de démonstration du thème (Grid Col 4) : lorem ipsum ou modèle vide ; aucun équivalent pertinent.
+/homepage-01/,,suppression,410,Page de démonstration du thème (Homepage 01) : lorem ipsum ou modèle vide ; aucun équivalent pertinent.
+/homepage-02/,,suppression,410,Page de démonstration du thème (Homepage 02) : lorem ipsum ou modèle vide ; aucun équivalent pertinent.
+/infinite-grid-button/,,suppression,410,Page de démonstration du thème (Infinite Grid Button) : lorem ipsum ou modèle vide ; aucun équivalent pertinent.
+/infinite-grid-col-3/,,suppression,410,Page de démonstration du thème (Infinite Grid Col 3) : lorem ipsum ou modèle vide ; aucun équivalent pertinent.
+/infinite-grid-col-4/,,suppression,410,Page de démonstration du thème (Infinite Grid Col 4) : lorem ipsum ou modèle vide ; aucun équivalent pertinent.
+/m-grid-col-4/,,suppression,410,Page de démonstration du thème (M Grid Col 4) : lorem ipsum ou modèle vide ; aucun équivalent pertinent.
+/m-grid-wide/,,suppression,410,Page de démonstration du thème (M Grid Wide) : lorem ipsum ou modèle vide ; aucun équivalent pertinent.
+/my-account/,,suppression,410,Page WooCommerce vide (aucune vente en ligne).
+/our-plans/,,suppression,410,Page de démonstration du thème (Our Plans) : lorem ipsum ou modèle vide ; aucun équivalent pertinent.
+/our-team/,,suppression,410,"Équipe fictive du thème (noms, coordonnées factices) : ne doit plus être publiée."
+/page-d-exemple/,,suppression,410,Page de démonstration du thème (Page d’exemple) : lorem ipsum ou modèle vide ; aucun équivalent pertinent.
+/reconvention/,/infinite-grid-col-2/,redirection,301,"Doublon de la page Reconversion (texte repris d’un tiers, mention GNFA)."
+/service-category/accessories/,,suppression,410,Archive de taxonomie du thème (libellés sans rapport) ; aucun équivalent pertinent.
+/service-category/filters/,,suppression,410,Archive de taxonomie du thème (libellés sans rapport) ; aucun équivalent pertinent.
+/service-category/maintenance/,,suppression,410,Archive de taxonomie du thème (libellés sans rapport) ; aucun équivalent pertinent.
+/service/,/services/,redirection,301,Archive automatique des « services » du thème ; équivalent : catalogue des formations.
+/service/feed/,,suppression,410,Flux RSS WordPress sans contenu éditorial utile.
+/shop/,,suppression,410,Page WooCommerce vide (aucune vente en ligne).
+/shop/feed/,,suppression,410,Flux RSS WordPress sans contenu éditorial utile.
+/sitemap.xml,/sitemap.xml,conservation,200,Sitemap XML généré par le nouveau site (production uniquement).
+/sortable-ajax-load/,,suppression,410,Page de démonstration du thème (Sortable Ajax Load) : lorem ipsum ou modèle vide ; aucun équivalent pertinent.
+/sortable-grid-col-2/,,suppression,410,Page de démonstration du thème (Sortable Grid Col 2) : lorem ipsum ou modèle vide ; aucun équivalent pertinent.
+/sortable-grid-col-3/,,suppression,410,Page de démonstration du thème (Sortable Grid Col 3) : lorem ipsum ou modèle vide ; aucun équivalent pertinent.
+/sortable-grid-col-4/,,suppression,410,Page de démonstration du thème (Sortable Grid Col 4) : lorem ipsum ou modèle vide ; aucun équivalent pertinent.
+/tag/battery/,,suppression,410,Archive de taxonomie du thème (libellés sans rapport) ; aucun équivalent pertinent.
+/tag/engine/,,suppression,410,Archive de taxonomie du thème (libellés sans rapport) ; aucun équivalent pertinent.
+/tag/equipment/,,suppression,410,Archive de taxonomie du thème (libellés sans rapport) ; aucun équivalent pertinent.
+/tag/mechanic/,,suppression,410,Archive de taxonomie du thème (libellés sans rapport) ; aucun équivalent pertinent.
+/tag/polishing/,,suppression,410,Archive de taxonomie du thème (libellés sans rapport) ; aucun équivalent pertinent.
+/tag/servicing/,,suppression,410,Archive de taxonomie du thème (libellés sans rapport) ; aucun équivalent pertinent.
+/team-member/,,suppression,410,"Équipe fictive du thème (noms, coordonnées factices) : ne doit plus être publiée."
+/team-member/becky-linch/,,suppression,410,"Équipe fictive du thème (noms, coordonnées factices) : ne doit plus être publiée."
+/team-member/daniel-berlin/,,suppression,410,"Équipe fictive du thème (noms, coordonnées factices) : ne doit plus être publiée."
+/team-member/david-green/,,suppression,410,"Équipe fictive du thème (noms, coordonnées factices) : ne doit plus être publiée."
+/team-member/mariam-ness/,,suppression,410,"Équipe fictive du thème (noms, coordonnées factices) : ne doit plus être publiée."
+/team-member/mark-donald/,,suppression,410,"Équipe fictive du thème (noms, coordonnées factices) : ne doit plus être publiée."
+/team-member/myles-evander/,,suppression,410,"Équipe fictive du thème (noms, coordonnées factices) : ne doit plus être publiée."
+/team-member/paula-deen/,,suppression,410,"Équipe fictive du thème (noms, coordonnées factices) : ne doit plus être publiée."
+/team-member/roman-amata/,,suppression,410,"Équipe fictive du thème (noms, coordonnées factices) : ne doit plus être publiée."
+/wp-admin/,,suppression,410,Point d’entrée technique WordPress ; plus de CMS WordPress.
+/wp-content/uploads/2024/09/ACT_logotype_cartouche_rvb-1024x447.png,,suppression,410,Média non repris : adhésion « les acteurs de la compétence » non justifiée.
+/wp-content/uploads/2024/09/ACT_logotype_cartouche_rvb-1536x670.png,,suppression,410,Média non repris : adhésion « les acteurs de la compétence » non justifiée.
+/wp-content/uploads/2024/09/ACT_logotype_cartouche_rvb-2048x894.png,,suppression,410,Média non repris : adhésion « les acteurs de la compétence » non justifiée.
+/wp-content/uploads/2024/09/ACT_logotype_cartouche_rvb-300x131.png,,suppression,410,Média non repris : adhésion « les acteurs de la compétence » non justifiée.
+/wp-content/uploads/2024/09/ACT_logotype_cartouche_rvb-600x262.png,,suppression,410,Média non repris : adhésion « les acteurs de la compétence » non justifiée.
+/wp-content/uploads/2024/09/ACT_logotype_cartouche_rvb-768x335.png,,suppression,410,Média non repris : adhésion « les acteurs de la compétence » non justifiée.
+/wp-content/uploads/2024/09/ACT_logotype_cartouche_rvb.png,,suppression,410,Média non repris : adhésion « les acteurs de la compétence » non justifiée.
+/wp-content/uploads/2024/09/about-img-01.png,,suppression,410,Média non repris : fichier du thème de démonstration.
+/wp-content/uploads/2024/09/about-img-02-300x192.png,/wp-content/uploads/2024/09/about-img-02-300x192.png,conservation,200,Fichier utile conservé au même chemin.
+/wp-content/uploads/2024/09/about-img-02.png,/wp-content/uploads/2024/09/about-img-02.png,conservation,200,Fichier utile conservé au même chemin.
+/wp-content/uploads/2024/09/blog-img-150x150.jpg,,suppression,410,Média non repris : fichier du thème de démonstration.
+/wp-content/uploads/2024/09/blog-img-530x400.jpg,,suppression,410,Média non repris : fichier du thème de démonstration.
+/wp-content/uploads/2024/09/blog-img-770x1000.jpg,,suppression,410,Média non repris : fichier du thème de démonstration.
+/wp-content/uploads/2024/09/blog-img-770x447.jpg,,suppression,410,Média non repris : fichier du thème de démonstration.
+/wp-content/uploads/2024/09/blog-img-770x492.jpg,,suppression,410,Média non repris : fichier du thème de démonstration.
+/wp-content/uploads/2024/09/blog-img-880x620.jpg,,suppression,410,Média non repris : fichier du thème de démonstration.
+/wp-content/uploads/2024/09/blog-img.jpg,,suppression,410,Média non repris : fichier du thème de démonstration.
+/wp-content/uploads/2024/09/blog-single-01.jpg,,suppression,410,Média non repris : fichier du thème de démonstration.
+/wp-content/uploads/2024/09/blog-single-02.jpg,,suppression,410,Média non repris : fichier du thème de démonstration.
+/wp-content/uploads/2024/09/hands-car-mechanic-with-wrench-garage-1000x615.jpg,/wp-content/uploads/2024/09/hands-car-mechanic-with-wrench-garage-1000x615.jpg,conservation,200,Fichier utile conservé au même chemin.
+/wp-content/uploads/2024/09/hands-car-mechanic-with-wrench-garage-150x150.jpg,/wp-content/uploads/2024/09/hands-car-mechanic-with-wrench-garage-150x150.jpg,conservation,200,Fichier utile conservé au même chemin.
+/wp-content/uploads/2024/09/hands-car-mechanic-with-wrench-garage-630x630.jpg,/wp-content/uploads/2024/09/hands-car-mechanic-with-wrench-garage-630x630.jpg,conservation,200,Fichier utile conservé au même chemin.
+/wp-content/uploads/2024/09/hands-car-mechanic-with-wrench-garage-840x1040.jpg,,suppression,410,Média non repris : fichier du thème de démonstration.
+/wp-content/uploads/2024/09/hands-car-mechanic-with-wrench-garage-880x520.jpg,/wp-content/uploads/2024/09/hands-car-mechanic-with-wrench-garage-880x520.jpg,conservation,200,Fichier utile conservé au même chemin.
+/wp-content/uploads/2024/09/infobox-service-car-300x101.png,/wp-content/uploads/2024/09/infobox-service-car-300x101.png,conservation,200,Fichier utile conservé au même chemin.
+/wp-content/uploads/2024/09/infobox-service-car-600x201.png,/wp-content/uploads/2024/09/infobox-service-car-600x201.png,conservation,200,Fichier utile conservé au même chemin.
+/wp-content/uploads/2024/09/infobox-service-car.png,/wp-content/uploads/2024/09/infobox-service-car.png,conservation,200,Fichier utile conservé au même chemin.
+/wp-content/uploads/2024/09/man-painting-car-door-side-view-150x150.jpg,/wp-content/uploads/2024/09/man-painting-car-door-side-view-150x150.jpg,conservation,200,Fichier utile conservé au même chemin.
+/wp-content/uploads/2024/09/man-painting-car-door-side-view-630x630.jpg,/wp-content/uploads/2024/09/man-painting-car-door-side-view-630x630.jpg,conservation,200,Fichier utile conservé au même chemin.
+/wp-content/uploads/2024/09/man-painting-car-door-side-view-840x1040.jpg,,suppression,410,Média non repris : fichier du thème de démonstration.
+/wp-content/uploads/2024/09/man-painting-car-door-side-view-880x520.jpg,/wp-content/uploads/2024/09/man-painting-car-door-side-view-880x520.jpg,conservation,200,Fichier utile conservé au même chemin.
+/wp-content/uploads/2024/09/priceing-bg-img.png,,suppression,410,Média non repris : fichier du thème de démonstration.
+/wp-content/uploads/2024/09/project-img-150x150.jpg,,suppression,410,Média non repris : fichier du thème de démonstration.
+/wp-content/uploads/2024/09/project-img-530x400.jpg,,suppression,410,Média non repris : fichier du thème de démonstration.
+/wp-content/uploads/2024/09/project-img-770x1000.jpg,,suppression,410,Média non repris : fichier du thème de démonstration.
+/wp-content/uploads/2024/09/project-img-770x485.jpg,,suppression,410,Média non repris : fichier du thème de démonstration.
+/wp-content/uploads/2024/09/project-img-770x762.jpg,,suppression,410,Média non repris : fichier du thème de démonstration.
+/wp-content/uploads/2024/09/project-img-880x620.jpg,,suppression,410,Média non repris : fichier du thème de démonstration.
+/wp-content/uploads/2024/09/project-img.jpg,,suppression,410,Média non repris : fichier du thème de démonstration.
+/wp-content/uploads/2024/09/service-img-150x150.jpg,,suppression,410,Média non repris : fichier du thème de démonstration.
+/wp-content/uploads/2024/09/service-img-530x400.jpg,,suppression,410,Média non repris : fichier du thème de démonstration.
+/wp-content/uploads/2024/09/service-img-770x492.jpg,,suppression,410,Média non repris : fichier du thème de démonstration.
+/wp-content/uploads/2024/09/service-img-770x872.jpg,,suppression,410,Média non repris : fichier du thème de démonstration.
+/wp-content/uploads/2024/09/service-img-770x974.jpg,,suppression,410,Média non repris : fichier du thème de démonstration.
+/wp-content/uploads/2024/09/service-img-880x620.jpg,,suppression,410,Média non repris : fichier du thème de démonstration.
+/wp-content/uploads/2024/09/service-img.jpg,,suppression,410,Média non repris : fichier du thème de démonstration.
+/wp-content/uploads/2024/09/stylish-elegant-woman-car-salon-1000x615.jpg,/wp-content/uploads/2024/09/stylish-elegant-woman-car-salon-1000x615.jpg,conservation,200,Fichier utile conservé au même chemin.
+/wp-content/uploads/2024/09/stylish-elegant-woman-car-salon-150x150.jpg,/wp-content/uploads/2024/09/stylish-elegant-woman-car-salon-150x150.jpg,conservation,200,Fichier utile conservé au même chemin.
+/wp-content/uploads/2024/09/stylish-elegant-woman-car-salon-630x630.jpg,/wp-content/uploads/2024/09/stylish-elegant-woman-car-salon-630x630.jpg,conservation,200,Fichier utile conservé au même chemin.
+/wp-content/uploads/2024/09/stylish-elegant-woman-car-salon-840x1040.jpg,,suppression,410,Média non repris : fichier du thème de démonstration.
+/wp-content/uploads/2024/09/stylish-elegant-woman-car-salon-880x520.jpg,/wp-content/uploads/2024/09/stylish-elegant-woman-car-salon-880x520.jpg,conservation,200,Fichier utile conservé au même chemin.
+/wp-content/uploads/2024/09/team-img-650x620.jpg,,suppression,410,Média non repris : fichier du thème de démonstration.
+/wp-content/uploads/2024/09/team-img.jpg,,suppression,410,Média non repris : fichier du thème de démonstration.
+/wp-content/uploads/2024/09/testimonial-img-03.jpg,,suppression,410,Média non repris : fichier du thème de démonstration.
+/wp-content/uploads/2024/11/formation.png,/wp-content/uploads/2024/11/formation.png,conservation,200,Fichier utile conservé au même chemin.
+/wp-content/uploads/2024/11/processe.jpg,/wp-content/uploads/2024/11/processe.jpg,conservation,200,Fichier utile conservé au même chemin.
+/wp-content/uploads/2025/07/Site-scaled.jpg,,suppression,410,Média non repris : certificat Qualinow remplacé par le certificat CCTA en vigueur.
+/wp-content/uploads/2025/07/logo-qualiopi-2022-300x128.png,/wp-content/uploads/2025/07/logo-qualiopi-2022-300x128.png,conservation,200,Fichier utile conservé au même chemin.
+/wp-content/uploads/2025/07/logo-qualiopi-2022.png,/wp-content/uploads/2025/07/logo-qualiopi-2022.png,conservation,200,Fichier utile conservé au même chemin.
+/wp-content/uploads/2025/07/plandacces-1071x1536.png,/wp-content/uploads/2025/07/plandacces-1071x1536.png,conservation,200,Fichier utile conservé au même chemin.
+/wp-content/uploads/2025/07/plandacces-209x300.png,/wp-content/uploads/2025/07/plandacces-209x300.png,conservation,200,Fichier utile conservé au même chemin.
+/wp-content/uploads/2025/07/plandacces-714x1024.png,/wp-content/uploads/2025/07/plandacces-714x1024.png,conservation,200,Fichier utile conservé au même chemin.
+/wp-content/uploads/2025/07/plandacces-768x1101.png,/wp-content/uploads/2025/07/plandacces-768x1101.png,conservation,200,Fichier utile conservé au même chemin.
+/wp-content/uploads/2025/07/plandacces.png,/wp-content/uploads/2025/07/plandacces.png,conservation,200,Fichier utile conservé au même chemin.
+/wp-content/uploads/2025/09/Capture-decran-2025-09-08-a-16.02.21-1024x300.png,,suppression,410,Média non repris : dates de sessions 2025 échues.
+/wp-content/uploads/2025/09/Capture-decran-2025-09-08-a-16.02.21-300x88.png,,suppression,410,Média non repris : dates de sessions 2025 échues.
+/wp-content/uploads/2025/09/Capture-decran-2025-09-08-a-16.02.21-768x225.png,,suppression,410,Média non repris : dates de sessions 2025 échues.
+/wp-content/uploads/2025/09/Capture-decran-2025-09-08-a-16.02.21.png,,suppression,410,Média non repris : dates de sessions 2025 échues.
+/wp-content/uploads/2025/11/Capture-decran-2025-11-19-a-16.10.34.png,,suppression,410,Média non repris : certificat Sphinx remplacé par le certificat CCTA en vigueur.
+/wp-content/uploads/2026/02/instagram-150x150.png,/wp-content/uploads/2026/02/instagram-150x150.png,conservation,200,Fichier utile conservé au même chemin.
+/wp-content/uploads/2026/02/instagram-300x300.png,/wp-content/uploads/2026/02/instagram-300x300.png,conservation,200,Fichier utile conservé au même chemin.
+/wp-content/uploads/2026/02/instagram.png,/wp-content/uploads/2026/02/instagram.png,conservation,200,Fichier utile conservé au même chemin.
+/wp-content/uploads/2026/02/linkedin-2-150x150.png,/wp-content/uploads/2026/02/linkedin-2-150x150.png,conservation,200,Fichier utile conservé au même chemin.
+/wp-content/uploads/2026/02/linkedin-2-300x300.png,/wp-content/uploads/2026/02/linkedin-2-300x300.png,conservation,200,Fichier utile conservé au même chemin.
+/wp-content/uploads/2026/02/linkedin-2.png,/wp-content/uploads/2026/02/linkedin-2.png,conservation,200,Fichier utile conservé au même chemin.
+/wp-content/uploads/2026/02/logo-150x150.png,/wp-content/uploads/2026/02/logo-150x150.png,conservation,200,Fichier utile conservé au même chemin.
+/wp-content/uploads/2026/02/logo-300x300.png,/wp-content/uploads/2026/02/logo-300x300.png,conservation,200,Fichier utile conservé au même chemin.
+/wp-content/uploads/2026/02/logo.png,/wp-content/uploads/2026/02/logo.png,conservation,200,Fichier utile conservé au même chemin.
+/wp-content/uploads/2026/02/tik-tok-3-150x150.png,/wp-content/uploads/2026/02/tik-tok-3-150x150.png,conservation,200,Fichier utile conservé au même chemin.
+/wp-content/uploads/2026/02/tik-tok-3-300x300.png,/wp-content/uploads/2026/02/tik-tok-3-300x300.png,conservation,200,Fichier utile conservé au même chemin.
+/wp-content/uploads/2026/02/tik-tok-3.png,/wp-content/uploads/2026/02/tik-tok-3.png,conservation,200,Fichier utile conservé au même chemin.
+/wp-content/uploads/2026/06/2026-03-10-16-51-1048x1536.jpg,/wp-content/uploads/2026/06/2026-03-10-16-51-1048x1536.jpg,conservation,200,Fichier utile conservé au même chemin.
+/wp-content/uploads/2026/06/2026-03-10-16-51-1397x2048.jpg,/wp-content/uploads/2026/06/2026-03-10-16-51-1397x2048.jpg,conservation,200,Fichier utile conservé au même chemin.
+/wp-content/uploads/2026/06/2026-03-10-16-51-205x300.jpg,/wp-content/uploads/2026/06/2026-03-10-16-51-205x300.jpg,conservation,200,Fichier utile conservé au même chemin.
+/wp-content/uploads/2026/06/2026-03-10-16-51-698x1024.jpg,/wp-content/uploads/2026/06/2026-03-10-16-51-698x1024.jpg,conservation,200,Fichier utile conservé au même chemin.
+/wp-content/uploads/2026/06/2026-03-10-16-51-768x1126.jpg,/wp-content/uploads/2026/06/2026-03-10-16-51-768x1126.jpg,conservation,200,Fichier utile conservé au même chemin.
+/wp-content/uploads/2026/06/2026-03-10-16-51-scaled.jpg,/documents/certificat-qualiopi-tech-formation-nord.pdf,redirection,301,Image du certificat en vigueur : renvoi vers le PDF officiel du certificat.
+/wp-content/uploads/2026/06/2026-03-10-16-51.pdf,/wp-content/uploads/2026/06/2026-03-10-16-51.pdf,conservation,200,Fichier utile conservé au même chemin.
+/wp-content/uploads/2026/06/Satisfaction-clients-1-1024x209.png,,suppression,410,"Média non repris : note « 4,9/5 » sans source vérifiable."
+/wp-content/uploads/2026/06/Satisfaction-clients-1-1536x314.png,,suppression,410,"Média non repris : note « 4,9/5 » sans source vérifiable."
+/wp-content/uploads/2026/06/Satisfaction-clients-1-2048x419.png,,suppression,410,"Média non repris : note « 4,9/5 » sans source vérifiable."
+/wp-content/uploads/2026/06/Satisfaction-clients-1-300x61.png,,suppression,410,"Média non repris : note « 4,9/5 » sans source vérifiable."
+/wp-content/uploads/2026/06/Satisfaction-clients-1-768x157.png,,suppression,410,"Média non repris : note « 4,9/5 » sans source vérifiable."
+/wp-content/uploads/2026/06/Satisfaction-clients-1.png,,suppression,410,"Média non repris : note « 4,9/5 » sans source vérifiable."
+/wp-content/uploads/2026/06/Satisfaction-clients.png,,suppression,410,"Média non repris : note « 4,9/5 » sans source vérifiable."
+/wp-content/uploads/revslider/slider-demo-01/slide-a-01.jpg,,suppression,410,Média non repris : fichier du thème de démonstration.
+/wp-content/uploads/revslider/slider-demo-01/slide-a-02.jpg,,suppression,410,Média non repris : fichier du thème de démonstration.
+/wp-content/uploads/revslider/slider-demo-01/slide-a-03-1024x373.jpg,/wp-content/uploads/revslider/slider-demo-01/slide-a-03-1024x373.jpg,conservation,200,Fichier utile conservé au même chemin.
+/wp-content/uploads/revslider/slider-demo-01/slide-a-03-1536x560.jpg,/wp-content/uploads/revslider/slider-demo-01/slide-a-03-1536x560.jpg,conservation,200,Fichier utile conservé au même chemin.
+/wp-content/uploads/revslider/slider-demo-01/slide-a-03-300x109.jpg,/wp-content/uploads/revslider/slider-demo-01/slide-a-03-300x109.jpg,conservation,200,Fichier utile conservé au même chemin.
+/wp-content/uploads/revslider/slider-demo-01/slide-a-03-600x219.jpg,/wp-content/uploads/revslider/slider-demo-01/slide-a-03-600x219.jpg,conservation,200,Fichier utile conservé au même chemin.
+/wp-content/uploads/revslider/slider-demo-01/slide-a-03-768x280.jpg,/wp-content/uploads/revslider/slider-demo-01/slide-a-03-768x280.jpg,conservation,200,Fichier utile conservé au même chemin.
+/wp-content/uploads/revslider/slider-demo-01/slide-a-03.jpg,/wp-content/uploads/revslider/slider-demo-01/slide-a-03.jpg,conservation,200,Fichier utile conservé au même chemin.
+/wp-content/uploads/revslider/slider-demo-01/slide-a-icon.png,,suppression,410,Média non repris : fichier du thème de démonstration.
+/wp-content/uploads/revslider/slider-demo-02/slide-b-01-1024x440.jpg,/wp-content/uploads/revslider/slider-demo-02/slide-b-01-1024x440.jpg,conservation,200,Fichier utile conservé au même chemin.
+/wp-content/uploads/revslider/slider-demo-02/slide-b-01-1536x660.jpg,/wp-content/uploads/revslider/slider-demo-02/slide-b-01-1536x660.jpg,conservation,200,Fichier utile conservé au même chemin.
+/wp-content/uploads/revslider/slider-demo-02/slide-b-01-300x129.jpg,/wp-content/uploads/revslider/slider-demo-02/slide-b-01-300x129.jpg,conservation,200,Fichier utile conservé au même chemin.
+/wp-content/uploads/revslider/slider-demo-02/slide-b-01-600x258.jpg,/wp-content/uploads/revslider/slider-demo-02/slide-b-01-600x258.jpg,conservation,200,Fichier utile conservé au même chemin.
+/wp-content/uploads/revslider/slider-demo-02/slide-b-01-768x330.jpg,/wp-content/uploads/revslider/slider-demo-02/slide-b-01-768x330.jpg,conservation,200,Fichier utile conservé au même chemin.
+/wp-content/uploads/revslider/slider-demo-02/slide-b-01.jpg,/wp-content/uploads/revslider/slider-demo-02/slide-b-01.jpg,conservation,200,Fichier utile conservé au même chemin.
+/wp-content/uploads/revslider/slider-demo-02/slide-b-02.jpg,,suppression,410,Média non repris : fichier du thème de démonstration.
+/wp-content/uploads/revslider/slider-demo-02/slide-b-03.jpg,,suppression,410,Média non repris : fichier du thème de démonstration.
+/wp-content/uploads/revslider/slider-demo-03/slide-c-01.jpg,,suppression,410,Média non repris : fichier du thème de démonstration.
+/wp-content/uploads/revslider/slider-demo-03/slide-c-02.jpg,,suppression,410,Média non repris : fichier du thème de démonstration.
+/wp-content/uploads/revslider/slider-demo-03/slide-c-03.jpg,,suppression,410,Média non repris : fichier du thème de démonstration.
+/wp-json/,,suppression,410,Point d’entrée technique WordPress ; plus de CMS WordPress.
+/wp-login.php,,suppression,410,Point d’entrée technique WordPress ; plus de CMS WordPress.
+/wp-sitemap-posts-page-1.xml,/sitemap.xml,redirection,301,Sous-sitemap WordPress remplacé par le sitemap unique du nouveau site.
+/wp-sitemap-posts-pbmit-service-1.xml,/sitemap.xml,redirection,301,Sous-sitemap WordPress remplacé par le sitemap unique du nouveau site.
+/wp-sitemap-posts-pbmit-team-member-1.xml,/sitemap.xml,redirection,301,Sous-sitemap WordPress remplacé par le sitemap unique du nouveau site.
+/wp-sitemap-posts-post-1.xml,/sitemap.xml,redirection,301,Sous-sitemap WordPress remplacé par le sitemap unique du nouveau site.
+/wp-sitemap-taxonomies-category-1.xml,/sitemap.xml,redirection,301,Sous-sitemap WordPress remplacé par le sitemap unique du nouveau site.
+/wp-sitemap-taxonomies-pbmit-service-category-1.xml,/sitemap.xml,redirection,301,Sous-sitemap WordPress remplacé par le sitemap unique du nouveau site.
+/wp-sitemap-taxonomies-post_tag-1.xml,/sitemap.xml,redirection,301,Sous-sitemap WordPress remplacé par le sitemap unique du nouveau site.
+/wp-sitemap.xml,/sitemap.xml,redirection,301,Sitemap WordPress remplacé par le sitemap du nouveau site.
+/xmlrpc.php,,suppression,410,Point d’entrée technique WordPress ; plus de CMS WordPress.

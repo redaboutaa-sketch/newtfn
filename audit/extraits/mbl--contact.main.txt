@@ -1,0 +1,38 @@
+![Contacter Maison Beauxlieux — coworking beauté Vendeville, près de Lille](/images/section-beauty-products.webp)
+
+# Contactez-nous
+
+Une question, un projet ? N'hésitez pas à nous écrire.
+
+## Envoyez-nous un message
+
+Nom complet [champ input name=name placeholder=Votre nom]
+
+E-mail [champ input name=email placeholder=votre@email.com]
+
+Téléphone [champ input name=phone placeholder=06 00 00 00 00]
+
+Sujet (optionnel) [champ input name=subject placeholder=Objet de votre message]
+
+Message [champ textarea name=message placeholder=Votre message...]
+Envoyer
+
+## Informations
+
+Adresse
+
+21 Bis Rue de Faches, 59175 Vendeville (près de Lille)
+
+Téléphone
+
+03.20.16.09.15
+
+E-mail
+
+maison.beauxlieux@gmail.com
+
+Horaires
+
+Lun - Sam : 9h - 20h
+
+Dim : sur RDV

@@ -1,0 +1,261 @@
+{
+ "base": "https://iatechformanord.fr",
+ "sitemap": [
+  "https://iatechformanord.fr/",
+  "https://iatechformanord.fr/programme",
+  "https://iatechformanord.fr/entreprises",
+  "https://iatechformanord.fr/cpf",
+  "https://iatechformanord.fr/tarifs",
+  "https://iatechformanord.fr/faq",
+  "https://iatechformanord.fr/formateur",
+  "https://iatechformanord.fr/temoignages",
+  "https://iatechformanord.fr/contact"
+ ],
+ "pages": [
+  {
+   "url": "https://iatechformanord.fr/",
+   "status": 200,
+   "in_sitemap": true,
+   "content_type": "text/html; charset=utf-8",
+   "location": "",
+   "file": "362a05f2db1afc3d.html",
+   "title": "Formation IA à Lille et dans le Nord | Tech Formation Nord",
+   "description": "Apprenez à utiliser ChatGPT et l’IA générative avec TFN. Formations pratiques pour artisans, TPE, entreprises et particuliers à Lille ou à distance.",
+   "canonical": "https://iatechformanord.fr/",
+   "robots": "index, follow, max-image-preview:large",
+   "h1": [
+    "Formation IA à Lille :  l&#x27;IA pour votre métier."
+   ],
+   "inlinks": 9
+  },
+  {
+   "url": "https://iatechformanord.fr/programme",
+   "status": 301,
+   "in_sitemap": true,
+   "content_type": "text/html; charset=utf-8",
+   "location": "/programme/",
+   "inlinks": 9
+  },
+  {
+   "url": "https://iatechformanord.fr/entreprises",
+   "status": 301,
+   "in_sitemap": true,
+   "content_type": "text/html; charset=utf-8",
+   "location": "/entreprises/",
+   "inlinks": 9
+  },
+  {
+   "url": "https://iatechformanord.fr/cpf",
+   "status": 301,
+   "in_sitemap": true,
+   "content_type": "text/html; charset=utf-8",
+   "location": "/cpf/",
+   "inlinks": 9
+  },
+  {
+   "url": "https://iatechformanord.fr/tarifs",
+   "status": 301,
+   "in_sitemap": true,
+   "content_type": "text/html; charset=utf-8",
+   "location": "/tarifs/",
+   "inlinks": 9
+  },
+  {
+   "url": "https://iatechformanord.fr/faq",
+   "status": 301,
+   "in_sitemap": true,
+   "content_type": "text/html; charset=utf-8",
+   "location": "/faq/",
+   "inlinks": 9
+  },
+  {
+   "url": "https://iatechformanord.fr/formateur",
+   "status": 301,
+   "in_sitemap": true,
+   "content_type": "text/html; charset=utf-8",
+   "location": "/formateur/",
+   "inlinks": 9
+  },
+  {
+   "url": "https://iatechformanord.fr/temoignages",
+   "status": 301,
+   "in_sitemap": true,
+   "content_type": "text/html; charset=utf-8",
+   "location": "/temoignages/",
+   "inlinks": 9
+  },
+  {
+   "url": "https://iatechformanord.fr/contact",
+   "status": 301,
+   "in_sitemap": true,
+   "content_type": "text/html; charset=utf-8",
+   "location": "/contact/",
+   "inlinks": 9
+  },
+  {
+   "url": "https://iatechformanord.fr/demande-site-vitrine",
+   "status": 301,
+   "in_sitemap": false,
+   "content_type": "text/html; charset=utf-8",
+   "location": "/demande-site-vitrine/",
+   "inlinks": 9
+  },
+  {
+   "url": "https://iatechformanord.fr/programme/",
+   "status": 200,
+   "in_sitemap": false,
+   "content_type": "text/html; charset=utf-8",
+   "location": "",
+   "file": "2a2d78c587f7ee73.html",
+   "title": "Formation IA pour artisans et TPE à Lille | TFN",
+   "description": "Découvrez le programme de formation IA pour artisans et TPE : site web, contenus, visibilité locale et premiers agents IA. Ateliers pratiques sur 2 jours.",
+   "canonical": "https://iatechformanord.fr/programme",
+   "robots": "index, follow, max-image-preview:large",
+   "h1": [
+    "Votre site, vos clients,  votre IA."
+   ],
+   "inlinks": 1
+  },
+  {
+   "url": "https://iatechformanord.fr/entreprises/",
+   "status": 200,
+   "in_sitemap": false,
+   "content_type": "text/html; charset=utf-8",
+   "location": "",
+   "file": "78a51174350b01a5.html",
+   "title": "Formation IA en entreprise à Lille et à distance | TFN",
+   "description": "Formez vos équipes à l’IA générative : marketing, RH, commerce, managers et dirigeants. Découvrez les offres TFN à Lille et en distanciel.",
+   "canonical": "https://iatechformanord.fr/entreprises",
+   "robots": "index, follow, max-image-preview:large",
+   "h1": [
+    "Formez vos équipes à l&#x27;IA —  concrètement et durablement."
+   ],
+   "inlinks": 0
+  },
+  {
+   "url": "https://iatechformanord.fr/cpf/",
+   "status": 200,
+   "in_sitemap": false,
+   "content_type": "text/html; charset=utf-8",
+   "location": "",
+   "file": "435414ffef94ac1b.html",
+   "title": "Formation IA : parcours et financement CPF | TFN",
+   "description": "Comparez les parcours de formation IA générative pour salariés, indépendants et personnes en reconversion. Vérifiez les conditions de financement avec TFN.",
+   "canonical": "https://iatechformanord.fr/cpf",
+   "robots": "index, follow, max-image-preview:large",
+   "h1": [
+    "Formez-vous à l&#x27;IA —  sans avancer d&#x27;argent."
+   ],
+   "inlinks": 0
+  },
+  {
+   "url": "https://iatechformanord.fr/tarifs/",
+   "status": 200,
+   "in_sitemap": false,
+   "content_type": "text/html; charset=utf-8",
+   "location": "",
+   "file": "b32eca1f7ae78c48.html",
+   "title": "Tarifs des formations IA et financements | TFN",
+   "description": "Consultez les tarifs des formations IA pour artisans, entreprises et particuliers. Comparez les formats et échangez sur votre financement avec TFN.",
+   "canonical": "https://iatechformanord.fr/tarifs",
+   "robots": "index, follow, max-image-preview:large",
+   "h1": [
+    "Toutes les formules,  tous les budgets."
+   ],
+   "inlinks": 0
+  },
+  {
+   "url": "https://iatechformanord.fr/faq/",
+   "status": 200,
+   "in_sitemap": false,
+   "content_type": "text/html; charset=utf-8",
+   "location": "",
+   "file": "0dba64d2a6ea72ab.html",
+   "title": "FAQ formation IA : niveau, programme et financement | TFN",
+   "description": "Faut-il savoir coder pour se former à l’IA ? Quel matériel prévoir ? Retrouvez les réponses sur les formations TFN, les formats et les financements.",
+   "canonical": "https://iatechformanord.fr/faq",
+   "robots": "index, follow, max-image-preview:large",
+   "h1": [
+    "Les questions qu&#x27;on vous pose   vraiment."
+   ],
+   "inlinks": 1
+  },
+  {
+   "url": "https://iatechformanord.fr/formateur/",
+   "status": 200,
+   "in_sitemap": false,
+   "content_type": "text/html; charset=utf-8",
+   "location": "",
+   "file": "cee8c0099b8ca1aa.html",
+   "title": "Votre formateur en intelligence artificielle à Lille | TFN",
+   "description": "Découvrez le formateur TFN, son approche pratique de l’IA générative et son accompagnement des artisans, dirigeants et équipes dans leurs usages métier.",
+   "canonical": "https://iatechformanord.fr/formateur",
+   "robots": "index, follow, max-image-preview:large",
+   "h1": [
+    "24 ans à rendre le digital  simple  pour ceux qui font."
+   ],
+   "inlinks": 0
+  },
+  {
+   "url": "https://iatechformanord.fr/temoignages/",
+   "status": 200,
+   "in_sitemap": false,
+   "content_type": "text/html; charset=utf-8",
+   "location": "",
+   "file": "07f674f0e7e8fc3f.html",
+   "title": "Avis et témoignages sur les formations IA | TFN",
+   "description": "Découvrez les témoignages publiés par TFN sur ses formations en intelligence artificielle et les usages métier travaillés pendant les ateliers.",
+   "canonical": "https://iatechformanord.fr/temoignages",
+   "robots": "index, follow, max-image-preview:large",
+   "h1": [
+    "Ils ont commencé. Voici  ce qui a changé."
+   ],
+   "inlinks": 0
+  },
+  {
+   "url": "https://iatechformanord.fr/contact/",
+   "status": 200,
+   "in_sitemap": false,
+   "content_type": "text/html; charset=utf-8",
+   "location": "",
+   "file": "efb4eea7f2a98260.html",
+   "title": "Contact formation IA à Lille et dans le Nord | TFN",
+   "description": "Parlez de votre projet de formation IA avec Tech Formation Nord à Vendeville, près de Lille. Choisissez un parcours pour vous ou votre entreprise.",
+   "canonical": "https://iatechformanord.fr/contact",
+   "robots": "index, follow, max-image-preview:large",
+   "h1": [
+    "Parlons de votre   activité."
+   ],
+   "inlinks": 0
+  },
+  {
+   "url": "https://iatechformanord.fr/demande-site-vitrine/",
+   "status": 200,
+   "in_sitemap": false,
+   "content_type": "text/html; charset=utf-8",
+   "location": "",
+   "file": "3a8e02146dc0063e.html",
+   "title": "Demande de création de site vitrine | TFN",
+   "description": "Décrivez votre entreprise, vos objectifs et vos préférences pour préparer votre projet de site vitrine avec Tech Formation Nord.",
+   "canonical": "https://iatechformanord.fr/demande-site-vitrine",
+   "robots": "noindex, follow",
+   "h1": [],
+   "inlinks": 0
+  }
+ ],
+ "external": {
+  "https://www.cnil.fr/fr/intelligence-artificielle": [
+   "https://iatechformanord.fr/"
+  ],
+  "https://www.moncompteformation.gouv.fr/": [
+   "https://iatechformanord.fr/"
+  ],
+  "https://www.moncompteformation.gouv.fr": [
+   "https://iatechformanord.fr/cpf/"
+  ]
+ },
+ "assets": [
+  "https://iatechformanord.fr/favicon.svg"
+ ],
+ "collected_at": "2026-10-24"
+}

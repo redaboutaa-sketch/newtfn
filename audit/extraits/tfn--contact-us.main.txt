@@ -1,0 +1,73 @@
+##
+
+Mail
+
+contact.techformation@gmail.com
+
+Read More
+
+##
+
+Adresse
+
+21 Rue de Faches, 59175 Vendeville
+
+Read More
+
+##
+
+Tel
+
+03 20 16 09 15
+
+Read More <tel:0320978114>
+
+##
+
+Horaires d'ouverture
+
+Du lundi au vendred de 9h à 18h et samedi de 9h à 12h
+
+Read More
+
+##
+
+Contactez-nous
+
+Vous avez des questions sur nos formations ? Vous souhaitez en savoir plus sur nos programmes ou nos modalités d'inscription ? L'équipe de TechFormaNord est là pour vous accompagner à chaque étape de votre projet.
+
+##
+
+Chez TechFormaNord, votre satisfaction est notre priorité. N'hésitez pas à nous contacter, que ce soit pour une information, un conseil ou un rendez-vous. Nous sommes impatients de vous aider à concrétiser vos ambitions !
+
+![about-img-02](https://techformanord.fr/wp-content/uploads/2024/09/about-img-02.png)
+
+##
+
+Formulaire de contact
+
+Remplissez notre formulaire de contact en ligne, et nous vous répondrons dans les plus brefs délais.
+
+[champ input name=_wpcf7 placeholder=None] [champ input name=_wpcf7_version placeholder=None] [champ input name=_wpcf7_locale placeholder=None] [champ input name=_wpcf7_unit_tag placeholder=None] [champ input name=_wpcf7_container_post placeholder=None] [champ input name=_wpcf7_posted_data_hash placeholder=None]
+
+[champ input name=your-name placeholder=Nom]
+
+[champ input name=email-address placeholder=Email]
+
+[champ input name=phone-number placeholder=Tel]
+
+[champ input name=subject placeholder=Sujet]
+
+[champ textarea name=textarea-806 placeholder=Message]
+
+[champ input name=checkbox-274[] placeholder=None] En soumettant ce formulaire, j'accepte que mes données personnelles soient collectées et traitées conformément à la réglementation RGPD et à la Politique de Confidentialité.
+
+Envoyer
+
+[champ input name=None placeholder=None]
+
+![](https://techformanord.fr/wp-content/uploads/2025/07/logo-qualiopi-2022.png)
+
+![](https://techformanord.fr/wp-content/uploads/2024/09/ACT_logotype_cartouche_rvb-1024x447.png)
+
+### Contactez-nous

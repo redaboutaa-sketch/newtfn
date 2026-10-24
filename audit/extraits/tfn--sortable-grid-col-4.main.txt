@@ -1,0 +1,7 @@
+- All
+
+{"cpt":"portfolio","style":"1","columns":"4","show":8,"order":"DESC","orderby":"none"}
+
+No data available.
+
+### Sortable Grid Col 4
