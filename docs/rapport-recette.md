@@ -65,3 +65,38 @@ BASE=http://127.0.0.1:8095 node liens.mjs
 python3 -I redirections.py http://127.0.0.1:8095 preprod
 cd ../forms && npm test
 ```
+
+---
+
+# Recette — montée en gamme visuelle et motion (24/10/2026)
+
+Version livrée : branche `feat/premium-motion-tfn`, commit `a8ec674` (vérifiable sur `https://tfn.iatechformanord.fr/version.txt`).
+
+| Contrôle | Résultat (sur l'URL publique après déploiement) |
+|---|---|
+| Recette des gabarits (23 pages × 360, 390, 768, 1440 px) | 92 contrôles : 0 débordement horizontal, 1 H1 par page, 0 image cassée, 0 violation axe WCAG 2.1 A/AA (hors 404 volontaire) |
+| Interactions et mouvement (`qa/interactions.mjs`) | 24/24 : menu mobile (ouverture, focus, piège, Échap, retour arrière), révélations, en-tête compact, survol **et** focus des pôles, mouvement réduit, sans JavaScript, filet CSS si le script est bloqué, ancre + accordéon + sommaire, validation du formulaire ; aucune erreur navigateur |
+| Mapping SEO (`qa/redirections.py`) | 215/215 conformes |
+| Liens | 23 pages, 152 ancres, 34 liens externes (Instagram : 429 aux robots) |
+| Formulaire (mode test) | 303 → `/contact-us/merci/`, enregistré en boîte de test ; `/api/test-inbox` en 404 sur l'hôte public |
+| Préproduction | `X-Robots-Tag` + méta `noindex`, aucun sitemap, hôte sslip toujours protégé (401) |
+
+## Lighthouse (laboratoire, mobile simulé, mêmes pages et conditions avant/après)
+
+| Page | Perf. avant → après | Access. | LCP avant → après | CLS avant → après | Poids avant → après |
+|---|---|---|---|---|---|
+| `/` | 99 → 100 | 100 → 100 | 1,0 → 1,5 s | 0 → 0,034 | 31 → 187 Ko |
+| `/services/` | 100 → 100 | 100 → 100 | 0,9 → 1,5 s | 0 → 0,027 | 25 → 141 Ko |
+| `/formations/beaute-bien-etre/` | 100 → 100 | 100 → 100 | 0,9 → 1,5 s | 0 → 0,027 | 24 → 133 Ko |
+| `/service/interior-cleaning/` | 100 → 99 | 100 → 100 | 1,2 → 1,6 s | 0 → 0,055 | 77 → 146 Ko |
+| `/contact-us/` | 100 → 100 | 100 → 100 | 0,9 → 1,4 s | 0 → 0,027 | 22 → 119 Ko |
+
+Ordinateur (après) : 100 / 100, LCP 0,4 s, CLS 0,006. Le score SEO de 69 est dû au `noindex` volontaire de la préproduction. L'augmentation de poids vient des photos (AVIF/WebP) et des deux polices (89 Ko) ; le léger CLS vient du remplacement des polices (repli ajusté). Ce sont des mesures de laboratoire : elles ne renseignent pas l'INP réel des visiteurs, qui ne pourra être suivi qu'en production (CrUX / Search Console).
+
+## Captures avant / après
+`docs/captures/accueil-ordinateur.jpg`, `accueil-mobile.jpg`, `fiche-maintenance-ordinateur.jpg`, `pole-beaute-ordinateur.jpg`.
+
+## Limites
+- Pas de test sur appareils physiques ni avec lecteur d'écran (contrôles automatiques + clavier simulé).
+- Zoom 200 % vérifié par équivalence de largeur (1440 px zoomé ≈ 720 px CSS, couvert par les passes 768/390/360 px).
+- Transitions de page natives : Chromium uniquement ; les autres navigateurs naviguent sans transition.

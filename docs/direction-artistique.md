@@ -42,3 +42,13 @@ Courbe commune `cubic-bezier(.2,.7,.2,1)` ; interactions 180–220 ms, révélat
 | Pages | transition de page native entre documents (fondu 200 ms, navigateurs compatibles). |
 
 Garde-fous : `prefers-reduced-motion` désactive tout mouvement ; sans JavaScript, rien n'est masqué ; si le script ne se charge pas, un filet CSS révèle les contenus après 2,5 s ; aucun carrousel, curseur personnalisé, écran de chargement ni défilement détourné.
+
+## Décisions
+- **Pas de changement de stack** : Astro statique conservé ; mouvement en CSS natif + un script de ~2 Ko (IntersectionObserver), sans bibliothèque (GSAP inutile pour ces séquences courtes). Transitions de page via l'API View Transitions entre documents, sans routeur client.
+- **Pas de carrousel** : les trois pôles sont visibles simultanément (mosaïque liée à leurs pages).
+- **Photos du geste, pas de visages** : aucune image ne laisse croire qu'il s'agit de nos stagiaires, formateurs ou locaux.
+- **Catalogue en lignes structurées** plutôt qu'en grilles de cartes ; cartes réservées aux blocs de contact et de confiance.
+- **Fiches** : objectifs, public, prérequis, durée, tarif et bénéfices toujours visibles ; contenu détaillé, méthodes et évaluation dans un accordéon (présents dans le HTML, donc indexables et imprimables) ; sommaire latéral suivi au défilement ; ancres `#prog-…` inchangées.
+- **Nom court des pôles** (`nom_court` dans `poles.yaml`) pour les étiquettes.
+- **Contrastes** : teintes foncées dédiées (`--auto-ink`, `--beaute-ink`, `--ia-ink`) pour les petits textes sur fonds teintés.
+- **Typographie française** : espace insécable avant « : ; ? ! » dans les titres de fiches.

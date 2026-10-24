@@ -36,3 +36,15 @@ La préproduction est indépendante : `docker compose -p tfn-preprod … down` p
 curl -sI https://techformanord.fr/ | grep -iE '^HTTP|server'     # « server: Apache » = WordPress IONOS
 dig +short A techformanord.fr
 ```
+
+## E. Préproduction tfn.iatechformanord.fr
+
+Chaque version déployée en préproduction est étiquetée `tfn-site:preprod-<commit>` (version précédant la montée en gamme : `preprod-859c2cc`).
+```bash
+cd /opt/newtfn
+docker tag tfn-site:preprod-859c2cc tfn-site:preprod
+docker compose -p tfn-preprod --env-file /etc/techformanord/preprod.env \
+  -f deploy/docker-compose.preprod.yml -f deploy/docker-compose.preprod.alias.yml up -d --no-build web
+curl -s https://tfn.iatechformanord.fr/version.txt   # la version 859c2cc n'expose pas ce fichier (404)
+```
+Déploiement d'une nouvelle version : `export GIT_COMMIT=$(git rev-parse --short HEAD)`, `build web`, test de l'image sur un port local temporaire (réseau `tfn-preprod-internal`), puis `up -d --no-build web` et vérification de `/version.txt`.
