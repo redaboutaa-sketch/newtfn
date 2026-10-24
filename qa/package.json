@@ -1,0 +1,10 @@
+{
+  "name": "techformanord-qa",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "recette": "node recette.mjs",
+    "liens": "node liens.mjs"
+  },
+  "devDependencies": { "playwright-core": "1.63.0", "axe-core": "4.13.0" }
+}

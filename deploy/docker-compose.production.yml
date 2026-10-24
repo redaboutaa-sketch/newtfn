@@ -1,0 +1,65 @@
+# Production Tech Formation Nord — NE PAS LANCER avant validation explicite (docs/procedure-mise-en-production.md).
+# Lancement : docker compose -p tfn-prod --env-file /etc/techformanord/production.env -f deploy/docker-compose.production.yml up -d --build
+
+name: tfn-prod
+
+services:
+  web:
+    build:
+      context: ..
+      dockerfile: site/Dockerfile
+      args:
+        PUBLIC_SITE_ENV: production
+        SITE_URL: https://techformanord.fr
+        PUBLIC_ANALYTICS_PROVIDER: ${PUBLIC_ANALYTICS_PROVIDER:-}
+        PUBLIC_ANALYTICS_ID: ${PUBLIC_ANALYTICS_ID:-}
+        PUBLIC_ANALYTICS_DOMAIN: techformanord.fr
+        PUBLIC_GSC_VERIFICATION: ${PUBLIC_GSC_VERIFICATION:-}
+    image: tfn-site:production
+    container_name: tfn-prod-web
+    restart: unless-stopped
+    environment:
+      NGINX_ROBOTS_HEADER: ""     # en-tête X-Robots-Tag omis en production
+    depends_on: [forms]
+    networks: [traefik-public, internal]
+    labels:
+      traefik.enable: "true"
+      traefik.docker.network: traefik-public
+      traefik.http.routers.tfn-prod.rule: Host(`techformanord.fr`)
+      traefik.http.routers.tfn-prod.entrypoints: websecure
+      traefik.http.routers.tfn-prod.tls.certresolver: letsencrypt
+      traefik.http.routers.tfn-prod.middlewares: tfn-prod-hsts
+      traefik.http.middlewares.tfn-prod-hsts.headers.stsseconds: "31536000"
+      # www.techformanord.fr -> techformanord.fr (301 directe, chemin conservé)
+      traefik.http.routers.tfn-prod-www.rule: Host(`www.techformanord.fr`)
+      traefik.http.routers.tfn-prod-www.entrypoints: websecure
+      traefik.http.routers.tfn-prod-www.tls.certresolver: letsencrypt
+      traefik.http.routers.tfn-prod-www.middlewares: tfn-prod-www-redirect
+      traefik.http.middlewares.tfn-prod-www-redirect.redirectregex.regex: "^https?://www\\.techformanord\\.fr/(.*)"
+      traefik.http.middlewares.tfn-prod-www-redirect.redirectregex.replacement: "https://techformanord.fr/$${1}"
+      traefik.http.middlewares.tfn-prod-www-redirect.redirectregex.permanent: "true"
+      traefik.http.services.tfn-prod.loadbalancer.server.port: "8080"
+
+  forms:
+    build:
+      context: ../forms
+    image: tfn-forms:production
+    container_name: tfn-prod-forms
+    restart: unless-stopped
+    environment:
+      FORM_MODE: smtp
+      FORM_SUCCESS_URL: /contact-us/merci/
+      FORM_TO: ${FORM_TO:?FORM_TO requis}
+      FORM_FROM: ${FORM_FROM:?FORM_FROM requis}
+      SMTP_HOST: ${SMTP_HOST:?SMTP_HOST requis}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_SECURE: ${SMTP_SECURE:-false}
+      SMTP_USER: ${SMTP_USER:?SMTP_USER requis}
+      SMTP_PASS: ${SMTP_PASS:?SMTP_PASS requis}
+    networks: [internal]
+
+networks:
+  traefik-public:
+    external: true
+  internal:
+    name: tfn-prod-internal
