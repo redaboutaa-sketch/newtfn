@@ -9,10 +9,13 @@ const axeSource = fs.readFileSync(createRequire(import.meta.url).resolve('axe-co
 const BASE = process.env.BASE || 'http://127.0.0.1:8095';
 const OUT = process.env.OUT || 'resultats';
 const PAGES = (process.env.PAGES || '/,/services/,/formations/automobile/,/formations/beaute-bien-etre/,/formations/intelligence-artificielle/,/service/maintenance/,/service/wheels-alignment/,/service/interior-cleaning/,/m-grid-col-3/,/m-grid-col-2/,/infinite-grid-col-2/,/entreprises/,/financer-sa-formation/,/about-us/,/qualite/,/accessibilite-handicap/,/informations-pratiques/,/contact-us/,/contact-us/merci/,/mentions-legales/,/politique-de-confidentialite/,/plan-du-site/,/page-inexistante/').split(',');
-const VIEWPORTS = { ordinateur: { width: 1366, height: 900 }, mobile: { width: 390, height: 844 } };
+// VIEWPORTS="ordinateur:1440x900,mobile:390x844" (défaut). Autres : tablette:768x1024, mobile-etroit:360x780.
+const VIEWPORTS = Object.fromEntries((process.env.VIEWPORTS || 'ordinateur:1440x900,mobile:390x844').split(',').map((v) => {
+  const [name, dim] = v.split(':'); const [width, height] = dim.split('x').map(Number); return [name, { width, height }];
+}));
 fs.mkdirSync(OUT, { recursive: true });
 
-const browser = await chromium.launch({ executablePath: process.env.CHROME, args: ['--no-sandbox'] });
+const browser = await chromium.launch({ executablePath: process.env.CHROME || '/root/.cache/ms-playwright/chromium-1248/chrome-linux64/chrome', args: ['--no-sandbox'] });
 const report = [];
 for (const [vpName, vp] of Object.entries(VIEWPORTS)) {
   const ctx = await browser.newContext({ viewport: vp, locale: 'fr-FR', reducedMotion: 'reduce', httpCredentials: process.env.AUTH ? { username: process.env.AUTH.split(':')[0], password: process.env.AUTH.split(':').slice(1).join(':') } : undefined });
