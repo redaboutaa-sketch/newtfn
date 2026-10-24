@@ -12,6 +12,7 @@ services:
       args:
         PUBLIC_SITE_ENV: preprod
         SITE_URL: ${SITE_URL:-https://techformanord.fr}
+        GIT_COMMIT: ${GIT_COMMIT:-dev}
     image: tfn-site:preprod
     container_name: tfn-preprod-web
     restart: unless-stopped

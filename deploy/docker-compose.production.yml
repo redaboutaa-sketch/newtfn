@@ -11,6 +11,7 @@ services:
       args:
         PUBLIC_SITE_ENV: production
         SITE_URL: https://techformanord.fr
+        GIT_COMMIT: ${GIT_COMMIT:-dev}
         PUBLIC_ANALYTICS_PROVIDER: ${PUBLIC_ANALYTICS_PROVIDER:-}
         PUBLIC_ANALYTICS_ID: ${PUBLIC_ANALYTICS_ID:-}
         PUBLIC_ANALYTICS_DOMAIN: techformanord.fr
