@@ -1,0 +1,59 @@
+---
+import Base from '../layouts/Base.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { poles } from '../lib/data';
+const [auto, beaute, ia] = poles();
+---
+<Base title="Former vos salariés : formations pour les entreprises" description="Formations pour les entreprises près de Lille : montée en compétences des ateliers automobiles, intégration par la reconversion, formation des équipes à l’IA. Analyse du besoin et devis." breadcrumbs={[{ name: 'Entreprises', url: '/entreprises/' }]} navActive="entreprises">
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Entreprises</span>
+      <h1>Développer les compétences de vos équipes</h1>
+      <p class="lead">Ateliers, concessions, instituts ou TPE : nous construisons avec vous une réponse de formation adaptée à vos métiers, à vos contraintes de planning et à vos possibilités de financement.</p>
+      <div class="btn-row"><a class="btn btn--primary" href="/contact-us/?profil=entreprise&sujet=Formation%20de%20salari%C3%A9s#formulaire">Décrire mon besoin</a></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container grid grid-3">
+      <article class="card" data-accent="auto">
+        <span class="tag">{auto.nom}</span>
+        <h2 style="font-size:1.25rem">Perfectionner vos techniciens</h2>
+        <p>Modules courts de maintenance et de diagnostic, de carrosserie et de peinture, de commerce VN/VO : diagnostic multimarques, climatisation, freinage, débosselage sans peinture, raccords de peinture, soudage, reprise VO…</p>
+        <div class="card-foot"><a class="link-arrow" href={auto.url}>Formations automobile</a></div>
+      </article>
+      <article class="card" data-accent="auto">
+        <span class="tag">Recrutement</span>
+        <h2 style="font-size:1.25rem">Intégrer de nouveaux collaborateurs</h2>
+        <p>Les parcours de reconversion « Mécanicien service rapide » et « Aide carrossier » alternent centre de formation et entreprise. Une partie du parcours Aide carrossier est définie avec vous lors de l’analyse du besoin.</p>
+        <div class="card-foot"><a class="link-arrow" href="/infinite-grid-col-2/">Parcours de reconversion</a></div>
+      </article>
+      <article class="card" data-accent="ia">
+        <span class="tag">{ia.nom}</span>
+        <h2 style="font-size:1.25rem">Former vos équipes à l’IA</h2>
+        <p>Formations par fonction, accompagnement des dirigeants, sessions pour comités de direction et programmes pour les collaborateurs, en intra ou en inter-entreprises.</p>
+        <div class="card-foot"><a class="link-arrow" href={ia.url}>Formations intelligence artificielle</a></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container grid grid-2">
+      <div>
+        <h2>Notre démarche</h2>
+        <ol>
+          <li><strong>Analyse du besoin</strong> : compétences visées, profils des participants, contraintes d’organisation.</li>
+          <li><strong>Proposition et devis</strong> : programme, durée, format et tarif.</li>
+          <li><strong>Dossier de prise en charge</strong> : nous vous transmettons les éléments pédagogiques utiles à votre demande auprès de votre OPCO ou d’un autre financeur.</li>
+          <li><strong>Formation et évaluation</strong> : évaluation des acquis en amont et en aval, suivi des participants.</li>
+        </ol>
+      </div>
+      <div class="card">
+        <h2 style="font-size:1.3rem">Financement des formations de vos salariés</h2>
+        <p>Les formations peuvent être financées par le plan de développement des compétences de l’entreprise et, selon votre branche et votre taille, faire l’objet d’une prise en charge par votre opérateur de compétences (OPCO). Les conditions et montants relèvent de chaque financeur.</p>
+        <a class="link-arrow" href="/financer-sa-formation/">Les solutions de financement</a>
+      </div>
+    </div>
+  </section>
+  <CtaBand titre="Parlons de vos besoins en compétences" sujet="Formation de salariés" />
+</Base>

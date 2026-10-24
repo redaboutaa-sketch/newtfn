@@ -1,0 +1,113 @@
+url: /m-grid-col-2/
+pole: automobile
+famille: reconversion
+type: parcours
+ordre: 11
+titre: "Parcours de reconversion : aide carrossier"
+titre_court: "Aide carrossier"
+seo_title: "Parcours de reconversion aide carrossier"
+seo_description: "Parcours de reconversion aide carrossier : 335 heures + 50 heures de soft skills, un socle initial puis des thèmes choisis avec l’entreprise."
+resume: "Un parcours de reconversion pour acquérir les activités courantes de la carrosserie automobile tout en s’intégrant efficacement à l’environnement de l’entreprise."
+accessibilite:
+  - "Nous sommes attentifs à l’accueil des personnes en situation de handicap. Toutefois, en raison de la nature très pratique de cette formation (gestes techniques, manipulation d’équipements lourds, interventions en atelier), certaines situations de handicap peuvent rendre difficile, voire impossible, l’accès aux apprentissages dans des conditions de sécurité et d’efficacité optimales."
+  - "Nous vous invitons à nous contacter en amont afin d’échanger sur les possibilités d’adaptation ou d’orientation vers une solution plus appropriée, en lien avec notre référent handicap."
+parcours:
+  infos:
+    - label: "Public"
+      valeur: "Tout public"
+    - label: "Prérequis"
+      valeur: "Aucun"
+    - label: "Tarif"
+      valeur: "Devis sur demande"
+    - label: "Financement"
+      valeur: "En fonction du profil du candidat (POEI / AIF / OPCO / personnel)"
+    - label: "Durée"
+      valeur: "335 heures + 50 heures de soft skills"
+    - label: "Objectifs de la formation"
+      valeur: "Permettre d’acquérir les activités courantes de la carrosserie automobile tout en s’intégrant efficacement à l’environnement de l’entreprise."
+    - label: "Secteur d’activité"
+      valeur: "Automobile"
+    - label: "Métiers visés"
+      valeur: "Aide carrossier, carrossier"
+    - label: "Nombre de places"
+      valeur: "8 places"
+    - label: "Session de formation"
+      valeur: "Entrée / sortie à date fixe"
+    - label: "Comment candidater"
+      valeur: "Compléter le formulaire de contact disponible sur le site internet."
+    - label: "Modalités et délais d’accès"
+      valeur: "La formation est ouverte à toute personne souhaitant développer ses compétences dans la carrosserie. Un entretien de positionnement est réalisé avant l’entrée en formation afin de vérifier l’adéquation du projet. Les inscriptions sont possibles jusqu’à 10 jours avant le démarrage de la session, sous réserve de financement validé. Contactez-nous pour connaître les dates et lieux de formation."
+    - label: "Délai d’accès estimé"
+      valeur: "Environ 3 mois entre la demande et le début du parcours"
+  schema:
+    src: "/wp-content/uploads/2024/11/processe.jpg"
+    alt: "Déroulé du parcours Aide carrossier : socle initial de 16 jours (S1 à S4) alternant formation et actions en entreprise, puis 12 jours de thématiques à choisir (S5 à S7)"
+    width: 1900
+    height: 901
+  phases:
+    - titre: "Première partie du parcours : socle initial"
+      modules:
+        - titre: "Découvrir l’environnement professionnel"
+          objectifs:
+            - "Examiner le parcours et les outils de formation"
+            - "Distinguer les règles comportementales et de sécurité en milieu professionnel"
+            - "Identifier l’environnement du centre de formation, ses infrastructures, et son personnel"
+            - "Décrire l’environnement de la distribution et réparation automobile"
+            - "Préciser les modes d’organisation RH d’une entreprise automobile"
+        - titre: "Organiser le poste de travail du carrossier"
+          objectifs:
+            - "Être capable de travailler efficacement en toute sécurité"
+            - "Savoir protéger les véhicules confiés"
+            - "Utiliser la documentation technique"
+        - titre: "Déposer et reposer des éléments amovibles"
+          objectifs:
+            - "Identifier les types de fixations et l’outillage adéquat à leur montage/démontage"
+            - "Pratiquer le montage avec ajustage d’éléments amovibles"
+        - titre: "Déposer et reposer des systèmes mécaniques liés à la carrosserie"
+          objectifs:
+            - "Identifier les mécanismes et leurs fonctions"
+            - "Opérer des déposes et reposes de mécanismes de carrosserie"
+            - "Opérer des démontages et remontages d’éléments thermiques"
+        - titre: "Dégarnir et regarnir les ouvrants et l’habitacle"
+          objectifs:
+            - "Identifier les modes de fixation des garnitures"
+            - "Pratiquer la dépose et repose de garnitures"
+        - titre: "Réparer et remplacer des vitrages collés"
+          objectifs:
+            - "Mettre en œuvre les méthodes de remplacement des vitrages collés"
+            - "Pratiquer la réparation de pare-brise quand elle est possible"
+    - titre: "Seconde partie du parcours"
+      note: "Thèmes à déterminer lors de l’analyse du besoin avec l’entreprise"
+      modules:
+        - titre: "S’initier à la remise en forme d’éléments en acier"
+          objectifs:
+            - "Identifier les différentes méthodes et techniques de redressage"
+            - "Pratiquer le redressage des éléments de carrosserie"
+        - titre: "S’initier au débosselage sans peinture (DSP)"
+          objectifs:
+            - "Identifier les techniques nécessaires au débosselage sans peinture"
+            - "Réaliser une intervention sur des éléments acier horizontal selon les techniques du débosselage sans peinture"
+        - titre: "Rénover les optiques"
+          objectifs:
+            - "Définir les caractéristiques des optiques automobiles"
+            - "Définir les méthodes de réparations en conformité avec les méthodes constructeur"
+        - titre: "Réparer les garnitures intérieures et les jantes"
+          objectifs:
+            - "Optimiser ses interventions techniques sur des petits accrocs à l’extérieur ou à l’intérieur d’un véhicule"
+        - titre: "Lustrer des éléments de carrosserie"
+          objectifs:
+            - "Identifier les mécanismes et leurs fonctions"
+            - "Opérer des déposes et reposes de mécanismes de carrosserie"
+            - "Opérer des démontages et remontages d’éléments thermiques"
+        - titre: "Réaliser des réparations d’éléments en plastique"
+          objectifs:
+            - "Définir les caractéristiques des thermoplastiques utilisés en automobile"
+            - "Définir les méthodes de réparations en conformité avec les méthodes constructeur"
+        - titre: "Préparer des surfaces avant l’application de produits de peinture"
+          objectifs:
+            - "Cacher le véhicule en vue d’applications de produits de peinture"
+            - "Réaliser la finition des mastics en vue de la mise en apprêt"
+sources:
+  - url: "https://techformanord.fr/m-grid-col-2/"
+    collecte: "2026-10-24"
+    statut: repris-a-confirmer

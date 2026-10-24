@@ -1,0 +1,16 @@
+{
+  "name": "techformanord-site",
+  "private": true,
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "node scripts/generate-assets.mjs && astro build && node scripts/postbuild.mjs",
+    "preview": "astro preview",
+    "check:content": "node scripts/check-content.mjs"
+  },
+  "dependencies": {
+    "astro": "5.18.2",
+    "yaml": "2.8.1"
+  }
+}

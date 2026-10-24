@@ -1,0 +1,30 @@
+---
+// Illustrations vectorielles neutres (aucune photo de locaux ou de personnes fictives).
+interface Props { id: string; label?: string }
+const { id, label } = Astro.props;
+---
+<svg viewBox="0 0 120 80" role={label ? 'img' : undefined} aria-label={label} aria-hidden={label ? undefined : 'true'} fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+  {id === 'automobile' && (
+    <>
+      <path d="M14 52h92M22 52v-8l10-16c2-3 5-5 9-5h34c4 0 7 2 9 5l12 16v8" />
+      <path d="M30 40h60" opacity=".55" />
+      <circle cx="36" cy="56" r="9" fill="#fff" /><circle cx="84" cy="56" r="9" fill="#fff" />
+      <path d="M58 23v17" opacity=".55" />
+    </>
+  )}
+  {id === 'beaute' && (
+    <>
+      <path d="M40 66c-10-8-14-18-12-30 8 2 15 8 18 16" />
+      <path d="M80 66c10-8 14-18 12-30-8 2-15 8-18 16" />
+      <path d="M60 68c-9-10-12-24-0-42 12 18 9 32 0 42z" />
+      <path d="M60 68v6M44 74h32" />
+    </>
+  )}
+  {id === 'ia' && (
+    <>
+      <rect x="34" y="18" width="52" height="44" rx="8" fill="#fff" />
+      <path d="M48 18V8M60 18V8M72 18V8M48 72V62M60 72V62M72 72V62M34 30H24M34 50H24M86 30h10M86 50h10" />
+      <path d="M48 46l7-16 7 16M50 41h10M70 30v16" />
+    </>
+  )}
+</svg>

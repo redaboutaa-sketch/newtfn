@@ -1,0 +1,54 @@
+---
+import Base from '../layouts/Base.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { organisme, formatDate } from '../lib/data';
+const org = organisme();
+const q = org.qualiopi;
+---
+<Base title="Qualité et certification Qualiopi" description={`Tech Formation Nord est certifié Qualiopi au titre des actions de formation (certificat n° ${q.numero}, ${q.certificateur}). Périmètre, validité et téléchargement du certificat.`} breadcrumbs={[{ name: 'Notre organisme', url: '/about-us/' }, { name: 'Qualité', url: '/qualite/' }]} navActive="organisme">
+  <section class="page-hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow">Qualité</span>
+        <h1>Certification Qualiopi</h1>
+        <p class="lead">{q.mention}</p>
+      </div>
+      <img src={q.logo} alt="Qualiopi — processus certifié — République française" width="430" height="183" style="max-width:320px;justify-self:center" />
+    </div>
+  </section>
+  <section class="section">
+    <div class="container grid grid-2">
+      <div>
+        <h2>Notre certificat</h2>
+        <table class="info-table">
+          <caption class="sr-only">Caractéristiques du certificat Qualiopi</caption>
+          <tbody>
+            <tr><th scope="row">Titulaire</th><td>{org.nom} — SIREN {org.siren} — NDA {org.nda}</td></tr>
+            <tr><th scope="row">Organisme certificateur</th><td>{q.certificateur}</td></tr>
+            <tr><th scope="row">Numéro de certificat</th><td>{q.numero}</td></tr>
+            <tr><th scope="row">Catégorie d’action</th><td>{q.categorie}</td></tr>
+            <tr><th scope="row">Validité</th><td>Du {formatDate(q.valide_du)} au {formatDate(q.valide_au)}, sous réserve de la réalisation de l’audit de surveillance</td></tr>
+          </tbody>
+        </table>
+        <div class="btn-row">
+          <a class="btn btn--primary" href={q.document}>Télécharger le certificat (PDF)</a>
+          <a class="btn btn--ghost" href={q.verification_publique} rel="noopener">Liste publique des organismes de formation <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+      <div class="stack">
+        <h2>Ce que garantit Qualiopi</h2>
+        <p>Qualiopi atteste de la qualité du processus mis en œuvre par un organisme de formation, au regard du référentiel national qualité : information du public, conception des formations, accompagnement et évaluation des stagiaires, moyens pédagogiques, amélioration continue.</p>
+        <div class="callout callout--info">
+          <p><strong>À ne pas confondre</strong></p>
+          <ul style="margin:0">
+            <li>Qualiopi ne certifie pas le contenu d’une formation et ne constitue pas une certification professionnelle (titre, diplôme ou certification enregistrée au RNCP ou au répertoire spécifique).</li>
+            <li>Qualiopi ne rend pas à elle seule une formation éligible à un financement : l’éligibilité s’apprécie selon chaque dispositif.</li>
+          </ul>
+        </div>
+        <h2 style="font-size:1.3rem">Amélioration continue</h2>
+        <p>Les acquis sont évalués en amont et en aval de chaque formation. Vos remarques et réclamations peuvent être adressées à tout moment via le <a href="/contact-us/?sujet=R%C3%A9clamation#formulaire">formulaire de contact</a>.</p>
+      </div>
+    </div>
+  </section>
+  <CtaBand />
+</Base>

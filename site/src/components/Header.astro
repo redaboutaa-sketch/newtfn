@@ -1,0 +1,46 @@
+---
+import { organisme } from '../lib/data';
+interface Props { active?: string }
+const { active } = Astro.props;
+const org = organisme();
+// Intitulés modernisés ; les URL historiques pertinentes sont conservées (docs/mapping-redirections.csv).
+const nav = [
+  { id: 'accueil', label: 'Accueil', url: '/' },
+  { id: 'formations', label: 'Nos formations', url: '/services/' },
+  { id: 'entreprises', label: 'Entreprises', url: '/entreprises/' },
+  { id: 'reconversion', label: 'Reconversion', url: '/infinite-grid-col-2/' },
+  { id: 'financement', label: 'Financer sa formation', url: '/financer-sa-formation/' },
+  { id: 'organisme', label: 'Notre organisme', url: '/about-us/' },
+];
+const path = Astro.url.pathname;
+---
+<header class="site-header">
+  <div class="topbar">
+    <div class="container">
+      <span class="topbar-extra">{org.adresse.rue}, {org.adresse.code_postal} {org.adresse.ville} · près de Lille</span>
+      <span>
+        <a href={`tel:${org.telephone.lien}`} data-place="bandeau">{org.telephone.affiche}</a>
+        <span class="topbar-extra"><span aria-hidden="true"> · </span>
+        <a href={`mailto:${org.email}`} data-place="bandeau">{org.email}</a></span>
+      </span>
+    </div>
+  </div>
+  <div class="container header-inner">
+    <a class="brand" href="/" aria-label="Tech Formation Nord, retour à l'accueil">
+      <img src="/img/logo-tfn.png" alt="Tech Formation Nord" width="401" height="136" />
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav">
+      <span aria-hidden="true">☰</span> Menu
+    </button>
+    <nav id="main-nav" class="main-nav" aria-label="Navigation principale">
+      <ul>
+        {nav.map((item) => (
+          <li>
+            <a href={item.url} aria-current={path === item.url ? 'page' : undefined} data-active={active === item.id && path !== item.url ? '' : undefined}>{item.label}</a>
+          </li>
+        ))}
+        <li class="nav-cta"><a href="/contact-us/" aria-current={path === '/contact-us/' ? 'page' : undefined}>Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>

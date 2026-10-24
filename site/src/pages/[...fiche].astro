@@ -1,0 +1,112 @@
+---
+// Fiches formation aux URL historiques (/service/..., /m-grid-col-...). Les URL sont conservées
+// pour préserver le référencement ; seuls les contenus et la présentation sont modernisés.
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Programme from '../components/Programme.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { pole as getPole, organisme } from '../lib/data';
+
+export async function getStaticPaths() {
+  const fiches = await getCollection('fiches');
+  return fiches.map((f) => ({ params: { fiche: f.data.url.replace(/^\/|\/$/g, '') }, props: { f: f.data } }));
+}
+const { f } = Astro.props;
+const pole = getPole(f.pole);
+const org = organisme();
+const famille = pole.familles.find((x: any) => x.id === f.famille);
+const crumbs = [
+  { name: 'Nos formations', url: '/services/' },
+  { name: pole.nom, url: pole.url },
+  ...(f.type === 'parcours' ? [{ name: 'Reconversion', url: '/infinite-grid-col-2/' }] : []),
+  { name: f.titre_court, url: f.url },
+];
+---
+<Base title={f.seo_title} description={f.seo_description} breadcrumbs={crumbs} pole={f.pole} navActive={f.type === 'parcours' ? 'reconversion' : 'formations'}>
+  <section class="page-hero" data-accent={pole.accent}>
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow">{pole.nom} · {famille?.nom}</span>
+        <h1>{f.titre}</h1>
+        <p class="lead">{f.resume}</p>
+        <div class="btn-row">
+          <a class="btn btn--primary" href={`/contact-us/?sujet=${encodeURIComponent(f.titre_court)}#formulaire`}>{f.type === 'parcours' ? 'Candidater ou se renseigner' : 'Demander un devis'}</a>
+          <a class="btn btn--ghost" href={`tel:${org.telephone.lien}`} data-place="fiche-hero">{org.telephone.affiche}</a>
+        </div>
+      </div>
+      {f.image && <div class="hero-media"><img src={f.image.src} alt={f.image.alt} width="880" height="520" fetchpriority="high" /></div>}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container narrow stack">
+      {f.intro.map((t: string) => <p>{t}</p>)}
+      {f.sections.map((s: any) => (
+        <div>
+          <h2>{s.titre}</h2>
+          {s.paragraphes.map((t: string) => <p>{t}</p>)}
+          {s.liste.length > 0 && <ul>{s.liste.map((l: string) => <li>{l}</li>)}</ul>}
+        </div>
+      ))}
+    </div>
+  </section>
+
+  {f.type === 'catalogue' && (
+    <section class="section section--surface">
+      <div class="container">
+        <nav class="toc" id="sommaire" aria-labelledby="sommaire-titre">
+          <h2 id="sommaire-titre" style="font-size:1.25rem">Les {f.programmes.length} modules de formation</h2>
+          <ol>{f.programmes.map((p: any) => <li><a href={`#prog-${p.id}`}>{p.code ? `${p.code} – ` : ''}{p.titre}</a></li>)}</ol>
+        </nav>
+        <h2 class="sr-only">Programmes détaillés</h2>
+        {f.programmes.map((p: any, i: number) => <Programme p={p} index={i} />)}
+        {f.modalites_acces.length > 0 && (
+          <div class="card" style="margin-top:32px">
+            <h2 style="font-size:1.35rem">Modalités d’accès et d’inscription</h2>
+            <ul>{f.modalites_acces.map((m: string) => <li>{m}</li>)}</ul>
+          </div>
+        )}
+      </div>
+    </section>
+  )}
+
+  {f.type === 'parcours' && f.parcours && (
+    <section class="section section--surface">
+      <div class="container">
+        <h2 id="sommaire">Le parcours en bref</h2>
+        <table class="info-table">
+          <caption class="sr-only">Informations clés du parcours {f.titre_court}</caption>
+          <tbody>{f.parcours.infos.map((i: any) => <tr><th scope="row">{i.label}</th><td>{i.valeur}</td></tr>)}</tbody>
+        </table>
+        {f.accessibilite.length > 0 && (
+          <div class="callout" style="margin-top:24px">
+            <h3>Accessibilité des personnes en situation de handicap</h3>
+            {f.accessibilite.map((t: string) => <p>{t}</p>)}
+            <p style="margin:0">Référent handicap : <a href={`tel:${org.referent_handicap.telephone_lien}`} data-place="parcours-handicap">{org.referent_handicap.telephone_affiche}</a> — <a href="/accessibilite-handicap/">en savoir plus</a></p>
+          </div>
+        )}
+        <div class="narrow" style="margin-top:32px">{f.parcours.presentation.map((t: string) => <p>{t}</p>)}</div>
+        {f.parcours.schema && (
+          <figure style="margin:32px 0 0">
+            <img src={f.parcours.schema.src} alt={f.parcours.schema.alt} width={f.parcours.schema.width} height={f.parcours.schema.height} loading="lazy" style="border-radius:var(--radius);border:1px solid var(--line);background:#fff" />
+          </figure>
+        )}
+        <h2 style="margin-top:40px">Le parcours en détail</h2>
+        {f.parcours.phases.map((ph: any) => (
+          <div class="phase">
+            <h3>{ph.titre}</h3>
+            {ph.note && <p class="muted">{ph.note}</p>}
+            <ol class="modules">{ph.modules.map((m: any) => <li><h4>{m.titre}</h4><ul>{m.objectifs.map((o: string) => <li>{o}</li>)}</ul></li>)}</ol>
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <section class="section section--tight">
+    <div class="container">
+      <p class="small muted">Le financement d’une formation n’est jamais automatique : il dépend de votre statut et des règles du financeur. <a href="/financer-sa-formation/">Découvrir les solutions de financement</a> · <a href={pole.url}>Toutes les formations {pole.nom.toLowerCase()}</a></p>
+    </div>
+  </section>
+  <CtaBand sujet={f.titre_court} />
+</Base>

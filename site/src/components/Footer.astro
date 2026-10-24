@@ -1,0 +1,55 @@
+---
+import { organisme, poles } from '../lib/data';
+const org = organisme();
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <a class="footer-logo" href="/"><img src="/img/logo-tfn.png" alt="Tech Formation Nord" width="401" height="136" loading="lazy" /></a>
+      <p>Organisme de formation professionnelle à Vendeville, au sud de Lille : automobile, esthétique et bien-être, intelligence artificielle.</p>
+      <p class="small">
+        {org.adresse.rue}<br />{org.adresse.code_postal} {org.adresse.ville}<br />
+        <a href={`tel:${org.telephone.lien}`} data-place="pied-de-page">{org.telephone.affiche}</a><br />
+        <a href={`mailto:${org.email}`} data-place="pied-de-page">{org.email}</a>
+      </p>
+    </div>
+    <div>
+      <h2>Formations</h2>
+      <ul>
+        <li><a href="/services/">Toutes nos formations</a></li>
+        {poles().map((p) => <li><a href={p.url}>{p.nom}</a></li>)}
+        <li><a href="/infinite-grid-col-2/">Reconversion</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>Organisme</h2>
+      <ul>
+        <li><a href="/about-us/">Notre organisme</a></li>
+        <li><a href="/qualite/">Qualité et certification</a></li>
+        <li><a href="/accessibilite-handicap/">Accessibilité et handicap</a></li>
+        <li><a href="/informations-pratiques/">Informations pratiques</a></li>
+        <li><a href="/entreprises/">Entreprises</a></li>
+        <li><a href="/financer-sa-formation/">Financer sa formation</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>Horaires</h2>
+      <ul>
+        {org.horaires.map((h: any) => <li>{h.jours} : {h.heures}</li>)}
+      </ul>
+      <h2 style="margin-top:1.4rem">Suivez-nous</h2>
+      <ul>
+        {org.reseaux.map((r: any) => <li><a href={r.url} rel="noopener" class="ext">{r.nom}</a></li>)}
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© {year} {org.nom} — SIRET {org.siret} — NDA {org.nda}</span>
+    <span>
+      <a href="/mentions-legales/">Mentions légales</a> ·
+      <a href="/politique-de-confidentialite/">Confidentialité</a> ·
+      <a href="/plan-du-site/">Plan du site</a>
+    </span>
+  </div>
+</footer>

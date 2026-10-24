@@ -1,0 +1,36 @@
+---
+import Base from '../layouts/Base.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { organisme } from '../lib/data';
+const org = organisme();
+const r = org.referent_handicap;
+---
+<Base title="Accessibilité et handicap" description="Accueil des personnes en situation de handicap chez Tech Formation Nord : référent handicap, étude des adaptations possibles et limites liées aux formations pratiques en atelier." breadcrumbs={[{ name: 'Notre organisme', url: '/about-us/' }, { name: 'Accessibilité et handicap', url: '/accessibilite-handicap/' }]} navActive="organisme">
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Handicap</span>
+      <h1>Accessibilité et handicap</h1>
+      <p class="lead">Nous sommes attentifs à l’accueil des personnes en situation de handicap. Un échange en amont de l’inscription permet d’étudier chaque situation.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container grid grid-2">
+      <div>
+        <h2>Notre engagement</h2>
+        <p>Avant toute inscription, notre référent handicap échange avec vous pour identifier vos besoins et évaluer les possibilités d’adaptation : rythme, supports, organisation des séances ou aménagements matériels.</p>
+        <p>En raison de la nature très pratique de certaines formations automobiles (gestes techniques, manipulation d’équipements lourds, interventions en atelier), certaines situations de handicap peuvent rendre difficile, voire impossible, l’accès aux apprentissages dans des conditions de sécurité et d’efficacité optimales. Dans ce cas, nous vous aidons à rechercher une orientation plus appropriée.</p>
+      </div>
+      <div class="card">
+        <h2 style="font-size:1.3rem">Contacter le référent handicap</h2>
+        <p>Par téléphone : <a href={`tel:${r.telephone_lien}`} data-place="page-handicap">{r.telephone_affiche}</a></p>
+        <p>Par le formulaire : <a href="/contact-us/?sujet=Accessibilit%C3%A9%20et%20handicap#formulaire">écrire au référent handicap</a></p>
+        <h3 style="margin-top:1rem">Ressources utiles</h3>
+        <ul>
+          <li><a href="https://www.agefiph.fr/" rel="noopener" class="ext">Agefiph</a></li>
+          <li><a href="https://www.monparcourshandicap.gouv.fr/" rel="noopener" class="ext">Mon parcours handicap</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <CtaBand />
+</Base>

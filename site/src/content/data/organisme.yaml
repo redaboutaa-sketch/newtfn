@@ -1,0 +1,87 @@
+# Coordonnées et identité de l'organisme — SOURCE UNIQUE pour tout le site.
+# Chaque valeur publiée doit être vérifiée (voir docs/registre-sources.csv).
+# Ne pas harmoniser les coordonnées des pôles avec celles de l'organisme sans validation.
+
+nom: Tech Formation Nord
+sigle: TFN
+accroche: Organisme de formation professionnelle à Vendeville, près de Lille
+forme_juridique: SAS
+siren: "930 182 738"
+siret: "930 182 738 00011"
+tva: FR40930182738
+nda: "32 59 12614 59"
+nda_mention: Enregistré sous le numéro 32 59 12614 59 auprès du préfet de région Hauts-de-France. Cet enregistrement ne vaut pas agrément de l'État.
+code_ape: 85.59A
+# Directeur de la publication : le représentant légal publié au registre (annuaire-entreprises.data.gouv.fr).
+# À confirmer par l'organisme avant mise en production (docs/points-a-confirmer.md).
+representant_legal: Nasraddin Chmaati, président
+
+adresse:
+  rue: 21 rue de Faches
+  code_postal: "59175"
+  ville: Vendeville
+  departement: Nord
+  region: Hauts-de-France
+  pays: FR
+  geo: { lat: 50.577235, lon: 3.078026 } # géocodage BAN (liste publique des OF)
+
+telephone:
+  affiche: 03 20 16 09 15
+  lien: "+33320160915"
+# Adresse affichée sur l'en-tête et la page contact de l'ancien site. Le plan d'accès PDF
+# mentionne contact@techformanord.fr : choix à confirmer (docs/points-a-confirmer.md).
+email: contact.techformation@gmail.com
+
+# Horaires : l'ancien site affiche deux versions (pied de page 9h-17h, page contact 9h-18h).
+# Version retenue en attente de confirmation : celle de la page contact.
+horaires:
+  - { jours: Du lundi au vendredi, heures: 9h – 18h, schema: "Mo-Fr 09:00-18:00" }
+  - { jours: Samedi, heures: 9h – 12h, schema: "Sa 09:00-12:00" }
+  - { jours: Dimanche, heures: Fermé }
+
+referent_handicap:
+  telephone_affiche: 06 87 09 40 03
+  telephone_lien: "+33687094003"
+
+acces:
+  voiture:
+    - "Depuis Lille : A1 direction Paris, sortie 20 Seclin, puis la D549 en direction de Vendeville."
+    - "Depuis Lens : A1 direction Lille, sortie 20 Seclin, puis la D549."
+    - Parking disponible sur place.
+  transports:
+    - "Depuis Lille : bus L1 direction Seclin, arrêt Vendeville Centre, puis 5 minutes à pied."
+    - "Depuis Seclin : bus L1 direction Lille, arrêt Vendeville Centre."
+  pied:
+    - Depuis le centre de Vendeville, la rue de Faches est à 5 à 10 minutes de marche.
+  restauration:
+    - "Le centre est à environ 3 minutes en voiture de la zone commerciale de Lesquin (avenue de l'Europe) : sandwicheries, boulangeries, restaurants et supermarché."
+    - Un micro-ondes et un coin repas sont disponibles sur place.
+
+reseaux:
+  - { nom: LinkedIn, url: "https://www.linkedin.com/company/tech-formation-nord/" }
+  - { nom: Instagram, url: "https://www.instagram.com/techformationnord59/" }
+  - { nom: Facebook, url: "https://www.facebook.com/people/Tech-Formation-Nord/61582660063039/" }
+  - { nom: TikTok, url: "https://www.tiktok.com/@tech.forma.nord" }
+
+qualiopi:
+  # Vérifié le 2026-10-24 : certificat CCTA + liste publique des organismes de formation (DGEFP).
+  afficher: true
+  certificateur: CCTA Certification
+  numero: 3590226QA-A
+  categorie: Actions de formation (article L.6313-1 1° du Code du travail)
+  mention: "La certification qualité a été délivrée au titre de la catégorie d'action suivante : actions de formation."
+  valide_du: "2026-02-24"
+  valide_au: "2027-10-03"
+  cycle_initial: "2024-10-04"
+  document: /documents/certificat-qualiopi-tech-formation-nord.pdf
+  logo: /img/logo-qualiopi.png
+  verification_publique: "https://www.data.gouv.fr/fr/datasets/liste-publique-des-organismes-de-formation-l-6351-7-1-du-code-du-travail/"
+
+hebergeur:
+  nom: Hostinger
+  adresse: Svitrigailos str. 34, LT-03230 Vilnius, Lituanie
+  site: "https://www.hostinger.fr"
+
+# Fiche Google Business Profile : URL exacte non communiquée à ce jour.
+# Renseigner l'URL de partage de la fiche pour activer le lien « Voir nos avis sur Google ».
+google_business_url: ""

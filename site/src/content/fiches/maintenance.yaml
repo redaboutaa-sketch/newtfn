@@ -1,0 +1,200 @@
+url: /service/maintenance/
+pole: automobile
+famille: maintenance-diagnostic
+type: catalogue
+ordre: 1
+titre: "Formations maintenance et diagnostic automobile"
+titre_court: "Maintenance et diagnostic"
+seo_title: "Formations maintenance et diagnostic automobile"
+seo_description: "Outil de diagnostic multimarques, climatisation, freinage, amortisseurs : des modules pratiques pour maîtriser l’entretien et la réparation automobile."
+resume: "Apprenez les techniques de diagnostic, d’entretien et de réparation des véhicules sur des équipements modernes, avec des modules alliant théorie et pratique."
+image:
+  src: "/wp-content/uploads/2024/09/hands-car-mechanic-with-wrench-garage-880x520.jpg"
+  alt: "Mains d’un mécanicien tenant une clé dans un garage automobile"
+intro:
+  - "Formation en maintenance automobile : devenez un expert du diagnostic et de la réparation."
+  - "Apprenez les bases et les techniques avancées de la maintenance automobile avec notre formation complète. Diagnostic, entretien, et réparation des véhicules : développez des compétences recherchées pour intégrer un secteur en pleine croissance. Idéal pour débutants et professionnels en reconversion, notre programme allie théorie et pratique sur des équipements modernes. Préparez-vous à une carrière d’avenir dans l’automobile !"
+  - "Bénéficiez d’une formation pratique et approfondie qui vous prépare aux défis du secteur. Apprenez à maîtriser les techniques de diagnostic, d’entretien et de réparation, tout en développant des compétences recherchées par les employeurs. Ouvrez la porte à de nombreuses opportunités professionnelles dans un domaine en constante évolution."
+sections:
+  - titre: "Nos différentes formations"
+    paragraphes:
+      - "Acquérez des compétences pratiques et théoriques en diagnostic, entretien et réparation. Bénéficiez d’un apprentissage sur des équipements modernes, d’un suivi personnalisé et de débouchés professionnels dans un secteur en constante évolution. Préparez-vous à une carrière stable et en forte demande !"
+modalites_acces:
+  - "Diagnostic initial : entretien préalable sur les motivations, évaluation des compétences, des attentes et des éventuelles difficultés. Personnalisation du plan de formation. Suivi individuel pour ajuster l’accompagnement en fonction des progrès et difficultés."
+  - "Les formations sont planifiées une fois par trimestre avec un nombre minimal de 4 stagiaires."
+  - "Délai minimum d’inscription : le délai minimum d’inscription à une formation est de 11 jours ouvrés avant le début de la formation."
+  - "Inscription par téléphone ou via le formulaire de contact."
+  - "Cette formation peut faire l’objet d’un financement : contactez-nous pour étudier votre situation."
+programmes:
+  - id: 44992-outil-diagnostic-multimarques
+    code: "44992"
+    titre: "Utiliser votre outil de diagnostic multimarques dans vos activités quotidiennes"
+    objectifs:
+      - "Effectuer les réglages et paramétrages de votre outil"
+      - "Exploiter les menus des outils de diagnostic dans le cadre de la maintenance automobile"
+    public: "La formation est ouverte à tout public. Toutefois, certaines situations de handicap peuvent ne pas être compatibles avec les conditions de réalisation des activités pratiques. Un échange en amont permettra d’évaluer les possibilités d’adaptation. Contactez notre référent handicap."
+    prerequis: "Posséder au moins un diplôme, titre ou certificat (dont CQP ou Socle de compétences CléA)"
+    duree: "35 heures (5 jours)"
+    benefices: "Une utilisation optimale de votre outil de diagnostic"
+    contenu:
+      - "Le rôle de l’outil de diagnostic"
+      - "Les activités métiers liées à l’outil"
+      - "Les formats d’outils et options possibles"
+      - "Les conditions du bon fonctionnement de l’outil"
+      - "La norme EOBD"
+      - "La méthode de diagnostic et l’outil"
+    applications:
+      - "Effectuer les fonctions réglage et paramétrage de l’outil"
+      - "Comparer les fonctions EOBD et gestion moteur"
+      - "Effectuer des opérations de maintenance à l’aide de l’outil"
+      - "Exploiter les onglets diagnostic d’un système"
+      - "Appliquer une méthode de diagnostic à l’aide de l’outil"
+    methodes:
+      - "Expositives, participatives et actives"
+      - "Travaux individuels et en sous-groupes"
+    evaluation: "Évaluation des objectifs pédagogiques par un quiz amont / aval"
+    tarif: "Devis sur demande"
+  - id: 44993-climatisation
+    code: "44993"
+    titre: "La climatisation"
+    objectifs:
+      - "Réaliser l’entretien et la maintenance d’un circuit froid et du circuit d’air à l’aide d’une station de climatisation R134A et R1234YF"
+      - "Appliquer la réglementation et les règles de sécurité lors de la manipulation des fluides et des équipements."
+    public: "Mécanicien automobile, Carrossier-peintre, Technicien automobile, Technicien expert après-vente automobile, Opérateur service rapide"
+    prerequis: "Posséder au moins un diplôme, titre ou certificat (dont CQP ou Socle de compétences CléA)"
+    benefices: "Des salariés en capacité d’intervenir sur les circuits R-134a et R-1234yf. Davantage de chance d’obtenir l’attestation d’aptitude."
+    contenu:
+      - "Les différents fluides frigorigènes (R-134a, R-1234yf, …)"
+      - "La réglementation en vigueur depuis le 08/05/07"
+      - "Les composants du circuit de climatisation"
+      - "Le principe de fonctionnement des circuits de climatisation et du circuit d’air"
+      - "Le remplacement des composants"
+      - "La détection de fuites"
+    applications:
+      - "Assurer la maintenance d’un circuit à l’aide de la station"
+      - "Utiliser les outils de détection de fuite"
+      - "Contrôler l’efficacité du circuit de climatisation"
+      - "Remplacer un composant du circuit"
+      - "Recharger la station en fluide"
+      - "Contrôler les sécurités électriques d’une climatisation"
+    methodes:
+      - "Expositives, participatives et actives"
+      - "Travaux individuels et en sous-groupes"
+    evaluation: "Évaluation des objectifs pédagogiques par un quiz amont / aval"
+    tarif: "Devis sur demande"
+  - id: 44994-diagnostic-avance-climatisation
+    code: "44994"
+    titre: "Diagnostic avancé de la climatisation"
+    contexte:
+      - "Intervenir sur un système climatisé aujourd’hui ne se limite plus à remplir en gaz le circuit du véhicule."
+      - "Moins de froid, pas assez de chaud, problème de température au niveau d’une bouche d’air, … autant de nouveaux symptômes client en lien avec les nouveaux équipements des systèmes de climatisation."
+      - "Des symptômes clients plus nombreux et plus complexes, qui imposent davantage de connaissance et de maîtrise pour intervenir rapidement sur la ou les causes du dysfonctionnement."
+    objectif_general: "Apprendre à utiliser un outil de diagnostic pour identifier et résoudre les problèmes sur les véhicules légers."
+    objectifs:
+      - "Identifier le principe de fonctionnement d’une climatisation automatique"
+      - "Réaliser le diagnostic d’une climatisation automatique en appliquant une méthode et en utilisant les outils spécifiques"
+    public: "Mécanicien automobile, Technicien expert après-vente automobile, Technicien automobile"
+    prerequis: "Posséder au moins un diplôme, titre ou certificat (dont CQP ou Socle de compétences CléA)."
+    duree: "5 jours – 35 h"
+    benefices: "Optimiser le temps de diagnostic de vos techniciens et proposer une « prestation climatisation » complète"
+    contenu:
+      - "Le diagnostic, les contrôles et les stratégies de fonctionnement d’une climatisation régulée"
+      - "Les méthodes de contrôle et de remplacement des capteurs et actionneurs"
+      - "La composition d’une climatisation régulée"
+      - "Le compresseur à cylindrée variable"
+      - "Le compresseur des véhicules électriques"
+    applications:
+      - "Isoler un composant défaillant"
+      - "Appliquer une méthodologie de recherche de panne"
+      - "Contrôler les capteurs et les actionneurs"
+      - "Mesurer des températures et des pressions du fluide sur véhicules"
+      - "Diagnostiquer un circuit hydraulique"
+      - "Utiliser un outil diagnostic"
+    methodes:
+      - "Expositives, participatives et actives"
+      - "Travaux individuels et en sous-groupes"
+    evaluation: "Évaluation des objectifs pédagogiques par un quiz amont / aval"
+    tarif: "Devis sur demande"
+  - id: 44995-systemes-de-freinage
+    code: "44995"
+    titre: "Le contrôle et le remplacement des éléments des systèmes de freinage"
+    contexte:
+      - "Aujourd’hui, 17 % des recrutements des ateliers de mécanique automobile sont des employés n’ayant jamais travaillé dans le secteur de la réparation. Le personnel n’est pas qualifié, y compris sur les basiques métier comme les systèmes de freinage, qui est la troisième motivation d’entrées ateliers."
+      - "Savoir contrôler, entretenir et remplacer les éléments du système de freinage y compris les plus modernes (freins de parking électriques, ABS, ESP…) avec efficacité est une activité indispensable à maîtriser pour un mécanicien."
+    objectifs:
+      - "Contrôler les usures des éléments du système de freinage."
+      - "Identifier et appliquer les méthodes de remplacement des éléments du système de freinage."
+    public: "Mécanicien automobile, Opérateur service rapide"
+    prerequis: "Posséder au moins un diplôme, titre ou certificat (dont CQP ou Socle de compétences CléA)."
+    benefices: "Gagner en efficacité avec du personnel rapidement qualifié"
+    contenu:
+      - texte: "Le principe de fonctionnement des systèmes de freinage"
+        sous:
+          - "Les caractéristiques des liquides de frein"
+          - "Les organes des systèmes de freinage et leurs dégradations (usure, rupture, panne…)"
+          - "Le principe de fonctionnement des systèmes complémentaires : ABS, ESP, frein de stationnement…"
+      - texte: "Le contrôle visuel et métrologique des organes de freinage"
+        sous:
+          - "Contrôler visuellement et mesurer les pièces d’usure"
+          - "Le contrôle instrumenté du liquide de frein"
+          - "Rechercher des données techniques"
+      - texte: "Identifier les méthodes"
+        sous:
+          - "Les méthodes de dépose et de repose des organes mécaniques et hydrauliques"
+          - "Les méthodes de remplacement du liquide de frein et de purge du circuit hydraulique"
+    applications:
+      - "Remplacer des disques et des plaquettes de frein avant"
+      - "Remplacer des organes d’usure (tambours, garnitures…)"
+      - "Réaliser la purge d’un circuit hydraulique manuellement et à l’aide d’un purgeur"
+      - "Remplacer un jeu de plaquettes AR avec système de frein à main manuel"
+      - "Remplacer un jeu de plaquettes AR avec système de frein de stationnement électrique (câbles et motorisés)"
+    methodes:
+      - "Expositives, participatives et actives"
+      - "Travaux individuels et en sous-groupes"
+    evaluation: "Évaluation des objectifs pédagogiques par un quiz amont / aval"
+    tarif: "Devis sur demande"
+  - id: 44996-remplacement-amortisseurs
+    code: "44996"
+    titre: "Le remplacement des amortisseurs"
+    contexte:
+      - "Le marché de l’échange des amortisseurs est stable. Mais le vieillissement du parc roulant, la complexification des trains roulants, le poids des SUV en fait un marché prometteur."
+      - "Cette activité rentable est accessible par tous les ateliers, à condition de maîtriser les méthodes de remplacement et d’utiliser le matériel adapté."
+      - "Avec 75 % d’application pratique axée sur l’évolution des technologies et des outils, notre formation apporte les compétences pour travailler en toute sécurité et maîtriser les temps d’intervention."
+    objectifs:
+      - "Contrôler l’état des éléments de liaison au sol en utilisant les moyens visuels, instrumentés et contextuels"
+      - "Appliquer les méthodes d’intervention sur les organes de suspensions"
+    public: "Opérateur service rapide, Mécanicien automobile"
+    prerequis: "Posséder au moins un diplôme, titre ou certificat (dont CQP ou Socle de compétences CléA)."
+    benefices: "Garantir la sécurité des opérateurs. Augmenter la rentabilité des ateliers."
+    contenu:
+      - texte: "Définir la constitution des systèmes de suspensions"
+        sous:
+          - "Principe de fonctionnement de l’amortisseur"
+          - "Les méthodes de contrôle de l’état des amortisseurs"
+          - "Les règles de sécurité"
+      - texte: "Identifier les motifs de remplacement des organes de suspensions"
+        sous:
+          - "Usures des organes"
+          - "Défaillances mécaniques des organes"
+          - "Aspects réglementaires liés au contrôle technique"
+      - texte: "Identifier les méthodes d’intervention sur les organes de suspensions"
+        sous:
+          - "Différencier les montages de suspension (McPherson, multibras…)"
+          - "Différencier les fixations"
+          - "Les méthodes de dépose et repose des amortisseurs"
+          - "Contrôler l’état et les jeux des liaisons"
+    applications:
+      - texte: "Remplacer les organes de suspensions"
+        sous:
+          - "Remplacer un amortisseur à cartouche, fixation à bride et fixation à vis"
+          - "Remplacer un amortisseur non directionnel (type double triangle et pivot découplé)"
+          - "Identifier les opérations complémentaires aux interventions sur les éléments de suspension (calibrage capteurs de hauteur, réinitialisation, capteur pour systèmes d’éclairage)"
+    methodes:
+      - "Expositives, participatives et actives"
+      - "Travaux individuels et en sous-groupes"
+    evaluation: "Évaluation des objectifs pédagogiques par un quiz amont / aval"
+    tarif: "Devis sur demande"
+sources:
+  - url: "https://techformanord.fr/service/maintenance/"
+    collecte: "2026-10-24"
+    statut: repris-a-confirmer

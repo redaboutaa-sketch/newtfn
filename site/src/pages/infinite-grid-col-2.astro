@@ -1,0 +1,71 @@
+---
+// URL historique de la page « Reconversion » (lien du menu de l'ancien site, 82 liens internes).
+// Conservée telle quelle pour préserver son référencement ; /reconvention/ y est redirigée.
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Faq from '../components/Faq.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { organisme } from '../lib/data';
+
+const org = organisme();
+const parcours = (await getCollection('fiches')).map((f) => f.data).filter((f) => f.type === 'parcours').sort((a, b) => a.ordre - b.ordre);
+const faq = [
+  { q: 'Faut-il une expérience dans l’automobile ?', a: '<p>Non : les deux parcours sont accessibles sans prérequis. Un entretien de positionnement est réalisé avant l’entrée en formation afin de vérifier l’adéquation de votre projet.</p>' },
+  { q: 'Comment se déroule l’alternance ?', a: '<p>Les périodes en centre de formation alternent avec des actions en entreprise. Formateurs et tuteurs collaborent pour faciliter l’acquisition des compétences et le développement de l’autonomie.</p>' },
+  { q: 'Comment financer un parcours de reconversion ?', a: '<p>Le financement dépend du profil du candidat : préparation opérationnelle à l’emploi individuelle (POEI), aide individuelle à la formation (AIF) de France Travail, OPCO de l’entreprise d’accueil ou financement personnel. Les inscriptions sont possibles jusqu’à 10 jours avant le démarrage, sous réserve d’un financement validé.</p>' },
+  { q: 'Les parcours sont-ils accessibles aux personnes en situation de handicap ?', a: `<p>La nature très pratique de ces parcours (gestes techniques, équipements lourds, interventions en atelier) peut rendre certaines situations de handicap incompatibles avec les apprentissages en sécurité. Contactez notre référent handicap au <a href="tel:${org.referent_handicap.telephone_lien}">${org.referent_handicap.telephone_affiche}</a> pour étudier les adaptations ou une orientation adaptée.</p>` },
+];
+---
+<Base title="Reconversion dans l’automobile : mécanicien, aide carrossier" description="Parcours de reconversion vers les métiers en tension de l’automobile près de Lille : mécanicien service rapide et aide carrossier, sans prérequis, en alternance avec l’entreprise." breadcrumbs={[{ name: 'Reconversion', url: '/infinite-grid-col-2/' }]} pole="automobile" navActive="reconversion">
+  <section class="page-hero" data-accent="auto">
+    <div class="container">
+      <span class="eyebrow">Parcours de reconversion</span>
+      <h1>Se reconvertir dans les métiers de l’automobile</h1>
+      <p class="lead">En réponse à la pénurie de candidats, les parcours de reconversion proposés par Tech Formation Nord représentent une solution efficace pour intégrer rapidement de nouveaux collaborateurs opérationnels.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container narrow">
+      <p>Au cours des cinq dernières années, le nombre d’entreprises du secteur des services automobiles confrontées à des difficultés de recrutement a augmenté de 10 %. Parmi les recrutements réussis, 48 % ont été jugés difficiles. Face à ces tensions, diversifier les canaux de recrutement devient un enjeu majeur.</p>
+      <p>Nos programmes de reconversion, spécialement axés sur les métiers en tension de la maintenance des véhicules légers (VL) et de la carrosserie, facilitent la mobilité intersectorielle.</p>
+    </div>
+    <div class="container grid grid-2" style="margin-top:32px">
+      {parcours.map((f) => (
+        <article class="card card--link" data-accent="auto">
+          {f.image && <img src={f.image.src} alt="" width="1024" height="373" loading="lazy" style="border-radius:var(--radius-sm);margin-bottom:16px;aspect-ratio:16/7;object-fit:cover" />}
+          <span class="tag">Parcours de reconversion</span>
+          <h2 style="font-size:1.35rem"><a class="stretched" href={f.url} style="text-decoration:none;color:inherit">{f.titre_court}</a></h2>
+          <p>{f.resume}</p>
+          <ul class="meta-list">{f.parcours!.infos.filter((i) => ['Durée', 'Prérequis', 'Métiers visés', 'Nombre de places'].includes(i.label)).map((i) => <li><strong>{i.label} :</strong> {i.valeur}</li>)}</ul>
+          <div class="card-foot"><span class="link-arrow" aria-hidden="true">Voir le parcours détaillé</span></div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container grid grid-2">
+      <div>
+        <h2 style="font-size:1.4rem">Les étapes de votre reconversion</h2>
+        <ol>
+          <li><strong>Prise de contact</strong> via le formulaire ou par téléphone.</li>
+          <li><strong>Entretien de positionnement</strong> pour vérifier l’adéquation de votre projet.</li>
+          <li><strong>Montage du financement</strong> selon votre profil (POEI, AIF, OPCO, financement personnel).</li>
+          <li><strong>Entrée en formation</strong> à date fixe, en alternance entre le centre et l’entreprise.</li>
+        </ol>
+        <p class="small muted">Pour le parcours Aide carrossier, la durée estimée entre la demande et le début du parcours est d’environ 3 mois.</p>
+      </div>
+      <div class="card">
+        <h2 style="font-size:1.3rem">Vous êtes une entreprise ?</h2>
+        <p>Les parcours de reconversion permettent d’intégrer de nouveaux collaborateurs et de les former à vos méthodes. La seconde partie du parcours Aide carrossier se construit avec l’entreprise, lors de l’analyse du besoin.</p>
+        <a class="link-arrow" href="/entreprises/">Recruter et former avec Tech Formation Nord</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container narrow"><Faq items={faq} /></div>
+  </section>
+  <CtaBand titre="Prêt à changer de métier ?" texte="Parlez-nous de votre projet : nous organisons un entretien de positionnement et étudions avec vous les financements possibles." sujet="Parcours de reconversion" />
+</Base>

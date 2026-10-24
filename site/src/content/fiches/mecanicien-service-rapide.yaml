@@ -1,0 +1,90 @@
+url: /m-grid-col-3/
+pole: automobile
+famille: reconversion
+type: parcours
+ordre: 10
+titre: "Parcours de reconversion : mécanicien service rapide"
+titre_court: "Mécanicien service rapide"
+seo_title: "Parcours de reconversion mécanicien service rapide"
+seo_description: "Parcours de reconversion de 224 heures + 50 heures de soft skills pour devenir opérationnel sur l’entretien automobile courant, en alternance avec l’entreprise."
+resume: "Un parcours de reconversion pour acquérir les activités courantes de la mécanique service rapide automobile tout en s’intégrant efficacement à l’environnement de l’entreprise."
+image:
+  src: "/wp-content/uploads/revslider/slider-demo-01/slide-a-03-1024x373.jpg"
+  alt: "Mécanicien intervenant sur un véhicule en atelier"
+accessibilite:
+  - "L’accueil de personnes en situation de handicap n’est pas compatible avec la formation pratique."
+parcours:
+  infos:
+    - label: "Public"
+      valeur: "Tout public"
+    - label: "Prérequis"
+      valeur: "Aucun"
+    - label: "Tarif"
+      valeur: "8 790 € HT hors prise en charge (devis personnalisé sur demande)"
+    - label: "Financement"
+      valeur: "En fonction du profil du candidat (POEI / AIF / OPCO / personnel)"
+    - label: "Durée"
+      valeur: "224 heures + 50 heures de soft skills"
+    - label: "Objectifs de la formation"
+      valeur: "Permettre d’acquérir les activités courantes de la mécanique service rapide automobile tout en s’intégrant efficacement à l’environnement de l’entreprise."
+    - label: "Secteur d’activité"
+      valeur: "Automobile"
+    - label: "Métiers visés"
+      valeur: "Aide mécanicien, mécanicien"
+    - label: "Nombre de places"
+      valeur: "8 places"
+    - label: "Session de formation"
+      valeur: "Entrée / sortie à date fixe"
+    - label: "Comment candidater"
+      valeur: "Compléter le formulaire de contact disponible sur le site internet."
+    - label: "Modalités et délais d’accès"
+      valeur: "La formation est ouverte à toute personne souhaitant développer ses compétences dans la mécanique. Un entretien de positionnement est réalisé avant l’entrée en formation afin de vérifier l’adéquation du projet. Les inscriptions sont possibles jusqu’à 10 jours avant le démarrage de la session, sous réserve de financement validé. Contactez-nous pour connaître les dates et lieux de formation."
+  presentation:
+    - "Le parcours « Mécanicien service rapide » de TechFormaNord s’appuie sur de nombreuses mises en situation pratiques, directement applicables en entreprise. Animé par des formateurs experts dans leur domaine et expérimentés dans l’enseignement aux adultes, ce programme a été conçu pour permettre aux participants de maîtriser rapidement les compétences essentielles à l’entretien automobile."
+    - "Les thématiques abordées couvrent les activités incontournables, garantissant une montée en compétence rapide et efficace. L’alternance entre le centre de formation et l’entreprise favorise une collaboration étroite entre formateurs et tuteurs, facilitant ainsi l’acquisition des compétences et le développement de l’autonomie des stagiaires."
+    - "Ce parcours de reconversion prépare les candidats à devenir rapidement opérationnels sur les tâches courantes de mécanique automobile tout en s’intégrant progressivement à l’environnement de l’entreprise. Il représente une solution idéale pour intégrer de nouveaux collaborateurs et renforcer la dynamique de votre équipe."
+  phases:
+    - titre: "Objectifs pédagogiques opérationnels"
+      modules:
+        - titre: "Découvrir l’environnement professionnel"
+          objectifs:
+            - "Examiner le parcours et les outils de formation"
+            - "Distinguer les règles comportementales et de sécurité en milieu professionnel"
+            - "Identifier l’environnement du centre de formation, ses infrastructures, et son personnel"
+            - "Décrire l’environnement de la distribution et réparation automobile"
+            - "Préciser les modes d’organisation RH d’une entreprise automobile"
+        - titre: "Réaliser l’entretien du moteur et de ses périphériques"
+          objectifs:
+            - "Identifier les méthodes de contrôle et de remplacement de l’huile moteur et du filtre à huile"
+            - "Identifier les méthodes de contrôle et de remplacement liées à l’entretien des systèmes de gestion moteur"
+            - "Identifier les méthodes de contrôle des niveaux et de l’état des fluides dans le cadre d’un entretien"
+        - titre: "La prévention des risques sur véhicules électriques et hybrides (B0L)"
+          objectifs:
+            - "Identifier le risque et l’environnement"
+            - "Identifier les risques électriques et l’environnement liés aux interventions sur VEVH"
+            - "Appliquer les méthodes d’interventions"
+        - titre: "L’outil de diagnostic et les opérations de maintenance"
+          objectifs:
+            - "Identifier le rôle d’un outil de diagnostic"
+            - "Découvrir les menus de l’outil liés à la maintenance"
+        - titre: "Réaliser l’entretien des organes mécaniques et électriques d’un véhicule"
+          objectifs:
+            - "Identifier les méthodes de contrôle et de remplacement liées à l’entretien des systèmes d’éclairage, de visibilité et de nettoyage"
+            - "Identifier les méthodes de contrôle et de remplacement liées à l’entretien des systèmes de la liaison au sol et de freinage"
+            - "Identifier les méthodes de contrôle et de remplacement liées à l’entretien des systèmes d’entraînement des accessoires du moteur"
+        - titre: "Remplacer et réparer un pneumatique"
+          objectifs:
+            - "Identifier les notions technologiques liées aux pneumatiques"
+            - "Appliquer les méthodes de remplacement et de réparation d’un pneumatique classique et Run Flat"
+        - titre: "Contrôler et remplacer un élément du système de freinage"
+          objectifs:
+            - "Contrôler les usures des éléments du système de freinage"
+            - "Identifier et appliquer les méthodes de remplacement des éléments du système de freinage"
+        - titre: "Remplacer un élément de liaison au sol"
+          objectifs:
+            - "Contrôler l’état des éléments de liaison au sol en utilisant les moyens visuels, instrumentés et contextuels"
+            - "Appliquer les méthodes d’intervention sur les organes de liaison au sol et de transmission"
+sources:
+  - url: "https://techformanord.fr/m-grid-col-3/"
+    collecte: "2026-10-24"
+    statut: repris-a-confirmer

@@ -1,0 +1,8 @@
+node_modules/
+site/dist/
+site/.astro/
+.env
+.env.preprod
+.env.production
+*.log
+deploy/secrets/

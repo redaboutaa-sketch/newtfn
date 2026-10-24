@@ -1,0 +1,39 @@
+---
+// Avis et témoignages vérifiés uniquement (src/content/data/temoignages.yaml).
+// Les avis Google ne sont affichés qu'avec une source autorisée ; à défaut, lien vers la fiche
+// exacte (organisme.google_business_url). Aucun balisage AggregateRating n'est généré.
+import { temoignages, organisme } from '../lib/data';
+interface Props { pole?: string }
+const { pole } = Astro.props;
+const org = organisme();
+const all = (temoignages().temoignages || []).filter((t: any) => !pole || t.pole === pole || t.pole === 'organisme');
+const sourceLabel: Record<string, string> = { google: 'Avis Google', 'temoignage-interne': 'Témoignage recueilli par l’organisme', 'enquete-satisfaction': 'Enquête de satisfaction' };
+---
+{all.length > 0 && (
+  <section aria-labelledby="avis-titre">
+    <h2 id="avis-titre" style="font-size:1.35rem">Ils ont suivi nos formations</h2>
+    <div class="grid">
+      {all.map((t: any) => (
+        <figure class="card" style="margin:0">
+          <blockquote style="margin:0"><p>« {t.texte} »</p></blockquote>
+          <figcaption class="small muted">{t.auteur}{t.date && `, ${t.date}`} — {sourceLabel[t.source] ?? t.source}{t.url_source && <> · <a href={t.url_source} rel="noopener">voir la source</a></>}</figcaption>
+        </figure>
+      ))}
+    </div>
+  </section>
+)}
+{all.length === 0 && org.google_business_url && (
+  <div class="card">
+    <h3>Avis de nos stagiaires</h3>
+    <p>Consultez les avis publiés sur notre fiche Google.</p>
+    <a class="btn btn--ghost" href={org.google_business_url} rel="noopener">Voir les avis sur Google <span aria-hidden="true">↗</span></a>
+  </div>
+)}
+{all.length === 0 && !org.google_business_url && org.qualiopi.afficher && (
+  <div class="card">
+    <img src={org.qualiopi.logo} alt="Qualiopi — processus certifié — République française" width="430" height="183" style="width:200px;margin-bottom:12px" loading="lazy" />
+    <p style="margin-bottom:.4rem"><strong>Certificat n° {org.qualiopi.numero}</strong></p>
+    <p class="small muted">Délivré par {org.qualiopi.certificateur} au titre des actions de formation.</p>
+    <a class="link-arrow" href={org.qualiopi.document}>Télécharger le certificat (PDF)</a>
+  </div>
+)}

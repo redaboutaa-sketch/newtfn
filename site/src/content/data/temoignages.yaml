@@ -1,0 +1,14 @@
+# Témoignages et avis — n'ajouter QUE des éléments vérifiés et dont la réutilisation est autorisée.
+# Champs obligatoires : auteur (tel qu'affiché à la source), texte (fidèle), date, source
+# (google | temoignage-interne | enquete-satisfaction), pole (automobile | beaute | ia | organisme),
+# url_source si public, autorisation (référence de l'accord écrit).
+# Ne jamais appliquer l'avis d'un pôle à un autre ; ne jamais transformer un nombre de
+# participants en nombre d'avis. Aucun balisage AggregateRating n'est produit.
+#
+# État au 2026-10-24 : aucun témoignage vérifiable n'a été trouvé (voir docs/audit-existant.md §6).
+# Le composant « Avis » reste masqué tant que cette liste est vide.
+temoignages: []
+
+# Indicateurs de satisfaction : uniquement issus d'enquêtes documentées (période, nombre de
+# répondants, méthode). Le badge « 4,9/5 » de l'ancien site n'a pas de source et n'est pas repris.
+indicateurs: []
