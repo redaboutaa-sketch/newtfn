@@ -1,6 +1,6 @@
-// Génère les trois illustrations isométriques du portail (src/assets/sketches/*.svg).
+// Génère les trois illustrations isométriques (public/img/sketches/*.svg), utilisées en vignettes des cartes formation.
 // Une seule projection, une seule pièce, un seul trait : les scènes ne diffèrent que par leur mobilier
-// et leur teinte d'accent. Les classes « sk-* » servent aux animations (src/styles/global.css).
+// et leur teinte d'accent.
 // Usage : node scripts/sketches.mjs
 import fs from 'node:fs';
 import path from 'node:path';
@@ -272,13 +272,10 @@ function ia() {
   return svg('ia', 'Poste de travail et usages de l’IA', V, parts.join('\n'));
 }
 
-// Version en ligne (portail, animée) et fichier statique (vignettes des cartes formation).
-const out = path.resolve('src/assets/sketches');
 const pub = path.resolve('public/img/sketches');
-for (const d of [out, pub]) fs.mkdirSync(d, { recursive: true });
+fs.mkdirSync(pub, { recursive: true });
 for (const [name, fn] of [['automobile', auto], ['beaute', beaute], ['ia', ia]]) {
   const s = fn();
-  fs.writeFileSync(path.join(out, `${name}.svg`), s);
   fs.writeFileSync(path.join(pub, `${name}.svg`), s.replace(' aria-hidden="true" focusable="false"', ''));
   console.log(name, (s.length / 1024).toFixed(1), 'Ko');
 }

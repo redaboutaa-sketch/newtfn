@@ -1,9 +1,0 @@
----
-// Illustration isométrique en ligne (scripts/sketches.mjs), pour en animer les détails en CSS.
-import automobile from '../assets/sketches/automobile.svg?raw';
-import beaute from '../assets/sketches/beaute.svg?raw';
-import ia from '../assets/sketches/ia.svg?raw';
-interface Props { name: 'automobile' | 'beaute' | 'ia' }
-const svg = { automobile, beaute, ia }[Astro.props.name];
----
-<Fragment set:html={svg} />

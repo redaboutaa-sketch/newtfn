@@ -1,13 +1,14 @@
 ---
 // Portail : page d'entrée courte présentant les trois univers de Tech Formation Nord.
-// Chaque univers est un seul lien HTML (logo, illustration, intitulé, appel à l'action), même onglet.
+// Chaque univers est un seul lien HTML (logo, photo, intitulé, appel à l'action), même onglet.
 import Base from '../layouts/Base.astro';
-import Sketch from '../components/Sketch.astro';
+import Picture from '../components/Picture.astro';
 import WhatsAppLink from '../components/WhatsAppLink.astro';
 import { organisme, poles } from '../lib/data';
 
 const org = organisme();
-const sketch: Record<string, 'automobile' | 'beaute' | 'ia'> = { automobile: 'automobile', beaute: 'beaute', ia: 'ia' };
+// Photos 4:3 recadrées par scripts/prepare-media.mjs (originaux dans media-src/portail/).
+const photo = { automobile: 'portail-automobile', beaute: 'portail-esthetique', ia: 'portail-ia' } as const;
 const univers = poles();
 ---
 <Base chrome="portail" title="Tech Formation Nord — Formations automobile, esthétique et intelligence artificielle près de Lille" description="Tech Formation Nord, organisme de formation certifié Qualiopi à Vendeville, près de Lille : trois univers de formation, l’automobile, l’esthétique et le bien-être avec Maison Beauxlieux, et l’intelligence artificielle.">
@@ -26,7 +27,7 @@ const univers = poles();
         <li class="universe" data-accent={u.accent} style={`--i:${i}`}>
           <a class="universe-link" href={u.portail.destination} data-track="univers" data-pole={u.id}>
             <span class="u-logo"><img src={u.portail.logo.src} alt={u.portail.marque} width={u.portail.logo.width} height={u.portail.logo.height} style={`--h:${u.portail.logo.hauteur}px`} /></span>
-            <span class="u-sketch"><Sketch name={sketch[u.id]} /></span>
+            <span class="u-photo"><Picture id={photo[u.id as keyof typeof photo]} sizes="(max-width: 860px) 42vw, 400px" priority decorative /></span>
             <span class="u-text">
               <h2 class="u-name">{u.portail.titre}</h2>
               <span class="u-cta">Découvrir les formations <span class="u-arrow" aria-hidden="true">→</span></span>

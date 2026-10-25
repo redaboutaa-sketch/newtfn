@@ -87,9 +87,6 @@ if (toc && 'IntersectionObserver' in window) {
   links.forEach((_, id) => { const t = document.getElementById(id); if (t) tocIo.observe(t); });
 }
 
-/* Portail : fin de l'entrée coordonnée ; seuls les survols rejouent ensuite les détails des illustrations. */
-if (document.querySelector('.universes')) window.setTimeout(() => html.classList.add('is-settled'), 2800);
-
 /* Fiches : le module ciblé par son ancre s'ouvre (son contenu détaillé est replié par défaut). */
 const openTarget = () => {
   const id = decodeURIComponent(location.hash.slice(1));

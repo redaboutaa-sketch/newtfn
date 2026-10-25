@@ -59,8 +59,9 @@ Légende : **[Bloquant]** = à trancher avant la bascule · **[Important]** = à
 | M2 **[Important]** | Les visuels de maisonbeauxlieux.com semblent générés par IA (textes illisibles sur les flacons). | Non utilisés comme photos de locaux. Fournir de vraies photos pour illustrer le pôle beauté. |
 | M3 **[Amélioration]** | Aucune photo de l'équipe ni des locaux TFN ; l'ancienne page « Notre équipe » présentait 8 personnes fictives du thème (410). | Fournir noms, rôles et photos (avec accord) pour une section « Équipe ». |
 
-| M4 **[Amélioration]** | Portail : illustrations isométriques créées (symboliques) et logo « IA Tech Formation Nord » créé faute de logo définitif ; les cartes beauté et IA utilisent des cadrages de ces illustrations faute de photos. | Valider le logo IA (ou fournir le logo définitif) ; fournir des photos pour les cartes. |
-| M5 **[Amélioration]** | WhatsApp professionnel +33 7 58 05 81 78 communiqué le 25/10/2026 et intégré. | Confirmer que ce numéro est bien un compte WhatsApp professionnel suivi. |
+| M4 **[Amélioration]** | Portail : illustrations isométriques créées (symboliques, remplacées sur le portail par les photos fournies le 25/10/2026) et logo « IA Tech Formation Nord » créé faute de logo définitif ; les cartes beauté et IA utilisent des cadrages de ces illustrations faute de photos. | Valider le logo IA (ou fournir le logo définitif) ; fournir des photos pour les cartes. |
+| M5 **[Résolu]** | WhatsApp professionnel **+33 6 86 15 89 33** confirmé par le client le 25/10/2026 et intégré (remplace le 07 58 05 81 78). Téléphone fixe et e-mail conservés séparément. | — |
+| M6 **[À confirmer]** | Photos des trois univers du portail fournies le 25/10/2026. L'atelier porte l'enseigne « TECHFORMATION » et l'écran de l'ordinateur affiche un texte illisible : ces images semblent être des visuels d'illustration (éventuellement générés), pas des photos des locaux. | Confirmer les droits d'usage ; si ce ne sont pas les locaux réels, éviter de les présenter comme tels ailleurs que sur le portail. |
 
 ## 6. Accès et données à obtenir
 
