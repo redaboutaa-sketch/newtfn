@@ -46,7 +46,7 @@ const [introLead, ...introSuite] = f.intro;
         <ul class="hero-facts" style="--i:3">{chips.map((c) => <li>{c}</li>)}</ul>
         <div class="btn-row">
           <a class="btn btn--primary" href={`/contact-us/?sujet=${encodeURIComponent(f.titre_court)}#formulaire`}>{f.type === 'parcours' ? 'Candidater ou se renseigner' : 'Demander un devis'}</a>
-          <a class="btn btn--ghost" href={`tel:${org.telephone.lien}`} data-place="fiche-hero">{org.telephone.affiche}</a>
+          <a class="btn btn--ghost" href={`tel:${org.telephone.lien}`} data-place="fiche-hero"><span class="num">{org.telephone.affiche}</span></a>
           <WhatsAppLink contexte={f.titre_court} place="fiche-hero" />
         </div>
       </div>

@@ -92,7 +92,7 @@ const ld = [orgLd, ...(crumbLd ? [crumbLd] : []), ...jsonld];
   </head>
   <body data-pole={pole} data-env={SITE_ENV} class={chrome === 'portail' ? 'is-portail' : undefined}>
     <a class="skip-link" href="#content">Aller au contenu</a>
-    {!isProduction && <div class="env-banner" role="note">Site de préproduction — contenu en cours de validation, non indexé. Les formulaires fonctionnent en mode test.</div>}
+    {!isProduction && <div class="env-banner" role="note">Site de préproduction<span class="env-long"> — contenu en cours de validation, non indexé. Les formulaires fonctionnent en mode test.</span><span class="env-short"> · non indexé, formulaires en test</span></div>}
     {chrome === 'site' ? <Header active={navActive} /> : <slot name="entete" />}
     <main id="content" tabindex="-1">
       {breadcrumbs.length > 0 && <div class="container"><Breadcrumb items={breadcrumbs} /></div>}

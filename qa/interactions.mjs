@@ -118,6 +118,25 @@ const page = async (opts = {}) => {
   await p.context().close();
 }
 
+{
+  // Petits écrans et texte agrandi (réglage du téléphone) : les numéros ne se coupent jamais.
+  const p = await page({ viewport: { width: 320, height: 700 }, isMobile: true, hasTouch: true });
+  const coupes = [];
+  for (const u of ['/', '/acceuil/', '/contact-us/', '/service/maintenance/']) {
+    await p.goto(BASE + u);
+    await p.addStyleTag({ content: 'html{font-size:130% !important}' });
+    coupes.push(...await p.evaluate(() => [...document.querySelectorAll('a[href^="tel:"]:not(.btn), .num')].filter((el) => {
+      if (!el.getBoundingClientRect().width) return false;
+      const ys = new Set(); const tw = document.createTreeWalker(el, NodeFilter.SHOW_TEXT); let t;
+      while ((t = tw.nextNode())) { if (!t.textContent.trim() || t.parentElement.closest('.sr-only')) continue; const r = document.createRange(); r.selectNodeContents(t); for (const q of r.getClientRects()) if (q.width > 1) ys.add(Math.round(q.top / 4)); }
+      return ys.size > 1 || el.getBoundingClientRect().right > innerWidth + 0.5;
+    }).map((el) => location.pathname + ' ' + el.textContent.trim())));
+    if (await p.evaluate(() => document.documentElement.scrollWidth > innerWidth)) coupes.push(u + ' débordement');
+  }
+  check('mobile 320 px, texte à 130 % : numéros sur une ligne, sans débordement', coupes.length === 0, coupes.join(' | '));
+  await p.context().close();
+}
+
 // 4. Mouvement réduit : aucun contenu masqué, pas de classe motion.
 {
   const p = await page({ viewport: { width: 1440, height: 900 }, reducedMotion: 'reduce' });

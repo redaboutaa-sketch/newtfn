@@ -15,7 +15,7 @@ const href = sujet ? `/contact-us/?sujet=${encodeURIComponent(sujet)}#formulaire
     </div>
     <div class="btn-row" data-reveal style="--i:1">
       <a class="btn btn--light" href={href}>Demander un conseil <span aria-hidden="true">→</span></a>
-      <a class="btn btn--on-night" href={`tel:${org.telephone.lien}`} data-place="bandeau-cta">Appeler le {org.telephone.affiche}</a>
+      <a class="btn btn--on-night" href={`tel:${org.telephone.lien}`} data-place="bandeau-cta">Appeler le <span class="num">{org.telephone.affiche}</span></a>
       <WhatsAppLink contexte={sujet} place="bandeau-cta" class="btn btn--on-night btn--wa-night" />
     </div>
   </div>
