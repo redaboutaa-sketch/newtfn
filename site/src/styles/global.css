@@ -531,7 +531,8 @@ details.more > summary:hover, details.prog-more > summary:hover { color: var(--a
 .footer-logo img { width: 140px; }
 .footer-bottom { border-top: 1px solid #1d2c40; margin-top: 48px; padding-top: 20px; display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-between; font-size: .86rem; color: #93a3b8; }
 .footer-bottom a { color: #c9d4e2; }
-.env-banner { background: repeating-linear-gradient(45deg, #ffe08a, #ffe08a 12px, #ffd25c 12px, #ffd25c 24px); color: #3d2e00; font-weight: 650; text-align: center; padding: 6px 12px; font-size: .84rem; }
+/* Police système : le bandeau ne change pas de hauteur au chargement des polices web (CLS). */
+.env-banner { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; background: repeating-linear-gradient(45deg, #ffe08a, #ffe08a 12px, #ffd25c 12px, #ffd25c 24px); color: #3d2e00; font-weight: 650; text-align: center; padding: 6px 12px; font-size: .84rem; }
 
 /* ---------- Portail des trois univers (/) ---------- */
 body.is-portail { display: flex; flex-direction: column; min-height: 100vh; min-height: 100dvh; background: var(--paper); }
@@ -552,7 +553,7 @@ body.is-portail main { flex: 1; display: flex; flex-direction: column; justify-c
 .u-logo { display: flex; align-items: center; justify-content: center; height: 74px; }
 .u-logo img { height: var(--h); width: auto; max-width: 100%; }
 [data-accent="beaute"] .u-logo img { border-radius: 8px; }
-.u-sketch { display: block; width: min(100%, calc(40vh * 1.14), 400px); margin: clamp(4px, 1vh, 12px) auto 0; }
+.u-sketch { contain: layout paint; display: block; width: min(100%, calc(40vh * 1.14), 400px); margin: clamp(4px, 1vh, 12px) auto 0; }
 .u-sketch svg { width: 100%; height: auto; transform-origin: 50% 62%; transition: transform 800ms var(--ease), opacity 400ms var(--ease), filter 400ms var(--ease); }
 .u-text { display: flex; flex-direction: column; align-items: center; }
 .u-name { margin: .35em 0 .3em; font-size: clamp(1.25rem, 1.05rem + .6vw, 1.6rem); }
