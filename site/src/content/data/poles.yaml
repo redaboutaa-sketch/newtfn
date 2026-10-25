@@ -24,7 +24,7 @@
   nom: Esthétique, beauté et bien-être
   nom_court: Beauté et bien-être
   nom_long: Esthétique, beauté et bien-être
-  url: /formations/beaute-bien-etre/
+  url: https://maisonbeauxlieux.com/formations # page TFN retirée (301), parcours automobile seul
   accent: beaute
   accroche: Formations courtes aux techniques du regard, du visage, du corps, des ongles et du cheveu, à Vendeville avec Maison Beauxlieux.
   publics: [Esthéticiennes et esthéticiens, Prothésistes ongulaires, Coiffeurs et praticiens capillaires, Praticiens du bien-être]
@@ -75,7 +75,7 @@
   nom: Intelligence artificielle et numérique
   nom_court: IA et numérique
   nom_long: Intelligence artificielle et numérique
-  url: /formations/intelligence-artificielle/
+  url: https://iatechformanord.fr/ # page TFN retirée (301), parcours automobile seul
   accent: ia
   accroche: "Usages professionnels de l'IA générative : rédaction, relation client, présence en ligne et organisation du travail."
   publics: [Artisans, TPE et indépendants, Entreprises et équipes, Particuliers et salariés]

@@ -17,7 +17,9 @@ interface Props {
   jsonld?: object[];
   chrome?: 'site' | 'portail'; // « portail » : page d'entrée sans en-tête ni pied de page du site TFN
 }
-const { title, description, breadcrumbs = [], noindex = false, pole, navActive, ogImage = '/img/og-default.png', jsonld = [], chrome = 'site' } = Astro.props;
+const { title, description, breadcrumbs = [], noindex = false, pole, navActive, jsonld = [], chrome = 'site' } = Astro.props;
+// Partage : image des trois univers pour le portail, image automobile pour le site TFN.
+const ogImage = Astro.props.ogImage ?? (chrome === 'portail' ? '/img/og-default.png' : '/img/og-automobile.png');
 const org = organisme();
 const site = Astro.site!.toString().replace(/\/$/, '');
 const canonical = new URL(Astro.url.pathname, Astro.site).toString();

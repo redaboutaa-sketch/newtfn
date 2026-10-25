@@ -2,11 +2,11 @@
 // URL historique « Contactez-nous » conservée (/contact y redirigeait déjà).
 import Base from '../../layouts/Base.astro';
 import WhatsAppLink from '../../components/WhatsAppLink.astro';
-import { organisme, poles, isProduction, FORM_ENDPOINT } from '../../lib/data';
+import { organisme, pole, isProduction, FORM_ENDPOINT } from '../../lib/data';
 const org = organisme();
-const mbl = poles().find((p) => p.id === 'beaute').site_externe;
+const auto = pole('automobile');
 ---
-<Base title="Contact : demande d’information ou de devis" description="Contactez Tech Formation Nord à Vendeville : demande d’information, de devis ou d’inscription par formulaire, par téléphone au 03 20 16 09 15 ou par e-mail." breadcrumbs={[{ name: 'Contact', url: '/contact-us/' }]} navActive="contact">
+<Base title="Contact : demande d’information ou de devis" description="Contactez Tech Formation Nord à Vendeville pour une formation automobile : demande d’information, de devis ou d’inscription par formulaire, par téléphone au 03 20 16 09 15, par WhatsApp ou par e-mail." breadcrumbs={[{ name: 'Contact', url: '/contact-us/' }]} navActive="contact">
   <section class="page-hero">
     <div class="container hero-enter">
       <span class="eyebrow">Contact</span>
@@ -41,7 +41,7 @@ const mbl = poles().find((p) => p.id === 'beaute').site_externe;
           <div class="field">
             <fieldset>
               <legend>Domaine qui vous intéresse</legend>
-              {poles().map((p) => <label class="choice"><input type="radio" name="pole" value={p.id} /> {p.nom}</label>)}
+              <label class="choice"><input type="radio" name="pole" value={auto.id} /> Formation automobile (perfectionnement, reconversion)</label>
               <label class="choice"><input type="radio" name="pole" value="conseil" checked /> Je ne sais pas encore, j’ai besoin de conseils</label>
             </fieldset>
           </div>
@@ -63,11 +63,6 @@ const mbl = poles().find((p) => p.id === 'beaute').site_externe;
           <p style="margin:0"><strong>Horaires</strong></p>
           <ul style="list-style:none;padding:0">{org.horaires.map((h: any) => <li>{h.jours} : {h.heures}</li>)}</ul>
           <a class="link-arrow" href="/informations-pratiques/">Plan d’accès et transports</a>
-        </div>
-        <div class="card" data-accent="beaute">
-          <h2 style="font-size:1.15rem">Formations beauté et location d’espaces</h2>
-          <p class="small">Maison Beauxlieux — {mbl.adresse}<br />{mbl.telephone} — <a href={`mailto:${mbl.email}`} data-place="page-contact-mbl">{mbl.email}</a><br />{mbl.horaires}</p>
-          <a class="link-arrow" href={mbl.contact_url} data-track="passerelle" data-pole="beaute">Contacter Maison Beauxlieux</a>
         </div>
       </div>
     </div>

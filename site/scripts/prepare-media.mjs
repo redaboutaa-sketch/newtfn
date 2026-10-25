@@ -12,14 +12,11 @@ const OUT = 'public/img/photos';
 fs.mkdirSync(CACHE, { recursive: true });
 fs.mkdirSync(OUT, { recursive: true });
 
-// Sources : images déjà publiées par l'organisme (ancien site) ou par Maison Beauxlieux.
-// Les visuels Maison Beauxlieux sont générés par IA : seules des natures mortes d'outils sont
-// utilisées, jamais comme représentation des locaux ou des activités (docs/direction-artistique.md).
+// Sources : images déjà publiées par l'organisme (ancien site) ou fournies par lui (media-src/).
 const SOURCES = {
   cle: 'https://techformanord.fr/wp-content/uploads/2024/09/hands-car-mechanic-with-wrench-garage.jpg',
   peinture: 'https://techformanord.fr/wp-content/uploads/2024/09/man-painting-car-door-side-view.jpg',
   showroom: 'https://techformanord.fr/wp-content/uploads/2024/09/stylish-elegant-woman-car-salon.jpg',
-  ongles: 'https://maisonbeauxlieux.com/images/section-studio.webp',
   // Visuels des trois univers du portail, fournis par l'organisme (originaux versionnés dans media-src/).
   'portail-automobile': 'media-src/portail/automobile.jpeg',
   'portail-esthetique': 'media-src/portail/esthetique.jpeg',
@@ -33,7 +30,6 @@ const CROPS = [
   { id: 'auto-peinture-portrait', src: 'peinture', region: [0.16, 0.05, 0.5, 0.95], widths: [420, 720, 1000], alt: 'Pistolet de peinture en action au-dessus d’un élément de carrosserie' },
   { id: 'auto-peinture-paysage', src: 'peinture', region: [0, 0.08, 1, 0.84], widths: [640, 1100, 1600], alt: 'Application de peinture au pistolet sur un élément de carrosserie' },
   { id: 'auto-showroom-paysage', src: 'showroom', region: [0, 0, 1, 1], widths: [640, 1100, 1600], alt: 'Vente d’un véhicule dans un showroom automobile' },
-  { id: 'beaute-ongles', src: 'ongles', region: [0.2, 0.36, 0.62, 0.64], widths: [420, 720, 870], alt: 'Outils de manucure et flacons de vernis disposés sur une table' },
   // Portail : même format 4:3 pour les trois univers, sans déformation (recadrage seul).
   { id: 'portail-automobile', src: 'portail-automobile', region: [0.14, 0.04, 0.7, 0.837], widths: [440, 720, 840], saturation: 1, alt: 'Atelier de carrosserie : préparation d’un véhicule et d’un pare-chocs avant peinture' },
   { id: 'portail-esthetique', src: 'portail-esthetique', region: [0, 0.2, 1, 0.5625], widths: [440, 720, 1080], saturation: 1, alt: 'Cabine de soins esthétiques avec deux tables de soin et un miroir éclairé' },

@@ -17,7 +17,7 @@ const path = Astro.url.pathname;
 <header class="site-header">
   <div class="topbar">
     <div class="container">
-      <span><a class="topbar-portail" href="/"><span aria-hidden="true">←</span> Nos trois univers</a><span class="topbar-extra"><span aria-hidden="true"> · </span>{org.adresse.rue}, {org.adresse.code_postal} {org.adresse.ville} · près de Lille</span></span>
+      <span><a class="topbar-portail" href="/"><span aria-hidden="true">←</span> Retour au portail</a><span class="topbar-extra"><span aria-hidden="true"> · </span>{org.adresse.rue}, {org.adresse.code_postal} {org.adresse.ville} · près de Lille</span></span>
       <span>
         <a href={`tel:${org.telephone.lien}`} data-place="bandeau">{org.telephone.affiche}</a>
         <span class="topbar-extra"><span aria-hidden="true"> · </span>

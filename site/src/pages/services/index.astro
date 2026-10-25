@@ -1,66 +1,65 @@
 ---
-// Catalogue : une carte par formation (visuel, nom, durée si publiée). Les programmes détaillés
-// restent sur les fiches (automobile) ou sur les sites des pôles (beauté, IA).
+// Catalogue automobile : une section par famille (fiche + modules), puis les parcours de reconversion.
+// Les programmes détaillés restent sur les fiches ; liens vers leurs ancres #prog-…
 import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import CtaBand from '../../components/CtaBand.astro';
 import FormationCard from '../../components/FormationCard.astro';
-import { poles } from '../../lib/data';
-import { autoCards, beauteCards, iaCards } from '../../lib/cards';
+import { pole } from '../../lib/data';
+import { autoCards } from '../../lib/cards';
 
-const fiches = (await getCollection('fiches')).map((f) => f.data).sort((a, b) => a.ordre - b.ordre);
-const ps = poles();
-const lien: Record<string, string> = { automobile: 'Présentation du pôle', beaute: 'Le pôle beauté', ia: 'Le pôle IA' };
+const fiches = (await getCollection('fiches')).map((f) => f.data).filter((f) => f.pole === 'automobile').sort((a, b) => a.ordre - b.ordre);
+const auto = pole('automobile');
+const cards = autoCards(fiches, 'catalogue');
+// Familles « catalogue » dans l'ordre éditorial du pôle (maintenance, carrosserie, commerce).
+const ordre = ['maintenance-diagnostic', 'carrosserie-peinture', 'commerce'];
+const familles = ordre.map((id) => auto.familles.find((x: any) => x.id === id)).map((fam: any) => ({
+  fam, fiche: fiches.find((f) => f.url === fam.url)!, card: cards.find((c) => c.href === fam.url)!,
+}));
+const reconversion = auto.familles.find((x: any) => x.id === 'reconversion');
+const nbModules = familles.reduce((n, x) => n + x.fiche.programmes.length, 0);
 ---
-<Base title="Catalogue des formations : automobile, beauté et IA" description="Toutes les formations de Tech Formation Nord à Vendeville, près de Lille : maintenance, carrosserie, commerce automobile, reconversion, esthétique et intelligence artificielle." breadcrumbs={[{ name: 'Nos formations', url: '/services/' }]} navActive="formations">
-  <section class="page-hero">
-    <div class="container hero-enter">
-      <span class="eyebrow">Catalogue</span>
-      <h1>Nos formations</h1>
-      <p class="lead">Trois domaines, des modules courts de perfectionnement et des parcours longs de reconversion.</p>
-      <nav aria-label="Accès rapide aux domaines" class="btn-row">
-        {ps.map((p) => <a class="btn btn--ghost" href={`#${p.id}`}>{p.nom}</a>)}
+<Base title="Catalogue des formations automobile : maintenance, carrosserie, commerce" description={`Toutes les formations automobile de Tech Formation Nord à Vendeville, près de Lille : ${nbModules} modules en maintenance et diagnostic, carrosserie et peinture, commerce VN/VO, et parcours de reconversion.`} breadcrumbs={[{ name: 'Nos formations', url: '/services/' }]} navActive="formations" pole="automobile">
+  <section class="page-hero" data-accent="auto">
+    <div class="container hero-enter" id="automobile">
+      <span class="eyebrow">Catalogue automobile</span>
+      <h1>Nos formations automobile</h1>
+      <p class="lead">Des modules courts de perfectionnement pour les professionnels de l’après-vente et des parcours de reconversion vers les métiers de l’atelier.</p>
+      <nav aria-label="Accès rapide aux familles de formations" class="btn-row">
+        {familles.map(({ fam }) => <a class="btn btn--ghost" href={`#${fam.id}`}>{fam.nom}</a>)}
+        <a class="btn btn--ghost" href={`#${reconversion.id}`}>{reconversion.nom}</a>
       </nav>
     </div>
   </section>
 
-  {ps.map((p, i) => (
-    <section class={`section ${i % 2 ? 'section--surface' : ''}`} id={p.id} aria-labelledby={`h-${p.id}`} data-accent={p.accent}>
+  {familles.map(({ fam, fiche, card }, i) => (
+    <section class={`section ${i % 2 ? 'section--surface' : ''}`} id={fam.id} aria-labelledby={`h-${fam.id}`} data-accent="auto">
       <div class="container">
         <div class="cat-head">
-          <h2 id={`h-${p.id}`}>{p.nom}</h2>
-          <a class="link-arrow" href={p.url}>{lien[p.id]}</a>
+          <h2 id={`h-${fam.id}`}>{fam.nom}</h2>
+          <a class="link-arrow" href={fiche.url}>Voir la fiche complète</a>
         </div>
-
-        {p.id === 'automobile' && (
-          <>
-            <h3 class="cat-sub">Modules de perfectionnement</h3>
-            <ul class="fcards" data-reveal="fade">{autoCards(fiches, 'catalogue').map((c) => <FormationCard {...c} level={3} />)}</ul>
-            <h3 class="cat-sub">Parcours de reconversion</h3>
-            <ul class="fcards" data-reveal="fade">{autoCards(fiches, 'parcours').map((c) => <FormationCard {...c} level={3} />)}</ul>
-          </>
-        )}
-
-        {p.id === 'beaute' && (
-          <>
-            {beauteCards().map(({ famille, cards }: any) => (
-              <>
-                <h3 class="cat-sub">{famille.nom}</h3>
-                <ul class="fcards" data-reveal="fade">{cards.map((c: any) => <FormationCard {...c} level={4} />)}</ul>
-              </>
-            ))}
-            <p class="small muted cat-note">Programmes, tarifs et sessions des formations esthétiques sur maisonbeauxlieux.com.</p>
-          </>
-        )}
-
-        {p.id === 'ia' && (
-          <>
-            <ul class="fcards" data-reveal="fade" style="margin-top:24px">{iaCards().map((c) => <FormationCard {...c} level={3} />)}</ul>
-            <p class="small muted cat-note">Programmes détaillés, tarifs et sessions des formations IA sur iatechformanord.fr.</p>
-          </>
-        )}
+        <div class="cat-family" data-reveal="fade">
+          <ul class="fcards"><FormationCard {...card} level={3} /></ul>
+          <div>
+            <h3 class="cat-sub">{fiche.programmes.length} module{fiche.programmes.length > 1 ? 's' : ''} de perfectionnement</h3>
+            <ol class="module-cards">{fiche.programmes.map((p: any, n: number) => (
+              <li><a href={`${fiche.url}#prog-${p.id}`}><span class="mc-num" aria-hidden="true">{String(n + 1).padStart(2, '0')}</span><span class="mc-title">{p.titre}</span>{p.duree && <span class="mc-meta">{p.duree}</span>}</a></li>
+            ))}</ol>
+          </div>
+        </div>
       </div>
     </section>
   ))}
-  <CtaBand />
+
+  <section class={`section ${familles.length % 2 ? 'section--surface' : ''}`} id={reconversion.id} aria-labelledby="h-reconversion" data-accent="auto">
+    <div class="container">
+      <div class="cat-head">
+        <h2 id="h-reconversion">{reconversion.nom}</h2>
+        <a class="link-arrow" href={reconversion.url}>Tout savoir sur la reconversion</a>
+      </div>
+      <ul class="fcards fcards--2" data-reveal="fade" style="margin-top:24px">{autoCards(fiches, 'parcours').map((c) => <FormationCard {...c} level={3} />)}</ul>
+    </div>
+  </section>
+  <CtaBand titre="Un projet de formation automobile ?" sujet="Formation automobile" />
 </Base>

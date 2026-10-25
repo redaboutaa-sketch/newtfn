@@ -8,7 +8,7 @@ ancienne_url,nouvelle_url,traitement,code_http,justification
 /service/interior-cleaning/,/service/interior-cleaning/,conservation,200,Fiche Carrosserie peinture (12 modules) : slug hérité du thème mais URL indexée ; conservée.
 /service/maintenance/,/service/maintenance/,conservation,200,Fiche Maintenance (5 modules) : contenu pédagogique intégralement repris.
 /service/wheels-alignment/,/service/wheels-alignment/,conservation,200,Fiche Commerce (2 modules) : slug hérité du thème mais URL indexée et liée depuis 82 pages ; conservée.
-/services/,/services/,conservation,200,Catalogue des formations : devient le catalogue global des trois pôles.
+/services/,/services/,conservation,200,Catalogue des formations automobile (les formations beauté et IA sont présentées sur leurs sites).
 /2024/09/11/auto-repair-marketing-ideas-to-boost-conversions/,,suppression,410,"Article de démonstration du thème (anglais, sans rapport avec l’organisme) ; aucun équivalent pertinent."
 /2024/09/11/guide-to-year-round-dallas-auto-repair/,,suppression,410,"Article de démonstration du thème (anglais, sans rapport avec l’organisme) ; aucun équivalent pertinent."
 /2024/09/11/how-long-does-it-take-to-change-a-flat-tyre/,,suppression,410,"Article de démonstration du thème (anglais, sans rapport avec l’organisme) ; aucun équivalent pertinent."
@@ -214,3 +214,5 @@ ancienne_url,nouvelle_url,traitement,code_http,justification
 /wp-sitemap-taxonomies-post_tag-1.xml,/sitemap.xml,redirection,301,Sous-sitemap WordPress remplacé par le sitemap unique du nouveau site.
 /wp-sitemap.xml,/sitemap.xml,redirection,301,Sitemap WordPress remplacé par le sitemap du nouveau site.
 /xmlrpc.php,,suppression,410,Point d’entrée technique WordPress ; plus de CMS WordPress.
+/formations/beaute-bien-etre/,https://maisonbeauxlieux.com/formations,redirection,301,Page beauté du site TFN retirée (parcours automobile seul) : catalogue des formations esthétiques sur maisonbeauxlieux.com.
+/formations/intelligence-artificielle/,https://iatechformanord.fr/,redirection,301,Page IA du site TFN retirée (parcours automobile seul) : site IA Tech Formation Nord (racine : seule URL vérifiable, le site renvoie 200 pour toute adresse).

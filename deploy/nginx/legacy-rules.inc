@@ -5,6 +5,10 @@ map $uri $tfn_redirect {
     default "";
     "/contact" "/contact-us/";
     "/contact/" "/contact-us/";
+    "/formations/beaute-bien-etre" "https://maisonbeauxlieux.com/formations";
+    "/formations/beaute-bien-etre/" "https://maisonbeauxlieux.com/formations";
+    "/formations/intelligence-artificielle" "https://iatechformanord.fr/";
+    "/formations/intelligence-artificielle/" "https://iatechformanord.fr/";
     "/reconvention" "/infinite-grid-col-2/";
     "/reconvention/" "/infinite-grid-col-2/";
     "/service" "/services/";

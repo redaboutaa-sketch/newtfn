@@ -142,10 +142,43 @@ const page = async (opts = {}) => {
   await p.context().close();
 }
 
+{
+  // Parcours automobile : aucune mention des univers beauté et IA (le portail les conserve ;
+  // les mentions légales gardent la rubrique « Sites liés », information légale).
+  const p = await page({ viewport: { width: 1440, height: 900 } });
+  const AUTO = ['/acceuil/', '/services/', '/formations/automobile/', '/service/maintenance/', '/service/wheels-alignment/', '/service/interior-cleaning/', '/m-grid-col-3/', '/m-grid-col-2/', '/infinite-grid-col-2/', '/entreprises/', '/financer-sa-formation/', '/about-us/', '/qualite/', '/accessibilite-handicap/', '/informations-pratiques/', '/contact-us/', '/contact-us/merci/', '/politique-de-confidentialite/', '/plan-du-site/', '/page-inexistante/'];
+  const RX = /esth[ée]ti|beaut[ée]|bien-[êe]tre|beauxlieux|intelligence artificielle|iatechformanord|\bIA\b|trois univers|trois (pôles|domaines)/i;
+  const fautes = [];
+  for (const u of AUTO) {
+    await p.goto(BASE + u);
+    const r = await p.evaluate((src) => {
+      const rx = new RegExp(src, 'i');
+      const meta = [...document.querySelectorAll('title, meta[name="description"], meta[property^="og:"], script[type="application/ld+json"]')].map((m) => m.content || m.textContent).join(' ');
+      const links = [...document.querySelectorAll('a[href]')].map((a) => a.getAttribute('href')).filter((h) => rx.test(h) || /formations\/(beaute|intelligence)/.test(h));
+      const txt = document.body.innerText.match(rx)?.[0] || meta.match(rx)?.[0] || null;
+      const brand = document.querySelector('.site-header .brand')?.getAttribute('href');
+      const back = [...document.querySelectorAll('.site-header a[href="/"]')].map((a) => a.textContent.trim());
+      const og = document.querySelector('meta[property="og:image"]')?.content || '';
+      return { txt, links, brand, back, og };
+    }, RX.source);
+    if (r.txt || r.links.length) fautes.push(`${u} : ${r.txt || ''} ${r.links.join(' ')}`.trim());
+    if (r.brand !== '/acceuil/' || !r.back.some((t) => /Retour au portail/.test(t)) || !r.og.endsWith('/img/og-automobile.png')) fautes.push(`${u} : navigation ou image de partage (${r.brand}, ${r.back.join('|')}, ${r.og})`);
+  }
+  check(`parcours automobile : aucune mention beauté ni IA, logo → /acceuil/, « Retour au portail » (${AUTO.length} pages)`, fautes.length === 0, fautes.join(' || '));
+  await p.goto(BASE + '/services/');
+  const cat = await p.$$eval('main section:not(.cta-band) a[href]', (as) => as.map((a) => a.getAttribute('href')).filter((h) => !h.startsWith('#')));
+  check('catalogue : uniquement des liens automobiles internes', cat.length > 10 && cat.every((h) => h.startsWith('/') && !/beaute|intelligence/.test(h)), cat.filter((h) => !h.startsWith('/')).join(' '));
+  const ancres = cat.filter((h) => h.includes('#prog-'));
+  const manquantes = [];
+  for (const h of ancres) { const [path, id] = h.split('#'); await p.goto(BASE + path); if (!(await p.locator('#' + id).count())) manquantes.push(h); }
+  check(`catalogue : ${ancres.length} liens de modules vers des ancres existantes`, ancres.length >= 19 && manquantes.length === 0, manquantes.join(' '));
+  await p.context().close();
+}
+
 // 4. Mouvement réduit : aucun contenu masqué, pas de classe motion.
 {
   const p = await page({ viewport: { width: 1440, height: 900 }, reducedMotion: 'reduce' });
-  for (const u of ['/', '/acceuil/', '/service/interior-cleaning/', '/formations/beaute-bien-etre/']) {
+  for (const u of ['/', '/acceuil/', '/service/interior-cleaning/', '/formations/automobile/']) {
     await p.goto(BASE + u);
     const hidden = await p.evaluate(() => [...document.querySelectorAll('[data-reveal]')].filter((e) => getComputedStyle(e).opacity !== '1').length);
     check(`mouvement réduit ${u} : tout visible`, hidden === 0 && !(await p.evaluate(() => document.documentElement.classList.contains('motion'))));

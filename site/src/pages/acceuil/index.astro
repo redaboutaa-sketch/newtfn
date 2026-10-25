@@ -18,8 +18,6 @@ const maint = fiche('/service/maintenance/');
 const carro = fiche('/service/interior-cleaning/');
 const msr = fiche('/m-grid-col-3/');
 const auto = pole('automobile');
-const beaute = pole('beaute');
-const ia = pole('ia');
 const p44992 = maint.programmes[0];
 const p08 = carro.programmes[0];
 const cards = autoCards(fiches);
@@ -172,21 +170,5 @@ const selection = [
     </div>
   </section>
 
-  <section class="section section--tight" aria-labelledby="univers-titre">
-    <div class="container other-universes" data-reveal>
-      <h2 id="univers-titre">Tech Formation Nord forme aussi à l’esthétique et à l’intelligence artificielle</h2>
-      <ul>
-        {[beaute, ia].map((u: any) => (
-          <li data-accent={u.accent}>
-            <a href={u.portail.destination} data-track="univers" data-pole={u.id}>
-              <img src={u.portail.logo.src} alt="" width={u.portail.logo.width} height={u.portail.logo.height} loading="lazy" style={`height:${Math.round(u.portail.logo.hauteur * 0.75)}px`} />
-              <span><strong>{u.portail.titre}</strong><span class="small">{u.portail.marque} · {u.portail.domaine} <span aria-hidden="true">↗</span></span></span>
-            </a>
-          </li>
-        ))}
-      </ul>
-      <p class="small"><a class="link-arrow" href="/">Nos trois univers</a></p>
-    </div>
-  </section>
   <CtaBand titre="Un projet de formation automobile ?" sujet="Formation automobile" />
 </Base>
