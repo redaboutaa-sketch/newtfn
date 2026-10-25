@@ -17,7 +17,7 @@ const page = async (opts = {}) => {
 // 1. Menu mobile : ouverture, focus, piège, Échap, retour du focus.
 {
   const p = await page({ viewport: { width: 390, height: 844 }, reducedMotion: 'no-preference' });
-  await p.goto(BASE + '/');
+  await p.goto(BASE + '/acceuil/');
   const t = p.locator('.nav-toggle');
   await t.click();
   await p.waitForTimeout(350);
@@ -41,7 +41,7 @@ const page = async (opts = {}) => {
 // 2. Mouvement actif (ordinateur) : classe motion, révélations, en-tête compact, survol des pôles.
 {
   const p = await page({ viewport: { width: 1440, height: 900 }, reducedMotion: 'no-preference' });
-  await p.goto(BASE + '/');
+  await p.goto(BASE + '/acceuil/');
   check('mouvement : classe motion posée', await p.evaluate(() => document.documentElement.classList.contains('motion')));
   const hiddenBefore = await p.evaluate(() => [...document.querySelectorAll('[data-reveal]')].filter((e) => e.getBoundingClientRect().top > innerHeight && getComputedStyle(e).opacity === '0').length);
   check('révélations : éléments hors écran en attente', hiddenBefore > 0, `${hiddenBefore} éléments`);
@@ -52,31 +52,62 @@ const page = async (opts = {}) => {
   check('en-tête compact au défilement', await p.evaluate(() => document.querySelector('.site-header').classList.contains('is-compact')));
   await p.evaluate(() => window.scrollTo(0, 0)); await p.waitForTimeout(500);
   check('en-tête normal en haut de page', await p.evaluate(() => !document.querySelector('.site-header').classList.contains('is-compact')));
-  const panel = p.locator('.pole-panel').first();
-  await panel.hover(); await p.waitForTimeout(1000);
-  const tr = await panel.locator('img').evaluate((i) => getComputedStyle(i).transform);
-  check('pôle : zoom de l’image au survol', tr !== 'none' && !tr.startsWith('matrix(1.02'), tr);
-  await p.keyboard.press('Tab');
   await p.context().close();
 }
 
-// 3. Focus clavier sur un panneau de pôle : même retour visuel qu'au survol.
+// 3. Portail : destinations, survol, clavier (Tab + Entrée), entrée animée.
 {
   const p = await page({ viewport: { width: 1440, height: 900 }, reducedMotion: 'no-preference' });
   await p.goto(BASE + '/');
-  await p.locator('.pole-panel').nth(1).focus(); await p.waitForTimeout(600);
-  const w = await p.locator('.pole-panel').nth(1).evaluate((a) => getComputedStyle(a, '::after').width);
-  check('pôle : accent au focus clavier', parseFloat(w) > 200, w);
+  const links = await p.$$eval('.universe-link', (as) => as.map((a) => ({ href: a.getAttribute('href'), target: a.target, name: a.textContent.replace(/\s+/g, ' ').trim(), img: !!a.querySelector('.u-logo img'), svg: !!a.querySelector('.u-sketch svg') })));
+  check('portail : trois univers, un lien chacun', links.length === 3 && links.every((l) => l.img && l.svg && !l.target), JSON.stringify(links.map((l) => l.href)));
+  check('portail : destinations', links[0].href === '/acceuil/' && links[1].href === 'https://maisonbeauxlieux.com/' && links[2].href === 'https://iatechformanord.fr/');
+  check('portail : aucun lien imbriqué', await p.evaluate(() => document.querySelectorAll('a a').length === 0));
+  const boxes = await p.$$eval('.universe-link', (as) => as.map((a) => a.getBoundingClientRect()).map((r) => ({ w: Math.round(r.width), b: Math.round(r.bottom) })));
+  check('portail : panneaux de même largeur, visibles ensemble (1440×900)', new Set(boxes.map((b) => b.w)).size === 1 && boxes.every((b) => b.b <= 900), JSON.stringify(boxes));
+  await p.waitForTimeout(3000);
+  check('portail : entrée terminée (is-settled)', await p.evaluate(() => document.documentElement.classList.contains('is-settled')));
+  const lk = p.locator('.universe-link').first();
+  await lk.hover(); await p.waitForTimeout(900);
+  const tr = await lk.locator('.u-sketch svg').evaluate((s) => getComputedStyle(s).transform);
+  const lift = await lk.locator('.sk-lift').evaluate((g) => getComputedStyle(g).transform);
+  check('portail : agrandissement du sketch et pont qui monte au survol', tr.startsWith('matrix(1.04') && lift !== 'none', `${tr} / ${lift}`);
+  const other = await p.locator('.universe-link').nth(1).locator('.u-sketch svg').evaluate((s) => getComputedStyle(s).opacity);
+  check('portail : autres panneaux atténués, texte intact', other === '0.8' && await p.locator('.universe-link').nth(1).locator('.u-name').evaluate((h) => getComputedStyle(h).opacity === '1'));
+  await p.mouse.move(5, 5);
+  // Clavier : logo, téléphone, puis les trois univers.
+  await p.keyboard.press('Tab'); await p.keyboard.press('Tab'); await p.keyboard.press('Tab'); await p.keyboard.press('Tab');
+  check('portail : focus clavier sur le 1er univers', await p.evaluate(() => document.activeElement?.classList.contains('universe-link') && document.activeElement.getAttribute('href') === '/acceuil/'));
+  const outline = await p.evaluate(() => getComputedStyle(document.activeElement).outlineStyle);
+  check('portail : focus visible', outline !== 'none', outline);
+  await p.keyboard.press('Enter');
+  await p.waitForURL('**/acceuil/');
+  check('portail : Entrée ouvre /acceuil/ dans le même onglet', p.url().endsWith('/acceuil/'));
+  const wa = await p.$eval('.site-footer a[href^="https://wa.me/"]', (a) => a.href).catch(() => null);
+  check('WhatsApp : lien professionnel configuré', !!wa && wa.startsWith('https://wa.me/33758058178?text='), wa || 'absent');
+  await p.context().close();
+}
+{
+  // Mobile : un seul appui ouvre la destination.
+  const p = await page({ viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true, reducedMotion: 'no-preference' });
+  await p.goto(BASE + '/');
+  await p.locator('.universe-link').first().locator('.u-sketch').tap();
+  await p.waitForURL('**/acceuil/', { timeout: 5000 }).catch(() => {});
+  check('mobile : un appui sur le sketch ouvre /acceuil/', p.url().endsWith('/acceuil/'));
+  await p.goto(BASE + '/');
+  const [req] = await Promise.all([p.waitForRequest((r) => r.url().startsWith('https://maisonbeauxlieux.com/'), { timeout: 5000 }).catch(() => null), p.locator('.universe-link').nth(1).locator('.u-logo').tap()]);
+  check('mobile : un appui sur le logo beauté ouvre maisonbeauxlieux.com', !!req);
   await p.context().close();
 }
 
 // 4. Mouvement réduit : aucun contenu masqué, pas de classe motion.
 {
   const p = await page({ viewport: { width: 1440, height: 900 }, reducedMotion: 'reduce' });
-  for (const u of ['/', '/service/interior-cleaning/', '/formations/beaute-bien-etre/']) {
+  for (const u of ['/', '/acceuil/', '/service/interior-cleaning/', '/formations/beaute-bien-etre/']) {
     await p.goto(BASE + u);
     const hidden = await p.evaluate(() => [...document.querySelectorAll('[data-reveal]')].filter((e) => getComputedStyle(e).opacity !== '1').length);
     check(`mouvement réduit ${u} : tout visible`, hidden === 0 && !(await p.evaluate(() => document.documentElement.classList.contains('motion'))));
+    if (u === '/') check('mouvement réduit : aucune animation dans les illustrations', await p.evaluate(() => [...document.querySelectorAll('.sketch *')].every((e) => getComputedStyle(e).animationName === 'none')));
   }
   await p.context().close();
 }
@@ -85,7 +116,8 @@ const page = async (opts = {}) => {
 {
   const p = await page({ viewport: { width: 390, height: 844 }, javaScriptEnabled: false });
   await p.goto(BASE + '/');
-  const hidden = await p.evaluate(() => 0);
+  check('sans JavaScript : trois univers cliquables', (await p.locator('.universe-link').count()) === 3 && await p.locator('.universe-link').first().isVisible());
+  await p.goto(BASE + '/acceuil/');
   const navVisible = await p.locator('#main-nav a', { hasText: 'Nos formations' }).isVisible();
   const h1 = await p.locator('h1').isVisible();
   check('sans JavaScript : titre et navigation visibles', navVisible && h1);
@@ -96,7 +128,7 @@ const page = async (opts = {}) => {
 {
   const p = await page({ viewport: { width: 1440, height: 900 }, reducedMotion: 'no-preference' });
   await p.route(/\/_astro\/.*\.js$/, (r) => r.abort());
-  await p.goto(BASE + '/');
+  await p.goto(BASE + '/acceuil/');
   await p.waitForTimeout(3200);
   const hidden = await p.evaluate(() => [...document.querySelectorAll('[data-reveal]')].filter((e) => parseFloat(getComputedStyle(e).opacity) < 1).length);
   check('script bloqué : contenus révélés par le filet CSS', hidden === 0, `${hidden} masqué(s)`);
@@ -111,9 +143,11 @@ const page = async (opts = {}) => {
   const target = await p.evaluate(() => { const t = document.querySelector(':target'); return t ? t.id : null; });
   check('ancre de programme ciblée', !!target, target || 'aucune');
   const d = p.locator('#' + target + ' details.prog-more');
-  await d.locator('summary').click(); await p.waitForTimeout(500);
-  check('accordéon : ouverture', await d.evaluate((e) => e.open));
-  check('sommaire : module courant signalé', await p.evaluate(() => !!document.querySelector('.toc a.is-current')));
+  check('ancre : programme détaillé du module ciblé ouvert', await d.evaluate((e) => e.open));
+  await d.locator('summary').click(); await p.waitForTimeout(300);
+  check('accordéon : fermeture au clic', !(await d.evaluate((e) => e.open)));
+  await p.locator('.module-cards a').nth(3).click(); await p.waitForTimeout(600);
+  check('carte module : ouvre le programme ciblé', await p.evaluate(() => document.querySelector(':target details.prog-more')?.open === true));
   await p.context().close();
 }
 

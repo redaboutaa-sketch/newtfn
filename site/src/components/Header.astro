@@ -5,7 +5,7 @@ const { active } = Astro.props;
 const org = organisme();
 // Intitulés modernisés ; les URL historiques pertinentes sont conservées (docs/mapping-redirections.csv).
 const nav = [
-  { id: 'accueil', label: 'Accueil', url: '/' },
+  { id: 'accueil', label: 'Accueil', url: '/acceuil/' },
   { id: 'formations', label: 'Nos formations', url: '/services/' },
   { id: 'entreprises', label: 'Entreprises', url: '/entreprises/' },
   { id: 'reconversion', label: 'Reconversion', url: '/infinite-grid-col-2/' },
@@ -17,7 +17,7 @@ const path = Astro.url.pathname;
 <header class="site-header">
   <div class="topbar">
     <div class="container">
-      <span class="topbar-extra">{org.adresse.rue}, {org.adresse.code_postal} {org.adresse.ville} · près de Lille</span>
+      <span><a class="topbar-portail" href="/"><span aria-hidden="true">←</span> Nos trois univers</a><span class="topbar-extra"><span aria-hidden="true"> · </span>{org.adresse.rue}, {org.adresse.code_postal} {org.adresse.ville} · près de Lille</span></span>
       <span>
         <a href={`tel:${org.telephone.lien}`} data-place="bandeau">{org.telephone.affiche}</a>
         <span class="topbar-extra"><span aria-hidden="true"> · </span>
@@ -26,7 +26,7 @@ const path = Astro.url.pathname;
     </div>
   </div>
   <div class="container header-inner">
-    <a class="brand" href="/" aria-label="Tech Formation Nord, retour à l'accueil">
+    <a class="brand" href="/acceuil/" aria-label="Tech Formation Nord, accueil automobile">
       <img src="/img/logo-tfn.png" alt="Tech Formation Nord" width="401" height="136" fetchpriority="low" />
     </a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav">

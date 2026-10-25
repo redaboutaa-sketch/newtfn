@@ -5,6 +5,8 @@ import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import Faq from '../components/Faq.astro';
 import CtaBand from '../components/CtaBand.astro';
+import FormationCard from '../components/FormationCard.astro';
+import { autoCards } from '../lib/cards';
 import { organisme } from '../lib/data';
 
 const org = organisme();
@@ -30,17 +32,8 @@ const faq = [
       <p>Au cours des cinq dernières années, le nombre d’entreprises du secteur des services automobiles confrontées à des difficultés de recrutement a augmenté de 10 %. Parmi les recrutements réussis, 48 % ont été jugés difficiles. Face à ces tensions, diversifier les canaux de recrutement devient un enjeu majeur.</p>
       <p>Nos programmes de reconversion, spécialement axés sur les métiers en tension de la maintenance des véhicules légers (VL) et de la carrosserie, facilitent la mobilité intersectorielle.</p>
     </div>
-    <div class="container grid grid-2" data-reveal style="margin-top:32px">
-      {parcours.map((f) => (
-        <article class="card card--link" data-accent="auto">
-          {f.image && <img src={f.image.src} alt="" width="1024" height="373" loading="lazy" style="border-radius:var(--radius-sm);margin-bottom:16px;aspect-ratio:16/7;object-fit:cover" />}
-          <span class="tag">Parcours de reconversion</span>
-          <h2 style="font-size:1.35rem"><a class="stretched" href={f.url} style="text-decoration:none;color:inherit">{f.titre_court}</a></h2>
-          <p>{f.resume}</p>
-          <ul class="meta-list">{f.parcours!.infos.filter((i) => ['Durée', 'Prérequis', 'Métiers visés', 'Nombre de places'].includes(i.label)).map((i) => <li><strong>{i.label} :</strong> {i.valeur}</li>)}</ul>
-          <div class="card-foot"><span class="link-arrow" aria-hidden="true">Voir le parcours détaillé</span></div>
-        </article>
-      ))}
+    <div class="container" style="margin-top:32px">
+      <ul class="fcards fcards--2" data-reveal="fade">{autoCards(parcours, 'parcours').map((c) => <FormationCard {...c} level={2} />)}</ul>
     </div>
   </section>
 

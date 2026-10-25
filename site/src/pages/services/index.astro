@@ -1,21 +1,23 @@
 ---
+// Catalogue : une carte par formation (visuel, nom, durée si publiée). Les programmes détaillés
+// restent sur les fiches (automobile) ou sur les sites des pôles (beauté, IA).
 import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
-import Picture from '../../components/Picture.astro';
-import IaArt from '../../components/IaArt.astro';
-const thumbs: Record<string, any> = { automobile: 'auto-cle-paysage', beaute: 'beaute-ongles' };
 import CtaBand from '../../components/CtaBand.astro';
+import FormationCard from '../../components/FormationCard.astro';
 import { poles } from '../../lib/data';
+import { autoCards, beauteCards, iaCards } from '../../lib/cards';
 
 const fiches = (await getCollection('fiches')).map((f) => f.data).sort((a, b) => a.ordre - b.ordre);
 const ps = poles();
+const lien: Record<string, string> = { automobile: 'Présentation du pôle', beaute: 'Le pôle beauté', ia: 'Le pôle IA' };
 ---
 <Base title="Catalogue des formations : automobile, beauté et IA" description="Toutes les formations de Tech Formation Nord à Vendeville, près de Lille : maintenance, carrosserie, commerce automobile, reconversion, esthétique et intelligence artificielle." breadcrumbs={[{ name: 'Nos formations', url: '/services/' }]} navActive="formations">
   <section class="page-hero">
     <div class="container hero-enter">
       <span class="eyebrow">Catalogue</span>
       <h1>Nos formations</h1>
-      <p class="lead">Trois domaines, des modules courts de perfectionnement et des parcours longs de reconversion. Choisissez un domaine ou parcourez l’ensemble du catalogue.</p>
+      <p class="lead">Trois domaines, des modules courts de perfectionnement et des parcours longs de reconversion.</p>
       <nav aria-label="Accès rapide aux domaines" class="btn-row">
         {ps.map((p) => <a class="btn btn--ghost" href={`#${p.id}`}>{p.nom}</a>)}
       </nav>
@@ -25,65 +27,37 @@ const ps = poles();
   {ps.map((p, i) => (
     <section class={`section ${i % 2 ? 'section--surface' : ''}`} id={p.id} aria-labelledby={`h-${p.id}`} data-accent={p.accent}>
       <div class="container">
-        <div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap">
-          <div class="pole-thumb" aria-hidden="true">{thumbs[p.id] ? <Picture id={thumbs[p.id]} sizes="112px" decorative /> : <IaArt compact />}</div>
-          <div style="flex:1;min-width:260px">
-            <h2 id={`h-${p.id}`} style="margin-bottom:.2em">{p.nom}</h2>
-            <p class="muted" style="margin:0">{p.accroche}</p>
-          </div>
-          <a class="link-arrow" href={p.url}>Présentation du pôle</a>
+        <div class="cat-head">
+          <h2 id={`h-${p.id}`}>{p.nom}</h2>
+          <a class="link-arrow" href={p.url}>{lien[p.id]}</a>
         </div>
 
         {p.id === 'automobile' && (
-          <ul class="cat-list" data-reveal style="margin-top:32px">
-            {fiches.filter((f) => f.pole === 'automobile').map((f) => (
-              <li class="cat-row">
-                <div class="cat-main">
-                  <span class="tag">{f.type === 'parcours' ? 'Parcours de reconversion' : `${f.programmes.length} modules`}</span>
-                  <h3><a href={f.url}>{f.titre_court}</a></h3>
-                  <p>{f.resume}</p>
-                </div>
-                <div class="cat-side">
-                  {f.type === 'parcours'
-                    ? <span class="small muted">{f.parcours!.infos.find((i) => i.label === 'Durée')?.valeur}</span>
-                    : <span class="small muted">Tarif sur devis</span>}
-                  <a class="link-arrow" href={f.url}>{f.type === 'parcours' ? 'Voir le parcours' : 'Voir la fiche'}</a>
-                </div>
-                {f.type === 'catalogue' && (
-                  <details class="more cat-more">
-                    <summary>Les {f.programmes.length} modules</summary>
-                    <ol class="cat-modules">{f.programmes.map((m) => <li><a href={`${f.url}#prog-${m.id}`}>{m.code && <span class="muted">{m.code}</span>}{m.titre}</a></li>)}</ol>
-                  </details>
-                )}
-              </li>
-            ))}
-          </ul>
+          <>
+            <h3 class="cat-sub">Modules de perfectionnement</h3>
+            <ul class="fcards" data-reveal="fade">{autoCards(fiches, 'catalogue').map((c) => <FormationCard {...c} level={3} />)}</ul>
+            <h3 class="cat-sub">Parcours de reconversion</h3>
+            <ul class="fcards" data-reveal="fade">{autoCards(fiches, 'parcours').map((c) => <FormationCard {...c} level={3} />)}</ul>
+          </>
         )}
 
         {p.id === 'beaute' && (
           <>
-            <div class="beaute-cols" data-reveal style="margin-top:32px">
-              {p.familles.map((fam: any) => (
-                <div>
-                  <h3>{fam.nom}</h3>
-                  <ul class="prog-list prog-list--compact">{fam.formations.map((x: any) => <li><a class="prog-row" href={x.url} data-track="passerelle" data-pole="beaute"><span class="prog-title">{x.titre}</span><span class="prog-meta">{x.duree}</span><span class="prog-go" aria-hidden="true">↗</span></a></li>)}</ul>
-                </div>
-              ))}
-            </div>
-            <p class="small muted" style="margin-top:16px">Les programmes, tarifs et sessions des formations esthétiques sont publiés sur maisonbeauxlieux.com. <a href={p.url}>En savoir plus sur le pôle beauté</a></p>
+            {beauteCards().map(({ famille, cards }: any) => (
+              <>
+                <h3 class="cat-sub">{famille.nom}</h3>
+                <ul class="fcards" data-reveal="fade">{cards.map((c: any) => <FormationCard {...c} level={4} />)}</ul>
+              </>
+            ))}
+            <p class="small muted cat-note">Programmes, tarifs et sessions des formations esthétiques sur maisonbeauxlieux.com.</p>
           </>
         )}
 
         {p.id === 'ia' && (
-          <div class="grid grid-3" data-reveal style="margin-top:28px">
-            {p.familles.map((fam: any) => (
-              <article class="card">
-                <h3>{fam.nom}</h3>
-                <p class="small">{fam.description}</p>
-                <div class="card-foot"><a class="link-arrow" href={fam.lien.url} data-track="passerelle" data-pole="ia">{fam.lien.libelle}</a></div>
-              </article>
-            ))}
-          </div>
+          <>
+            <ul class="fcards" data-reveal="fade" style="margin-top:24px">{iaCards().map((c) => <FormationCard {...c} level={3} />)}</ul>
+            <p class="small muted cat-note">Programmes détaillés, tarifs et sessions des formations IA sur iatechformanord.fr.</p>
+          </>
         )}
       </div>
     </section>

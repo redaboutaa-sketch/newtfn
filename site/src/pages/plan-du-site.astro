@@ -9,7 +9,8 @@ const fiches = (await getCollection('fiches')).map((f) => f.data).sort((a, b) =>
     <div class="container narrow prose">
       <h1>Plan du site</h1>
       <ul>
-        <li><a href="/">Accueil</a></li>
+        <li><a href="/">Nos trois univers (page d’entrée)</a></li>
+        <li><a href="/acceuil/">Accueil Tech Formation Nord — automobile</a></li>
         <li><a href="/services/">Nos formations</a>
           <ul>
             {poles().map((p) => (

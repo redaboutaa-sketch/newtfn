@@ -1,5 +1,5 @@
 ancienne_url,nouvelle_url,traitement,code_http,justification
-/,/,conservation,200,Accueil refondu (portail des trois pôles).
+/,/,conservation,200,Portail des trois univers (accueil TFN automobile déplacé sur /acceuil/).
 /about-us/,/about-us/,conservation,200,Page « À propos » devenue « Notre organisme ».
 /contact-us/,/contact-us/,conservation,200,"Page contact (formulaire, coordonnées)."
 /infinite-grid-col-2/,/infinite-grid-col-2/,conservation,200,"Page « Reconversion » (menu principal, 82 liens internes) : slug hérité du thème, conservée."

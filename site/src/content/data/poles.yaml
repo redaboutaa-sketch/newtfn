@@ -12,6 +12,7 @@
   accroche: Maintenance, diagnostic, carrosserie, peinture et commerce automobile, du perfectionnement des salariés à la reconversion.
   publics: [Salariés des ateliers et concessions, Entreprises de l'après-vente automobile, Personnes en reconversion]
   site_externe: null
+  portail: { titre: Automobile, marque: Tech Formation Nord, destination: /acceuil/, logo: { src: /img/logo-tfn.png, width: 401, height: 136, hauteur: 60 } }
   familles:
     - { id: maintenance-diagnostic, nom: Maintenance et diagnostic, url: /service/maintenance/ }
     - { id: commerce, nom: Commerce automobile, url: /service/wheels-alignment/ }
@@ -27,6 +28,7 @@
   accent: beaute
   accroche: Formations courtes aux techniques du regard, du visage, du corps, des ongles et du cheveu, à Vendeville avec Maison Beauxlieux.
   publics: [Esthéticiennes et esthéticiens, Prothésistes ongulaires, Coiffeurs et praticiens capillaires, Praticiens du bien-être]
+  portail: { titre: Esthétique et bien-être, marque: Maison Beauxlieux, destination: "https://maisonbeauxlieux.com/", domaine: maisonbeauxlieux.com, logo: { src: /img/logos/maison-beauxlieux.webp, width: 503, height: 283, hauteur: 64 } }
   site_externe:
     marque: Maison Beauxlieux
     url: https://maisonbeauxlieux.com/
@@ -77,6 +79,7 @@
   accent: ia
   accroche: "Usages professionnels de l'IA générative : rédaction, relation client, présence en ligne et organisation du travail."
   publics: [Artisans, TPE et indépendants, Entreprises et équipes, Particuliers et salariés]
+  portail: { titre: Intelligence artificielle, marque: IA Tech Formation Nord, destination: "https://iatechformanord.fr/", domaine: iatechformanord.fr, logo: { src: /img/logos/ia-tech-formation-nord.svg, width: 362, height: 136, hauteur: 56 } }
   site_externe:
     marque: IA Tech Forma Nord
     url: https://iatechformanord.fr/
@@ -87,16 +90,19 @@
   familles:
     - id: artisans-tpe
       nom: Artisans, TPE et indépendants
+      duree: 2 journées
       description: "Une formation de deux journées, idéalement espacées d'une semaine, pour construire sa présence en ligne (site, fiche Google) et un premier assistant IA à partir de ses propres tâches. Groupes de 6 à 8 participants, principalement en présentiel à Lille."
       points: [Clarifier son offre et rédiger ses contenus avec l'IA, Structurer un site simple et soigner sa visibilité locale, Concevoir un premier assistant IA et ses règles d'usage, Repartir avec un plan d'action sur 30 jours]
       lien: { url: "https://iatechformanord.fr/programme/", libelle: "Consulter le programme IA pour artisans et TPE" }
     - id: entreprises
       nom: Entreprises et équipes
+      duree: "7 h par fonction, 21 à 35 h en programme"
       description: "Des formats pour les équipes et les dirigeants : formation par fonction (marketing, RH, commerce, direction) en 7 heures, accompagnement individuel, sessions de stratégie pour comités de direction et programme collaborateurs de 21 à 35 heures, en intra ou en inter-entreprises."
       points: [Prompts et cas d'usage adaptés à chaque métier, Production de contenus et de synthèses, Feuille de route d'adoption pour les équipes, Bonnes pratiques et confidentialité des données]
       lien: { url: "https://iatechformanord.fr/entreprises/", libelle: "Consulter les programmes IA pour les entreprises" }
     - id: particuliers
       nom: Particuliers et salariés
+      duree: 16 à 35 heures
       description: "Des parcours individuels ou en petit groupe, de 16 à 35 heures, qui associent e-learning et séances avec un formateur pour découvrir puis approfondir l'IA générative. Les conditions de financement dépendent de votre situation et sont à étudier avant toute inscription."
       points: [Découvrir les usages courants de l'IA générative, Approfondir les fonctions avancées, Progresser à son rythme avec un formateur]
       lien: { url: "https://iatechformanord.fr/cpf/", libelle: "Consulter les parcours IA pour les particuliers" }

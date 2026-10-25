@@ -15,8 +15,9 @@ interface Props {
   navActive?: string;
   ogImage?: string;
   jsonld?: object[];
+  chrome?: 'site' | 'portail'; // « portail » : page d'entrée sans en-tête ni pied de page du site TFN
 }
-const { title, description, breadcrumbs = [], noindex = false, pole, navActive, ogImage = '/img/og-default.png', jsonld = [] } = Astro.props;
+const { title, description, breadcrumbs = [], noindex = false, pole, navActive, ogImage = '/img/og-default.png', jsonld = [], chrome = 'site' } = Astro.props;
 const org = organisme();
 const site = Astro.site!.toString().replace(/\/$/, '');
 const canonical = new URL(Astro.url.pathname, Astro.site).toString();
@@ -50,7 +51,7 @@ const crumbLd = breadcrumbs.length
   ? {
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',
-      itemListElement: [{ name: 'Accueil', url: '/' }, ...breadcrumbs].map((c, i) => ({
+      itemListElement: [{ name: 'Accueil', url: '/acceuil/' }, ...breadcrumbs].map((c, i) => ({
         '@type': 'ListItem', position: i + 1, name: c.name, item: new URL(c.url, Astro.site).toString(),
       })),
     }
@@ -89,15 +90,15 @@ const ld = [orgLd, ...(crumbLd ? [crumbLd] : []), ...jsonld];
     {ld.map((o) => <script type="application/ld+json" set:html={JSON.stringify(o)} />)}
     {ANALYTICS.provider === 'plausible' && <script defer data-domain={ANALYTICS.domain} src="https://plausible.io/js/script.tagged-events.js"></script>}
   </head>
-  <body data-pole={pole} data-env={SITE_ENV}>
+  <body data-pole={pole} data-env={SITE_ENV} class={chrome === 'portail' ? 'is-portail' : undefined}>
     <a class="skip-link" href="#content">Aller au contenu</a>
     {!isProduction && <div class="env-banner" role="note">Site de préproduction — contenu en cours de validation, non indexé. Les formulaires fonctionnent en mode test.</div>}
-    <Header active={navActive} />
+    {chrome === 'site' ? <Header active={navActive} /> : <slot name="entete" />}
     <main id="content" tabindex="-1">
       {breadcrumbs.length > 0 && <div class="container"><Breadcrumb items={breadcrumbs} /></div>}
       <slot />
     </main>
-    <Footer />
+    {chrome === 'site' ? <Footer /> : <slot name="pied" />}
     <script is:inline>
       // Mesure des conversions : aucun paramètre de campagne sur les liens internes.
       // Les événements partent vers Plausible si configuré (production uniquement), sinon vers dataLayer.
@@ -117,7 +118,8 @@ const ld = [orgLd, ...(crumbLd ? [crumbLd] : []), ...jsonld];
           var href = a.getAttribute('href') || '';
           if (href.indexOf('tel:') === 0) track('clic_telephone', { emplacement: a.dataset.place || 'page' });
           else if (href.indexOf('mailto:') === 0) track('clic_email', { emplacement: a.dataset.place || 'page' });
-          else if (a.dataset.track === 'passerelle') track('clic_site_specialise', { destination: a.hostname, pole: a.dataset.pole || '' });
+          else if (a.hostname === 'wa.me') track('clic_whatsapp', { emplacement: a.dataset.place || 'page' });
+          else if (a.dataset.track === 'passerelle' || a.dataset.track === 'univers') track('clic_site_specialise', { destination: a.hostname, pole: a.dataset.pole || '' });
         });
       })();
     </script>

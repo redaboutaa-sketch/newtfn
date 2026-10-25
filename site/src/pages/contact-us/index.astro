@@ -1,6 +1,7 @@
 ---
 // URL historique « Contactez-nous » conservée (/contact y redirigeait déjà).
 import Base from '../../layouts/Base.astro';
+import WhatsAppLink from '../../components/WhatsAppLink.astro';
 import { organisme, poles, isProduction, FORM_ENDPOINT } from '../../lib/data';
 const org = organisme();
 const mbl = poles().find((p) => p.id === 'beaute').site_externe;
@@ -58,6 +59,7 @@ const mbl = poles().find((p) => p.id === 'beaute').site_externe;
           <p><strong>Adresse</strong><br />{org.adresse.rue}<br />{org.adresse.code_postal} {org.adresse.ville}</p>
           <p><strong>Téléphone</strong><br /><a href={`tel:${org.telephone.lien}`} data-place="page-contact">{org.telephone.affiche}</a></p>
           <p><strong>E-mail</strong><br /><a href={`mailto:${org.email}`} data-place="page-contact">{org.email}</a></p>
+          {org.whatsapp?.numero && <p><strong>WhatsApp</strong><br /><WhatsAppLink place="page-contact" class="btn btn--whatsapp btn--small" label={`Écrire au ${org.whatsapp.affiche}`} /></p>}
           <p style="margin:0"><strong>Horaires</strong></p>
           <ul style="list-style:none;padding:0">{org.horaires.map((h: any) => <li>{h.jours} : {h.heures}</li>)}</ul>
           <a class="link-arrow" href="/informations-pratiques/">Plan d’accès et transports</a>

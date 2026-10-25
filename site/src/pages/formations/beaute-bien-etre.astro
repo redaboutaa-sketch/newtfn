@@ -1,7 +1,8 @@
 ---
 import Base from '../../layouts/Base.astro';
 import Picture from '../../components/Picture.astro';
-import IaArt from '../../components/IaArt.astro';
+import FormationCard from '../../components/FormationCard.astro';
+import { beauteCards } from '../../lib/cards';
 import Bridge from '../../components/Bridge.astro';
 import Faq from '../../components/Faq.astro';
 import CtaBand from '../../components/CtaBand.astro';
@@ -60,25 +61,16 @@ const faq = [
     </div>
   </section>
 
-  <section class="section section--surface" id="familles" aria-labelledby="familles-titre">
+  <section class="section section--surface" id="familles" aria-labelledby="familles-titre" data-accent="beaute">
     <div class="container">
       <h2 id="familles-titre">Les grandes familles de formations</h2>
-      <p class="lead">{toutes.length} formations sont actuellement proposées. Chaque lien ouvre le programme détaillé sur maisonbeauxlieux.com.</p>
-      <div class="grid grid-3" data-reveal style="margin-top:24px" data-accent="beaute">
-        {p.familles.map((fam: any) => (
-          <article class="card">
-            <h3>{fam.nom}</h3>
-            <ul style="list-style:none;padding:0">
-              {fam.formations.map((x: any) => (
-                <li style="margin-bottom:.8em">
-                  <a href={x.url} data-track="passerelle" data-pole="beaute"><strong>{x.titre}</strong></a><br />
-                  <span class="small muted">{x.duree} · {x.public}</span>
-                </li>
-              ))}
-            </ul>
-          </article>
-        ))}
-      </div>
+      <p class="lead">{toutes.length} formations sont actuellement proposées. Chaque carte ouvre le programme détaillé sur maisonbeauxlieux.com.</p>
+      {beauteCards().map(({ famille, cards }: any) => (
+        <>
+          <h3 class="cat-sub">{famille.nom}</h3>
+          <ul class="fcards" data-reveal="fade">{cards.map((c: any) => <FormationCard {...c} level={4} />)}</ul>
+        </>
+      ))}
     </div>
   </section>
 

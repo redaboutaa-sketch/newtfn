@@ -1,22 +1,25 @@
 ---
 import { organisme, poles } from '../lib/data';
+import WhatsAppLink from './WhatsAppLink.astro';
 const org = organisme();
 const year = new Date().getFullYear();
 ---
 <footer class="site-footer" data-accent="auto">
   <div class="container footer-grid">
     <div>
-      <a class="footer-logo" href="/"><img src="/img/logo-tfn.png" alt="Tech Formation Nord" width="401" height="136" loading="lazy" /></a>
+      <a class="footer-logo" href="/acceuil/"><img src="/img/logo-tfn.png" alt="Tech Formation Nord" width="401" height="136" loading="lazy" /></a>
       <p>Organisme de formation professionnelle à Vendeville, au sud de Lille : automobile, esthétique et bien-être, intelligence artificielle.</p>
       <p class="small">
         {org.adresse.rue}<br />{org.adresse.code_postal} {org.adresse.ville}<br />
         <a href={`tel:${org.telephone.lien}`} data-place="pied-de-page">{org.telephone.affiche}</a><br />
         <a href={`mailto:${org.email}`} data-place="pied-de-page">{org.email}</a>
       </p>
+      <WhatsAppLink place="pied-de-page" class="footer-wa" label={`WhatsApp ${org.whatsapp.affiche}`} />
     </div>
     <div>
       <h2>Formations</h2>
       <ul>
+        <li><a href="/">Nos trois univers</a></li>
         <li><a href="/services/">Toutes nos formations</a></li>
         {poles().map((p) => <li><a href={p.url}>{p.nom}</a></li>)}
         <li><a href="/infinite-grid-col-2/">Reconversion</a></li>

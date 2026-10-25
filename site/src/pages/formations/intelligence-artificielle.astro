@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
-import Picture from '../../components/Picture.astro';
+import FormationCard from '../../components/FormationCard.astro';
+import { iaCards } from '../../lib/cards';
 import IaArt from '../../components/IaArt.astro';
 import Bridge from '../../components/Bridge.astro';
 import Faq from '../../components/Faq.astro';
@@ -50,17 +51,18 @@ const faq = [
     </div>
   </section>
 
-  <section class="section section--surface" id="publics" aria-labelledby="publics-titre">
+  <section class="section section--surface" id="publics" aria-labelledby="publics-titre" data-accent="ia">
     <div class="container">
       <h2 id="publics-titre">Une formation selon votre profil</h2>
-      <div class="grid grid-3" data-reveal style="margin-top:24px" data-accent="ia">
+      <ul class="fcards" data-reveal="fade" style="margin-top:24px">{iaCards().map((c) => <FormationCard {...c} />)}</ul>
+      <div class="formats" data-reveal>
         {p.familles.map((fam: any) => (
-          <article class="card">
-            <span class="tag">{fam.nom}</span>
+          <details class="more">
+            <summary>{fam.nom} : le format en détail</summary>
             <p>{fam.description}</p>
             <ul class="small">{fam.points.map((x: string) => <li>{x}</li>)}</ul>
-            <div class="card-foot"><a class="link-arrow" href={fam.lien.url} data-track="passerelle" data-pole="ia">{fam.lien.libelle}</a></div>
-          </article>
+            <a class="link-arrow" href={fam.lien.url} data-track="passerelle" data-pole="ia">{fam.lien.libelle}</a>
+          </details>
         ))}
       </div>
     </div>

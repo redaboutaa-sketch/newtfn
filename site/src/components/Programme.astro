@@ -1,5 +1,6 @@
 ---
 import { organisme } from '../lib/data';
+import WhatsAppLink from './WhatsAppLink.astro';
 interface Props { p: any; index: number }
 const { p } = Astro.props;
 const org = organisme();
@@ -16,55 +17,60 @@ const nbDetail = p.contenu.length + p.applications.length;
   <header>
     {p.code && <span class="code">Module {p.code}</span>}
     <h3 id={`t-${p.id}`}>{p.titre}</h3>
+    {p.duree && <p class="prog-duree">{p.duree}</p>}
   </header>
   <div class="body">
-    {p.contexte.map((t: string) => <p>{t}</p>)}
     {p.objectif_general && <p><strong>Objectif de la formation :</strong> {p.objectif_general}</p>}
-    <dl class="facts">
-      {shortFacts.map(([k, v]) => <div><dt>{k}</dt><dd>{v}</dd></div>)}
-    </dl>
-    {longFacts.length > 0 && (
-      <div class="long-facts">{longFacts.map(([k, v]) => <p><strong>{k} :</strong> {v}</p>)}</div>
-    )}
-    {p.public && /handicap/i.test(p.public) && (
-      <p class="small">Référent handicap : <a href={`tel:${org.referent_handicap.telephone_lien}`} data-place="fiche-handicap">{org.referent_handicap.telephone_affiche}</a> — <a href="/accessibilite-handicap/">accessibilité et handicap</a></p>
-    )}
-    {p.objectifs.length > 0 && (<><h4>Objectifs pédagogiques opérationnels</h4><ul class="check-list">{p.objectifs.map((o: string) => <li>{o}</li>)}</ul></>)}
-    {p.benefices && <p class="benefit"><strong>Bénéfices</strong> <span>{p.benefices}</span></p>}
-    {(nbDetail > 0 || p.methodes.length > 0 || p.evaluation) && (
-      <details class="prog-more">
-        <summary>Contenu détaillé, méthodes et évaluation{nbDetail > 0 && <span class="muted small" style="font-weight:450;margin-left:auto;padding-right:8px">{nbDetail} points</span>}</summary>
-        <div>
-          {nbDetail > 0 && (
-            <>
-              <h4 style="margin-top:.2em">Points clés de la formation</h4>
-              <div class="cols-2">
-                {p.contenu.length > 0 && (
-                  <div>
-                    <p><strong>{p.contenu_titre}</strong></p>
-                    <ul>{pts(p.contenu).map((c: any) => <li>{c.texte}{c.sous.length > 0 && <ul>{c.sous.map((s: string) => <li>{s}</li>)}</ul>}</li>)}</ul>
-                  </div>
-                )}
-                {p.applications.length > 0 && (
-                  <div>
-                    <p><strong>Les applications pratiques</strong></p>
-                    <ul>{pts(p.applications).map((c: any) => <li>{c.texte}{c.sous.length > 0 && <ul>{c.sous.map((s: string) => <li>{s}</li>)}</ul>}</li>)}</ul>
-                    {p.note_applications && <p class="small muted">{p.note_applications}</p>}
-                  </div>
-                )}
-              </div>
-            </>
-          )}
+    {/* Informations secondaires repliées : présentes dans le HTML (indexables), ouvertes si le module est ciblé par son ancre. */}
+    <details class="prog-more">
+      <summary>Programme détaillé : public, prérequis, objectifs, contenu et évaluation</summary>
+      <div>
+        {p.contexte.map((t: string) => <p>{t}</p>)}
+        <dl class="facts">
+          {shortFacts.map(([k, v]) => <div><dt>{k}</dt><dd>{v}</dd></div>)}
+        </dl>
+        {longFacts.length > 0 && (
+          <div class="long-facts">{longFacts.map(([k, v]) => <p><strong>{k} :</strong> {v}</p>)}</div>
+        )}
+        {p.public && /handicap/i.test(p.public) && (
+          <p class="small">Référent handicap : <a href={`tel:${org.referent_handicap.telephone_lien}`} data-place="fiche-handicap">{org.referent_handicap.telephone_affiche}</a> — <a href="/accessibilite-handicap/">accessibilité et handicap</a></p>
+        )}
+        {p.objectifs.length > 0 && (<><h4>Objectifs pédagogiques opérationnels</h4><ul class="check-list">{p.objectifs.map((o: string) => <li>{o}</li>)}</ul></>)}
+        {p.benefices && <p class="benefit"><strong>Bénéfices</strong> <span>{p.benefices}</span></p>}
+        {nbDetail > 0 && (
+          <>
+            <h4>Points clés de la formation</h4>
+            <div class="cols-2">
+              {p.contenu.length > 0 && (
+                <div>
+                  <p><strong>{p.contenu_titre}</strong></p>
+                  <ul>{pts(p.contenu).map((c: any) => <li>{c.texte}{c.sous.length > 0 && <ul>{c.sous.map((s: string) => <li>{s}</li>)}</ul>}</li>)}</ul>
+                </div>
+              )}
+              {p.applications.length > 0 && (
+                <div>
+                  <p><strong>Les applications pratiques</strong></p>
+                  <ul>{pts(p.applications).map((c: any) => <li>{c.texte}{c.sous.length > 0 && <ul>{c.sous.map((s: string) => <li>{s}</li>)}</ul>}</li>)}</ul>
+                  {p.note_applications && <p class="small muted">{p.note_applications}</p>}
+                </div>
+              )}
+            </div>
+          </>
+        )}
+        {(p.methodes.length > 0 || p.evaluation) && (
           <div class="cols-2">
             {p.methodes.length > 0 && (<div><h4>Méthodes utilisées</h4><ul>{p.methodes.map((m: string) => <li>{m}</li>)}</ul></div>)}
             {p.evaluation && (<div><h4>Modalités d’évaluation</h4><p>{p.evaluation}</p></div>)}
           </div>
-        </div>
-      </details>
-    )}
+        )}
+      </div>
+    </details>
     <div class="prog-foot">
-      <a class="btn btn--primary" href={`/contact-us/?sujet=${encodeURIComponent(p.titre)}#formulaire`}>Demander un devis</a>
-      <a class="back-top link-arrow" href="#sommaire">Retour au sommaire</a>
+      <span class="btn-row">
+        <a class="btn btn--primary" href={`/contact-us/?sujet=${encodeURIComponent(p.titre)}#formulaire`}>Demander un devis</a>
+        <WhatsAppLink contexte={p.titre} place="fiche-module" />
+      </span>
+      <a class="back-top link-arrow" href="#sommaire">Retour aux modules</a>
     </div>
   </div>
 </article>

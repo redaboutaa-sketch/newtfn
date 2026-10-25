@@ -6,7 +6,9 @@ import Base from '../layouts/Base.astro';
 import Programme from '../components/Programme.astro';
 import Picture from '../components/Picture.astro';
 import CtaBand from '../components/CtaBand.astro';
+import WhatsAppLink from '../components/WhatsAppLink.astro';
 import { pole as getPole, organisme } from '../lib/data';
+import { dureeParcours } from '../lib/cards';
 
 export async function getStaticPaths() {
   const fiches = await getCollection('fiches');
@@ -30,8 +32,9 @@ const fr = (t: string) => t.replace(/ ([:;?!])/g, '\u00a0$1');
 const info = (label: string) => f.parcours?.infos.find((i) => i.label === label)?.valeur;
 const keyFigures = f.type === 'parcours' ? ['Durée', 'Nombre de places', 'Prérequis', 'Tarif'].map((l) => [l, info(l)]).filter(([, v]) => v) : [];
 const chips = f.type === 'catalogue'
-  ? [`${f.programmes.length} modules`, 'Tarif sur devis', pole.nom]
-  : [info('Durée'), info('Nombre de places'), info('Prérequis') && `Prérequis : ${info('Prérequis')!.toLowerCase()}`].filter(Boolean);
+  ? [`${f.programmes.length} modules`, 'Tarif sur devis']
+  : [dureeParcours(f), info('Nombre de places')].filter(Boolean);
+const [introLead, ...introSuite] = f.intro;
 ---
 <Base title={f.seo_title} description={f.seo_description} breadcrumbs={crumbs} pole={f.pole} navActive={f.type === 'parcours' ? 'reconversion' : 'formations'}>
   <section class="page-hero" data-accent={pole.accent}>
@@ -44,6 +47,7 @@ const chips = f.type === 'catalogue'
         <div class="btn-row">
           <a class="btn btn--primary" href={`/contact-us/?sujet=${encodeURIComponent(f.titre_court)}#formulaire`}>{f.type === 'parcours' ? 'Candidater ou se renseigner' : 'Demander un devis'}</a>
           <a class="btn btn--ghost" href={`tel:${org.telephone.lien}`} data-place="fiche-hero">{org.telephone.affiche}</a>
+          <WhatsAppLink contexte={f.titre_court} place="fiche-hero" />
         </div>
       </div>
       {photoId && <div class="hero-media hero-enter"><Picture id={photoId} priority sizes="(max-width: 900px) 92vw, 44vw" /></div>}
@@ -53,26 +57,34 @@ const chips = f.type === 'catalogue'
   {(f.intro.length > 0 || f.sections.length > 0) && (
     <section class="section section--tight">
       <div class="container narrow stack" data-reveal>
-        {f.intro.map((t: string, i: number) => <p class={i === 0 && f.intro.length > 1 ? 'lead' : undefined}>{t}</p>)}
-        {f.sections.map((s: any) => (
-          <div>
-            <h2 style="font-size:clamp(1.35rem,1.15rem + .8vw,1.8rem);margin-top:.8em">{s.titre}</h2>
-            {s.paragraphes.map((t: string) => <p>{t}</p>)}
-            {s.liste.length > 0 && <ul class="check-list" data-accent={pole.accent}>{s.liste.map((l: string) => <li>{l}</li>)}</ul>}
-          </div>
-        ))}
+        {introLead && <p class="lead">{introLead}</p>}
+        {(introSuite.length > 0 || f.sections.length > 0) && (
+          <details class="more">
+            <summary>En savoir plus sur ces formations</summary>
+            {introSuite.map((t: string) => <p>{t}</p>)}
+            {f.sections.map((s: any) => (
+              <div>
+                <h2 style="font-size:clamp(1.25rem,1.1rem + .6vw,1.6rem);margin-top:.8em">{s.titre}</h2>
+                {s.paragraphes.map((t: string) => <p>{t}</p>)}
+                {s.liste.length > 0 && <ul class="check-list" data-accent={pole.accent}>{s.liste.map((l: string) => <li>{l}</li>)}</ul>}
+              </div>
+            ))}
+          </details>
+        )}
       </div>
     </section>
   )}
 
   {f.type === 'catalogue' && (
     <section class="section section--surface" data-accent={pole.accent}>
-      <div class="container fiche-layout">
-        <nav class="toc" id="sommaire" aria-labelledby="sommaire-titre">
+      <div class="container">
+        <nav class="module-nav" id="sommaire" aria-labelledby="sommaire-titre">
           <h2 id="sommaire-titre">Les {f.programmes.length} modules</h2>
-          <ol>{f.programmes.map((p: any) => <li><a href={`#prog-${p.id}`}>{p.titre}</a></li>)}</ol>
+          <ol class="module-cards">{f.programmes.map((p: any, i: number) => (
+            <li><a href={`#prog-${p.id}`}><span class="mc-num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span><span class="mc-title">{p.titre}</span>{p.duree && <span class="mc-meta">{p.duree}</span>}</a></li>
+          ))}</ol>
         </nav>
-        <div>
+        <div class="programmes">
           <h2 class="sr-only">Programmes détaillés</h2>
           {f.programmes.map((p: any, i: number) => <Programme p={p} index={i} />)}
           {f.modalites_acces.length > 0 && (
@@ -94,10 +106,13 @@ const chips = f.type === 'catalogue'
           <p>{info('Objectifs de la formation')}</p>
         </div>
         <dl class="key-figures" data-reveal>{keyFigures.map(([k, v]) => <div><dt>{k}</dt><dd>{v}</dd></div>)}</dl>
-        <table class="info-table" data-reveal="fade">
-          <caption class="sr-only">Informations clés du parcours {f.titre_court}</caption>
-          <tbody>{f.parcours.infos.map((i: any) => <tr><th scope="row">{i.label}</th><td>{i.valeur}</td></tr>)}</tbody>
-        </table>
+        <details class="more">
+          <summary>Toutes les informations du parcours</summary>
+          <table class="info-table">
+            <caption class="sr-only">Informations clés du parcours {f.titre_court}</caption>
+            <tbody>{f.parcours.infos.map((i: any) => <tr><th scope="row">{i.label}</th><td>{i.valeur}</td></tr>)}</tbody>
+          </table>
+        </details>
         {f.accessibilite.length > 0 && (
           <div class="callout" style="margin-top:24px">
             <h3>Accessibilité des personnes en situation de handicap</h3>
@@ -115,13 +130,12 @@ const chips = f.type === 'catalogue'
             <img src={f.parcours.schema.src} alt={f.parcours.schema.alt} width={f.parcours.schema.width} height={f.parcours.schema.height} loading="lazy" />
           </figure>
         )}
-        <h2 style="margin-top:clamp(48px,6vw,80px)">Le parcours en détail</h2>
+        <h2 style="margin-top:clamp(40px,5vw,64px)">Le parcours en détail</h2>
         {f.parcours.phases.map((ph: any) => (
-          <div class="phase">
-            <h3>{ph.titre}</h3>
-            {ph.note && <p class="muted">{ph.note}</p>}
-            <ol class="modules" data-reveal>{ph.modules.map((m: any) => <li><h4>{m.titre}</h4><ul>{m.objectifs.map((o: string) => <li>{o}</li>)}</ul></li>)}</ol>
-          </div>
+          <details class="more phase">
+            <summary><span><h3 class="phase-title">{ph.titre}</h3>{ph.note && <span class="muted small" style="display:block;font-weight:450">{ph.note}</span>}</span></summary>
+            <ol class="modules">{ph.modules.map((m: any) => <li><h4>{m.titre}</h4><ul>{m.objectifs.map((o: string) => <li>{o}</li>)}</ul></li>)}</ol>
+          </details>
         ))}
       </div>
     </section>
