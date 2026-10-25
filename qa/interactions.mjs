@@ -65,6 +65,11 @@ const page = async (opts = {}) => {
   check('portail : aucun lien imbriqué', await p.evaluate(() => document.querySelectorAll('a a').length === 0));
   const boxes = await p.$$eval('.universe-link', (as) => as.map((a) => a.getBoundingClientRect()).map((r) => ({ w: Math.round(r.width), b: Math.round(r.bottom) })));
   check('portail : panneaux de même largeur, visibles ensemble (1440×900)', new Set(boxes.map((b) => b.w)).size === 1 && boxes.every((b) => b.b <= 900), JSON.stringify(boxes));
+  await p.evaluate(() => document.fonts.ready);
+  const typo = await p.evaluate(() => { const f = (sel) => { const e = document.querySelector(sel); const c = getComputedStyle(e); return [c.fontFamily.split(',')[0].replace(/['"]/g, ''), c.fontWeight, c.color]; };
+    return { h1: f('.portail-intro h1'), p: f('.portail-intro p'), call: f('.portail-call'), contact: f('.pc-item'), legal: f('.portail-legal p'), carte: f('.u-name'), cta: f('.u-cta'), manrope: document.fonts.check('700 16px Manrope') }; });
+  check('portail : Manrope hors cartes (titre 700 #173B63, sous-titre 400 #476582, contacts 500 #214F78)', typo.manrope && typo.h1.join() === 'Manrope,700,rgb(23, 59, 99)' && typo.p.join() === 'Manrope,400,rgb(71, 101, 130)' && typo.call.join() === 'Manrope,500,rgb(33, 79, 120)' && typo.contact.join() === 'Manrope,500,rgb(33, 79, 120)' && typo.legal.join() === 'Manrope,400,rgb(71, 101, 130)', JSON.stringify(typo));
+  check('portail : police des cartes inchangée', typo.carte[0] !== 'Manrope' && typo.cta[0] !== 'Manrope', typo.carte[0] + ' / ' + typo.cta[0]);
   const photos = await p.$$eval('.u-photo img', (is) => is.map((i) => ({ src: i.currentSrc, ok: i.complete && i.naturalWidth > 0, alt: i.alt, fit: getComputedStyle(i).objectFit, w: Math.round(i.getBoundingClientRect().width), h: Math.round(i.getBoundingClientRect().height), nr: +(i.naturalWidth / i.naturalHeight).toFixed(2) })));
   check('portail : trois photos chargées, mêmes dimensions, 4:3 sans déformation', photos.length === 3 && photos.every((x) => x.ok && x.fit === 'cover' && x.w === photos[0].w && x.h === photos[0].h && Math.abs(x.w / x.h - 4 / 3) < 0.02 && Math.abs(x.nr - 4 / 3) < 0.01), JSON.stringify(photos.map((x) => [x.src.split('/').pop(), x.w, x.h, x.nr])));
   check('portail : photos décoratives (nom porté par le titre du lien)', photos.every((x) => x.alt === ''));

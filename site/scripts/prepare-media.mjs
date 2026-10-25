@@ -75,4 +75,5 @@ fs.writeFileSync('src/data/photos.json', JSON.stringify(manifest, null, 1) + '\n
 fs.mkdirSync('public/fonts', { recursive: true });
 fs.copyFileSync('node_modules/@fontsource-variable/bricolage-grotesque/files/bricolage-grotesque-latin-wght-normal.woff2', 'public/fonts/bricolage-grotesque-latin.woff2');
 fs.copyFileSync('node_modules/@fontsource-variable/inter/files/inter-latin-wght-normal.woff2', 'public/fonts/inter-latin.woff2');
+fs.copyFileSync('node_modules/@fontsource-variable/manrope/files/manrope-latin-wght-normal.woff2', 'public/fonts/manrope-latin.woff2');
 console.log('polices copiées');
