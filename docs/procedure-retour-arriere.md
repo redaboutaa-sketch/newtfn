@@ -39,7 +39,7 @@ dig +short A techformanord.fr
 
 ## E. Préproduction tfn.iatechformanord.fr
 
-Chaque version déployée en préproduction est étiquetée `tfn-site:preprod-<commit>` : `preprod-859c2cc` (avant la montée en gamme), `preprod-a8ec674` (montée en gamme, avant le portail à trois univers), `preprod-31541ab` (portail à trois univers, illustrations animées), `preprod-c2c4eaf` (portail avec les photos des trois univers et WhatsApp +33 6 86 15 89 33), `preprod-a608309` (numéros insécables sur mobile, fonds bleus du portail). Pour revenir au portail illustré, remplacer `859c2cc` par `31541ab` ci-dessous. Pour revenir à l'accueil précédent, remplacer `859c2cc` par `a8ec674` ci-dessous.
+Chaque version déployée en préproduction est étiquetée `tfn-site:preprod-<commit>` : `preprod-859c2cc` (avant la montée en gamme), `preprod-a8ec674` (montée en gamme, avant le portail à trois univers), `preprod-31541ab` (portail à trois univers, illustrations animées), `preprod-c2c4eaf` (portail avec les photos des trois univers et WhatsApp +33 6 86 15 89 33), `preprod-a608309` (numéros insécables sur mobile, fonds bleus du portail), `preprod-8a7325e` (typographie Manrope hors cartes). Pour revenir au portail illustré, remplacer `859c2cc` par `31541ab` ci-dessous. Pour revenir à l'accueil précédent, remplacer `859c2cc` par `a8ec674` ci-dessous.
 ```bash
 cd /opt/newtfn
 docker tag tfn-site:preprod-859c2cc tfn-site:preprod

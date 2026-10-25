@@ -146,3 +146,10 @@ Vérifié sur https://tfn.iatechformanord.fr/ (`version.txt` = `c2c4eaf`) :
 - Portail : fond `#F0F7FF`, partie basse `#DFECF9` pleine largeur, filet `#C7DBEE`, cartes blanches en aplat.
 - Interactions 46/46 ; recette 4 largeurs × 24 pages : 0 débordement, 0 violation axe (hors 404 volontaire).
 - Captures mises à jour : `docs/captures/portail-ordinateur.jpg`, `docs/captures/portail-mobile.jpg`.
+
+## Portail : typographie Manrope hors cartes (version `8a7325e`, 25/10/2026)
+
+- Manrope (WOFF2 variable local `site/public/fonts/manrope-latin.woff2`, OFL 1.1, `font-display: swap`, repli sans-serif système), préchargée sur le portail seulement ; appliquée à `.portail-top`, `.portail-intro` et `.portail-foot` (aucun héritage depuis `body`).
+- Titre 700 `#173B63` (-0.025em, `clamp`, `text-wrap: balance`) ; sous-titre, mentions et Qualiopi 400 `#476582` ; téléphone, contacts et liens légaux 500 `#214F78`. Contrastes : 10,56 / 5,64 / 7,93 sur `#F0F7FF`, 9,50 / 5,07 / 7,13 sur `#DFECF9` (AA).
+- Cartes : Bricolage Grotesque et Inter inchangés (contrôle automatique) ; logos et vert WhatsApp inchangés.
+- Distant : interactions 48/48, recette 4 largeurs × 24 pages sans débordement ni violation axe, 120/120 sans numéro coupé (320 à 414 px, texte 100 % et 130 %).
