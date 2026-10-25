@@ -153,3 +153,14 @@ Vérifié sur https://tfn.iatechformanord.fr/ (`version.txt` = `c2c4eaf`) :
 - Titre 700 `#173B63` (-0.025em, `clamp`, `text-wrap: balance`) ; sous-titre, mentions et Qualiopi 400 `#476582` ; téléphone, contacts et liens légaux 500 `#214F78`. Contrastes : 10,56 / 5,64 / 7,93 sur `#F0F7FF`, 9,50 / 5,07 / 7,13 sur `#DFECF9` (AA).
 - Cartes : Bricolage Grotesque et Inter inchangés (contrôle automatique) ; logos et vert WhatsApp inchangés.
 - Distant : interactions 48/48, recette 4 largeurs × 24 pages sans débordement ni violation axe, 120/120 sans numéro coupé (320 à 414 px, texte 100 % et 130 %).
+
+## Parcours automobile seul (version `f9d3449`, 25/10/2026)
+
+Périmètre : toutes les pages du site TFN hors portail `/`. Le portail garde ses trois univers.
+- `/services/` = catalogue automobile : maintenance et diagnostic (5 modules), carrosserie et peinture (12), commerce automobile (2), parcours de reconversion (2) ; 19 liens de modules vers des ancres `#prog-…` existantes.
+- Retirés du parcours automobile : section « autres univers » de `/acceuil/`, carte IA d'Entreprises, pôles beauté/IA de Notre organisme, carte Maison Beauxlieux et choix beauté/IA du formulaire de contact, horaires Maison Beauxlieux des Informations pratiques, pôles du plan du site et du pied de page. Image de partage `og-automobile.png` (le portail garde `og-default.png`).
+- Navigation : « ← Retour au portail » (bandeau et pied) vers `/` ; logo et « Accueil » vers `/acceuil/`.
+- `/formations/beaute-bien-etre/` → 301 `https://maisonbeauxlieux.com/formations` ; `/formations/intelligence-artificielle/` → 301 `https://iatechformanord.fr/` (le site IA renvoie 200 pour toute URL : seule sa racine est une destination sûre).
+- Conservé : programmes, URL, ancres, PDF, informations légales et Qualiopi ; rubrique « Sites liés » des mentions légales (information légale : formations esthétiques dispensées sous la certification TFN).
+- Distant : interactions 51/51 (dont « aucune mention beauté/IA » sur 20 pages, navigation et image de partage) ; recette 4 largeurs × 22 pages : 0 débordement, 0 violation axe ; redirections 217/217 ; liens internes et externes valides (Instagram 429) ; numéros 120/120.
+- Captures : `docs/captures/catalogue-automobile-ordinateur.jpg`, `docs/captures/catalogue-automobile-mobile.jpg`, `docs/captures/acceuil-automobile-ordinateur.jpg`.

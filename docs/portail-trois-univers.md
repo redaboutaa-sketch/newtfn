@@ -9,9 +9,9 @@ Cette demande remplace la composition d'accueil précédente : la racine devient
 |---|---|---|
 | `/` | **Portail** : « Tech Formation Nord », une phrase, trois univers, contact direct, accès qualité et légal | Servie en 200, sans redirection ni écran temporisé. Pas d'en-tête ni de pied de page du site TFN (`Base chrome="portail"`). |
 | `/acceuil/` | Accueil du site TFN, recentré sur l'**automobile** (formations, accompagnement, qualité, centre, accès aux deux autres univers) | Chemin conservé tel que demandé (orthographe « acceuil »). Métadonnées et canonical propres (`https://techformanord.fr/acceuil/`). |
-| autres pages | Inchangées dans leurs URL, ancres `#prog-…`, PDF et redirections (215/215 conformes) | Aucune redirection vers le portail. |
+| autres pages | Site TFN **automobile uniquement** depuis `f9d3449` (aucune mention beauté ni IA) ; URL, ancres `#prog-…` et PDF inchangés | `/formations/beaute-bien-etre/` et `/formations/intelligence-artificielle/` : 301 vers les sites spécialisés. |
 
-Navigation du site TFN : logo, « Accueil » et fil d'Ariane → `/acceuil/` ; lien discret « ← Nos trois univers » dans le bandeau supérieur et le pied de page → `/`. Sur le portail, le logo TFN revient à `/`.
+Navigation du site TFN : logo, « Accueil » et fil d'Ariane → `/acceuil/` ; lien discret « ← Retour au portail » dans le bandeau supérieur et le pied de page → `/`. Sur le portail, le logo TFN revient à `/`.
 
 ## Destinations des univers
 
