@@ -128,3 +128,14 @@ Un premier passage avait relevé un CLS de 0,22 sur `/services/` : le bandeau de
 Captures : `docs/captures/portail-ordinateur.jpg`, `portail-mobile.jpg`, `acceuil-automobile-ordinateur.jpg`, `catalogue-mobile.jpg`, `fiche-maintenance-mobile.jpg` ; illustrations `sketch-*.png` ; logo IA `logo-ia-tech-formation-nord.png`.
 
 Limites : pas d'appareils physiques ni de lecteur d'écran ; mesures de laboratoire uniquement ; vérification visuelle de l'animation par captures et valeurs calculées, pas par enregistrement vidéo.
+
+## Portail : photos des trois univers et WhatsApp confirmé (version `c2c4eaf`, 25/10/2026)
+
+Vérifié sur https://tfn.iatechformanord.fr/ (`version.txt` = `c2c4eaf`) :
+- Photos (atelier, cabine de soins, personne devant un ordinateur) : 200 en AVIF et WebP ; mêmes dimensions affichées (348 × 261 px à 1440 px, 146 × 110 px à 390 px), format 4:3, `object-fit: cover`, aucune déformation ; zoom ×1,05 au survol et au focus clavier, contenu dans le cadre.
+- Destinations inchangées : `/acceuil/`, `https://maisonbeauxlieux.com/`, `https://iatechformanord.fr/` (200) ; ordre clavier logo → téléphone → trois univers ; Entrée et appui mobile ouvrent la destination.
+- WhatsApp : tous les liens vers `https://wa.me/33686158933` ; téléphone fixe (`tel:+33320160915`) et e-mail distincts sur le portail.
+- Interactions : 45/45, aucune erreur navigateur. Recette 4 largeurs × 24 pages : 0 débordement, 0 violation axe (seule remarque : la 404 volontaire).
+- Lighthouse mobile `/` : performance 99, accessibilité 100, LCP 1,8 s, CLS 0, TBT 0 ms (SEO 69 attendu : noindex de préproduction).
+- Protections : X-Robots-Tag et meta noindex, sitemap 404, `/api/test-inbox` 404, hôte sslip 401.
+- Captures : `docs/captures/portail-ordinateur.jpg`, `docs/captures/portail-mobile.jpg`.
