@@ -89,6 +89,7 @@ Voir `docs/procedure-mise-en-production.md` et `docs/procedure-retour-arriere.md
 - `docs/choix-techniques.md` — justification de la stack
 - `docs/mesure-et-suivi.md` — événements de conversion, liens entre domaines, Search Console
 - `docs/recommandations-liens-retour.md` — liens à ajouter sur les sites spécialisés
+- `docs/portail-trois-univers.md` — portail `/`, accueil automobile `/acceuil/`, logos, illustrations, cartes formation, WhatsApp
 - `docs/direction-artistique.md` — direction artistique, plan de motion, décisions
 - `docs/rapport-recette.md` — résultats de la recette (dont montée en gamme visuelle)
 - `docs/procedure-mise-en-production.md`, `docs/procedure-retour-arriere.md`

@@ -39,7 +39,7 @@ dig +short A techformanord.fr
 
 ## E. Préproduction tfn.iatechformanord.fr
 
-Chaque version déployée en préproduction est étiquetée `tfn-site:preprod-<commit>` (version précédant la montée en gamme : `preprod-859c2cc`).
+Chaque version déployée en préproduction est étiquetée `tfn-site:preprod-<commit>` : `preprod-859c2cc` (avant la montée en gamme), `preprod-a8ec674` (montée en gamme, avant le portail à trois univers), `preprod-31541ab` (portail à trois univers). Pour revenir à l'accueil précédent, remplacer `859c2cc` par `a8ec674` ci-dessous.
 ```bash
 cd /opt/newtfn
 docker tag tfn-site:preprod-859c2cc tfn-site:preprod

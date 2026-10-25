@@ -100,3 +100,31 @@ Ordinateur (après) : 100 / 100, LCP 0,4 s, CLS 0,006. Le score SEO de 69 est d�
 - Pas de test sur appareils physiques ni avec lecteur d'écran (contrôles automatiques + clavier simulé).
 - Zoom 200 % vérifié par équivalence de largeur (1440 px zoomé ≈ 720 px CSS, couvert par les passes 768/390/360 px).
 - Transitions de page natives : Chromium uniquement ; les autres navigateurs naviguent sans transition.
+
+# Portail à trois univers (25/10/2026)
+
+Version livrée : `31541ab` sur https://tfn.iatechformanord.fr/ (`/version.txt`). Recette jouée **sur l'URL publique** après déploiement (Chromium 1248, playwright-core, axe-core, Lighthouse).
+
+| Contrôle | Résultat |
+|---|---|
+| Pages ouvertes à distance | `/`, `/acceuil/`, `/services/`, `/service/maintenance/` (+ 20 autres) : 200 ; logos, illustrations et CSS : 200 |
+| Mise en page et accessibilité (24 pages × 1440, 390, 768, 360 px) | 0 débordement horizontal, 0 violation axe WCAG 2.1 AA, 0 image sans alternative ; seule remarque : la page 404 volontaire |
+| Interactions et mouvement (`qa/interactions.mjs`) | 39/39, aucune erreur navigateur : trois liens d'univers et leurs destinations, aucun lien imbriqué, panneaux de même largeur visibles ensemble en 1440 × 900, survol (sketch ×1,04, pont qui monte, autres panneaux atténués sans toucher au texte), focus clavier visible et Entrée → `/acceuil/` même onglet, appui unique sur mobile (sketch automobile, logo Maison Beauxlieux), mouvement réduit sans aucune animation, portail utilisable sans JavaScript, ancre de module qui ouvre son programme, cartes de modules, lien WhatsApp configuré |
+| Liens | 24 URL internes, 117 ancres, 66 liens externes : conformes (Instagram répond 429 au robot) |
+| Redirections | 215/215 conformes au mapping SEO |
+| Protections | `X-Robots-Tag` et meta `noindex`, pas de sitemap, `/api/test-inbox` 404 sur l'hôte public, hôte sslip 401 ; iatechformanord.fr, maisonbeauxlieux.com et techformanord.fr : 200 (non modifiés) |
+
+Lighthouse mobile simulé (laboratoire) :
+
+| Page | Perf. | A11y | LCP | CLS | TBT | Poids |
+|---|---|---|---|---|---|---|
+| `/` (portail) | 100 | 100 | 1,5 s | 0 | 70 ms | 150 Ko |
+| `/acceuil/` | 100 | 100 | 1,5 s | 0,001 | 0 ms | 220 Ko |
+| `/services/` | 100 | 100 | 1,4 s | 0,011 | 0 ms | 215 Ko |
+| `/service/maintenance/` | 100 | 100 | 1,6 s | 0,002 | 0 ms | 150 Ko |
+
+Un premier passage avait relevé un CLS de 0,22 sur `/services/` : le bandeau de préproduction changeait de hauteur au chargement de la police ; il utilise désormais la police système.
+
+Captures : `docs/captures/portail-ordinateur.jpg`, `portail-mobile.jpg`, `acceuil-automobile-ordinateur.jpg`, `catalogue-mobile.jpg`, `fiche-maintenance-mobile.jpg` ; illustrations `sketch-*.png` ; logo IA `logo-ia-tech-formation-nord.png`.
+
+Limites : pas d'appareils physiques ni de lecteur d'écran ; mesures de laboratoire uniquement ; vérification visuelle de l'animation par captures et valeurs calculées, pas par enregistrement vidéo.
