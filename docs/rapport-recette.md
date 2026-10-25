@@ -139,3 +139,10 @@ Vérifié sur https://tfn.iatechformanord.fr/ (`version.txt` = `c2c4eaf`) :
 - Lighthouse mobile `/` : performance 99, accessibilité 100, LCP 1,8 s, CLS 0, TBT 0 ms (SEO 69 attendu : noindex de préproduction).
 - Protections : X-Robots-Tag et meta noindex, sitemap 404, `/api/test-inbox` 404, hôte sslip 401.
 - Captures : `docs/captures/portail-ordinateur.jpg`, `docs/captures/portail-mobile.jpg`.
+
+## Mobile et fonds du portail (version `a608309`, 25/10/2026)
+
+- Numéros de téléphone et WhatsApp jamais coupés : 12 pages × 5 largeurs (320 à 414 px) × texte à 100 % et 130 % = 120/120 sans numéro coupé ni débordement (distant).
+- Portail : fond `#F0F7FF`, partie basse `#DFECF9` pleine largeur, filet `#C7DBEE`, cartes blanches en aplat.
+- Interactions 46/46 ; recette 4 largeurs × 24 pages : 0 débordement, 0 violation axe (hors 404 volontaire).
+- Captures mises à jour : `docs/captures/portail-ordinateur.jpg`, `docs/captures/portail-mobile.jpg`.
