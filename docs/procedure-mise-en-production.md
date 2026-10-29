@@ -90,3 +90,17 @@ Après 48 h sans incident, remonter le TTL à sa valeur d'origine (3600 s).
 | J+90 | Bilan SEO (pages, requêtes, positions moyennes, conversions). Décider de la conservation des slugs hérités (`/infinite-grid-col-2/`…) ; une éventuelle migration vers des URL lisibles se fera par 301 directes, une page à la fois. Résiliation éventuelle de l'hébergement WordPress après export final. |
 
 Aucun classement n'est garanti : une baisse temporaire de visibilité est possible pendant la réindexation.
+
+## État au 29/10/2026 : bascule effectuée
+
+- DNS IONOS modifié par l'organisme : `@` et `www` A → 76.13.44.177, AAAA supprimés ; NS, MX, SPF, DMARC, autodiscover inchangés.
+- Pile `tfn-prod` lancée depuis `feat/portail-trois-univers` (`d2029a5`, images `tfn-site:prod-d2029a5`, `tfn-forms:prod-d2029a5`) avec la surcouche `deploy/docker-compose.production.predns.yml` et `/etc/techformanord/production-predns.env` (aucun secret).
+- Certificats Let's Encrypt émis par Traefik pour `techformanord.fr` et `www.techformanord.fr` (renouvellement automatique par Traefik, stockage `traefik_letsencrypt`).
+- `TFN_CERT_RESOLVER` : vide avant bascule (certificat par défaut, aucune demande vouée à l'échec), `letsencrypt` ensuite.
+- **En attente** : formulaire en mode test (demandes enregistrées dans le volume `tfn_prod_predns_forms`, non transmises). Dès réception de `FORM_TO` et des identifiants SMTP :
+  ```bash
+  sudo install -m 600 /dev/null /etc/techformanord/production.env   # FORM_TO, FORM_FROM, SMTP_*, TFN_CERT_RESOLVER=letsencrypt
+  docker compose -p tfn-prod --env-file /etc/techformanord/production.env -f deploy/docker-compose.production.yml up -d --build
+  docker run --rm -v tfn_prod_predns_forms:/d alpine cat /d/demandes-test.jsonl   # demandes reçues entre-temps, à traiter
+  ```
+- L'ancien hébergement IONOS ne sert plus le site (404 en HTTP sur 217.160.0.65) : le retour arrière passe par les images précédentes, pas par le DNS.
