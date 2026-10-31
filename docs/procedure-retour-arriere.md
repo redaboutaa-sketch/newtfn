@@ -2,6 +2,8 @@
 
 ## A. Retour au site WordPress (après bascule DNS)
 
+> **Obsolète depuis le 29/10/2026** : l'hébergement IONOS ne sert plus le site (404). Utiliser la section B ou `tfn-deploy rollback` (`docs/acces-et-deploiement-tfn.md` §5).
+
 À utiliser en cas d'incident majeur (site indisponible, formulaire hors service sans solution rapide, erreur de contenu grave).
 
 1. **DNS (IONOS)** : rétablir les valeurs d'origine (relevées le 24/10/2026) :

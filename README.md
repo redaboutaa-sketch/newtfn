@@ -2,7 +2,7 @@
 
 Portail de l'organisme de formation Tech Formation Nord (Vendeville, près de Lille) présentant trois pôles — **automobile**, **esthétique, beauté et bien-être** (avec Maison Beauxlieux), **intelligence artificielle** (avec iatechformanord.fr) — en préservant les contenus et les URL du site WordPress historique.
 
-> État : **préproduction**. La bascule du domaine `techformanord.fr` n'est pas faite et nécessite une validation explicite (`docs/procedure-mise-en-production.md`).
+> État : **en production** sur https://techformanord.fr depuis le 29/10/2026 (formulaire encore en mode test). Maintenance : `docs/guide-maintenance-developpeur.md` ; accès et déploiement : `docs/acces-et-deploiement-tfn.md` ; consignes des agents : `AGENTS.md`.
 
 ## Structure
 
