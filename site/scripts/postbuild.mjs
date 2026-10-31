@@ -40,3 +40,11 @@ if (env === 'production') {
   console.log(`postbuild: robots.txt ${env} (aucun sitemap publié)`);
 }
 fs.writeFileSync(path.join(dist, 'robots.txt'), robotsTxt.join('\n'));
+
+// Aperçu Cloudflare Pages : en-tête noindex sur toutes les URL (y compris <projet>.pages.dev et alias de branche),
+// commit servi dans version.txt. Fichier _headers propre à Pages, jamais produit pour l'image Docker du VPS.
+if (process.env.CF_PAGES === '1') {
+  fs.writeFileSync(path.join(dist, '_headers'), '/*\n  X-Robots-Tag: noindex, nofollow\n  Referrer-Policy: no-referrer\n');
+  fs.writeFileSync(path.join(dist, 'version.txt'), `${(process.env.CF_PAGES_COMMIT_SHA || 'apercu').slice(0, 7)}\n`);
+  console.log('postbuild: aperçu Cloudflare Pages (_headers noindex, version.txt)');
+}

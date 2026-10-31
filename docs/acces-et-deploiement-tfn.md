@@ -45,6 +45,7 @@ Le VPS est partagé avec d'autres sites et services. Les vérifications du 31/10
 |---|---|---|
 | Prompt et modification dans Codex | développeur | oui, dès l'invitation acceptée |
 | Branche + pull request | développeur (Codex) | oui |
+| Aperçu automatique de la PR | Cloudflare Pages | préparé : activation par l'administrateur (`docs/apercus-cloudflare-pages.md`) ; le build Pages sert aussi de test de build |
 | Tests automatiques sur la PR | — | **non configuré** (pas de GitHub Actions) : tests lancés localement, voir le guide |
 | Revue et approbation de la PR | administrateur / responsable | oui (manuel) |
 | Déploiement en préproduction | administrateur : `tfn-deploy preprod <branche>` | oui |
