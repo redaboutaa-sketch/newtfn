@@ -549,6 +549,19 @@ body.is-portail main { flex: 1; display: flex; flex-direction: column; justify-c
 .portail-call:hover { color: var(--portail-title); text-decoration: underline; }
 .portail-intro { text-align: center; padding-top: clamp(4px, 1.6vh, 20px); padding-bottom: clamp(16px, 3.2vh, 36px); }
 .portail-intro h1 { font-family: var(--font-portail); font-weight: 700; color: var(--portail-title); letter-spacing: -0.025em; line-height: 1.12; font-size: clamp(1.85rem, 1.3rem + 2.4vw, 3.2rem); margin-bottom: .22em; text-wrap: balance; overflow-wrap: break-word; }
+/* Bleu nuit satiné : reflet doux et fixe, avec une couleur unie de repli. */
+.portail-intro h1 { color: #102d50; }
+@supports ((background-clip: text) or (-webkit-background-clip: text)) {
+  .portail-intro h1 {
+    background-image: linear-gradient(165deg, #102d50 15%, #244e75 46%, #183b60 58%, #102d50 85%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+}
+@media (forced-colors: active) {
+  .portail-intro h1 { background-image: none; color: CanvasText; }
+}
 .portail-intro p { margin: 0; color: var(--portail-text); font-weight: 400; font-size: clamp(1.05rem, .95rem + .45vw, 1.3rem); text-wrap: balance; }
 .universes { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(14px, 1.8vw, 28px); margin: 0 auto; padding-bottom: clamp(20px, 4vh, 48px); }
 .universe { margin: 0; }
