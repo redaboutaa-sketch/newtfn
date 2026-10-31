@@ -1,0 +1,27 @@
+---
+import Base from '../layouts/Base.astro';
+import { organisme, ANALYTICS } from '../lib/data';
+const org = organisme();
+---
+<Base title="Politique de confidentialité" description="Comment Tech Formation Nord traite les données personnelles transmises via le site techformanord.fr : finalités, base légale, durée de conservation, destinataires et droits." breadcrumbs={[{ name: 'Politique de confidentialité', url: '/politique-de-confidentialite/' }]}>
+  <section class="section">
+    <div class="container narrow prose">
+      <h1>Politique de confidentialité</h1>
+      <h2>Responsable du traitement</h2>
+      <p>{org.nom}, {org.adresse.rue}, {org.adresse.code_postal} {org.adresse.ville} — <a href={`mailto:${org.email}`}>{org.email}</a>.</p>
+      <h2>Données collectées et finalités</h2>
+      <p>Le formulaire de contact recueille vos nom, adresse e-mail, téléphone (facultatif), profil, domaine d’intérêt et message, afin de répondre à votre demande d’information, de devis ou d’inscription, et d’assurer le suivi de cette demande.</p>
+      <h2>Base légale</h2>
+      <p>Le traitement repose sur les mesures précontractuelles prises à votre demande et, pour le suivi de la relation, sur l’intérêt légitime de l’organisme à répondre aux personnes qui le sollicitent.</p>
+      <h2>Destinataires</h2>
+      <p>Les données sont destinées aux seules personnes de Tech Formation Nord chargées de traiter votre demande. Elles ne sont ni vendues ni cédées. Elles sont hébergées par {org.hebergeur.nom}, dans l’Union européenne.</p>
+      <h2>Durée de conservation</h2>
+      <p>Les demandes sans suite sont conservées au maximum trois ans à compter du dernier contact. Les données des stagiaires sont conservées pendant la durée nécessaire au respect des obligations légales et réglementaires de l’organisme de formation.</p>
+      <h2>Mesure d’audience et cookies</h2>
+      {ANALYTICS.provider === 'plausible' && <p>Le site utilise Plausible Analytics, un outil de mesure d’audience sans cookie qui ne collecte aucune donnée personnelle identifiante. Aucun consentement n’est requis pour cette mesure.</p>}
+      {!ANALYTICS.provider && <p>Le site ne dépose aucun cookie de mesure d’audience ni de publicité.</p>}
+      <h2>Vos droits</h2>
+      <p>Vous disposez d’un droit d’accès, de rectification, d’effacement, de limitation et d’opposition au traitement de vos données. Pour les exercer, écrivez à <a href={`mailto:${org.email}`}>{org.email}</a> ou à l’adresse postale ci-dessus. Vous pouvez également introduire une réclamation auprès de la <a href="https://www.cnil.fr/fr/plaintes" rel="noopener">CNIL</a>.</p>
+    </div>
+  </section>
+</Base>

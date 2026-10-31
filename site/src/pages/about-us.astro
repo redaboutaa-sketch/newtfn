@@ -1,0 +1,83 @@
+---
+// URL historique « À propos de nous » conservée.
+import Base from '../layouts/Base.astro';
+import Picture from '../components/Picture.astro';
+// Vignette de chaque famille de formations automobile.
+const thumbs: Record<string, any> = { 'maintenance-diagnostic': 'auto-cle-paysage', commerce: 'auto-showroom-paysage', 'carrosserie-peinture': 'auto-peinture-paysage', reconversion: 'auto-cle-portrait' };
+import CtaBand from '../components/CtaBand.astro';
+import { organisme, pole } from '../lib/data';
+const org = organisme();
+const auto = pole('automobile');
+---
+<Base title="Notre organisme de formation à Vendeville" description="Tech Formation Nord, organisme de formation aux métiers de l’automobile certifié Qualiopi à Vendeville, près de Lille : notre mission, nos formations, notre démarche qualité et nos coordonnées." breadcrumbs={[{ name: 'Notre organisme', url: '/about-us/' }]} navActive="organisme">
+  <section class="page-hero">
+    <div class="container hero-enter">
+      <span class="eyebrow">À propos de nous</span>
+      <h1>Formez-vous aujourd’hui, accélérez votre carrière demain</h1>
+      <p class="lead">Tech Formation Nord est un organisme de formation professionnelle installé à Vendeville, au sud de Lille. Il forme aux métiers de l’automobile : maintenance et diagnostic, carrosserie et peinture, commerce de véhicules, et reconversion vers les métiers de l’atelier.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container grid grid-2" data-reveal>
+      <div>
+        <h2>Notre mission</h2>
+        <p>Former des professionnels compétents et polyvalents, prêts à relever les défis de leur métier. Que vous souhaitiez exceller dans la maintenance, le commerce de véhicules neufs et d’occasion (VN/VO), ou la carrosserie et la peinture, nous vous accompagnons avec des parcours adaptés aux besoins des entreprises.</p>
+        <h2 style="margin-top:1.5rem">Pourquoi nous choisir ?</h2>
+        <p>Nous croyons que chaque apprenant mérite de développer ses compétences dans un environnement stimulant, propice à la réussite. Que vous soyez débutant ou professionnel cherchant à se perfectionner, nous construisons avec vous une formation adaptée à vos ambitions.</p>
+        <ul>
+          <li>Un entretien préalable pour personnaliser le plan de formation</li>
+          <li>Des formations centrées sur la pratique et les situations de travail</li>
+          <li>Un suivi individuel pendant la formation</li>
+          <li>Une évaluation des acquis en amont et en aval</li>
+        </ul>
+      </div>
+      <div class="stack">
+        {auto.familles.map((f: any) => (
+          <a class="card card--link" href={f.url} data-accent="auto" style="flex-direction:row;gap:16px;align-items:center;text-decoration:none;color:inherit">
+            <span class="pole-thumb" aria-hidden="true"><Picture id={thumbs[f.id]} sizes="112px" decorative /></span>
+            <span><strong>{f.nom}</strong><br /><span class="small muted">Voir les formations</span></span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container grid grid-3" data-reveal>
+      <div class="card">
+        <h2 style="font-size:1.2rem">Qualité</h2>
+        <img src={org.qualiopi.logo} alt="Qualiopi — processus certifié — République française" width="430" height="183" loading="lazy" style="width:180px;margin-bottom:12px" />
+        <p class="small">{org.qualiopi.mention}</p>
+        <a class="link-arrow" href="/qualite/">Notre certification</a>
+      </div>
+      <div class="card">
+        <h2 style="font-size:1.2rem">Accessibilité</h2>
+        <p class="small">Un référent handicap étudie avec chaque candidat les adaptations possibles, en tenant compte des exigences de sécurité des formations pratiques.</p>
+        <a class="link-arrow" href="/accessibilite-handicap/">Accessibilité et handicap</a>
+      </div>
+      <div class="card">
+        <h2 style="font-size:1.2rem">Venir au centre</h2>
+        <p class="small">{org.adresse.rue}, {org.adresse.code_postal} {org.adresse.ville}. Parking sur place, bus L1 (arrêt Vendeville Centre). Coin repas avec micro-ondes.</p>
+        <a class="link-arrow" href="/informations-pratiques/">Informations pratiques</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container narrow">
+      <h2 style="font-size:1.3rem">Identité de l’organisme</h2>
+      <table class="info-table">
+        <caption class="sr-only">Informations légales de Tech Formation Nord</caption>
+        <tbody>
+          <tr><th scope="row">Raison sociale</th><td>{org.nom} ({org.forme_juridique})</td></tr>
+          <tr><th scope="row">Adresse</th><td>{org.adresse.rue}, {org.adresse.code_postal} {org.adresse.ville}</td></tr>
+          <tr><th scope="row">SIRET</th><td>{org.siret}</td></tr>
+          <tr><th scope="row">Déclaration d’activité</th><td>{org.nda_mention}</td></tr>
+          <tr><th scope="row">Certification qualité</th><td>Qualiopi — certificat n° {org.qualiopi.numero} ({org.qualiopi.certificateur}) — <a href={org.qualiopi.document}>télécharger le certificat (PDF)</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+  <CtaBand />
+</Base>

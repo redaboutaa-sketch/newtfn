@@ -1,0 +1,25 @@
+---
+import Base from '../layouts/Base.astro';
+import { organisme } from '../lib/data';
+const org = organisme();
+---
+<Base title="Mentions légales" description="Mentions légales du site techformanord.fr : éditeur Tech Formation Nord (SAS), déclaration d’activité, directeur de la publication, hébergeur et propriété intellectuelle." breadcrumbs={[{ name: 'Mentions légales', url: '/mentions-legales/' }]}>
+  <section class="section">
+    <div class="container narrow prose">
+      <h1>Mentions légales</h1>
+      <h2>Éditeur du site</h2>
+      <p>{org.nom}, {org.forme_juridique}<br />Siège : {org.adresse.rue}, {org.adresse.code_postal} {org.adresse.ville}<br />SIREN {org.siren} — SIRET {org.siret} — Code APE {org.code_ape}<br />N° de TVA intracommunautaire : {org.tva}<br />Téléphone : <a href={`tel:${org.telephone.lien}`}>{org.telephone.affiche}</a> — E-mail : <a href={`mailto:${org.email}`}>{org.email}</a></p>
+      <p>{org.nda_mention}</p>
+      <h2>Directeur de la publication</h2>
+      <p>{org.representant_legal}.</p>
+      <h2>Hébergement</h2>
+      <p>{org.hebergeur.nom} — {org.hebergeur.adresse} — <a href={org.hebergeur.site} rel="noopener">{org.hebergeur.site.replace('https://', '')}</a></p>
+      <h2>Sites liés</h2>
+      <p>Le site <a href="https://iatechformanord.fr/">iatechformanord.fr</a> présente le pôle intelligence artificielle de Tech Formation Nord. Le site <a href="https://maisonbeauxlieux.com/">maisonbeauxlieux.com</a> présente les formations esthétiques dispensées sous la certification de Tech Formation Nord ainsi que l’offre de location d’espaces de Maison Beauxlieux. Chacun de ces sites dispose de ses propres mentions et conditions.</p>
+      <h2>Propriété intellectuelle</h2>
+      <p>Les textes, logos et documents publiés sur ce site sont protégés. Toute reproduction sans autorisation préalable est interdite. Le logo Qualiopi est utilisé conformément à son règlement d’usage, au titre de la certification de l’organisme.</p>
+      <h2>Données personnelles</h2>
+      <p>Voir la <a href="/politique-de-confidentialite/">politique de confidentialité</a>.</p>
+    </div>
+  </section>
+</Base>

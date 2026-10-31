@@ -1,0 +1,92 @@
+# Gabarit nginx (variables remplacées au démarrage par l'image officielle nginx via envsubst).
+# NGINX_ROBOTS_HEADER : "noindex, nofollow" en préproduction, vide en production (en-tête alors omis).
+
+map_hash_bucket_size 256;
+map_hash_max_size 4096;
+include /etc/nginx/conf.d/legacy-rules.inc;
+
+limit_req_zone $binary_remote_addr zone=tfn_forms:10m rate=6r/m;
+
+map "" $tfn_robots { default "${NGINX_ROBOTS_HEADER}"; }
+
+server {
+    listen 8080;
+    server_name _;
+    root /usr/share/nginx/html;
+    index index.html;
+    charset utf-8;
+    server_tokens off;
+    absolute_redirect off;
+
+    # IP réelle du visiteur transmise par Traefik (réseaux Docker privés) : limitation de débit par client.
+    set_real_ip_from 172.16.0.0/12;
+    set_real_ip_from 10.0.0.0/8;
+    set_real_ip_from 192.168.0.0/16;
+    real_ip_header X-Forwarded-For;
+    real_ip_recursive on;   # redirections relatives : correctes derrière Traefik (HTTPS)
+
+    gzip on;
+    gzip_types text/css application/javascript application/json image/svg+xml application/xml text/plain;
+    gzip_min_length 512;
+
+    # En-têtes communs (répétés dans chaque location qui ajoute des en-têtes, règle nginx).
+    add_header X-Robots-Tag $tfn_robots always;
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+    add_header Permissions-Policy "camera=(), microphone=(), geolocation=()" always;
+    add_header Content-Security-Policy "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://plausible.io; connect-src 'self' https://plausible.io; frame-ancestors 'self'; base-uri 'self'; form-action 'self'" always;
+
+    # Anciennes URL : 301 directes ou 410 (docs/mapping-redirections.csv).
+    if ($tfn_redirect) { return 301 $tfn_redirect; }
+    if ($tfn_gone) { return 410; }
+
+    error_page 404 /404.html;
+    error_page 410 /404.html;
+    location = /404.html { internal; }
+
+    location = /api/contact {
+        limit_req zone=tfn_forms burst=5 nodelay;
+        limit_req_status 429;
+        client_max_body_size 32k;
+        proxy_pass http://forms:3000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $http_x_forwarded_proto;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+
+    location /api/ {
+        client_max_body_size 32k;
+        proxy_pass http://forms:3000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $http_x_forwarded_proto;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+
+    location /_astro/ {
+        add_header Cache-Control "public, max-age=31536000, immutable";
+        add_header X-Robots-Tag $tfn_robots always;
+        add_header X-Content-Type-Options "nosniff" always;
+        try_files $uri =404;
+    }
+
+    location ~* \.(?:png|jpe?g|webp|avif|svg|ico|pdf|woff2?)$ {
+        add_header Cache-Control "public, max-age=2592000";
+        add_header X-Robots-Tag $tfn_robots always;
+        add_header X-Content-Type-Options "nosniff" always;
+        try_files $uri =404;
+    }
+
+    location = /healthz { access_log off; default_type text/plain; return 200 "ok\n"; }
+
+    location / {
+        add_header Cache-Control "no-cache";
+        add_header X-Robots-Tag $tfn_robots always;
+        add_header X-Content-Type-Options "nosniff" always;
+        add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+        add_header Permissions-Policy "camera=(), microphone=(), geolocation=()" always;
+        add_header Content-Security-Policy "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://plausible.io; connect-src 'self' https://plausible.io; frame-ancestors 'self'; base-uri 'self'; form-action 'self'" always;
+        try_files $uri $uri/ =404;   # /services -> 301 /services/ (une seule forme d’URL)
+    }
+}

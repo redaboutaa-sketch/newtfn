@@ -1,0 +1,414 @@
+# Fiche catalogue : Carrosserie et peinture (pôle automobile)
+# Source : https://techformanord.fr/service/interior-cleaning/ (collecte 2026-10-24)
+url: /service/interior-cleaning/
+pole: automobile
+famille: carrosserie-peinture
+type: catalogue
+ordre: 3
+titre: "Formations carrosserie et peinture automobile"
+titre_court: "Carrosserie et peinture"
+seo_title: "Formations carrosserie et peinture automobile près de Lille"
+seo_description: "Débosselage sans peinture, raccords de peinture, soudage acier et aluminium, réparation des plastiques et des vitrages : formations carrosserie à Vendeville."
+resume: "Développez les compétences nécessaires pour exceller dans la réparation et la restauration des carrosseries de véhicules : techniques modernes de réparation de carrosserie et de peinture automobile, matériaux et outils."
+image:
+  src: "/wp-content/uploads/2024/09/man-painting-car-door-side-view-880x520.jpg"
+  alt: "Carrossier-peintre appliquant de la peinture au pistolet sur une portière de voiture"
+
+intro:
+  - "La formation en carrosserie peinture vous permet de développer les compétences nécessaires pour exceller dans le domaine de la réparation et de la restauration des carrosseries de véhicules. Cette formation est idéale pour ceux qui souhaitent apprendre les techniques modernes de réparation de carrosserie et de peinture automobile, ainsi que comprendre les différents matériaux et outils utilisés pour redonner aux véhicules leur éclat d’origine."
+
+sections:
+  - titre: "Objectifs de la formation"
+    liste:
+      - "Maîtriser les techniques de carrosserie : apprenez à réparer les bosses, rayures et autres dommages de carrosserie avec des techniques adaptées à chaque type de véhicule."
+      - "Maîtriser la peinture automobile : apprenez les techniques professionnelles de peinture automobile, y compris la préparation des surfaces, le mélange des peintures et l’application de finitions."
+      - "Réparation et restauration : développez des compétences en restauration de véhicules anciens et endommagés, en utilisant des méthodes et produits spécialisés."
+      - "Utilisation des outils et matériaux : familiarisez-vous avec l’utilisation des outils spécialisés, tels que les pistolets à peinture, les perceuses, et les équipements de protection."
+  - titre: "Pourquoi choisir cette formation ?"
+    liste:
+      - "Formation pratique et complète : la formation combine théorie et pratique, vous offrant l’opportunité de travailler directement sur des véhicules pour perfectionner vos compétences."
+      - "Accès à des techniques de pointe : vous apprendrez les dernières techniques et tendances en matière de réparation de carrosserie et de peinture automobile, utilisées dans les ateliers professionnels."
+      - "Débouchés multiples : le secteur de la carrosserie et de la peinture automobile est en constante évolution, avec une forte demande de professionnels qualifiés dans les ateliers de réparation, les concessions, et même pour des véhicules de collection."
+
+programmes:
+  - id: 08-debosselage-sans-peinture
+    code: "08"
+    titre: "Le débosselage sans peinture"
+    contexte:
+      - "Le débosselage sans peinture est aujourd’hui très répandu dans le monde de l’après-vente, mais la majeure partie des opérations est effectuée par des spécialistes extérieurs au garage. Dans le même temps, de nombreux fournisseurs ont commercialisé des gammes d’outils très variées permettant d’effectuer vous-mêmes ces opérations. En créant une activité nouvelle dans votre entreprise, vous pourrez proposer à vos clients une réparation rapide, à moindre coût, des petits défauts d’aspect de leur véhicule et augmenter leur niveau de satisfaction."
+    objectifs:
+      - "Définir les caractéristiques des aciers automobile"
+      - "Identifier les techniques nécessaires au débosselage sans peinture"
+      - "Réaliser une intervention sur des éléments acier horizontal selon les techniques du débosselage sans peinture"
+    public: "Peintre, Tôlier, Préparateur VO, Débosseleur sans peinture"
+    prerequis: "Posséder au moins un diplôme, titre ou certificat (dont CQP ou Socle de compétences CléA)"
+    benefices: "Des délais raccourcis et des coûts diminués permettant de capter une nouvelle clientèle"
+    contenu:
+      - "Les caractéristiques des aciers automobile"
+      - "Les limites élastiques de l’acier"
+      - "Les outils"
+      - "Les risques et les limites d’intervention du débosseleur sans peinture"
+      - "Les techniques de redressage par tringle/tige"
+      - "Les techniques de redressage par ventouses/embouts collés"
+      - "Le positionnement de la lumière et l’outil de redressage"
+      - "Le contrôle du reflet par rapport à la lumière"
+    applications:
+      - "Positionner la lumière et l’outil de redressage"
+      - "Contrôler le reflet par rapport à la lumière"
+      - "Utiliser des outils de poussée sur élément en acier horizontal"
+      - "Utiliser des outils de torsion sur élément en acier horizontal"
+      - "Mettre en œuvre des techniques de redressage par ventouses/embouts collés"
+    methodes:
+      - "Expositives, participatives et actives"
+      - "Travaux individuels et en sous-groupes"
+    evaluation: "Évaluation des objectifs pédagogiques par un quiz amont / aval"
+    tarif: "Devis sur demande"
+
+  - id: 09-debosselage-sans-peinture-confirme
+    code: "09"
+    titre: "Le débosselage sans peinture – niveau confirmé"
+    contexte:
+      - "Vous êtes initié au débosselage sans peinture, vous pratiquez régulièrement."
+      - "Mais vous êtes en difficulté pour redresser sur les éléments verticaux (coups de portières, caddie…) ou pour intervenir sur les carrosseries en aluminium."
+      - "La formation permet de renforcer ses compétences en débosselage sans peinture et de s’approprier de nouvelles techniques pour ressortir les bosses des éléments complexes."
+    objectifs:
+      - "Définir les caractéristiques de l’aluminium"
+      - "Identifier les techniques nécessaires au débosselage sans peinture"
+      - "Réaliser une intervention sur des éléments en acier et en aluminium selon les techniques du débosselage sans peinture"
+    public: "Débosseleur sans peinture, Tôlier, Carrossier-peintre, Préparateur VO"
+    prerequis: "Posséder au moins un diplôme, titre ou certificat (dont CQP ou Socle de compétences CléA)"
+    benefices: "Pouvoir traiter tous types d’éléments y compris en aluminium"
+    contenu:
+      - "Les caractéristiques de l’aluminium"
+      - "Les techniques de mise en température du support aluminium"
+      - "Les outils complémentaires pour l’acier"
+      - "Les particularités des outils de poussée et de torsion pour l’aluminium"
+      - "Le ponçage de finition et un lustrage"
+    applications:
+      - "Positionner la source de lumière, l’outil de redressage"
+      - "Contrôler le reflet par rapport à la lumière"
+      - "Réaliser des interventions sur des éléments acier selon les techniques du DSP"
+      - "Réaliser des interventions sur des éléments aluminium selon les techniques du DSP"
+      - "Effectuer le ponçage de finition et le lustrage"
+    methodes:
+      - "Expositives, participatives et actives"
+      - "Travaux individuels et en sous-groupes"
+    evaluation: "Évaluation des objectifs pédagogiques par un quiz amont / aval"
+    tarif: "Devis sur demande"
+
+  - id: 10-reparation-elements-aluminium
+    code: "10"
+    titre: "La réparation d’éléments en aluminium"
+    objectifs:
+      - "Identifier les caractéristiques de l’aluminium"
+      - "Pratiquer la remise en forme d’éléments de carrosserie en aluminium"
+      - "Pratiquer le soudage d’éléments de carrosserie en aluminium par procédé MIG"
+    public: "Tôlier, Carrossier-peintre, Chef d’atelier"
+    prerequis: "Posséder au moins un diplôme, titre ou certificat (dont CQP ou Socle de compétences CléA)"
+    benefices: "Réparer tous types d’éléments de carrosserie y compris en aluminium."
+    contenu:
+      - "Distinguer les caractéristiques de l’aluminium en lien avec la remise en forme et la soudure"
+      - "Analyser les conditions de réparation d’un élément de carrosserie"
+      - "Identifier les différentes techniques de redressement et les principes de la soudure"
+    applications:
+      - "Savoir choisir l’outil adapté en fonction de la déformation"
+      - "Savoir mettre en œuvre les techniques de redressement et de soudure de l’aluminium"
+      - "Savoir ressouder un élément de carrosserie en aluminium endommagé"
+    methodes:
+      - "Expositives, participatives et actives"
+      - "Travaux individuels et en sous-groupes"
+    evaluation: "Évaluation des objectifs pédagogiques par un quiz amont / aval"
+    tarif: "Devis sur demande"
+
+  - id: 12-raccords-teintes-multicouches
+    code: "12"
+    titre: "Maîtriser les raccords sur les teintes multicouches"
+    contexte:
+      - "La démocratisation des teintes multicouches en industrie automobile modifie les techniques d’application en réparation. L’activité du peintre se complexifie car la mise en peinture d’un seul élément devient presque impossible en termes colorimétriques."
+      - "La formation délivre les clés pour réussir le raccord des teintes multicouches sur les éléments adjacents."
+      - "La maîtrise des raccords multicouches est une stratégie gagnante !"
+      - "Elle permet de réduire les retours clients en réalisant des réparations invisibles."
+    objectifs:
+      - "Identifier les techniques de préparation des surfaces et d’application des produits en fonction des coloris"
+      - "Mettre en œuvre les techniques de préparation des surfaces et d’application des produits"
+    public: "Carrossier-peintre, Peintre"
+    prerequis: "Posséder au moins un diplôme, titre ou certificat (dont CQP ou Socle de compétences CléA)"
+    benefices: "Faire face à tous les types de teintes présentes sur le marché et réduire les malfaçons"
+    contenu:
+      - texte: "Connaître les méthodes des raccords noyés sur les teintes multicouches"
+        sous:
+          - "Le matériel"
+          - "Les produits"
+          - "Préparer les surfaces"
+      - "Méthodes d’application avec ou sans vernis teinté"
+      - texte: "Connaître les méthodes des raccords fondus sur les teintes multicouches"
+        sous:
+          - "Le matériel"
+          - "Les produits"
+          - "Préparer les surfaces"
+          - "Méthodes d’application avec ou sans vernis teinté"
+      - "Appliquer les règles d’hygiène et sécurité"
+    applications:
+      - texte: "Réaliser un raccord"
+        sous:
+          - "Raccord noyé sur des teintes multicouches"
+          - "Raccord fondu sur des teintes multicouches"
+      - texte: "Perfectionner les méthodes de réalisation"
+        sous:
+          - "Utiliser différents produits"
+          - "Utiliser différents matériels"
+          - "Optimiser sa gestuelle"
+    methodes:
+      - "Expositives, participatives et actives"
+      - "Travaux individuels et en sous-groupes"
+    evaluation: "Évaluation des objectifs pédagogiques par un quiz amont / aval"
+    tarif: "Devis sur demande"
+
+  - id: 13-raccords-localises
+    code: "13"
+    titre: "Réaliser les raccords localisés"
+    contexte:
+      - "Les petits chocs du quotidien (impact de gravillon, coup de portière, griffure…) ne nécessitent plus la mise en peinture des éléments complets. Grâce à une technique spécifique et des produits adaptés, le peintre peut réparer dans un temps très court avec une qualité irréprochable."
+      - "Maîtriser le raccord localisé contribue à diminuer le temps d’immobilisation du véhicule et à augmenter la satisfaction client."
+      - "Cette technique favorise également les économies de produits et d’énergie (temps d’utilisation de la cabine de peinture diminué)."
+    objectifs:
+      - "Identifier les techniques spécifiques à la réalisation de raccords localisés"
+      - "Mettre en œuvre les techniques spécifiques à la réalisation de raccords localisés"
+    public: "Peintre, Carrossier-peintre"
+    prerequis: "Posséder au moins un diplôme, titre ou certificat (dont CQP ou Socle de compétences CléA)"
+    benefices: "Gain de productivité avec des techniques permettant de réduire les coûts d’intervention"
+    contenu_titre: "Le contenu (présentiel)"
+    contenu:
+      - texte: "Identifier les zones liées aux raccords localisés"
+        sous:
+          - "Zone de base, zone de vernis et zone de transition"
+      - texte: "Connaître le matériel et les produits"
+        sous:
+          - "Apprêts UV, vernis rapides, diluants raccords, micro-abrasifs, produits de poli-lustrage"
+      - texte: "Identifier les causes des défauts"
+        sous:
+          - "Décrochage des raccords, aspect, application"
+    applications:
+      - texte: "Réaliser des raccords localisés"
+        sous:
+          - "Application au pistolet"
+          - "Application à l’aérosol"
+      - texte: "Réaliser les finitions"
+        sous:
+          - "Poncer au micro-abrasif"
+          - "Poli-lustrage"
+      - texte: "Analyse visuelle des défauts"
+        sous:
+          - "Constater des défauts"
+          - "Mettre en place des actions correctives"
+          - "Valider les bonnes pratiques"
+    methodes:
+      - "Expositives, participatives et actives"
+      - "Travaux individuels et en sous-groupes"
+    evaluation: "Évaluation des objectifs pédagogiques par un quiz amont / aval"
+    tarif: "Devis sur demande"
+
+  - id: 14-soudure-aciers-hle-thle-uhle
+    code: "14"
+    titre: "Maîtrise des opérations de soudure et respect des critères de qualité des aciers HLE, THLE, UHLE sous procédés MAG, MIG et SERP"
+    objectifs:
+      - "Décrire les différents aciers utilisés pour construire une automobile et leur implantation"
+      - "Pratiquer le soudage MAG et MIG"
+      - "Pratiquer le soudage SERP"
+    public: "Carrossier-peintre, Tôlier"
+    prerequis: "Posséder au moins un diplôme, titre ou certificat (dont CQP ou Socle de compétences CléA)"
+    benefices: "Acquérir le savoir-faire pour remplacer des éléments soudés sur des véhicules de dernière génération."
+    contenu:
+      - "Les différents critères de qualité d’une soudure"
+      - "La préparation et l’ajustement des pièces à assembler"
+      - "Les paramètres de réglages (appareil et gestuelle)"
+      - "Le principe de fonctionnement d’un poste"
+      - "MAG et SERP semi-automatiques"
+      - "La distinction des différents types d’aciers"
+    applications:
+      - "Prendre en main le matériel (ligne de soudure) sur acier non allié, d’une épaisseur allant de 0,6 à 1,5 mm"
+      - "Réaliser des soudures"
+      - "Utiliser les appareils de soudage MAG, MIG (cupro) et SERP"
+    methodes:
+      - "Expositives, participatives et actives"
+      - "Travaux individuels et en sous-groupes"
+    evaluation: "Évaluation des objectifs pédagogiques par un quiz amont / aval"
+    tarif: "Devis sur demande"
+
+  - id: 15-reparation-matieres-plastiques
+    code: "15"
+    titre: "Réparation sur les matières plastiques"
+    contexte:
+      - "Le coût et les difficultés d’approvisionnement en pièces de remplacement obligent les professionnels à réparer plutôt qu’à remplacer."
+      - "La réparation des plastiques est une stratégie gagnante : une réparation n’implique pas un long délai d’immobilisation du véhicule, pas d’achat coûteux de pièces de rechange. Vous facturez plus de main-d’œuvre, vous augmentez votre rentabilité et vous valorisez votre savoir-faire."
+      - "Développez votre activité avec une formation qui va à l’essentiel pour garantir la réparation dans le temps."
+    objectifs:
+      - "Identifier la structure des composants d’éléments plastiques"
+      - "Pratiquer la réparation par collage et par soudage"
+    public: "Responsable d’atelier, Carrossier-peintre, Tôlier"
+    prerequis: "Posséder au moins un diplôme, titre ou certificat (dont CQP ou Socle de compétences CléA)"
+    benefices: "Garantir la qualité d’intervention et augmenter la satisfaction client"
+    contenu:
+      - "Identification de la structure des composants"
+      - "Notions de chimie"
+      - "Caractéristiques des matières plastiques"
+      - "Les différents thermoplastiques"
+      - "Analyse des possibilités de réparation ou de remplacement"
+      - "Identification des produits adaptés à la préparation"
+    applications:
+      - "Mettre en œuvre les techniques de réparation par collage et soudage"
+      - "Réparer par collage sur bouclier peint ou non peint en thermoplastique non chargé"
+      - "Réparer par soudure plastique sur bouclier peint ou non peint en thermoplastique non chargé (processus classique et azote)"
+      - "Réaliser la finition des réparations"
+    methodes:
+      - "Expositives, participatives et actives"
+      - "Travaux individuels et en sous-groupes"
+    evaluation: "Évaluation des objectifs pédagogiques par un quiz amont / aval"
+    tarif: "Devis sur demande"
+
+  - id: 16-soudage-aluminium
+    code: "16"
+    titre: "Le soudage aluminium"
+    contexte:
+      - "L’utilisation de l’aluminium dans l’automobile devrait encore progresser de 10 à 20 % par an sur les cinq prochaines années. Le soudage des pièces en aluminium exige de la pratique ainsi que de bonnes connaissances théoriques. Découvrez les propriétés des différents aluminiums qui composent la structure d’un véhicule, ainsi que l’influence d’une opération de remplacement d’un élément soudé sur la résistance et le comportement au choc de la structure du véhicule."
+    objectifs:
+      - "Décrire les propriétés et le principe d’oxydation des différents aluminiums utilisés en automobile"
+      - "Définir le processus de réparation par soudage de l’aluminium en utilisant les préconisations du constructeur et en garantissant la protection contre la corrosion"
+    public: "Tôlier, Carrossier-peintre, Peintre"
+    prerequis: "Posséder au moins un diplôme, titre ou certificat (dont CQP ou Socle de compétences CléA)"
+    benefices: "Garantir la qualité des interventions sur les éléments en aluminium."
+    contenu:
+      - texte: "Les propriétés"
+        sous:
+          - "La fabrication de l’aluminium"
+          - "Les traitements après fabrication"
+          - "Les caractéristiques de l’aluminium"
+          - "La mise en forme"
+          - "Le recyclage de l’aluminium"
+      - texte: "Le comportement"
+        sous:
+          - "Identifier le matériau"
+          - "Identifier le matériel"
+          - "Identifier les propriétés du matériau"
+          - "Le soudage MIG alu"
+          - "La protection anti-corrosion"
+    methodes:
+      - "Module 100 % e-learning alternant méthodes expositives, interactives et quiz formatif"
+    evaluation: "Évaluation des objectifs pédagogiques par un quiz amont / aval"
+    modalite: "100 % e-learning"
+    tarif: "Devis sur demande"
+
+  - id: 17-remplacement-vitrage-colle
+    code: "17"
+    titre: "Le remplacement d’un vitrage collé"
+    objectifs:
+      - "Identifier les différents types de vitrage"
+      - "Mettre en œuvre les méthodes de remplacement des vitrages collés"
+      - "Acquérir les méthodes de mise en conformité des périphériques de sécurité et de confort liés au vitrage"
+    public: "Tôlier, Carrossier-peintre"
+    prerequis: "Posséder au moins un diplôme, titre ou certificat (dont CQP ou Socle de compétences CléA)"
+    benefices: "Optimiser vos méthodes de remplacement de vitrage"
+    contenu:
+      - "Les caractéristiques des différents types de vitrage"
+      - "Les méthodes, les produits et le matériel de remplacement d’un vitrage collé"
+      - "Les procédures de paramétrage des équipements de confort et de sécurité (caméra, capteur…)"
+    applications:
+      - "Identifier et contrôler les équipements périphériques d’un pare-brise"
+      - "Remplacer des vitrages collés"
+      - "Paramétrer les équipements périphériques d’un pare-brise"
+    methodes:
+      - "Expositives, participatives et actives"
+      - "Travaux individuels et en sous-groupes"
+    evaluation: "Évaluation des objectifs pédagogiques par un quiz amont / aval"
+    tarif: "Devis sur demande"
+
+  - id: 19-soudage-acier
+    code: "19"
+    titre: "Le soudage acier"
+    contexte:
+      - "Pour les véhicules actuels, la tendance est à la réduction de poids, ce qui se traduit par une augmentation de l’utilisation des aciers à haute résistance (HLE, THLE, …)."
+      - "Le soudage exige de la pratique ainsi que de bonnes connaissances théoriques."
+      - "Grâce à ce module, vous découvrirez les propriétés des différents aciers qui composent la structure d’un véhicule, ainsi que l’influence d’une opération de remplacement d’un élément soudé en acier sur la résistance et le comportement au choc de la structure du véhicule."
+    objectifs:
+      - "Décrire les propriétés et le principe d’oxydation des alliages d’acier utilisés en automobile"
+      - "Définir le processus de réparation par soudage en utilisant les préconisations du constructeur et en garantissant la protection contre la corrosion"
+    public: "Tôlier, Peintre, Carrossier-peintre"
+    prerequis: "Posséder au moins un diplôme, titre ou certificat (dont CQP ou Socle de compétences CléA)"
+    benefices: "Garantir la qualité des remplacements d’éléments soudés sur des véhicules de dernière génération."
+    contenu:
+      - texte: "Les propriétés"
+        sous:
+          - "La fabrication de l’acier"
+          - "La protection contre la corrosion"
+          - "La mise en forme"
+      - texte: "Le comportement"
+        sous:
+          - "Localisation des lignes de coupe"
+          - "Le nombre de points de soudure"
+          - "Le soudage MIG Cupro"
+          - "Le point de chaînette"
+          - "La protection anti-corrosion"
+          - "Les inserts gonflants de corps creux"
+    methodes:
+      - "Module 100 % e-learning alternant méthodes expositives, interactives et quiz formatif"
+    evaluation: "Évaluation des objectifs pédagogiques par un quiz amont / aval"
+    modalite: "100 % e-learning"
+    tarif: "Devis sur demande"
+
+  - id: 20-debosselage-debourrage
+    code: "20"
+    titre: "Les techniques de débosselage (débourrage)"
+    contexte:
+      - "Le débourrage est une technique de débosselage qui s’inspire du « débosselage sans peinture » en mobilisant les mêmes outils. Il propose une alternative aux techniques traditionnelles (tas/marteau et tire-clous) et consiste à redresser 80 à 90 % d’une bosse avant peinture."
+      - "Le débourrage est possible sur tous les éléments s’il y a un accès direct ou peu de démontage nécessaire."
+    objectifs:
+      - "Identifier les différentes méthodes de débosselage applicables à l’acier et à l’aluminium"
+      - "Mettre en œuvre les méthodes de débosselage pour réaliser des débourrages"
+    public: "Carrossier-peintre, Tôlier"
+    prerequis: "Posséder au moins un diplôme, titre ou certificat (dont CQP ou Socle de compétences CléA)"
+    benefices: "Acquérir une nouvelle technique pour développer votre activité de débosselage"
+    contenu:
+      - "Les caractéristiques des matériaux (acier, aluminium)"
+      - "Les techniques complémentaires aux méthodes traditionnelles (la barre, la colle et à induction)"
+      - "La comparaison des méthodes de travail et la mesure des avantages du débourrage"
+    applications:
+      - "Identifier les accès et le choix de l’outillage"
+      - "Acquérir les techniques de base"
+      - "Pratiquer sur des éléments de carrosserie"
+    methodes:
+      - "Expositives, participatives et actives"
+      - "Travaux individuels et en sous-groupes"
+    evaluation: "Évaluation des objectifs pédagogiques par un quiz amont / aval"
+    tarif: "Devis sur demande"
+
+  - id: 21-raccords-de-peinture
+    code: "21"
+    titre: "Maîtriser les raccords de peinture"
+    objectifs:
+      - "Identifier les techniques spécifiques à la réalisation de raccords localisés"
+      - "Mettre en œuvre les techniques spécifiques à la réalisation de raccords localisés"
+      - "Identifier les techniques de préparation des surfaces et d’application des produits en fonction des coloris"
+      - "Mettre en œuvre les techniques de préparation des surfaces et d’application des produits"
+    public: "Peintre, Carrossier-peintre"
+    prerequis: "Posséder au moins un diplôme, titre ou certificat (dont CQP ou Socle de compétences CléA)"
+    benefices: "Gain de productivité avec des techniques permettant de réduire les coûts d’intervention"
+    contenu:
+      - "Les techniques de préparation et d’application en fonction des coloris"
+      - "Les différentes causes de défaut sur des raccords noyés et fondus"
+      - "Les règles de préparation et d’application spécifiques à la réalisation d’un raccord localisé"
+      - "Les différentes causes de défaut sur des raccords localisés"
+    applications:
+      - "Réaliser un raccord noyé et fondu"
+      - "Rectifier les différents défauts pouvant être rencontrés"
+      - "Réaliser un raccord localisé"
+      - "Effectuer les opérations de finition par polissage et lustrage"
+    methodes:
+      - "Expositives, participatives et actives"
+      - "Travaux individuels et en sous-groupes"
+    evaluation: "Évaluation des objectifs pédagogiques par un quiz amont / aval"
+    tarif: "Devis sur demande"
+
+sources:
+  - url: "https://techformanord.fr/service/interior-cleaning/"
+    collecte: "2026-10-24"
+    statut: repris-a-confirmer

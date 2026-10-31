@@ -1,0 +1,108 @@
+# Les trois pôles de formation. Les textes sont originaux (rédigés pour le portail) et
+# s'appuient uniquement sur des informations publiées et vérifiées (docs/registre-sources.csv).
+# Liens externes : toujours vers la page correspondante, jamais en canonical.
+
+- id: automobile
+  ordre: 1
+  nom: Automobile
+  nom_court: Automobile
+  nom_long: Métiers de l'automobile
+  url: /formations/automobile/
+  accent: auto
+  accroche: Maintenance, diagnostic, carrosserie, peinture et commerce automobile, du perfectionnement des salariés à la reconversion.
+  publics: [Salariés des ateliers et concessions, Entreprises de l'après-vente automobile, Personnes en reconversion]
+  site_externe: null
+  portail: { titre: Automobile, marque: Tech Formation Nord, destination: /acceuil/, logo: { src: /img/logo-tfn.png, width: 401, height: 136, hauteur: 60 } }
+  familles:
+    - { id: maintenance-diagnostic, nom: Maintenance et diagnostic, url: /service/maintenance/ }
+    - { id: commerce, nom: Commerce automobile, url: /service/wheels-alignment/ }
+    - { id: carrosserie-peinture, nom: Carrosserie et peinture, url: /service/interior-cleaning/ }
+    - { id: reconversion, nom: Parcours de reconversion, url: /infinite-grid-col-2/ }
+
+- id: beaute
+  ordre: 2
+  nom: Esthétique, beauté et bien-être
+  nom_court: Beauté et bien-être
+  nom_long: Esthétique, beauté et bien-être
+  url: https://maisonbeauxlieux.com/formations # page TFN retirée (301), parcours automobile seul
+  accent: beaute
+  accroche: Formations courtes aux techniques du regard, du visage, du corps, des ongles et du cheveu, à Vendeville avec Maison Beauxlieux.
+  publics: [Esthéticiennes et esthéticiens, Prothésistes ongulaires, Coiffeurs et praticiens capillaires, Praticiens du bien-être]
+  portail: { titre: Esthétique et bien-être, marque: Maison Beauxlieux, destination: "https://maisonbeauxlieux.com/", domaine: maisonbeauxlieux.com, logo: { src: /img/logos/maison-beauxlieux.webp, width: 503, height: 283, hauteur: 64 } }
+  site_externe:
+    marque: Maison Beauxlieux
+    url: https://maisonbeauxlieux.com/
+    formations_url: https://maisonbeauxlieux.com/formations
+    espaces_url: https://maisonbeauxlieux.com/espaces
+    contact_url: https://maisonbeauxlieux.com/contact
+    # Relation vérifiée : le pied de page de maisonbeauxlieux.com indique
+    # « Titulaire du certificat : TECH FORMATION NORD — actions de formation ».
+    relation: Les formations de Maison Beauxlieux sont dispensées sous le certificat Qualiopi de Tech Formation Nord, au titre des actions de formation.
+    adresse: 21 bis rue de Faches, 59175 Vendeville
+    telephone: 03 20 16 09 15
+    email: maison.beauxlieux@gmail.com
+    horaires: "Du lundi au samedi : 9h – 20h ; dimanche sur rendez-vous"
+  familles:
+    - id: regard
+      nom: Regard
+      formations:
+        - { titre: "Réhaussement de cils, brow lift, restructuration et teinture", duree: 7 heures, public: Esthéticiennes et praticiens de la beauté, url: "https://maisonbeauxlieux.com/formations/rehaussement-cils-browlift" }
+        - { titre: Extensions de cils, duree: 21 heures, public: Professionnels de l'esthétique débutants ou en perfectionnement, url: "https://maisonbeauxlieux.com/formations/extensions-de-cils" }
+        - { titre: Maquillage permanent, duree: 35 heures, public: Professionnels de l'esthétique souhaitant se spécialiser en dermopigmentation, url: "https://maisonbeauxlieux.com/formations/maquillage-permanent" }
+    - id: visage-sourire
+      nom: Visage et sourire
+      formations:
+        - { titre: "Hydra face, peeling doux et nano needling", duree: 21 heures, public: Esthéticiennes diplômées souhaitant évoluer vers les soins visage avancés, url: "https://maisonbeauxlieux.com/formations/hydra-face-peeling-nano" }
+        - { titre: Blanchiment dentaire cosmétique, duree: 7 heures, public: Professionnels de l'esthétique souhaitant diversifier leur offre, url: "https://maisonbeauxlieux.com/formations/blanchiment-dentaire" }
+    - id: corps-bien-etre
+      nom: Corps et bien-être
+      formations:
+        - { titre: Madérothérapie visage et corps, duree: 7 heures, public: Esthéticiennes et praticiens du bien-être, url: "https://maisonbeauxlieux.com/formations/maderotherapie-visage-corps" }
+        - { titre: Drainage lymphatique, duree: 7 heures, public: "Esthéticiennes, praticiens du bien-être et masseurs", url: "https://maisonbeauxlieux.com/formations/drainage-lymphatique" }
+        - { titre: Pack signature corps (madérothérapie et drainage lymphatique), duree: 14 heures, public: Professionnels de l'esthétique et du bien-être, url: "https://maisonbeauxlieux.com/formations/pack-signature-corps" }
+    - id: cheveux
+      nom: Cheveux et cuir chevelu
+      formations:
+        - { titre: Lissage brésilien et soin botox capillaire, duree: 14 heures, public: Coiffeurs et praticiens capillaires, url: "https://maisonbeauxlieux.com/formations/lissage-bresilien-botox-capillaire" }
+        - { titre: Head spa, duree: 7 heures, public: "Coiffeurs, esthéticiennes et praticiens du bien-être", url: "https://maisonbeauxlieux.com/formations/head-spa" }
+    - id: ongles
+      nom: Ongles
+      formations:
+        - { titre: Pose gel et capsules, duree: 21 heures, public: Prothésistes ongulaires débutants ou en perfectionnement, url: "https://maisonbeauxlieux.com/formations/pose-gel-capsules" }
+
+- id: ia
+  ordre: 3
+  nom: Intelligence artificielle et numérique
+  nom_court: IA et numérique
+  nom_long: Intelligence artificielle et numérique
+  url: https://iatechformanord.fr/ # page TFN retirée (301), parcours automobile seul
+  accent: ia
+  accroche: "Usages professionnels de l'IA générative : rédaction, relation client, présence en ligne et organisation du travail."
+  publics: [Artisans, TPE et indépendants, Entreprises et équipes, Particuliers et salariés]
+  portail: { titre: Intelligence artificielle, marque: IA Tech Formation Nord, destination: "https://iatechformanord.fr/", domaine: iatechformanord.fr, logo: { src: /img/logos/ia-tech-formation-nord.svg, width: 362, height: 136, hauteur: 56 } }
+  site_externe:
+    marque: IA Tech Forma Nord
+    url: https://iatechformanord.fr/
+    contact_url: https://iatechformanord.fr/contact/
+    # Relation vérifiée : iatechformanord.fr se présente comme « TFN · Tech Formation Nord »
+    # et publie l'adresse 21 rue de Faches, 59175 Vendeville.
+    relation: iatechformanord.fr est le site du pôle intelligence artificielle de Tech Formation Nord.
+  familles:
+    - id: artisans-tpe
+      nom: Artisans, TPE et indépendants
+      duree: 2 journées
+      description: "Une formation de deux journées, idéalement espacées d'une semaine, pour construire sa présence en ligne (site, fiche Google) et un premier assistant IA à partir de ses propres tâches. Groupes de 6 à 8 participants, principalement en présentiel à Lille."
+      points: [Clarifier son offre et rédiger ses contenus avec l'IA, Structurer un site simple et soigner sa visibilité locale, Concevoir un premier assistant IA et ses règles d'usage, Repartir avec un plan d'action sur 30 jours]
+      lien: { url: "https://iatechformanord.fr/programme/", libelle: "Consulter le programme IA pour artisans et TPE" }
+    - id: entreprises
+      nom: Entreprises et équipes
+      duree: "7 h par fonction, 21 à 35 h en programme"
+      description: "Des formats pour les équipes et les dirigeants : formation par fonction (marketing, RH, commerce, direction) en 7 heures, accompagnement individuel, sessions de stratégie pour comités de direction et programme collaborateurs de 21 à 35 heures, en intra ou en inter-entreprises."
+      points: [Prompts et cas d'usage adaptés à chaque métier, Production de contenus et de synthèses, Feuille de route d'adoption pour les équipes, Bonnes pratiques et confidentialité des données]
+      lien: { url: "https://iatechformanord.fr/entreprises/", libelle: "Consulter les programmes IA pour les entreprises" }
+    - id: particuliers
+      nom: Particuliers et salariés
+      duree: 16 à 35 heures
+      description: "Des parcours individuels ou en petit groupe, de 16 à 35 heures, qui associent e-learning et séances avec un formateur pour découvrir puis approfondir l'IA générative. Les conditions de financement dépendent de votre situation et sont à étudier avant toute inscription."
+      points: [Découvrir les usages courants de l'IA générative, Approfondir les fonctions avancées, Progresser à son rythme avec un formateur]
+      lien: { url: "https://iatechformanord.fr/cpf/", libelle: "Consulter les parcours IA pour les particuliers" }

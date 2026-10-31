@@ -1,0 +1,60 @@
+# Préproduction Tech Formation Nord — isolée des autres sites du VPS.
+# Lancement : docker compose -p tfn-preprod --env-file /etc/techformanord/preprod.env -f deploy/docker-compose.preprod.yml up -d --build
+# Le reverse proxy Traefik existant (/opt/traefik, réseau externe traefik-public) gère HTTPS.
+
+name: tfn-preprod
+
+services:
+  web:
+    build:
+      context: ..
+      dockerfile: site/Dockerfile
+      args:
+        PUBLIC_SITE_ENV: preprod
+        SITE_URL: ${SITE_URL:-https://techformanord.fr}
+        GIT_COMMIT: ${GIT_COMMIT:-dev}
+    image: tfn-site:preprod
+    container_name: tfn-preprod-web
+    restart: unless-stopped
+    environment:
+      NGINX_ROBOTS_HEADER: "noindex, nofollow"
+    ports:
+      - "127.0.0.1:${PREPROD_LOCAL_PORT:-8095}:8080"   # accès local de recette uniquement
+    depends_on: [forms]
+    networks: [traefik-public, internal]
+    labels:
+      traefik.enable: "true"
+      traefik.docker.network: traefik-public
+      traefik.http.routers.tfn-preprod.rule: Host(`${PREPROD_HOST:?PREPROD_HOST requis}`)
+      traefik.http.routers.tfn-preprod.entrypoints: websecure
+      traefik.http.routers.tfn-preprod.tls.certresolver: letsencrypt
+      traefik.http.routers.tfn-preprod.middlewares: tfn-preprod-headers,tfn-preprod-auth
+      traefik.http.middlewares.tfn-preprod-headers.headers.customresponseheaders.X-Robots-Tag: "noindex, nofollow"
+      traefik.http.middlewares.tfn-preprod-auth.basicauth.realm: "Preproduction Tech Formation Nord"
+      traefik.http.middlewares.tfn-preprod-auth.basicauth.users: ${PREPROD_BASIC_AUTH:?PREPROD_BASIC_AUTH requis}
+      traefik.http.middlewares.tfn-preprod-auth.basicauth.removeheader: "true"
+      traefik.http.services.tfn-preprod.loadbalancer.server.port: "8080"
+
+  forms:
+    build:
+      context: ../forms
+    image: tfn-forms:preprod
+    container_name: tfn-preprod-forms
+    restart: unless-stopped
+    environment:
+      FORM_MODE: test            # aucune demande transmise à de vrais destinataires
+      FORM_SUCCESS_URL: /contact-us/merci/
+      DATA_DIR: /data
+    volumes:
+      - tfn_preprod_forms:/data
+    networks: [internal]
+
+networks:
+  traefik-public:
+    external: true
+  internal:
+    name: tfn-preprod-internal
+
+volumes:
+  tfn_preprod_forms:
+    name: tfn_preprod_forms

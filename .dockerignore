@@ -1,0 +1,8 @@
+**/node_modules
+site/dist
+site/.astro
+audit
+docs
+.git
+.env*
+!.env.example

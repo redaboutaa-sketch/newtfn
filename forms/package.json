@@ -1,0 +1,8 @@
+{
+  "name": "techformanord-forms",
+  "private": true,
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": { "start": "node server.mjs", "test": "node --test test/*.test.mjs" },
+  "dependencies": { "nodemailer": "10.0.10" }
+}

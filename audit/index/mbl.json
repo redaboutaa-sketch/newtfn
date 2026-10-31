@@ -1,0 +1,559 @@
+{
+ "base": "https://maisonbeauxlieux.com",
+ "sitemap": [
+  "https://maisonbeauxlieux.com/",
+  "https://maisonbeauxlieux.com/espaces",
+  "https://maisonbeauxlieux.com/formations",
+  "https://maisonbeauxlieux.com/tarifs",
+  "https://maisonbeauxlieux.com/a-propos",
+  "https://maisonbeauxlieux.com/contact",
+  "https://maisonbeauxlieux.com/offre-lancement",
+  "https://maisonbeauxlieux.com/espaces/espace-prestige",
+  "https://maisonbeauxlieux.com/espaces/espace-eclat",
+  "https://maisonbeauxlieux.com/espaces/espace-signature",
+  "https://maisonbeauxlieux.com/espaces/espace-elegance",
+  "https://maisonbeauxlieux.com/espaces/espace-essentiel",
+  "https://maisonbeauxlieux.com/espaces/espace-equilibre",
+  "https://maisonbeauxlieux.com/formations/rehaussement-cils-browlift",
+  "https://maisonbeauxlieux.com/formations/hydra-face-peeling-nano",
+  "https://maisonbeauxlieux.com/formations/lissage-bresilien-botox-capillaire",
+  "https://maisonbeauxlieux.com/formations/blanchiment-dentaire",
+  "https://maisonbeauxlieux.com/formations/extensions-de-cils",
+  "https://maisonbeauxlieux.com/formations/maderotherapie-visage-corps",
+  "https://maisonbeauxlieux.com/formations/maquillage-permanent",
+  "https://maisonbeauxlieux.com/formations/head-spa",
+  "https://maisonbeauxlieux.com/formations/drainage-lymphatique",
+  "https://maisonbeauxlieux.com/formations/pack-signature-corps",
+  "https://maisonbeauxlieux.com/formations/pose-gel-capsules"
+ ],
+ "pages": [
+  {
+   "url": "https://maisonbeauxlieux.com/",
+   "status": 200,
+   "in_sitemap": true,
+   "content_type": "text/html; charset=utf-8",
+   "location": "",
+   "file": "d21a0e757a6feb35.html",
+   "title": "Coworking beauté et formations près de Lille | Maison Beauxlieux",
+   "description": "Maison Beauxlieux à Vendeville, près de Lille : location d’espaces équipés pour les professionnels de la beauté et formations esthétiques. Découvrez les espaces et programmes.",
+   "canonical": "https://maisonbeauxlieux.com/",
+   "robots": "index, follow",
+   "h1": [
+    "Coworking     &amp; Formation"
+   ],
+   "inlinks": 24
+  },
+  {
+   "url": "https://maisonbeauxlieux.com/espaces",
+   "status": 200,
+   "in_sitemap": true,
+   "content_type": "text/html; charset=utf-8",
+   "location": "",
+   "file": "32a6a407accf08c1.html",
+   "title": "Location de cabines beauté près de Lille | Maison Beauxlieux",
+   "description": "Louez une cabine ou un espace professionnel beauté à Vendeville, près de Lille. Comparez les équipements, capacités et tarifs, puis réservez ou demandez une visite.",
+   "canonical": "https://maisonbeauxlieux.com/espaces",
+   "robots": "index, follow",
+   "h1": [
+    "Cabines beauté près de Lille"
+   ],
+   "inlinks": 24
+  },
+  {
+   "url": "https://maisonbeauxlieux.com/formations",
+   "status": 200,
+   "in_sitemap": true,
+   "content_type": "text/html; charset=utf-8",
+   "location": "",
+   "file": "adf9b7c367379760.html",
+   "title": "Formations esthétiques près de Lille | Maison Beauxlieux",
+   "description": "Découvrez les formations esthétiques de Maison Beauxlieux à Vendeville, près de Lille : programmes, publics concernés, durées, tarifs et sessions disponibles.",
+   "canonical": "https://maisonbeauxlieux.com/formations",
+   "robots": "index, follow",
+   "h1": [
+    "Formations esthétiques près de Lille"
+   ],
+   "inlinks": 24
+  },
+  {
+   "url": "https://maisonbeauxlieux.com/tarifs",
+   "status": 200,
+   "in_sitemap": true,
+   "content_type": "text/html; charset=utf-8",
+   "location": "",
+   "file": "ebbbb62e93a29cf6.html",
+   "title": "Tarifs des espaces beauté et formations | Maison Beauxlieux",
+   "description": "Consultez les tarifs des espaces professionnels de Maison Beauxlieux à Vendeville : demi-journées, journées, forfaits d’heures et prix des formations esthétiques.",
+   "canonical": "https://maisonbeauxlieux.com/tarifs",
+   "robots": "index, follow",
+   "h1": [
+    "Nos tarifs"
+   ],
+   "inlinks": 24
+  },
+  {
+   "url": "https://maisonbeauxlieux.com/a-propos",
+   "status": 200,
+   "in_sitemap": true,
+   "content_type": "text/html; charset=utf-8",
+   "location": "",
+   "file": "3e15b5158596bd9a.html",
+   "title": "Coworking beauté à Vendeville : notre lieu | Maison Beauxlieux",
+   "description": "Découvrez Maison Beauxlieux, un lieu dédié aux professionnels de la beauté et du bien-être à Vendeville, près de Lille : coworking, cabines et formations.",
+   "canonical": "https://maisonbeauxlieux.com/a-propos",
+   "robots": "index, follow",
+   "h1": [
+    "À propos"
+   ],
+   "inlinks": 24
+  },
+  {
+   "url": "https://maisonbeauxlieux.com/contact",
+   "status": 200,
+   "in_sitemap": true,
+   "content_type": "text/html; charset=utf-8",
+   "location": "",
+   "file": "873afa47bfa281b5.html",
+   "title": "Contact et visite à Vendeville, près de Lille | Maison Beauxlieux",
+   "description": "Contactez Maison Beauxlieux pour visiter les espaces à Vendeville, vous renseigner sur une location de cabine ou obtenir des informations sur une formation esthétique.",
+   "canonical": "https://maisonbeauxlieux.com/contact",
+   "robots": "index, follow",
+   "h1": [
+    "Contactez-nous"
+   ],
+   "inlinks": 24
+  },
+  {
+   "url": "https://maisonbeauxlieux.com/offre-lancement",
+   "status": 200,
+   "in_sitemap": true,
+   "content_type": "text/html; charset=utf-8",
+   "location": "",
+   "file": "4abdf7327a49fdb7.html",
+   "title": "Offre de lancement des espaces beauté | Maison Beauxlieux",
+   "description": "Découvrez l’offre de lancement de Maison Beauxlieux et ses conditions pour louer un espace professionnel beauté à Vendeville, près de Lille.",
+   "canonical": "https://maisonbeauxlieux.com/offre-lancement",
+   "robots": "index, follow",
+   "h1": [
+    "Coworking Beauxlieux"
+   ],
+   "inlinks": 24
+  },
+  {
+   "url": "https://maisonbeauxlieux.com/espaces/espace-prestige",
+   "status": 200,
+   "in_sitemap": true,
+   "content_type": "text/html; charset=utf-8",
+   "location": "",
+   "file": "4b9491c60b005a29.html",
+   "title": "Location Espace Prestige à Vendeville | Maison Beauxlieux",
+   "description": "Louez Espace Prestige à Vendeville, près de Lille : 23 m², 1 praticienne + 4 clients. Consultez les équipements et tarifs et contactez-nous pour les disponibilités.",
+   "canonical": "https://maisonbeauxlieux.com/espaces/espace-prestige",
+   "robots": "index, follow",
+   "h1": [
+    "Espace Prestige"
+   ],
+   "inlinks": 2
+  },
+  {
+   "url": "https://maisonbeauxlieux.com/espaces/espace-eclat",
+   "status": 200,
+   "in_sitemap": true,
+   "content_type": "text/html; charset=utf-8",
+   "location": "",
+   "file": "39a7e9e9aafa88de.html",
+   "title": "Location Espace Éclat à Vendeville | Maison Beauxlieux",
+   "description": "Louez Espace Éclat à Vendeville, près de Lille : 12 m², 1 praticienne + 1 cliente. Consultez les équipements et tarifs et contactez-nous pour les disponibilités.",
+   "canonical": "https://maisonbeauxlieux.com/espaces/espace-eclat",
+   "robots": "index, follow",
+   "h1": [
+    "Espace Éclat"
+   ],
+   "inlinks": 2
+  },
+  {
+   "url": "https://maisonbeauxlieux.com/espaces/espace-signature",
+   "status": 200,
+   "in_sitemap": true,
+   "content_type": "text/html; charset=utf-8",
+   "location": "",
+   "file": "1d74dc5fc5f37390.html",
+   "title": "Location Espace Signature à Vendeville | Maison Beauxlieux",
+   "description": "Louez Espace Signature à Vendeville, près de Lille : 18 m², 1 praticienne + 2 clients. Consultez les équipements et tarifs et contactez-nous pour les disponibilités.",
+   "canonical": "https://maisonbeauxlieux.com/espaces/espace-signature",
+   "robots": "index, follow",
+   "h1": [
+    "Espace Signature"
+   ],
+   "inlinks": 2
+  },
+  {
+   "url": "https://maisonbeauxlieux.com/espaces/espace-elegance",
+   "status": 200,
+   "in_sitemap": true,
+   "content_type": "text/html; charset=utf-8",
+   "location": "",
+   "file": "165b90b5ce4d5c46.html",
+   "title": "Location Espace Élégance à Vendeville | Maison Beauxlieux",
+   "description": "Louez Espace Élégance à Vendeville, près de Lille : 20 m², 1 praticienne + 3 clients. Consultez les équipements et tarifs et contactez-nous pour les disponibilités.",
+   "canonical": "https://maisonbeauxlieux.com/espaces/espace-elegance",
+   "robots": "index, follow",
+   "h1": [
+    "Espace Élégance"
+   ],
+   "inlinks": 2
+  },
+  {
+   "url": "https://maisonbeauxlieux.com/espaces/espace-essentiel",
+   "status": 200,
+   "in_sitemap": true,
+   "content_type": "text/html; charset=utf-8",
+   "location": "",
+   "file": "7e66bfefaf57e246.html",
+   "title": "Location Espace Essentiel à Vendeville | Maison Beauxlieux",
+   "description": "Louez Espace Essentiel à Vendeville, près de Lille : 8 m², 1 praticienne + 1 cliente. Consultez les équipements et tarifs et contactez-nous pour les disponibilités.",
+   "canonical": "https://maisonbeauxlieux.com/espaces/espace-essentiel",
+   "robots": "index, follow",
+   "h1": [
+    "Espace Essentiel"
+   ],
+   "inlinks": 2
+  },
+  {
+   "url": "https://maisonbeauxlieux.com/espaces/espace-equilibre",
+   "status": 200,
+   "in_sitemap": true,
+   "content_type": "text/html; charset=utf-8",
+   "location": "",
+   "file": "ce0ae63d5302ed02.html",
+   "title": "Location Espace Équilibre à Vendeville | Maison Beauxlieux",
+   "description": "Louez Espace Équilibre à Vendeville, près de Lille : 7 m², 1 praticienne + 1 cliente. Consultez les équipements et tarifs et contactez-nous pour les disponibilités.",
+   "canonical": "https://maisonbeauxlieux.com/espaces/espace-equilibre",
+   "robots": "index, follow",
+   "h1": [
+    "Espace Équilibre"
+   ],
+   "inlinks": 2
+  },
+  {
+   "url": "https://maisonbeauxlieux.com/formations/rehaussement-cils-browlift",
+   "status": 200,
+   "in_sitemap": true,
+   "content_type": "text/html; charset=utf-8",
+   "location": "",
+   "file": "ae6ca6c71c12b208.html",
+   "title": "Formation Réhaussement de cils, Browlift, Restructuration et teinture près de Lille | Maison Beauxlieux",
+   "description": "Formation Réhaussement de cils, Browlift, Restructuration et teinture à Vendeville, près de Lille. Découvrez le programme, le public concerné, la durée, le tarif et les sessions disponibles.",
+   "canonical": "https://maisonbeauxlieux.com/formations/rehaussement-cils-browlift",
+   "robots": "index, follow",
+   "h1": [
+    "Réhaussement de cils, Browlift, Restructuration et teinture"
+   ],
+   "inlinks": 2
+  },
+  {
+   "url": "https://maisonbeauxlieux.com/formations/hydra-face-peeling-nano",
+   "status": 200,
+   "in_sitemap": true,
+   "content_type": "text/html; charset=utf-8",
+   "location": "",
+   "file": "9860a6d2eb55d3ca.html",
+   "title": "Formation Hydra Face — Peeling Doux — Nano Needling près de Lille | Maison Beauxlieux",
+   "description": "Formation Hydra Face — Peeling Doux — Nano Needling à Vendeville, près de Lille. Découvrez le programme, le public concerné, la durée, le tarif et les sessions disponibles.",
+   "canonical": "https://maisonbeauxlieux.com/formations/hydra-face-peeling-nano",
+   "robots": "index, follow",
+   "h1": [
+    "Hydra Face — Peeling Doux — Nano Needling"
+   ],
+   "inlinks": 2
+  },
+  {
+   "url": "https://maisonbeauxlieux.com/formations/lissage-bresilien-botox-capillaire",
+   "status": 200,
+   "in_sitemap": true,
+   "content_type": "text/html; charset=utf-8",
+   "location": "",
+   "file": "0618f6011724bcde.html",
+   "title": "Formation Lissage brésilien &amp; Soin Botox Capillaire près de Lille | Maison Beauxlieux",
+   "description": "Formation Lissage brésilien &amp; Soin Botox Capillaire à Vendeville, près de Lille. Découvrez le programme, le public concerné, la durée, le tarif et les sessions disponibles.",
+   "canonical": "https://maisonbeauxlieux.com/formations/lissage-bresilien-botox-capillaire",
+   "robots": "index, follow",
+   "h1": [
+    "Lissage brésilien &amp; Soin Botox Capillaire"
+   ],
+   "inlinks": 2
+  },
+  {
+   "url": "https://maisonbeauxlieux.com/formations/blanchiment-dentaire",
+   "status": 200,
+   "in_sitemap": true,
+   "content_type": "text/html; charset=utf-8",
+   "location": "",
+   "file": "5df977d1e8b06de0.html",
+   "title": "Formation Blanchiment dentaire cosmétique près de Lille | Maison Beauxlieux",
+   "description": "Formation Blanchiment dentaire cosmétique à Vendeville, près de Lille. Découvrez le programme, le public concerné, la durée, le tarif et les sessions disponibles.",
+   "canonical": "https://maisonbeauxlieux.com/formations/blanchiment-dentaire",
+   "robots": "index, follow",
+   "h1": [
+    "Blanchiment dentaire cosmétique"
+   ],
+   "inlinks": 2
+  },
+  {
+   "url": "https://maisonbeauxlieux.com/formations/extensions-de-cils",
+   "status": 200,
+   "in_sitemap": true,
+   "content_type": "text/html; charset=utf-8",
+   "location": "",
+   "file": "c2909951e03c1b5b.html",
+   "title": "Formation Extensions de cils près de Lille | Maison Beauxlieux",
+   "description": "Formation Extensions de cils à Vendeville, près de Lille. Découvrez le programme, le public concerné, la durée, le tarif et les sessions disponibles.",
+   "canonical": "https://maisonbeauxlieux.com/formations/extensions-de-cils",
+   "robots": "index, follow",
+   "h1": [
+    "Extensions de cils"
+   ],
+   "inlinks": 2
+  },
+  {
+   "url": "https://maisonbeauxlieux.com/formations/maderotherapie-visage-corps",
+   "status": 200,
+   "in_sitemap": true,
+   "content_type": "text/html; charset=utf-8",
+   "location": "",
+   "file": "fd221da7f9eb2aa6.html",
+   "title": "Formation Madérothérapie visage et corps près de Lille | Maison Beauxlieux",
+   "description": "Formation Madérothérapie visage et corps à Vendeville, près de Lille. Découvrez le programme, le public concerné, la durée, le tarif et les sessions disponibles.",
+   "canonical": "https://maisonbeauxlieux.com/formations/maderotherapie-visage-corps",
+   "robots": "index, follow",
+   "h1": [
+    "Madérothérapie visage et corps"
+   ],
+   "inlinks": 2
+  },
+  {
+   "url": "https://maisonbeauxlieux.com/formations/maquillage-permanent",
+   "status": 200,
+   "in_sitemap": true,
+   "content_type": "text/html; charset=utf-8",
+   "location": "",
+   "file": "65f76503cb4d6200.html",
+   "title": "Formation Maquillage permanent près de Lille | Maison Beauxlieux",
+   "description": "Formation Maquillage permanent à Vendeville, près de Lille. Découvrez le programme, le public concerné, la durée, le tarif et les sessions disponibles.",
+   "canonical": "https://maisonbeauxlieux.com/formations/maquillage-permanent",
+   "robots": "index, follow",
+   "h1": [
+    "Maquillage permanent"
+   ],
+   "inlinks": 2
+  },
+  {
+   "url": "https://maisonbeauxlieux.com/formations/head-spa",
+   "status": 200,
+   "in_sitemap": true,
+   "content_type": "text/html; charset=utf-8",
+   "location": "",
+   "file": "196188af5217b126.html",
+   "title": "Formation Head spa près de Lille | Maison Beauxlieux",
+   "description": "Formation Head spa à Vendeville, près de Lille. Découvrez le programme, le public concerné, la durée, le tarif et les sessions disponibles.",
+   "canonical": "https://maisonbeauxlieux.com/formations/head-spa",
+   "robots": "index, follow",
+   "h1": [
+    "Head spa"
+   ],
+   "inlinks": 2
+  },
+  {
+   "url": "https://maisonbeauxlieux.com/formations/drainage-lymphatique",
+   "status": 200,
+   "in_sitemap": true,
+   "content_type": "text/html; charset=utf-8",
+   "location": "",
+   "file": "4831ef4f3fea2b89.html",
+   "title": "Formation Drainage lymphatique près de Lille | Maison Beauxlieux",
+   "description": "Formation Drainage lymphatique à Vendeville, près de Lille. Découvrez le programme, le public concerné, la durée, le tarif et les sessions disponibles.",
+   "canonical": "https://maisonbeauxlieux.com/formations/drainage-lymphatique",
+   "robots": "index, follow",
+   "h1": [
+    "Drainage lymphatique"
+   ],
+   "inlinks": 2
+  },
+  {
+   "url": "https://maisonbeauxlieux.com/formations/pack-signature-corps",
+   "status": 200,
+   "in_sitemap": true,
+   "content_type": "text/html; charset=utf-8",
+   "location": "",
+   "file": "23a963bc9b097253.html",
+   "title": "Formation Pack signature corps près de Lille | Maison Beauxlieux",
+   "description": "Formation Pack signature corps à Vendeville, près de Lille. Découvrez le programme, le public concerné, la durée, le tarif et les sessions disponibles.",
+   "canonical": "https://maisonbeauxlieux.com/formations/pack-signature-corps",
+   "robots": "index, follow",
+   "h1": [
+    "Pack signature corps"
+   ],
+   "inlinks": 2
+  },
+  {
+   "url": "https://maisonbeauxlieux.com/formations/pose-gel-capsules",
+   "status": 200,
+   "in_sitemap": true,
+   "content_type": "text/html; charset=utf-8",
+   "location": "",
+   "file": "5757e3beaa31c1e2.html",
+   "title": "Formation Pose gel + capsules près de Lille | Maison Beauxlieux",
+   "description": "Formation Pose gel + capsules à Vendeville, près de Lille. Découvrez le programme, le public concerné, la durée, le tarif et les sessions disponibles.",
+   "canonical": "https://maisonbeauxlieux.com/formations/pose-gel-capsules",
+   "robots": "index, follow",
+   "h1": [
+    "Pose gel + capsules"
+   ],
+   "inlinks": 2
+  },
+  {
+   "url": "https://maisonbeauxlieux.com/connexion",
+   "status": 200,
+   "in_sitemap": false,
+   "content_type": "text/html; charset=utf-8",
+   "location": "",
+   "file": "60959767891a9f7e.html",
+   "title": "Connexion | Maison Beauxlieux",
+   "description": "Maison Beauxlieux, coworking beauté et formations à Vendeville, près de Lille.",
+   "canonical": "https://maisonbeauxlieux.com/connexion",
+   "robots": "noindex, nofollow",
+   "h1": [],
+   "inlinks": 24
+  }
+ ],
+ "external": {
+  "https://www.instagram.com/maison.beauxlieux?igsh=ZTUxZndsMDZ0dmpr": [
+   "https://maisonbeauxlieux.com/",
+   "https://maisonbeauxlieux.com/a-propos",
+   "https://maisonbeauxlieux.com/contact",
+   "https://maisonbeauxlieux.com/espaces",
+   "https://maisonbeauxlieux.com/espaces/espace-eclat",
+   "https://maisonbeauxlieux.com/espaces/espace-elegance",
+   "https://maisonbeauxlieux.com/espaces/espace-equilibre",
+   "https://maisonbeauxlieux.com/espaces/espace-essentiel",
+   "https://maisonbeauxlieux.com/espaces/espace-prestige",
+   "https://maisonbeauxlieux.com/espaces/espace-signature",
+   "https://maisonbeauxlieux.com/formations",
+   "https://maisonbeauxlieux.com/formations/blanchiment-dentaire",
+   "https://maisonbeauxlieux.com/formations/drainage-lymphatique",
+   "https://maisonbeauxlieux.com/formations/extensions-de-cils",
+   "https://maisonbeauxlieux.com/formations/head-spa",
+   "https://maisonbeauxlieux.com/formations/hydra-face-peeling-nano",
+   "https://maisonbeauxlieux.com/formations/lissage-bresilien-botox-capillaire",
+   "https://maisonbeauxlieux.com/formations/maderotherapie-visage-corps",
+   "https://maisonbeauxlieux.com/formations/maquillage-permanent",
+   "https://maisonbeauxlieux.com/formations/pack-signature-corps",
+   "https://maisonbeauxlieux.com/formations/pose-gel-capsules",
+   "https://maisonbeauxlieux.com/formations/rehaussement-cils-browlift",
+   "https://maisonbeauxlieux.com/offre-lancement",
+   "https://maisonbeauxlieux.com/tarifs"
+  ],
+  "https://www.tiktok.com/@maison.beaux.lieux?_r=1&_t=ZN-95KsP6UNLwE": [
+   "https://maisonbeauxlieux.com/",
+   "https://maisonbeauxlieux.com/a-propos",
+   "https://maisonbeauxlieux.com/contact",
+   "https://maisonbeauxlieux.com/espaces",
+   "https://maisonbeauxlieux.com/espaces/espace-eclat",
+   "https://maisonbeauxlieux.com/espaces/espace-elegance",
+   "https://maisonbeauxlieux.com/espaces/espace-equilibre",
+   "https://maisonbeauxlieux.com/espaces/espace-essentiel",
+   "https://maisonbeauxlieux.com/espaces/espace-prestige",
+   "https://maisonbeauxlieux.com/espaces/espace-signature",
+   "https://maisonbeauxlieux.com/formations",
+   "https://maisonbeauxlieux.com/formations/blanchiment-dentaire",
+   "https://maisonbeauxlieux.com/formations/drainage-lymphatique",
+   "https://maisonbeauxlieux.com/formations/extensions-de-cils",
+   "https://maisonbeauxlieux.com/formations/head-spa",
+   "https://maisonbeauxlieux.com/formations/hydra-face-peeling-nano",
+   "https://maisonbeauxlieux.com/formations/lissage-bresilien-botox-capillaire",
+   "https://maisonbeauxlieux.com/formations/maderotherapie-visage-corps",
+   "https://maisonbeauxlieux.com/formations/maquillage-permanent",
+   "https://maisonbeauxlieux.com/formations/pack-signature-corps",
+   "https://maisonbeauxlieux.com/formations/pose-gel-capsules",
+   "https://maisonbeauxlieux.com/formations/rehaussement-cils-browlift",
+   "https://maisonbeauxlieux.com/offre-lancement",
+   "https://maisonbeauxlieux.com/tarifs"
+  ],
+  "https://www.snapchat.com/@m.beauxlieux": [
+   "https://maisonbeauxlieux.com/",
+   "https://maisonbeauxlieux.com/a-propos",
+   "https://maisonbeauxlieux.com/contact",
+   "https://maisonbeauxlieux.com/espaces",
+   "https://maisonbeauxlieux.com/espaces/espace-eclat",
+   "https://maisonbeauxlieux.com/espaces/espace-elegance",
+   "https://maisonbeauxlieux.com/espaces/espace-equilibre",
+   "https://maisonbeauxlieux.com/espaces/espace-essentiel",
+   "https://maisonbeauxlieux.com/espaces/espace-prestige",
+   "https://maisonbeauxlieux.com/espaces/espace-signature",
+   "https://maisonbeauxlieux.com/formations",
+   "https://maisonbeauxlieux.com/formations/blanchiment-dentaire",
+   "https://maisonbeauxlieux.com/formations/drainage-lymphatique",
+   "https://maisonbeauxlieux.com/formations/extensions-de-cils",
+   "https://maisonbeauxlieux.com/formations/head-spa",
+   "https://maisonbeauxlieux.com/formations/hydra-face-peeling-nano",
+   "https://maisonbeauxlieux.com/formations/lissage-bresilien-botox-capillaire",
+   "https://maisonbeauxlieux.com/formations/maderotherapie-visage-corps",
+   "https://maisonbeauxlieux.com/formations/maquillage-permanent",
+   "https://maisonbeauxlieux.com/formations/pack-signature-corps",
+   "https://maisonbeauxlieux.com/formations/pose-gel-capsules",
+   "https://maisonbeauxlieux.com/formations/rehaussement-cils-browlift",
+   "https://maisonbeauxlieux.com/offre-lancement",
+   "https://maisonbeauxlieux.com/tarifs"
+  ],
+  "https://www.facebook.com/profile.php?id=61573632094213": [
+   "https://maisonbeauxlieux.com/",
+   "https://maisonbeauxlieux.com/a-propos",
+   "https://maisonbeauxlieux.com/contact",
+   "https://maisonbeauxlieux.com/espaces",
+   "https://maisonbeauxlieux.com/espaces/espace-eclat",
+   "https://maisonbeauxlieux.com/espaces/espace-elegance",
+   "https://maisonbeauxlieux.com/espaces/espace-equilibre",
+   "https://maisonbeauxlieux.com/espaces/espace-essentiel",
+   "https://maisonbeauxlieux.com/espaces/espace-prestige",
+   "https://maisonbeauxlieux.com/espaces/espace-signature",
+   "https://maisonbeauxlieux.com/formations",
+   "https://maisonbeauxlieux.com/formations/blanchiment-dentaire",
+   "https://maisonbeauxlieux.com/formations/drainage-lymphatique",
+   "https://maisonbeauxlieux.com/formations/extensions-de-cils",
+   "https://maisonbeauxlieux.com/formations/head-spa",
+   "https://maisonbeauxlieux.com/formations/hydra-face-peeling-nano",
+   "https://maisonbeauxlieux.com/formations/lissage-bresilien-botox-capillaire",
+   "https://maisonbeauxlieux.com/formations/maderotherapie-visage-corps",
+   "https://maisonbeauxlieux.com/formations/maquillage-permanent",
+   "https://maisonbeauxlieux.com/formations/pack-signature-corps",
+   "https://maisonbeauxlieux.com/formations/pose-gel-capsules",
+   "https://maisonbeauxlieux.com/formations/rehaussement-cils-browlift",
+   "https://maisonbeauxlieux.com/offre-lancement",
+   "https://maisonbeauxlieux.com/tarifs"
+  ]
+ },
+ "assets": [
+  "https://maisonbeauxlieux.com/assets/image_1776263779059-BXv8zqnQ.png",
+  "https://maisonbeauxlieux.com/favicon.png",
+  "https://maisonbeauxlieux.com/images/hero-formations-640.webp",
+  "https://maisonbeauxlieux.com/images/hero-formations.webp",
+  "https://maisonbeauxlieux.com/images/hero-main-640.webp",
+  "https://maisonbeauxlieux.com/images/hero-main.webp",
+  "https://maisonbeauxlieux.com/images/hero-spaces-640.webp",
+  "https://maisonbeauxlieux.com/images/hero-spaces.webp",
+  "https://maisonbeauxlieux.com/images/qualiopi.jpeg",
+  "https://maisonbeauxlieux.com/images/section-accueil-640.webp",
+  "https://maisonbeauxlieux.com/images/section-accueil.webp",
+  "https://maisonbeauxlieux.com/images/section-beauty-products-640.webp",
+  "https://maisonbeauxlieux.com/images/section-beauty-products.webp",
+  "https://maisonbeauxlieux.com/images/section-cabin-640.webp",
+  "https://maisonbeauxlieux.com/images/section-cabin.png",
+  "https://maisonbeauxlieux.com/images/section-cabin.webp",
+  "https://maisonbeauxlieux.com/images/section-formation-640.webp",
+  "https://maisonbeauxlieux.com/images/section-formation.webp",
+  "https://maisonbeauxlieux.com/images/section-studio-640.webp",
+  "https://maisonbeauxlieux.com/images/section-studio.webp",
+  "https://maisonbeauxlieux.com/qualiopi-certificat.pdf"
+ ],
+ "collected_at": "2026-10-24"
+}

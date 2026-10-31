@@ -1,0 +1,330 @@
+##
+
+Icon Heading Style
+
+## Experienced Mechanics
+
+We had technical knowledge and physical abilities, important to practice and learn Mechanics
+
+## 24/7 Quality Service
+
+Our skilled technicians arrive equipped with the necessary tools and expertise for 24/7
+
+## Money Back Guarantee
+
+Diagnose the vehicle thoroughly to narrow down the problem with money back Guarantee
+
+## Mail Us 24/7
+
+pbminfotech@gmail.com
+support@pbminfotech.com
+
+Read More
+
+## Our Location
+
+85 Preston, Inglewood, Maine 98380, Hoofddorp Noord- 2132
+
+Read More
+
+## Call US 24/7
+
+Phone: +001 236-895-4732
+Mobile: +9123 895-4732-236
+
+Read More
+
+##
+
+Facts In Digits Style
+
+85
+%
+
+### Best
+
+Equipment
+
+72
+%
+
+### Engine
+Performance
+
+96
+%
+
+### Happy
+Customers
+
+####
+
+250
++
+
+We had a professional & Experienced staff
+ready to help you anytime
+
+####
+
+14
+m
+
+Good customer service turns one-time
+of clients into long-term
+
+####
+
+460
++
+
+Proving all type of brand solutions every small
+and big car services
+
+##
+
+Progress Skills
+
+Routine Maintenance
+
+80%
+
+Engine Performance
+
+95%
+
+Automotive Repair
+
+87%
+
+Skills Mechanics
+
+90%
+
+##
+
+Accordion Style
+
+01. Do I have to pay before services?
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.
+
+02.What can a car diagnostic check tell you?
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.
+
+03. How much time it will take to deliver our car?
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.
+
+##
+
+Blog Style
+
+{"cpt":"blog","style":"1","columns":"3","show":3,"order":"DESC","orderby":"none"}
+
+![blog-img](https://techformanord.fr/wp-content/uploads/2024/09/blog-img-880x620.jpg)
+
+<https://techformanord.fr/2024/09/11/things-to-know-choosing-a-cleaning-service/>
+
+9 Sep 2024
+
+### Things to know choosing a cleaning service. <https://techformanord.fr/2024/09/11/things-to-know-choosing-a-cleaning-service/>
+
+Automobile <https://techformanord.fr/category/automobile/> / Repaired <https://techformanord.fr/category/repaired/>
+
+![project-img](https://techformanord.fr/wp-content/uploads/2024/09/project-img-880x620.jpg)
+
+<https://techformanord.fr/2024/09/11/step-by-step-guide-to-clean-your-carpets/>
+
+9 Sep 2024
+
+### Step by step guide to clean your carpets. <https://techformanord.fr/2024/09/11/step-by-step-guide-to-clean-your-carpets/>
+
+Accessories <https://techformanord.fr/category/accessories/> / Electronics <https://techformanord.fr/category/electronics/>
+
+![service-img](https://techformanord.fr/wp-content/uploads/2024/09/service-img-880x620.jpg)
+
+<https://techformanord.fr/2024/09/11/how-long-does-it-take-to-change-a-flat-tyre/>
+
+9 Sep 2024
+
+### How long does it take to change a flat tyre <https://techformanord.fr/2024/09/11/how-long-does-it-take-to-change-a-flat-tyre/>
+
+Mechanic <https://techformanord.fr/category/mechanic/> / Technology <https://techformanord.fr/category/technology/>
+
+##
+
+Service Style
+
+{"cpt":"service","style":"1","columns":"3","show":3,"order":"DESC","orderby":"none"}
+
+![](https://techformanord.fr/wp-content/uploads/2024/09/hands-car-mechanic-with-wrench-garage-880x520.jpg)
+
+<https://techformanord.fr/service/maintenance/>
+
+<https://techformanord.fr/service/maintenance/>
+
+01
+
+Accessories <https://techformanord.fr/service-category/accessories/>
+
+### Maintenance <https://techformanord.fr/service/maintenance/>
+
+Apprenez les bases et les techniques avancées de la maintenance automobile avec notre formation complète. Diagnostic, entretien, et réparation des véhicules : développez des compétences recherchées pour intégrer un secteur en pleine croissance
+
+![](https://techformanord.fr/wp-content/uploads/2024/09/stylish-elegant-woman-car-salon-880x520.jpg)
+
+<https://techformanord.fr/service/wheels-alignment/>
+
+<https://techformanord.fr/service/wheels-alignment/>
+
+02
+
+Maintenance <https://techformanord.fr/service-category/maintenance/>
+
+### Commerce <https://techformanord.fr/service/wheels-alignment/>
+
+Découvrez notre expertise en vente de véhicules neufs (VN) et d’occasion (VO). Nous formons des professionnels compétents dans le domaine de la négociation, de la gestion client et des techniques de vente adaptées à l’automobile.
+
+![](https://techformanord.fr/wp-content/uploads/2024/09/man-painting-car-door-side-view-880x520.jpg)
+
+<https://techformanord.fr/service/interior-cleaning/>
+
+<https://techformanord.fr/service/interior-cleaning/>
+
+03
+
+Filters <https://techformanord.fr/service-category/filters/>
+
+### Carrosserie Peinture <https://techformanord.fr/service/interior-cleaning/>
+
+La formation en carrosserie peinture vous permet de développer les compétences nécessaires pour exceller dans le domaine de la réparation et de la restauration des carrosseries de véhicules. Cette formation est idéale pour ceux qui souhaitent apprendre les techniques modernes de réparation de carrosserie et de peinture automobile, ainsi que comprendre les différents matériaux et outils utilisés pour redonner aux véhicules leur éclat d’origine.
+
+##
+
+Portfolio Style
+
+{"cpt":"portfolio","style":"1","columns":"3","show":3,"order":"DESC","orderby":"none"}
+
+No data available.
+
+##
+
+Team Style
+
+{"cpt":"team","style":"1","columns":"3","show":3,"order":"DESC","orderby":"none"}
+
+![team-img](https://techformanord.fr/wp-content/uploads/2024/09/team-img-650x620.jpg)
+
+<https://techformanord.fr/team-member/mark-donald/>
+
+### Mark Donald <https://techformanord.fr/team-member/mark-donald/>
+
+Engine Expert
+
+-
+
+-
+
+-
+
+-
+
+![team-img](https://techformanord.fr/wp-content/uploads/2024/09/team-img-650x620.jpg)
+
+<https://techformanord.fr/team-member/myles-evander/>
+
+### Myles Evander <https://techformanord.fr/team-member/myles-evander/>
+
+Mechanic
+
+-
+
+-
+
+-
+
+-
+
+![team-img](https://techformanord.fr/wp-content/uploads/2024/09/team-img-650x620.jpg)
+
+<https://techformanord.fr/team-member/roman-amata/>
+
+### Roman Amata <https://techformanord.fr/team-member/roman-amata/>
+
+Supervisor
+
+-
+
+-
+
+-
+
+-
+
+##
+
+Pricing Style
+
+### Small Business
+
+$
+
+299
+
+Per Month
+
+Periodic Maintenance Service
+
+Tire Repair and Replacement
+
+General Auto Repair & Maintenance
+
+Steering and Suspension Work
+
+Computer Diagnostic Testing
+
+Purchase Now
+
+### Large Business
+
+$
+
+350
+
+Per Month
+
+Tire Repair and Replacement
+
+Periodic Maintenance Service
+
+General Auto Repair & Maintenance
+
+Steering and Suspension Work
+
+Computer Diagnostic Testing
+
+Purchase Now
+
+### Big Business
+
+$
+
+499
+
+Per Month
+
+Tire Repair and Replacement
+
+Periodic Maintenance Service
+
+General Auto Repair & Maintenance
+
+Steering and Suspension Work
+
+Computer Diagnostic Testing
+
+Purchase Now
+
+### Element

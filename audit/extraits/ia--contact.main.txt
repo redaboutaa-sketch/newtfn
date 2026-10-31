@@ -1,0 +1,66 @@
+Inscription · Devis · Échange
+
+# Parlons de votre activité.
+
+Remplissez le formulaire — on revient vers vous sous 24h en semaine avec un devis personnalisé, ou pour caler un appel.
+
+## Vos informations
+
+Prénom * [champ input name=None placeholder=None]
+
+Nom * [champ input name=None placeholder=None]
+
+Email * [champ input name=None placeholder=None]
+
+Téléphone [champ input name=None placeholder=None]
+
+Entreprise * [champ input name=None placeholder=None]
+
+Métier / activité * [champ select name=None placeholder=None] Choisir…Bâtiment / ArtisanatCommerce / BoutiqueRestauration / HôtellerieBeauté / Bien-êtreService à la personneCoaching / ConsultingProfession libéraleAutre
+
+Je suis intéressé·e par *
+[champ input name=formule placeholder=None] Formation intensive 2j [champ input name=formule placeholder=None] Formation + accompagnement [champ input name=formule placeholder=None] Session intra-entreprise [champ input name=formule placeholder=None] Juste un échange info
+
+Session souhaitée [champ select name=None placeholder=None] 14–15 octobre 2026 · Lille18–19 novembre 2026 · Lille9–10 décembre 2026 · LilleSans préférence
+
+Financement envisagé [champ select name=None placeholder=None] Auto-financementOPCOFAF artisansAGEFICEÀ voir avec vous
+
+Votre situation en quelques mots [champ textarea name=None placeholder=Site existant ou non, principal frein, ce que vous attendez de la formation…]
+[champ input name=None placeholder=None] J'accepte d'être recontacté·e par email ou téléphone concernant ma demande.Envoyer ma demande →
+Réponse sous 24h en semaine.
+
+## D'autres façons de nous joindre
+
+Téléphone
+
+03.20.16.09.15
+
+Lun–Ven · 9h–18h
+
+Email
+
+contact@monsite-mesclients.fr
+
+Adresse
+
+21 Rue de Faches
+
+59175 VENDEVILLE
+
+Délai de réponse
+
+Sous 24h en semaine
+
+"Un appel de 15 min suffit souvent à savoir si la formation est faite pour vous. Pas de pression commerciale."
+
+14–15 oct. 2026
+
+Lille · 3 places restantes
+
+18–19 nov. 2026
+
+Lille · 5 places restantes
+
+9–10 déc. 2026
+
+Lille · 8 places restantes

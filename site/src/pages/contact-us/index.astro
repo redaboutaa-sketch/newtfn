@@ -1,0 +1,80 @@
+---
+// URL historique « Contactez-nous » conservée (/contact y redirigeait déjà).
+import Base from '../../layouts/Base.astro';
+import WhatsAppLink from '../../components/WhatsAppLink.astro';
+import { organisme, pole, isProduction, FORM_ENDPOINT } from '../../lib/data';
+const org = organisme();
+const auto = pole('automobile');
+---
+<Base title="Contact : demande d’information ou de devis" description="Contactez Tech Formation Nord à Vendeville pour une formation automobile : demande d’information, de devis ou d’inscription par formulaire, par téléphone au 03 20 16 09 15, par WhatsApp ou par e-mail." breadcrumbs={[{ name: 'Contact', url: '/contact-us/' }]} navActive="contact">
+  <section class="page-hero">
+    <div class="container hero-enter">
+      <span class="eyebrow">Contact</span>
+      <h1>Contactez-nous</h1>
+      <p class="lead">Vous avez des questions sur nos formations, nos programmes ou nos modalités d’inscription ? L’équipe de Tech Formation Nord vous accompagne à chaque étape de votre projet.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container grid" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));align-items:start">
+      <div class="card" style="grid-column:span 1" id="formulaire">
+        <h2 style="font-size:1.4rem">Formulaire de contact</h2>
+        <p class="small muted">Les champs marqués d’un astérisque (<span class="req">*</span>) sont obligatoires.</p>
+        {!isProduction && <p class="form-banner form-banner--test" role="note">Préproduction : formulaire en mode test. Les demandes sont enregistrées dans une boîte de test et ne sont transmises à personne.</p>}
+        <form class="form" method="post" action={FORM_ENDPOINT} novalidate={false}>
+          <div class="row">
+            <div class="field"><label for="f-nom">Nom et prénom <span class="req" aria-hidden="true">*</span></label><input id="f-nom" name="nom" type="text" autocomplete="name" required maxlength="120" /></div>
+            <div class="field"><label for="f-email">E-mail <span class="req" aria-hidden="true">*</span><span class="hint">Format attendu : nom@exemple.fr</span></label><input id="f-email" name="email" type="email" autocomplete="email" required maxlength="160" /></div>
+          </div>
+          <div class="row">
+            <div class="field"><label for="f-tel">Téléphone<span class="hint">Facultatif, pour être rappelé</span></label><input id="f-tel" name="telephone" type="tel" autocomplete="tel" maxlength="30" /></div>
+            <div class="field"><label for="f-profil">Vous êtes</label>
+              <select id="f-profil" name="profil">
+                <option value="">Choisir…</option>
+                <option value="salarie">Salarié</option>
+                <option value="entreprise">Entreprise / employeur</option>
+                <option value="reconversion">Demandeur d’emploi ou en reconversion</option>
+                <option value="independant">Indépendant / dirigeant de TPE</option>
+                <option value="autre">Autre</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <fieldset>
+              <legend>Domaine qui vous intéresse</legend>
+              <label class="choice"><input type="radio" name="pole" value={auto.id} /> Formation automobile (perfectionnement, reconversion)</label>
+              <label class="choice"><input type="radio" name="pole" value="conseil" checked /> Je ne sais pas encore, j’ai besoin de conseils</label>
+            </fieldset>
+          </div>
+          <div class="field"><label for="f-sujet">Sujet</label><input id="f-sujet" name="sujet" type="text" maxlength="160" /></div>
+          <div class="field"><label for="f-message">Votre message <span class="req" aria-hidden="true">*</span></label><textarea id="f-message" name="message" required minlength="10" maxlength="5000"></textarea></div>
+          <div class="hp-field" aria-hidden="true"><label for="f-site">Ne pas remplir ce champ</label><input id="f-site" name="site_web" type="text" tabindex="-1" autocomplete="off" /></div>
+          <input type="hidden" name="t" value="" />
+          <div class="field"><label class="choice"><input type="checkbox" name="consentement" value="oui" required /> <span>J’accepte que mes données soient utilisées pour traiter ma demande, conformément à la <a href="/politique-de-confidentialite/">politique de confidentialité</a>. <span class="req" aria-hidden="true">*</span></span></label></div>
+          <div><button class="btn btn--primary" type="submit"><span class="label">Envoyer ma demande</span></button></div>
+        </form>
+      </div>
+      <div class="stack">
+        <div class="card">
+          <h2 style="font-size:1.3rem">Tech Formation Nord</h2>
+          <p><strong>Adresse</strong><br />{org.adresse.rue}<br />{org.adresse.code_postal} {org.adresse.ville}</p>
+          <p><strong>Téléphone</strong><br /><a href={`tel:${org.telephone.lien}`} data-place="page-contact">{org.telephone.affiche}</a></p>
+          <p><strong>E-mail</strong><br /><a href={`mailto:${org.email}`} data-place="page-contact">{org.email}</a></p>
+          {org.whatsapp?.numero && <p><strong>WhatsApp</strong><br /><WhatsAppLink place="page-contact" class="btn btn--whatsapp btn--small" label={`Écrire au ${org.whatsapp.affiche}`} /></p>}
+          <p style="margin:0"><strong>Horaires</strong></p>
+          <ul style="list-style:none;padding:0">{org.horaires.map((h: any) => <li>{h.jours} : {h.heures}</li>)}</ul>
+          <a class="link-arrow" href="/informations-pratiques/">Plan d’accès et transports</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script is:inline>
+    // Amélioration progressive : préremplissage du sujet et du profil depuis l'URL, horodatage antispam.
+    (function () {
+      var f = document.querySelector('form.form'); if (!f) return;
+      var q = new URLSearchParams(location.search);
+      if (q.get('sujet')) f.sujet.value = q.get('sujet').slice(0, 160);
+      if (q.get('profil')) f.profil.value = q.get('profil');
+      f.t.value = String(Date.now());
+    })();
+  </script>
+</Base>

@@ -1,0 +1,16 @@
+# Nom d'hôte supplémentaire (provisoire) pour la préproduction, ex. tfn.iatechformanord.fr.
+# Accès public SANS authentification (à la demande de l'organisme), mais non indexable :
+# X-Robots-Tag (Traefik + nginx) et meta robots noindex. L'hôte principal reste protégé par mot de passe.
+# À n'activer qu'une fois l'enregistrement DNS en place (sinon le certificat Let's Encrypt échoue) :
+# docker compose -p tfn-preprod --env-file /etc/techformanord/preprod.env \
+#   -f deploy/docker-compose.preprod.yml -f deploy/docker-compose.preprod.alias.yml up -d
+services:
+  web:
+    labels:
+      # La boîte de réception de test (données personnelles) reste accessible uniquement via l'hôte protégé.
+      traefik.http.routers.tfn-preprod-alias.rule: Host(`${PREPROD_ALIAS_HOST:?PREPROD_ALIAS_HOST requis}`) && !PathPrefix(`/api/test-inbox`)
+      traefik.http.routers.tfn-preprod-alias.entrypoints: websecure
+      traefik.http.routers.tfn-preprod-alias.tls.certresolver: letsencrypt
+      traefik.http.routers.tfn-preprod-alias.middlewares: tfn-preprod-headers
+      traefik.http.routers.tfn-preprod-alias.service: tfn-preprod
+      traefik.http.routers.tfn-preprod.service: tfn-preprod

@@ -1,0 +1,131 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import { organisme, isProduction, SITE_ENV, ANALYTICS } from '../lib/data';
+
+export interface Crumb { name: string; url: string }
+interface Props {
+  title: string;
+  description: string;
+  breadcrumbs?: Crumb[];
+  noindex?: boolean;
+  pole?: string; // suivi « consultation de pôle »
+  navActive?: string;
+  ogImage?: string;
+  jsonld?: object[];
+  chrome?: 'site' | 'portail'; // « portail » : page d'entrée sans en-tête ni pied de page du site TFN
+}
+const { title, description, breadcrumbs = [], noindex = false, pole, navActive, jsonld = [], chrome = 'site' } = Astro.props;
+// Partage : image des trois univers pour le portail, image automobile pour le site TFN.
+const ogImage = Astro.props.ogImage ?? (chrome === 'portail' ? '/img/og-default.png' : '/img/og-automobile.png');
+const org = organisme();
+const site = Astro.site!.toString().replace(/\/$/, '');
+const canonical = new URL(Astro.url.pathname, Astro.site).toString();
+const fullTitle = title.includes('Tech Formation Nord') ? title : `${title} | Tech Formation Nord`;
+// Préproduction : noindex systématique (complété par X-Robots-Tag et l'authentification côté serveur).
+const robots = !isProduction || noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large';
+
+const orgLd = {
+  '@context': 'https://schema.org',
+  '@type': 'EducationalOrganization',
+  '@id': `${site}/#organisation`,
+  name: org.nom,
+  url: `${site}/`,
+  logo: `${site}/img/logo-tfn.png`,
+  telephone: `+33 ${org.telephone.affiche.replace(/^0/, '')}`,
+  email: org.email,
+  taxID: org.siret.replace(/\s/g, ''),
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: org.adresse.rue,
+    postalCode: org.adresse.code_postal,
+    addressLocality: org.adresse.ville,
+    addressRegion: org.adresse.region,
+    addressCountry: org.adresse.pays,
+  },
+  geo: { '@type': 'GeoCoordinates', latitude: org.adresse.geo.lat, longitude: org.adresse.geo.lon },
+  areaServed: ['Vendeville', 'Lille', 'Métropole européenne de Lille', 'Nord'],
+  sameAs: org.reseaux.map((r: any) => r.url),
+};
+const crumbLd = breadcrumbs.length
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [{ name: 'Accueil', url: '/acceuil/' }, ...breadcrumbs].map((c, i) => ({
+        '@type': 'ListItem', position: i + 1, name: c.name, item: new URL(c.url, Astro.site).toString(),
+      })),
+    }
+  : null;
+const ld = [orgLd, ...(crumbLd ? [crumbLd] : []), ...jsonld];
+---
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content={robots} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#1870b0" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:site_name" content="Tech Formation Nord" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL(ogImage, Astro.site).toString()} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    {isProduction && ANALYTICS.gsc && <meta name="google-site-verification" content={ANALYTICS.gsc} />}
+    <link rel="preload" href="/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin />
+    {chrome === 'portail' && <link rel="preload" href="/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin />}
+    <script is:inline>
+      // « motion » n'est posé que si le mouvement est autorisé : sans JS, aucun contenu n'est masqué.
+      (function (d) { d.classList.replace('no-js', 'js'); if ('IntersectionObserver' in window && matchMedia('(prefers-reduced-motion: no-preference)').matches) d.classList.add('motion'); })(document.documentElement);
+    </script>
+    {ld.map((o) => <script type="application/ld+json" set:html={JSON.stringify(o)} />)}
+    {ANALYTICS.provider === 'plausible' && <script defer data-domain={ANALYTICS.domain} src="https://plausible.io/js/script.tagged-events.js"></script>}
+  </head>
+  <body data-pole={pole} data-env={SITE_ENV} class={chrome === 'portail' ? 'is-portail' : undefined}>
+    <a class="skip-link" href="#content">Aller au contenu</a>
+    {!isProduction && <div class="env-banner" role="note">Site de préproduction<span class="env-long"> — contenu en cours de validation, non indexé. Les formulaires fonctionnent en mode test.</span><span class="env-short"> · non indexé, formulaires en test</span></div>}
+    {chrome === 'site' ? <Header active={navActive} /> : <slot name="entete" />}
+    <main id="content" tabindex="-1">
+      {breadcrumbs.length > 0 && <div class="container"><Breadcrumb items={breadcrumbs} /></div>}
+      <slot />
+    </main>
+    {chrome === 'site' ? <Footer /> : <slot name="pied" />}
+    <script is:inline>
+      // Mesure des conversions : aucun paramètre de campagne sur les liens internes.
+      // Les événements partent vers Plausible si configuré (production uniquement), sinon vers dataLayer.
+      (function () {
+        function track(name, props) {
+          props = props || {};
+          if (window.plausible) window.plausible(name, { props: props });
+          (window.dataLayer = window.dataLayer || []).push(Object.assign({ event: name }, props));
+          if (/[?&]debug-tracking/.test(location.search)) console.info('[mesure]', name, props);
+        }
+        window.tfnTrack = track;
+        var pole = document.body.getAttribute('data-pole');
+        if (pole) track('consultation_pole', { pole: pole });
+        document.addEventListener('click', function (e) {
+          var a = e.target.closest && e.target.closest('a');
+          if (!a) return;
+          var href = a.getAttribute('href') || '';
+          if (href.indexOf('tel:') === 0) track('clic_telephone', { emplacement: a.dataset.place || 'page' });
+          else if (href.indexOf('mailto:') === 0) track('clic_email', { emplacement: a.dataset.place || 'page' });
+          else if (a.hostname === 'wa.me') track('clic_whatsapp', { emplacement: a.dataset.place || 'page' });
+          else if (a.dataset.track === 'passerelle' || a.dataset.track === 'univers') track('clic_site_specialise', { destination: a.hostname, pole: a.dataset.pole || '' });
+        });
+      })();
+    </script>
+    <script>import '../scripts/motion.ts';</script>
+  </body>
+</html>

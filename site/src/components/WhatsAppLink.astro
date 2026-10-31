@@ -1,0 +1,15 @@
+---
+// Bouton WhatsApp professionnel : n'affiche rien tant qu'aucun numéro confirmé n'est configuré.
+import { whatsappHref } from '../lib/data';
+interface Props { contexte?: string; place: string; class?: string; label?: string }
+const { contexte, place, class: cls = 'btn btn--whatsapp', label = 'WhatsApp' } = Astro.props;
+const href = whatsappHref(contexte);
+// Le numéro éventuel en fin de libellé ne se coupe jamais sur deux lignes.
+const m = label.match(/^(.*?)(0\d(?: \d\d){4})$/);
+---
+{href && (
+  <a class={cls} href={href} data-place={place} rel="noopener">
+    <svg class="wa-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 2.2a9.7 9.7 0 0 0-8.4 14.6L2.3 21.8l5.1-1.3A9.7 9.7 0 1 0 12 2.2Zm0 17.7c-1.5 0-3-.4-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 19.9Zm4.4-6c-.2-.1-1.4-.7-1.7-.8-.2-.1-.4-.1-.5.1l-.8 1c-.1.2-.3.2-.5.1a6.6 6.6 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 0 0-.6.3 2.7 2.7 0 0 0-.8 2c0 1.2.9 2.3 1 2.5.1.2 1.7 2.6 4.1 3.6 1.5.7 2.1.7 2.9.6.5-.1 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1l-.4-.4Z"/></svg>
+    <span>{m ? <>{m[1]}<span class="num">{m[2]}</span></> : label}</span>
+  </a>
+)}

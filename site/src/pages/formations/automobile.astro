@@ -1,0 +1,94 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Picture from '../../components/Picture.astro';
+import FormationCard from '../../components/FormationCard.astro';
+import { autoCards } from '../../lib/cards';
+import Faq from '../../components/Faq.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { pole, organisme } from '../../lib/data';
+
+const p = pole('automobile');
+const org = organisme();
+const fiches = (await getCollection('fiches')).map((f) => f.data).filter((f) => f.pole === 'automobile').sort((a, b) => a.ordre - b.ordre);
+const catalogues = fiches.filter((f) => f.type === 'catalogue');
+const nbModules = catalogues.reduce((n, f) => n + f.programmes.length, 0);
+const faq = [
+  { q: 'Les formations automobiles sont-elles ouvertes aux débutants ?', a: '<p>Les modules courts de maintenance, de carrosserie et de commerce s’adressent en priorité aux professionnels en poste : la plupart demandent au moins un diplôme, titre ou certificat (dont CQP ou socle CléA). Les parcours de reconversion « Mécanicien service rapide » et « Aide carrossier » sont accessibles sans prérequis, après un entretien de positionnement.</p>' },
+  { q: 'Comment sont organisées les sessions ?', a: '<p>Les modules courts sont planifiés une fois par trimestre, avec un minimum de 4 stagiaires. L’inscription doit intervenir au moins 11 jours ouvrés avant le début de la formation. Les parcours de reconversion fonctionnent avec des entrées et sorties à date fixe, pour 8 places par session.</p>' },
+  { q: 'Comment les acquis sont-ils évalués ?', a: '<p>Les objectifs pédagogiques des modules sont évalués par un quiz en amont et en aval de la formation. Les méthodes alternent apports, travaux individuels et en sous-groupes, et applications pratiques.</p>' },
+  { q: 'Quel est le tarif d’une formation ?', a: '<p>Les modules courts font l’objet d’un devis sur demande, établi selon le nombre de participants et le format. Le tarif indicatif du parcours « Mécanicien service rapide » est de 8 790 € HT hors prise en charge.</p>' },
+  { q: 'Une personne en situation de handicap peut-elle suivre ces formations ?', a: `<p>Certaines situations de handicap peuvent ne pas être compatibles avec les gestes techniques et la sécurité en atelier. Un échange en amont avec notre référent handicap (<a href="tel:${org.referent_handicap.telephone_lien}">${org.referent_handicap.telephone_affiche}</a>) permet d’étudier les adaptations possibles ou une orientation adaptée.</p>` },
+];
+---
+<Base title="Formations automobile près de Lille : maintenance, carrosserie, commerce" description={`Formations aux métiers de l’automobile à Vendeville : ${nbModules} modules en maintenance, diagnostic, carrosserie, peinture et commerce VN/VO, et parcours de reconversion.`} breadcrumbs={[{ name: 'Nos formations', url: '/services/' }, { name: p.nom, url: p.url }]} pole="automobile" navActive="formations">
+  <section class="page-hero" data-accent="auto">
+    <div class="container hero-grid">
+      <div class="hero-enter">
+        <span class="eyebrow">Pôle automobile</span>
+        <h1>Formations aux métiers de l’automobile</h1>
+        <p class="lead">Maintenance et diagnostic, carrosserie et peinture, commerce de véhicules neufs et d’occasion : Tech Formation Nord forme les professionnels de l’après-vente et prépare les personnes en reconversion aux métiers de l’atelier.</p>
+        <div class="btn-row">
+          <a class="btn btn--primary" href="#familles">Voir les formations</a>
+          <a class="btn btn--ghost" href="/contact-us/?sujet=Formation%20automobile#formulaire">Demander un devis</a>
+        </div>
+      </div>
+      <div class="hero-media hero-enter"><Picture id="auto-peinture-paysage" priority sizes="(max-width: 900px) 92vw, 44vw" /></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container editorial-cols" data-accent="auto" data-reveal>
+      <div>
+        <h2 style="font-size:1.3rem">Pour qui ?</h2>
+        <ul>
+          <li>Mécaniciens, techniciens et opérateurs service rapide</li>
+          <li>Carrossiers-peintres, tôliers, peintres et préparateurs VO</li>
+          <li>Conseillers commerciaux VN/VO</li>
+          <li>Ateliers et concessions qui recrutent ou font monter en compétences</li>
+          <li>Personnes en reconversion vers les métiers en tension de l’atelier</li>
+        </ul>
+      </div>
+      <div>
+        <h2 style="font-size:1.3rem">Objectifs</h2>
+        <ul>
+          <li>Maîtriser des interventions précises : diagnostic, climatisation, freinage, suspensions</li>
+          <li>Réparer acier, aluminium, plastiques et vitrages collés selon les méthodes actuelles</li>
+          <li>Réussir les raccords de peinture et le débosselage sans peinture</li>
+          <li>Estimer et négocier la reprise d’un véhicule d’occasion</li>
+        </ul>
+      </div>
+      <div>
+        <h2 style="font-size:1.3rem">Modalités</h2>
+        <ul>
+          <li>Formation en présentiel à Vendeville, avec une large part d’applications pratiques</li>
+          <li>Entretien préalable et plan de formation personnalisé</li>
+          <li>Sessions trimestrielles, à partir de 4 stagiaires</li>
+          <li>Évaluation par quiz en amont et en aval</li>
+          <li>Tarif sur devis</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--surface" id="familles" aria-labelledby="familles-titre" data-accent="auto">
+    <div class="container">
+      <h2 id="familles-titre">Les formations de perfectionnement</h2>
+      <ul class="fcards" data-reveal="fade" style="margin-top:24px">{autoCards(fiches, 'catalogue').map((c) => <FormationCard {...c} />)}</ul>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="reconv-titre" data-accent="auto">
+    <div class="container">
+      <h2 id="reconv-titre">Les parcours de reconversion</h2>
+      <p class="lead">Deux parcours en alternance entre le centre de formation et l’entreprise, pour devenir rapidement opérationnel sur les métiers en tension de l’atelier.</p>
+      <ul class="fcards" data-reveal="fade" style="margin-top:24px">{autoCards(fiches, 'parcours').map((c) => <FormationCard {...c} />)}</ul>
+      <p style="margin-top:20px"><a class="link-arrow" href="/infinite-grid-col-2/">Tout savoir sur la reconversion</a></p>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container narrow" data-reveal><Faq items={faq} /></div>
+  </section>
+  <CtaBand titre="Un projet de formation automobile ?" sujet="Formation automobile" />
+</Base>

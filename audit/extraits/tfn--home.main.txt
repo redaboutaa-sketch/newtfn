@@ -1,0 +1,144 @@
+##
+
+Donnez un nouvel élan à votre carrière!
+
+en intégrant le leader de la formation en mécanique automobile.
+
+[champ input name=_wpcf7 placeholder=None] [champ input name=_wpcf7_version placeholder=None] [champ input name=_wpcf7_locale placeholder=None] [champ input name=_wpcf7_unit_tag placeholder=None] [champ input name=_wpcf7_container_post placeholder=None] [champ input name=_wpcf7_posted_data_hash placeholder=None]
+
+[champ input name=your-name placeholder=Nom]
+
+[champ input name=email-address placeholder=Email]
+
+[champ input name=phone-number placeholder=Tel]
+
+[champ input name=subject placeholder=Sujet]
+
+[champ textarea name=textarea-806 placeholder=Message]
+
+[champ input name=checkbox-274[] placeholder=None] En soumettant ce formulaire, j'accepte que mes données personnelles soient collectées et traitées conformément à la réglementation RGPD et à la Politique de Confidentialité.
+
+Envoyer
+
+[champ input name=None placeholder=None]
+
+####
+
+TFN
+
+##
+
+Le leader incontournable de la formation dans les métiers de l’automobile.
+
+Notre société, leader dans la formation en mécanique, vous accompagne pour acquérir les savoir-faire techniques indispensables aux métiers de l’automobile, de l’aéronautique, et de l’industrie. Grâce à des programmes adaptés à tous les niveaux et des ateliers pratiques sur des équipements modernes, nous préparons nos apprenants à relever les défis d’un secteur en constante évolution. Que vous soyez débutant ou en reconversion, nos formations certifiantes vous ouvrent les portes d’une carrière dynamique et pleine d’avenir. Rejoignez-nous et devenez un professionnel recherché dans un domaine passionnant !
+
+### TECH FORMATION
+
+![infobox-service-car](https://techformanord.fr/wp-content/uploads/2024/09/infobox-service-car.png)
+
+####
+
+TFN
+
+##
+
+3 Parcours de Formation pour Maîtriser
+les Métiers de l'autommobile
+
+##
+
+Maintenance
+
+Maîtrisez le diagnostic, l’entretien et la réparation des véhicules avec une formation pratique et adaptée aux besoins du marché. Préparez-vous à une carrière d’avenir dans l’automobile !
+
+01
+
+##
+
+Commerce
+
+Devenez un expert de la vente de véhicules neufs et d’occasion. Apprenez les techniques de négociation, la gestion client et les stratégies commerciales pour réussir dans un secteur dynamique et compétitif.
+
+02
+
+##
+
+Carrosserie peinture
+
+Apprenez les techniques de réparation et de peinture automobile. De la remise en état à la finition, maîtrisez un savoir-faire essentiel pour intégrer le secteur de la carrosserie avec succès.
+
+04
+
+####
+
+TFN
+
+##
+
+Nos Catalogues de
+Formations
+
+{"cpt":"service","style":"3","show":4,"order":"DESC","orderby":"none"}
+
+01
+
+Accessories <https://techformanord.fr/service-category/accessories/>
+
+### Maintenance <https://techformanord.fr/service/maintenance/>
+
+Apprenez les bases et les techniques avancées de la maintenance automobile avec notre formation complète. Diagnostic, entretien, et réparation des véhicules : développez des compétences recherchées pour intégrer un secteur en pleine croissance
+
+![](https://techformanord.fr/wp-content/uploads/2024/09/hands-car-mechanic-with-wrench-garage-630x630.jpg)
+
+<https://techformanord.fr/service/maintenance/>
+
+<https://techformanord.fr/service/maintenance/>
+
+02
+
+Maintenance <https://techformanord.fr/service-category/maintenance/>
+
+### Commerce <https://techformanord.fr/service/wheels-alignment/>
+
+Découvrez notre expertise en vente de véhicules neufs (VN) et d’occasion (VO). Nous formons des professionnels compétents dans le domaine de la négociation, de la gestion client et des techniques de vente adaptées à l’automobile.
+
+![](https://techformanord.fr/wp-content/uploads/2024/09/stylish-elegant-woman-car-salon-630x630.jpg)
+
+<https://techformanord.fr/service/wheels-alignment/>
+
+<https://techformanord.fr/service/wheels-alignment/>
+
+03
+
+Filters <https://techformanord.fr/service-category/filters/>
+
+### Carrosserie Peinture <https://techformanord.fr/service/interior-cleaning/>
+
+La formation en carrosserie peinture vous permet de développer les compétences nécessaires pour exceller dans le domaine de la réparation et de la restauration des carrosseries de véhicules. Cette formation est idéale pour ceux qui souhaitent apprendre les techniques modernes de réparation de carrosserie et de peinture automobile, ainsi que comprendre les différents matériaux et outils utilisés pour redonner aux véhicules leur éclat d’origine.
+
+![](https://techformanord.fr/wp-content/uploads/2024/09/man-painting-car-door-side-view-630x630.jpg)
+
+<https://techformanord.fr/service/interior-cleaning/>
+
+<https://techformanord.fr/service/interior-cleaning/>
+
+## Faites confiance
+à un organisme de formation certifié
+
+{"cpt":"client","style":"1","columns":"6","show":2,"order":"DESC","orderby":"none"}
+
+#### Qualiopi
+
+![None](https://techformanord.fr/wp-content/uploads/2025/07/logo-qualiopi-2022.png)
+
+![](https://techformanord.fr/wp-content/uploads/2025/07/logo-qualiopi-2022.png)
+
+#### Client 05
+
+![None](https://techformanord.fr/wp-content/uploads/2024/09/ACT_logotype_cartouche_rvb.png)
+
+![](https://techformanord.fr/wp-content/uploads/2024/09/ACT_logotype_cartouche_rvb.png)
+
+![](https://techformanord.fr/wp-content/uploads/2026/06/Satisfaction-clients-1-1024x209.png)
+
+### Homepage 03

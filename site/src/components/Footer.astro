@@ -1,0 +1,58 @@
+---
+import { organisme, pole } from '../lib/data';
+import WhatsAppLink from './WhatsAppLink.astro';
+const org = organisme();
+const year = new Date().getFullYear();
+const auto = pole('automobile');
+---
+<footer class="site-footer" data-accent="auto">
+  <div class="container footer-grid">
+    <div>
+      <a class="footer-logo" href="/acceuil/"><img src="/img/logo-tfn.png" alt="Tech Formation Nord" width="401" height="136" loading="lazy" /></a>
+      <p>Organisme de formation aux métiers de l’automobile à Vendeville, au sud de Lille : maintenance, diagnostic, carrosserie, peinture, commerce et reconversion.</p>
+      <p class="small">
+        {org.adresse.rue}<br />{org.adresse.code_postal} {org.adresse.ville}<br />
+        <a href={`tel:${org.telephone.lien}`} data-place="pied-de-page">{org.telephone.affiche}</a><br />
+        <a href={`mailto:${org.email}`} data-place="pied-de-page">{org.email}</a>
+      </p>
+      <WhatsAppLink place="pied-de-page" class="footer-wa" label={`WhatsApp ${org.whatsapp.affiche}`} />
+    </div>
+    <div>
+      <h2>Formations</h2>
+      <ul>
+        <li><a href="/services/">Toutes nos formations</a></li>
+        {auto.familles.map((f: any) => <li><a href={f.url}>{f.nom}</a></li>)}
+      </ul>
+    </div>
+    <div>
+      <h2>Organisme</h2>
+      <ul>
+        <li><a href="/about-us/">Notre organisme</a></li>
+        <li><a href="/qualite/">Qualité et certification</a></li>
+        <li><a href="/accessibilite-handicap/">Accessibilité et handicap</a></li>
+        <li><a href="/informations-pratiques/">Informations pratiques</a></li>
+        <li><a href="/entreprises/">Entreprises</a></li>
+        <li><a href="/financer-sa-formation/">Financer sa formation</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>Horaires</h2>
+      <ul>
+        {org.horaires.map((h: any) => <li>{h.jours} : {h.heures}</li>)}
+      </ul>
+      <h2 style="margin-top:1.4rem">Suivez-nous</h2>
+      <ul>
+        {org.reseaux.map((r: any) => <li><a href={r.url} rel="noopener" class="ext">{r.nom}</a></li>)}
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© {year} {org.nom} — SIRET {org.siret} — NDA {org.nda}</span>
+    <span>
+      <a href="/mentions-legales/">Mentions légales</a> ·
+      <a href="/politique-de-confidentialite/">Confidentialité</a> ·
+      <a href="/plan-du-site/">Plan du site</a> ·
+      <a href="/">Retour au portail</a>
+    </span>
+  </div>
+</footer>

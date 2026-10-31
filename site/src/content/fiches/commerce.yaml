@@ -1,0 +1,80 @@
+url: /service/wheels-alignment/
+pole: automobile
+famille: commerce
+type: catalogue
+ordre: 2
+titre: "Formations commerce automobile (VN/VO)"
+titre_court: "Commerce automobile"
+seo_title: "Formations commerce automobile VN/VO"
+seo_description: "Vente de véhicules neufs et d’occasion, estimation de reprise, conseil commercial : des formations pour réussir dans le commerce automobile."
+resume: "Formez-vous à la vente de véhicules neufs (VN) et d’occasion (VO) : négociation, gestion client et techniques de vente adaptées à l’automobile."
+image:
+  src: "/wp-content/uploads/2024/09/stylish-elegant-woman-car-salon-880x520.jpg"
+  alt: "Cliente observant un véhicule dans un showroom automobile"
+intro:
+  - "Maîtrisez la vente de véhicules neufs et d’occasion."
+  - "Découvrez notre expertise en vente de véhicules neufs (VN) et d’occasion (VO). Nous formons des professionnels compétents dans le domaine de la négociation, de la gestion client et des techniques de vente adaptées à l’automobile. Apprenez à maîtriser les spécificités du marché automobile, que ce soit pour la vente de véhicules neufs ou d’occasion. Grâce à notre formation, vous serez prêt à exceller dans ce secteur dynamique et en constante évolution. Rejoignez-nous et boostez votre carrière dans le commerce automobile !"
+sections:
+  - titre: "Pourquoi se spécialiser dans le commerce automobile ?"
+    paragraphes:
+      - "Spécialisez-vous dans la vente de véhicules neufs (VN) et d’occasion (VO) avec notre formation complète en commerce automobile. Apprenez les techniques de négociation, de gestion de stock et de relation client pour réussir dans un secteur dynamique. Grâce à notre programme pratique, développez des compétences essentielles pour devenir un expert en vente automobile et répondre aux besoins d’une clientèle exigeante. Préparez-vous à exceller dans le commerce de véhicules et à saisir les opportunités d’un marché en pleine croissance."
+programmes:
+  - id: reprise-vehicule-occasion
+    titre: "Estimer et négocier la reprise d’un véhicule d’occasion"
+    objectifs:
+      - "Utiliser une méthodologie d’estimation de reprise"
+      - "Estimer la reprise en adaptant son comportement au client"
+    public: "Conseiller commercial VN/VO"
+    prerequis: "Posséder au moins un diplôme, titre ou certificat (dont CQP ou Socle de compétences CléA)"
+    benefices: "Augmenter le taux de reprise en accord avec votre stratégie commerciale et les attentes des clients"
+    contenu:
+      - "Adapter sa démarche au comportement du client"
+      - "Intégrer la reprise dans son acte de vente"
+      - "L’identification du véhicule"
+      - "L’estimation physique du véhicule avec le client"
+      - "La valorisation des frais de remise en état"
+      - "La valorisation du véhicule en tenant compte du marché"
+      - "Présenter le prix de reprise"
+      - "Négocier la reprise"
+      - "Traiter les objections"
+      - "La validation de l’offre"
+    applications:
+      - "Vis ma vie de RVO"
+      - "Identifier le véhicule"
+      - "Faire l’estimation physique d’un véhicule"
+      - "Valoriser le véhicule avec les valeurs marché"
+      - "Traiter les objections en utilisant une méthode"
+    note_applications: "Les exercices font appel à des scénarios basés sur l’évolution du marché VO, des méthodes et des outils."
+    methodes:
+      - "Expositives, participatives et actives"
+      - "Travaux individuels et en sous-groupes"
+    evaluation: "Évaluation des objectifs pédagogiques par un quiz amont / aval"
+    tarif: "Devis sur demande"
+  - id: conseiller-commercial-formation-automobile
+    titre: "Conseiller(ère) commercial(e) en formation autour de l’automobile"
+    contexte:
+      - "Le/la conseiller(ère) commercial(e) en formation possède une maîtrise technique et actualisée en ingénierie de formation (les prestations de formation de son organisme de formation, les différents outils et méthodes pédagogiques, la réglementation et le financement des formations) doublée d’une compétence commerciale."
+      - "Il/elle réalise la prospection de clients dans l’objectif de la vente de l’offre de formation de son organisme de formation (prestations de formation et services)."
+      - "Il/elle a pour mission de promouvoir, placer sur le marché l’offre de formation et contribuer au développement de l’organisme de formation et à sa pérennisation ainsi que de conseiller, gérer et de fidéliser un portefeuille de clients et de prospects."
+      - "Il/elle assure le reporting de son activité et de la satisfaction des clients et contribue au développement de l’organisme de formation par l’apport d’informations venant du terrain."
+      - "Il/elle exerce son activité en autonomie, dans le respect de la politique commerciale de l’organisme de formation et de son champ de responsabilité fixé par son organisme de formation et sous la responsabilité de sa hiérarchie (par exemple : responsable ou directeur commercial ou responsable de l’organisme de formation)."
+    contenu_titre: "Contenu de la formation"
+    contenu:
+      - "Mettre en œuvre un plan d’action commerciale"
+      - "Organiser ses activités commerciales"
+      - "Organiser une veille sur les technologies de la formation professionnelle automobile"
+      - "Créer et développer un portefeuille client"
+      - "Réaliser une découverte de besoin"
+      - "Réaliser une proposition et devis"
+      - "Formaliser une réponse aux appels d’offres"
+      - "Coordonner les moyens humains et logistiques d’une formation"
+      - "Soutenir une offre de formation"
+      - "Traiter les objections"
+      - "Négocier selon la politique commerciale et financière de l’organisme de formation"
+      - "Actualiser un fichier clients prospects"
+      - "Réaliser des reportings"
+    tarif: "Devis sur demande"
+sources:
+  - url: "https://techformanord.fr/service/wheels-alignment/"
+    collecte: "2026-10-24"
+    statut: repris-a-confirmer

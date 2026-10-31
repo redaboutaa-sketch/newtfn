@@ -1,0 +1,11 @@
+# Documents téléchargeables publiés sur le site.
+- id: certificat-qualiopi
+  titre: Certificat Qualiopi de Tech Formation Nord (CCTA Certification, n° 3590226QA-A)
+  fichier: /documents/certificat-qualiopi-tech-formation-nord.pdf
+  format: PDF
+  source: https://techformanord.fr/wp-content/uploads/2026/06/2026-03-10-16-51.pdf
+- id: plan-acces
+  titre: Plan d'accès au centre de formation
+  fichier: /wp-content/uploads/2025/07/plandacces.png
+  format: PNG
+  source: https://techformanord.fr/wp-content/uploads/2025/07/plandacces.png

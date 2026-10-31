@@ -1,0 +1,42 @@
+---
+import Base from '../layouts/Base.astro';
+import Faq from '../components/Faq.astro';
+import CtaBand from '../components/CtaBand.astro';
+const dispositifs = [
+  { titre: 'Salariés : plan de développement des compétences', texte: 'L’employeur peut inscrire la formation dans son plan de développement des compétences. Selon la branche et la taille de l’entreprise, une prise en charge partielle ou totale peut être demandée à l’opérateur de compétences (OPCO).', lien: 'https://travail-emploi.gouv.fr/les-operateurs-de-competences-opco', libelle: 'Les opérateurs de compétences' },
+  { titre: 'Demandeurs d’emploi : France Travail', texte: 'Selon votre projet, France Travail peut mobiliser une aide individuelle à la formation (AIF) ou une préparation opérationnelle à l’emploi individuelle (POEI) lorsqu’une embauche est envisagée. La décision appartient à votre conseiller.', lien: 'https://www.francetravail.fr/candidat/en-formation/mes-aides-financieres.html', libelle: 'Les aides à la formation de France Travail' },
+  { titre: 'Indépendants et dirigeants non salariés', texte: 'Les travailleurs indépendants cotisent à un fonds d’assurance formation (FAF) selon leur activité : AGEFICE, FIF PL, FAFCEA pour les artisans… Chaque fonds fixe ses propres critères et plafonds.', lien: 'https://www.service-public.fr/professionnels-entreprises/vosdroits/F23459', libelle: 'La formation des travailleurs indépendants' },
+  { titre: 'Compte personnel de formation (CPF)', texte: 'Le CPF finance uniquement les formations éligibles et référencées sur la plateforme officielle Mon Compte Formation. Une participation forfaitaire peut rester à votre charge. Vérifiez toujours l’offre et vos droits directement sur la plateforme.', lien: 'https://www.moncompteformation.gouv.fr/', libelle: 'Mon Compte Formation' },
+  { titre: 'Financement personnel', texte: 'Vous pouvez financer vous-même votre formation. Un devis détaillé et une convention ou un contrat de formation vous sont remis avant le démarrage.', lien: '/contact-us/?sujet=Devis#formulaire', libelle: 'Demander un devis' },
+];
+const faq = [
+  { q: 'Ma formation sera-t-elle prise en charge ?', a: '<p>Aucun financement n’est automatique. La prise en charge dépend de votre statut, de la formation choisie, des règles et du budget du financeur. Nous vous aidons à identifier les pistes possibles et à réunir les documents nécessaires, mais la décision appartient au financeur.</p>' },
+  { q: 'La certification Qualiopi rend-elle une formation finançable ?', a: '<p>Qualiopi est une condition pour qu’un organisme puisse bénéficier de fonds publics ou mutualisés, mais elle ne rend pas à elle seule une formation éligible à un dispositif donné. L’éligibilité s’apprécie formation par formation et dispositif par dispositif.</p>' },
+  { q: 'Quand faut-il faire la demande ?', a: '<p>Le plus tôt possible : les financeurs demandent généralement que le dossier soit déposé avant le début de la formation. Pour nos formations automobiles, l’inscription doit intervenir au moins 11 jours ouvrés avant le démarrage ; pour les parcours de reconversion, jusqu’à 10 jours avant, sous réserve d’un financement validé.</p>' },
+];
+---
+<Base title="Financer sa formation : OPCO, France Travail, CPF, indépendants" description="Comment financer une formation chez Tech Formation Nord : plan de développement des compétences et OPCO, aides de France Travail, fonds des indépendants, CPF ou financement personnel." breadcrumbs={[{ name: 'Financer sa formation', url: '/financer-sa-formation/' }]} navActive="financement">
+  <section class="page-hero">
+    <div class="container hero-enter">
+      <span class="eyebrow">Financement</span>
+      <h1>Financer sa formation</h1>
+      <p class="lead">Plusieurs dispositifs peuvent financer tout ou partie d’une formation, selon votre statut et votre projet. Nous vous aidons à identifier les solutions envisageables avant votre inscription.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container grid grid-2" data-reveal>
+      {dispositifs.map((d) => (
+        <article class="card">
+          <h2 style="font-size:1.2rem">{d.titre}</h2>
+          <p>{d.texte}</p>
+          <div class="card-foot"><a class={`link-arrow ${d.lien.startsWith('http') ? 'ext' : ''}`} href={d.lien} rel={d.lien.startsWith('http') ? 'noopener' : undefined}>{d.libelle}</a></div>
+        </article>
+      ))}
+    </div>
+    <div class="container" style="margin-top:28px">
+      <p class="callout callout--info">Les tarifs, conditions et éventuels restes à charge sont précisés dans le devis. Aucune prise en charge n’est garantie avant l’accord écrit du financeur.</p>
+    </div>
+  </section>
+  <section class="section section--surface"><div class="container narrow" data-reveal><Faq items={faq} /></div></section>
+  <CtaBand titre="Étudions ensemble votre financement" sujet="Financement" />
+</Base>
