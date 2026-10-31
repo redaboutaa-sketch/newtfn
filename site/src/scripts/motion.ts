@@ -87,6 +87,15 @@ if (toc && 'IntersectionObserver' in window) {
   links.forEach((_, id) => { const t = document.getElementById(id); if (t) tocIo.observe(t); });
 }
 
+/* Fiches : le module ciblé par son ancre s'ouvre (son contenu détaillé est replié par défaut). */
+const openTarget = () => {
+  const id = decodeURIComponent(location.hash.slice(1));
+  const details = id ? document.getElementById(id)?.querySelector<HTMLDetailsElement>('details.prog-more') : null;
+  if (details) details.open = true;
+};
+openTarget();
+window.addEventListener('hashchange', openTarget);
+
 /* Formulaire : état d'envoi (la validation reste native + serveur). */
 document.querySelectorAll<HTMLFormElement>('form.form').forEach((form) => {
   form.addEventListener('submit', () => {

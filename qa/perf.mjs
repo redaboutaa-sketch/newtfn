@@ -3,7 +3,7 @@
 import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
 const BASE = process.env.BASE || 'http://127.0.0.1:8095';
-const PAGES = (process.env.PAGES || '/,/services/,/formations/beaute-bien-etre/,/service/interior-cleaning/,/contact-us/').split(',');
+const PAGES = (process.env.PAGES || '/,/services/,/formations/automobile/,/service/interior-cleaning/,/contact-us/').split(',');
 const desktop = process.argv.includes('--desktop');
 const out = [];
 for (const p of PAGES) {

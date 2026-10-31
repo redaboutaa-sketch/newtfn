@@ -23,4 +23,13 @@ const og = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630">
 </svg>`;
 const logo = await sharp('public/img/logo-tfn.png').resize({ width: 420 }).toBuffer();
 await sharp(Buffer.from(og)).composite([{ input: logo, left: 80, top: 80 }]).png({ compressionLevel: 9 }).toFile('public/img/og-default.png');
-console.log('assets: favicon.svg, favicon.ico, apple-touch-icon.png, img/og-default.png');
+// Image de partage du site automobile (/acceuil/ et pages internes) ; og-default reste celle du portail.
+const ogAuto = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630">
+  <rect width="1200" height="630" fill="#ffffff"/>
+  <rect y="560" width="1200" height="70" fill="#1870b0"/>
+  <text x="80" y="330" font-family="Arial, Helvetica, sans-serif" font-size="54" font-weight="800" fill="#17212e">Formations automobile</text>
+  <text x="80" y="400" font-family="Arial, Helvetica, sans-serif" font-size="40" fill="#4b5563">Maintenance · Carrosserie · Commerce · Reconversion</text>
+  <text x="80" y="460" font-family="Arial, Helvetica, sans-serif" font-size="32" fill="#4b5563">Vendeville, près de Lille</text>
+</svg>`;
+await sharp(Buffer.from(ogAuto)).composite([{ input: logo, left: 80, top: 80 }]).png({ compressionLevel: 9 }).toFile('public/img/og-automobile.png');
+console.log('assets: favicon.svg, favicon.ico, apple-touch-icon.png, img/og-default.png, img/og-automobile.png');

@@ -2,6 +2,8 @@
 
 ## A. Retour au site WordPress (après bascule DNS)
 
+> **Obsolète depuis le 29/10/2026** : l'hébergement IONOS ne sert plus le site (404). Utiliser la section B ou `tfn-deploy rollback` (`docs/acces-et-deploiement-tfn.md` §5).
+
 À utiliser en cas d'incident majeur (site indisponible, formulaire hors service sans solution rapide, erreur de contenu grave).
 
 1. **DNS (IONOS)** : rétablir les valeurs d'origine (relevées le 24/10/2026) :
@@ -39,7 +41,7 @@ dig +short A techformanord.fr
 
 ## E. Préproduction tfn.iatechformanord.fr
 
-Chaque version déployée en préproduction est étiquetée `tfn-site:preprod-<commit>` (version précédant la montée en gamme : `preprod-859c2cc`).
+Chaque version déployée en préproduction est étiquetée `tfn-site:preprod-<commit>` : `preprod-859c2cc` (avant la montée en gamme), `preprod-a8ec674` (montée en gamme, avant le portail à trois univers), `preprod-31541ab` (portail à trois univers, illustrations animées), `preprod-c2c4eaf` (portail avec les photos des trois univers et WhatsApp +33 6 86 15 89 33), `preprod-a608309` (numéros insécables sur mobile, fonds bleus du portail), `preprod-8a7325e` (typographie Manrope hors cartes), `preprod-f9d3449` (parcours automobile seul : beauté et IA retirées du site TFN). Pour revenir au portail illustré, remplacer `859c2cc` par `31541ab` ci-dessous. Pour revenir à l'accueil précédent, remplacer `859c2cc` par `a8ec674` ci-dessous.
 ```bash
 cd /opt/newtfn
 docker tag tfn-site:preprod-859c2cc tfn-site:preprod

@@ -1,22 +1,21 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
-import { poles } from '../lib/data';
+import { pole } from '../lib/data';
+const auto = pole('automobile');
 const fiches = (await getCollection('fiches')).map((f) => f.data).sort((a, b) => a.ordre - b.ordre);
 ---
-<Base title="Plan du site" description="Plan du site de Tech Formation Nord : formations automobile, beauté et intelligence artificielle, reconversion, financement, organisme et contact." breadcrumbs={[{ name: 'Plan du site', url: '/plan-du-site/' }]}>
+<Base title="Plan du site" description="Plan du site de Tech Formation Nord : formations automobile, reconversion, financement, organisme et contact." breadcrumbs={[{ name: 'Plan du site', url: '/plan-du-site/' }]}>
   <section class="section">
     <div class="container narrow prose">
       <h1>Plan du site</h1>
       <ul>
-        <li><a href="/">Accueil</a></li>
+        <li><a href="/acceuil/">Accueil Tech Formation Nord — automobile</a></li>
         <li><a href="/services/">Nos formations</a>
           <ul>
-            {poles().map((p) => (
-              <li><a href={p.url}>{p.nom}</a>
-                {p.id === 'automobile' && <ul>{fiches.map((f) => <li><a href={f.url}>{f.titre_court}</a></li>)}</ul>}
-              </li>
-            ))}
+            <li><a href={auto.url}>{auto.nom}</a>
+              <ul>{fiches.filter((f) => f.pole === 'automobile').map((f) => <li><a href={f.url}>{f.titre_court}</a></li>)}</ul>
+            </li>
           </ul>
         </li>
         <li><a href="/infinite-grid-col-2/">Reconversion</a></li>
@@ -28,6 +27,7 @@ const fiches = (await getCollection('fiches')).map((f) => f.data).sort((a, b) =>
         <li><a href="/contact-us/">Contact</a></li>
         <li><a href="/mentions-legales/">Mentions légales</a></li>
         <li><a href="/politique-de-confidentialite/">Politique de confidentialité</a></li>
+        <li><a href="/">Retour au portail</a></li>
       </ul>
     </div>
   </section>

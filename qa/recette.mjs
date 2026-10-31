@@ -8,7 +8,7 @@ const axeSource = fs.readFileSync(createRequire(import.meta.url).resolve('axe-co
 
 const BASE = process.env.BASE || 'http://127.0.0.1:8095';
 const OUT = process.env.OUT || 'resultats';
-const PAGES = (process.env.PAGES || '/,/services/,/formations/automobile/,/formations/beaute-bien-etre/,/formations/intelligence-artificielle/,/service/maintenance/,/service/wheels-alignment/,/service/interior-cleaning/,/m-grid-col-3/,/m-grid-col-2/,/infinite-grid-col-2/,/entreprises/,/financer-sa-formation/,/about-us/,/qualite/,/accessibilite-handicap/,/informations-pratiques/,/contact-us/,/contact-us/merci/,/mentions-legales/,/politique-de-confidentialite/,/plan-du-site/,/page-inexistante/').split(',');
+const PAGES = (process.env.PAGES || '/,/acceuil/,/services/,/formations/automobile/,/service/maintenance/,/service/wheels-alignment/,/service/interior-cleaning/,/m-grid-col-3/,/m-grid-col-2/,/infinite-grid-col-2/,/entreprises/,/financer-sa-formation/,/about-us/,/qualite/,/accessibilite-handicap/,/informations-pratiques/,/contact-us/,/contact-us/merci/,/mentions-legales/,/politique-de-confidentialite/,/plan-du-site/,/page-inexistante/').split(',');
 // VIEWPORTS="ordinateur:1440x900,mobile:390x844" (défaut). Autres : tablette:768x1024, mobile-etroit:360x780.
 const VIEWPORTS = Object.fromEntries((process.env.VIEWPORTS || 'ordinateur:1440x900,mobile:390x844').split(',').map((v) => {
   const [name, dim] = v.split(':'); const [width, height] = dim.split('x').map(Number); return [name, { width, height }];

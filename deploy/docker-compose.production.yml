@@ -1,5 +1,7 @@
 # Production Tech Formation Nord — NE PAS LANCER avant validation explicite (docs/procedure-mise-en-production.md).
 # Lancement : docker compose -p tfn-prod --env-file /etc/techformanord/production.env -f deploy/docker-compose.production.yml up -d --build
+# TFN_CERT_RESOLVER : « letsencrypt » (défaut) une fois le DNS de techformanord.fr et www pointé vers ce VPS ;
+# vide avant la bascule (certificat par défaut de Traefik, aucune demande Let's Encrypt vouée à l'échec).
 
 name: tfn-prod
 
@@ -28,13 +30,15 @@ services:
       traefik.docker.network: traefik-public
       traefik.http.routers.tfn-prod.rule: Host(`techformanord.fr`)
       traefik.http.routers.tfn-prod.entrypoints: websecure
-      traefik.http.routers.tfn-prod.tls.certresolver: letsencrypt
+      traefik.http.routers.tfn-prod.tls: "true"
+      traefik.http.routers.tfn-prod.tls.certresolver: ${TFN_CERT_RESOLVER-letsencrypt}
       traefik.http.routers.tfn-prod.middlewares: tfn-prod-hsts
       traefik.http.middlewares.tfn-prod-hsts.headers.stsseconds: "31536000"
       # www.techformanord.fr -> techformanord.fr (301 directe, chemin conservé)
       traefik.http.routers.tfn-prod-www.rule: Host(`www.techformanord.fr`)
       traefik.http.routers.tfn-prod-www.entrypoints: websecure
-      traefik.http.routers.tfn-prod-www.tls.certresolver: letsencrypt
+      traefik.http.routers.tfn-prod-www.tls: "true"
+      traefik.http.routers.tfn-prod-www.tls.certresolver: ${TFN_CERT_RESOLVER-letsencrypt}
       traefik.http.routers.tfn-prod-www.middlewares: tfn-prod-www-redirect
       traefik.http.middlewares.tfn-prod-www-redirect.redirectregex.regex: "^https?://www\\.techformanord\\.fr/(.*)"
       traefik.http.middlewares.tfn-prod-www-redirect.redirectregex.replacement: "https://techformanord.fr/$${1}"

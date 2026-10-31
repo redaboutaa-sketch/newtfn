@@ -52,3 +52,6 @@ Garde-fous : `prefers-reduced-motion` désactive tout mouvement ; sans JavaScrip
 - **Nom court des pôles** (`nom_court` dans `poles.yaml`) pour les étiquettes.
 - **Contrastes** : teintes foncées dédiées (`--auto-ink`, `--beaute-ink`, `--ia-ink`) pour les petits textes sur fonds teintés.
 - **Typographie française** : espace insécable avant « : ; ? ! » dans les titres de fiches.
+
+## Portail à trois univers (25/10/2026)
+La page d'entrée adopte un langage d'illustration isométrique au trait fin (contours sombres, aplats discrets, ombres géométriques, grandes surfaces claires), commun aux trois univers ; le site TFN conserve sa direction photographique. Détails : `docs/portail-trois-univers.md`.

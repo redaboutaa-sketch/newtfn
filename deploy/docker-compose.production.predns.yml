@@ -1,0 +1,20 @@
+# Répétition de la production AVANT la bascule DNS de techformanord.fr (pile tfn-prod, image de production).
+# Formulaire en mode test (aucun envoi) tant que les identifiants SMTP ne sont pas fournis ;
+# la boîte de test n'est jamais exposée publiquement. À remplacer par le lancement normal (sans ce fichier)
+# avec /etc/techformanord/production.env AVANT ou AU MOMENT de la bascule DNS.
+# docker compose -p tfn-prod --env-file /etc/techformanord/production-predns.env \
+#   -f deploy/docker-compose.production.yml -f deploy/docker-compose.production.predns.yml up -d --build
+services:
+  web:
+    labels:
+      traefik.http.routers.tfn-prod.rule: Host(`techformanord.fr`) && !PathPrefix(`/api/test-inbox`)
+  forms:
+    environment:
+      FORM_MODE: test
+      DATA_DIR: /data
+    volumes:
+      - tfn_prod_predns_forms:/data
+
+volumes:
+  tfn_prod_predns_forms:
+    name: tfn_prod_predns_forms

@@ -1,224 +1,58 @@
 ---
-import { getCollection } from 'astro:content';
+// Portail : page d'entrée courte présentant les trois univers de Tech Formation Nord.
+// Chaque univers est un seul lien HTML (logo, photo, intitulé, appel à l'action), même onglet.
 import Base from '../layouts/Base.astro';
 import Picture from '../components/Picture.astro';
-import IaArt from '../components/IaArt.astro';
-import CtaBand from '../components/CtaBand.astro';
-import Reviews from '../components/Reviews.astro';
-import { organisme, pole } from '../lib/data';
+import WhatsAppLink from '../components/WhatsAppLink.astro';
+import { organisme, poles } from '../lib/data';
 
 const org = organisme();
-const fiches = (await getCollection('fiches')).map((f) => f.data).sort((a, b) => a.ordre - b.ordre);
-const fiche = (url: string) => fiches.find((f) => f.url === url)!;
-const maint = fiche('/service/maintenance/');
-const carro = fiche('/service/interior-cleaning/');
-const msr = fiche('/m-grid-col-3/');
-const auto = pole('automobile');
-const beaute = pole('beaute');
-const ia = pole('ia');
-const cils = beaute.familles.flatMap((f: any) => f.formations).find((x: any) => /Extensions de cils/.test(x.titre));
-const iaTpe = ia.familles.find((x: any) => x.id === 'artisans-tpe');
-const p44992 = maint.programmes[0];
-const p08 = carro.programmes[0];
-const nbBeaute = beaute.familles.reduce((n: number, f: any) => n + f.formations.length, 0);
-
-// Familles automobiles avec leur nombre de modules (données des fiches).
-const autoFamilles = auto.familles.map((fam: any) => {
-  const fs = fiches.filter((f) => f.famille === fam.id);
-  const n = fs.reduce((k, f) => k + (f.type === 'parcours' ? 1 : f.programmes.length), 0);
-  return { ...fam, detail: fam.id === 'reconversion' ? `${fs.length} parcours` : `${n} modules` };
-});
-
-// Sélection de formations réelles, issues des contenus vérifiés.
-const selection = [
-  { pole: 'automobile', accent: 'auto', titre: p44992.titre, meta: `${p44992.duree} · salariés et tout public`, url: `${maint.url}#prog-${p44992.id}` },
-  { pole: 'automobile', accent: 'auto', titre: p08.titre, meta: 'Carrossiers, peintres, préparateurs VO', url: `${carro.url}#prog-${p08.id}` },
-  { pole: 'automobile', accent: 'auto', titre: 'Parcours de reconversion : mécanicien service rapide', meta: '224 h + 50 h de soft skills · sans prérequis', url: msr.url },
-  { pole: 'beaute', accent: 'beaute', titre: cils.titre, meta: `${cils.duree} · professionnels de l’esthétique`, url: cils.url, ext: 'Programme sur maisonbeauxlieux.com' },
-  { pole: 'ia', accent: 'ia', titre: 'Formation IA pour artisans et TPE', meta: '2 journées · présentiel à Lille', url: iaTpe.lien.url, ext: 'Programme sur iatechformanord.fr' },
-];
+// Photos 4:3 recadrées par scripts/prepare-media.mjs (originaux dans media-src/portail/).
+const photo = { automobile: 'portail-automobile', beaute: 'portail-esthetique', ia: 'portail-ia' } as const;
+const univers = poles();
 ---
-<Base title="Tech Formation Nord — Formations automobile, beauté et IA près de Lille" description="Organisme de formation certifié Qualiopi à Vendeville, près de Lille : formations aux métiers de l’automobile, de l’esthétique et de l’intelligence artificielle, pour salariés, entreprises et reconversions." navActive="accueil">
-  <section class="home-hero">
-    <div class="container hero-grid">
-      <div class="hero-enter">
-        <span class="eyebrow" style="--i:0">Organisme de formation · Vendeville, près de Lille</span>
-        <h1 style="--i:1">Des formations concrètes <span class="h1-sub">pour l’<em>automobile</em>, la&nbsp;<em>beauté</em> et l’<em>IA</em>.</span></h1>
-        <p class="lead" style="--i:2">Tech Formation Nord forme les salariés, accompagne les entreprises et prépare les personnes en reconversion, avec des formations pratiques construites autour des gestes et des usages du métier.</p>
-        <div class="btn-row">
-          <a class="btn btn--primary" href="/services/">Trouver ma formation</a>
-          <a class="btn btn--ghost" href="/contact-us/#formulaire">Être conseillé</a>
-        </div>
-        {org.qualiopi.afficher && (
-          <p class="trust-line" style="--i:4">
-            <img src={org.qualiopi.logo} alt="Qualiopi — processus certifié — République française" width="430" height="183" />
-            <span>Organisme certifié Qualiopi au titre des actions de formation. <a href="/qualite/">Voir notre certification</a></span>
-          </p>
-        )}
-      </div>
-      <nav class="pole-mosaic" aria-label="Nos trois domaines de formation">
-        <a class="pole-panel pole-panel--tall" href={auto.url} data-accent="auto" style="--i:0">
-          <Picture id="auto-cle-portrait" priority sizes="(max-width: 900px) 92vw, 28vw" decorative />
-          <span class="panel-label"><span><span class="panel-kicker">Pôle 01</span><span class="panel-name">Automobile</span></span><span class="panel-arrow" aria-hidden="true">→</span></span>
-        </a>
-        <a class="pole-panel" href={beaute.url} data-accent="beaute" style="--i:1">
-          <Picture id="beaute-ongles" sizes="(max-width: 900px) 46vw, 26vw" decorative />
-          <span class="panel-label"><span><span class="panel-kicker">Pôle 02</span><span class="panel-name">Beauté et bien-être</span></span><span class="panel-arrow" aria-hidden="true">→</span></span>
-        </a>
-        <a class="pole-panel pole-panel--ia" href={ia.url} data-accent="ia" style="--i:2">
-          <IaArt class="ia-art" compact />
-          <span class="panel-label"><span><span class="panel-kicker">Pôle 03</span><span class="panel-name">Intelligence artificielle</span></span><span class="panel-arrow" aria-hidden="true">→</span></span>
-        </a>
-      </nav>
-    </div>
-  </section>
+<Base chrome="portail" title="Tech Formation Nord — Formations automobile, esthétique et intelligence artificielle près de Lille" description="Tech Formation Nord, organisme de formation certifié Qualiopi à Vendeville, près de Lille : trois univers de formation, l’automobile, l’esthétique et le bien-être avec Maison Beauxlieux, et l’intelligence artificielle.">
+    <header class="portail-top container" slot="entete">
+      <a class="portail-brand" href="/"><img src="/img/logo-tfn.png" alt="Tech Formation Nord" width="401" height="136" /></a>
+      <a class="portail-call" href={`tel:${org.telephone.lien}`} data-place="portail-entete"><span class="sr-only">Appeler le </span>{org.telephone.affiche}</a>
+    </header>
 
-  <nav class="audience-band" aria-label="Accès selon votre situation">
-    <ul class="container">
-      <li><a href="/services/"><strong>Salariés</strong><span>Se perfectionner sur un geste, une technique, un outil.</span></a></li>
-      <li><a href="/entreprises/"><strong>Entreprises</strong><span>Former vos équipes et intégrer de nouveaux collaborateurs.</span></a></li>
-      <li><a href="/infinite-grid-col-2/"><strong>Reconversion</strong><span>Changer de métier vers l’atelier automobile, sans prérequis.</span></a></li>
-      <li><a href={ia.url}><strong>Indépendants et TPE</strong><span>Gagner du temps avec l’IA et soigner sa présence en ligne.</span></a></li>
+    <section class="portail-intro container" aria-labelledby="portail-titre">
+      <h1 id="portail-titre">Tech Formation Nord</h1>
+      <p>Trois univers pour développer vos compétences.</p>
+    </section>
+
+    <ul class="universes container" aria-label="Nos trois univers de formation">
+      {univers.map((u: any, i: number) => (
+        <li class="universe" data-accent={u.accent} style={`--i:${i}`}>
+          <a class="universe-link" href={u.portail.destination} data-track="univers" data-pole={u.id}>
+            <span class="u-logo"><img src={u.portail.logo.src} alt={u.portail.marque} width={u.portail.logo.width} height={u.portail.logo.height} style={`--h:${u.portail.logo.hauteur}px`} /></span>
+            <span class="u-photo"><Picture id={photo[u.id as keyof typeof photo]} sizes="(max-width: 860px) 42vw, 400px" priority decorative /></span>
+            <span class="u-text">
+              <h2 class="u-name">{u.portail.titre}</h2>
+              <span class="u-cta">Découvrir les formations <span class="u-arrow" aria-hidden="true">→</span></span>
+              {u.portail.domaine && <span class="u-domain">{u.portail.domaine}</span>}
+            </span>
+          </a>
+        </li>
+      ))}
     </ul>
-  </nav>
 
-  <section class="section" aria-labelledby="poles-titre">
-    <div class="container">
-      <div class="section-head" data-reveal>
-        <div><span class="eyebrow">Trois domaines</span><h2 id="poles-titre">Une même exigence&nbsp;: la pratique.</h2></div>
-        <p>Des modules courts pour se perfectionner, des parcours longs pour changer de métier, et des formats adaptés aux entreprises comme aux indépendants.</p>
-      </div>
-
-      <article class="feature" data-accent="auto" aria-labelledby="f-auto">
-        <div class="feature-media" data-reveal="mask">
-          <div class="frame"><span data-parallax style="position:absolute;inset:0;display:block"><Picture id="auto-peinture-paysage" sizes="(max-width: 900px) 92vw, 56vw" decorative /></span></div>
-          <div class="inset inset--showroom" aria-hidden="true"><Picture id="auto-showroom-paysage" sizes="20vw" decorative /></div>
+    <footer class="portail-foot" slot="pied">
+      <div class="container">
+        <ul class="portail-contact" aria-label="Nous contacter">
+          <li><a class="pc-item" href={`tel:${org.telephone.lien}`} data-place="portail"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" d="M6.6 3.5h3l1.4 4-2 1.3a11 11 0 0 0 6.2 6.2l1.3-2 4 1.4v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z"/></svg>{org.telephone.affiche}</a></li>
+          <li><WhatsAppLink place="portail" class="pc-item pc-whatsapp" label="WhatsApp" /></li>
+          <li><a class="pc-item" href={`mailto:${org.email}`} data-place="portail"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" d="M3.5 6h17v12h-17zM3.5 6.5 12 13l8.5-6.5"/></svg>{org.email}</a></li>
+          <li><span class="pc-item"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0 1 13 0c0 5-6.5 11-6.5 11Z"/><circle cx="12" cy="10" r="2.3" fill="none" stroke="currentColor" stroke-width="1.7"/></svg>{org.adresse.rue}, {org.adresse.code_postal} {org.adresse.ville} · près de Lille</span></li>
+        </ul>
+        <div class="portail-legal">
+          {org.qualiopi.afficher && <a class="portail-qualiopi" href="/qualite/"><img src={org.qualiopi.logo} alt="Qualiopi — processus certifié — République française" width="430" height="183" loading="lazy" /><span>Organisme certifié Qualiopi au titre des actions de formation</span></a>}
+          <p>
+            <span>© {new Date().getFullYear()} {org.nom} — NDA {org.nda}</span>
+            <span><a href="/qualite/">Qualité</a> · <a href="/mentions-legales/">Mentions légales</a> · <a href="/politique-de-confidentialite/">Confidentialité</a> · <a href="/accessibilite-handicap/">Accessibilité</a> · <a href="/contact-us/">Contact</a></span>
+          </p>
         </div>
-        <div class="feature-body" data-reveal style="--i:1">
-          <span class="num">01 — Automobile</span>
-          <h3 id="f-auto">Maintenance, carrosserie, commerce&nbsp;: le métier dans la main.</h3>
-          <p>{auto.accroche}</p>
-          <ul class="family-list">
-            {autoFamilles.map((f: any) => <li><a href={f.url}>{f.nom} <small>{f.detail}</small></a></li>)}
-          </ul>
-          <a class="link-arrow" href={auto.url}>Découvrir le pôle automobile</a>
-        </div>
-      </article>
-
-      <article class="feature feature--reverse" data-accent="beaute" aria-labelledby="f-beaute">
-        <div class="feature-media" data-reveal="mask">
-          <div class="frame"><Picture id="beaute-ongles" sizes="(max-width: 900px) 92vw, 56vw" decorative /></div>
-        </div>
-        <div class="feature-body" data-reveal style="--i:1">
-          <span class="num">02 — Esthétique, beauté et bien-être</span>
-          <h3 id="f-beaute">Le soin du geste, de 7 à 35 heures.</h3>
-          <p>{beaute.accroche}</p>
-          <ul class="family-list">
-            {beaute.familles.map((f: any) => <li><a href={`${beaute.url}#familles`}>{f.nom} <small>{f.formations.length} formation{f.formations.length > 1 ? 's' : ''}</small></a></li>)}
-          </ul>
-          <a class="link-arrow" href={beaute.url}>Découvrir les {nbBeaute} formations beauté</a>
-        </div>
-      </article>
-
-      <article class="feature" data-accent="ia" aria-labelledby="f-ia">
-        <div class="feature-media" data-reveal="mask">
-          <div class="frame frame--ia"><IaArt /></div>
-        </div>
-        <div class="feature-body" data-reveal style="--i:1">
-          <span class="num">03 — Intelligence artificielle et numérique</span>
-          <h3 id="f-ia">L’IA au service de vos tâches réelles.</h3>
-          <p>{ia.accroche}</p>
-          <ul class="family-list">
-            {ia.familles.map((f: any) => <li><a href={`${ia.url}#publics`}>{f.nom}</a></li>)}
-          </ul>
-          <a class="link-arrow" href={ia.url}>Découvrir le pôle IA</a>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <section class="section section--white" aria-labelledby="selection-titre">
-    <div class="container">
-      <div class="section-head" data-reveal>
-        <div><span class="eyebrow">Exemples</span><h2 id="selection-titre">Une sélection de nos formations</h2></div>
-        <p>Du module de cinq jours au parcours de reconversion. <a class="link-arrow" href="/services/">Voir tout le catalogue</a></p>
       </div>
-      <ul class="prog-list" data-reveal="fade">
-        {selection.map((s) => (
-          <li data-accent={s.accent}>
-            <a class="prog-row" href={s.url} data-track={s.ext ? 'passerelle' : undefined} data-pole={s.ext ? s.pole : undefined}>
-              <span class="tag">{pole(s.pole).nom_court}</span>
-              <span class="prog-title">{s.titre}{s.ext && <span class="ext-note">{s.ext} ↗</span>}</span>
-              <span class="prog-meta">{s.meta}</span>
-              <span class="prog-go" aria-hidden="true">→</span>
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
-  </section>
-
-  <section class="section section--night" aria-labelledby="accomp-titre">
-    <div class="container">
-      <div class="section-head" data-reveal>
-        <div><span class="eyebrow">Accompagnement</span><h2 id="accomp-titre">Un parcours adapté à votre situation</h2></div>
-        <p>Un entretien préalable permet de vérifier l’adéquation du projet, de personnaliser la formation et d’identifier les financements envisageables.</p>
-      </div>
-      <div class="grid grid-2">
-        <article class="card card--flat" data-accent="auto" data-reveal>
-          <h3>Entreprises et ateliers</h3>
-          <p>Faire monter en compétences vos techniciens, carrossiers ou conseillers commerciaux, intégrer de nouveaux collaborateurs grâce aux parcours de reconversion, ou former vos équipes aux usages de l’IA.</p>
-          <ul>
-            <li>Analyse du besoin et devis personnalisé</li>
-            <li>Parcours en alternance entre le centre et l’entreprise</li>
-            <li>Dossier pédagogique pour votre demande de prise en charge</li>
-          </ul>
-          <div class="card-foot"><a class="btn btn--on-night" href="/entreprises/">Former vos équipes</a></div>
-        </article>
-        <article class="card card--flat" data-accent="beaute" data-reveal style="--i:1">
-          <h3>Particuliers et personnes en reconversion</h3>
-          <p>Changer de métier, se spécialiser ou ajouter une compétence : un entretien préalable permet de vérifier l’adéquation de votre projet et d’identifier les financements possibles selon votre statut.</p>
-          <ul>
-            <li>Entretien de positionnement avant l’entrée en formation</li>
-            <li>Parcours de reconversion vers les métiers de l’atelier</li>
-            <li>Étude des financements : France Travail, OPCO, financement personnel…</li>
-          </ul>
-          <div class="card-foot btn-row" style="margin-top:0"><a class="btn btn--on-night" href="/infinite-grid-col-2/">Se reconvertir</a><a class="btn btn--on-night" href="/financer-sa-formation/">Financer sa formation</a></div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" aria-labelledby="qualite-titre">
-    <div class="container grid grid-2" style="align-items:center">
-      <div data-reveal>
-        <span class="eyebrow">Qualité</span>
-        <h2 id="qualite-titre">Un organisme de formation certifié</h2>
-        <p>Tech Formation Nord est certifié Qualiopi par {org.qualiopi.certificateur} (certificat n° {org.qualiopi.numero}). {org.qualiopi.mention}</p>
-        <p class="small muted">La certification Qualiopi porte sur les processus de l’organisme. Elle ne constitue ni une certification professionnelle des formations, ni une garantie de prise en charge financière.</p>
-        <a class="link-arrow" href="/qualite/">Notre démarche qualité</a>
-      </div>
-      <div data-reveal style="--i:1"><Reviews /></div>
-    </div>
-  </section>
-
-  <section class="section section--surface" aria-labelledby="centre-titre">
-    <div class="container grid grid-2" style="align-items:center">
-      <div data-reveal>
-        <span class="eyebrow">Le centre</span>
-        <h2 id="centre-titre">À Vendeville, aux portes de Lille</h2>
-        <p>Le centre de formation est situé {org.adresse.rue} à {org.adresse.ville}, au sud de la métropole lilloise, à proximité de l’A1 (sortie 20 Seclin) et desservi par le bus L1. Un parking est disponible sur place.</p>
-        <p>Les formations automobiles s’appuient sur des ateliers pratiques et des mises en situation proches des conditions réelles de l’entreprise. Les formations esthétiques se déroulent dans les espaces de Maison Beauxlieux, au 21 bis rue de Faches.</p>
-        <div class="btn-row"><a class="btn btn--ghost" href="/about-us/">Découvrir l’organisme</a><a class="btn btn--ghost" href="/informations-pratiques/">Accès et horaires</a></div>
-      </div>
-      <div class="card" data-reveal style="--i:1">
-        <h3>Nous contacter</h3>
-        <p style="margin-bottom:.6rem"><strong>{org.nom}</strong><br />{org.adresse.rue}<br />{org.adresse.code_postal} {org.adresse.ville}</p>
-        <p style="margin-bottom:.6rem">Téléphone : <a href={`tel:${org.telephone.lien}`} data-place="accueil-contact">{org.telephone.affiche}</a><br />E-mail : <a href={`mailto:${org.email}`} data-place="accueil-contact">{org.email}</a></p>
-        <ul class="small muted" style="list-style:none;padding:0">{org.horaires.map((h: any) => <li>{h.jours} : {h.heures}</li>)}</ul>
-        <div class="card-foot"><a class="btn btn--primary" href="/contact-us/#formulaire">Envoyer une demande</a></div>
-      </div>
-    </div>
-  </section>
-  <CtaBand />
+    </footer>
 </Base>

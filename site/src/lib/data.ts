@@ -31,3 +31,12 @@ export const ANALYTICS = {
 
 export const telHref = (n: string) => `tel:${n}`;
 export const formatDate = (iso: string) => new Date(iso + 'T12:00:00Z').toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+
+// WhatsApp professionnel (organisme.yaml) : null tant qu'aucun numéro confirmé n'est configuré.
+// Le message prérempli peut nommer l'univers ou la formation consultée, jamais une donnée personnelle.
+export function whatsappHref(contexte?: string): string | null {
+  const w = organisme().whatsapp;
+  if (!w?.numero) return null;
+  const text = contexte ? `${w.message} : ${contexte}.` : `${w.message}.`;
+  return `https://wa.me/${w.numero}?text=${encodeURIComponent(text)}`;
+}

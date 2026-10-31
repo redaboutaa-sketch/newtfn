@@ -39,6 +39,13 @@ horaires:
   - { jours: Samedi, heures: 9h – 12h, schema: "Sa 09:00-12:00" }
   - { jours: Dimanche, heures: Fermé }
 
+# WhatsApp professionnel : numéro confirmé par le client le 2026-10-25 (+33 6 86 15 89 33, remplace le 07 58 05 81 78).
+# Ne jamais déduire ce numéro du téléphone fixe. Laisser « numero » vide masque tous les boutons WhatsApp.
+whatsapp:
+  numero: "33686158933" # format international sans « + », pour wa.me
+  affiche: 06 86 15 89 33
+  message: Bonjour, je souhaite des informations sur les formations
+
 referent_handicap:
   telephone_affiche: 06 87 09 40 03
   telephone_lien: "+33687094003"
