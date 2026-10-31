@@ -19,6 +19,16 @@ python3 -I deploy/scripts/gen_nginx_rules.py          # après toute modificatio
 ```
 Recette navigateur (si Chromium disponible, variable `CHROME`) : `cd qa && npm ci && BASE=http://127.0.0.1:4321 node interactions.mjs`, `node recette.mjs`, `node liens.mjs`.
 
+## Parcours obligatoire pour chaque modification
+
+1. Partir de `main` à jour et créer une branche dédiée. Pour compléter une PR en cours à la demande du responsable, continuer sur sa branche ; ne pas créer une branche différente à chaque petit ajustement.
+2. Réaliser la modification, lancer les tests disponibles pertinents et le build du site. Pour un changement visuel, vérifier le rendu sur ordinateur et mobile. Rapporter les résultats et toute vérification bloquée ; ne pas présenter un test non exécuté comme réussi.
+3. Créer ou mettre à jour une pull request vers `main`, avec la description du résultat et les validations effectuées.
+4. Attendre le résultat du build Cloudflare Pages pour le dernier commit, puis donner au responsable le lien de la PR, le lien de la branche GitHub, l'aperçu de sa branche et le résultat du build. Redonner ces liens à chaque modification, même si les URL restent identiques, pour permettre de vérifier le changement ; préciser si l'aperçu du dernier commit est encore en cours de construction. Si le build échoue, corriger ou expliquer le blocage.
+5. Attendre la validation explicite du responsable avant toute fusion. Ne pas activer de fusion automatique. La validation d'un aperçu n'autorise pas à elle seule un déploiement sur le VPS.
+
+Plusieurs ajustements à valider ensemble peuvent rester dans une même branche et une même PR : l'aperçu se met à jour à chaque commit. Les changements indépendants utilisent des PR séparées. Après validation et fusion des PR retenues, `main` rassemble la version à livrer : ne pas choisir simplement la dernière branche. L'administrateur vérifie l'ensemble en préproduction et ne met en production qu'après validation explicite du responsable, selon les procédures documentées. L'agent n'effectue aucun déploiement sur le VPS.
+
 ## Règles impératives
 
 - **Ne jamais déployer en production** ni proposer de commande de déploiement à exécuter sans validation explicite du responsable du site. Un agent ne lance pas `tfn-deploy`.
