@@ -15,8 +15,11 @@ interface Props {
   navActive?: string;
   ogImage?: string;
   jsonld?: object[];
+  chrome?: 'site' | 'portail'; // « portail » : page d'entrée sans en-tête ni pied de page du site TFN
 }
-const { title, description, breadcrumbs = [], noindex = false, pole, navActive, ogImage = '/img/og-default.png', jsonld = [] } = Astro.props;
+const { title, description, breadcrumbs = [], noindex = false, pole, navActive, jsonld = [], chrome = 'site' } = Astro.props;
+// Partage : image des trois univers pour le portail, image automobile pour le site TFN.
+const ogImage = Astro.props.ogImage ?? (chrome === 'portail' ? '/img/og-default.png' : '/img/og-automobile.png');
 const org = organisme();
 const site = Astro.site!.toString().replace(/\/$/, '');
 const canonical = new URL(Astro.url.pathname, Astro.site).toString();
@@ -50,7 +53,7 @@ const crumbLd = breadcrumbs.length
   ? {
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',
-      itemListElement: [{ name: 'Accueil', url: '/' }, ...breadcrumbs].map((c, i) => ({
+      itemListElement: [{ name: 'Accueil', url: '/acceuil/' }, ...breadcrumbs].map((c, i) => ({
         '@type': 'ListItem', position: i + 1, name: c.name, item: new URL(c.url, Astro.site).toString(),
       })),
     }
@@ -81,19 +84,24 @@ const ld = [orgLd, ...(crumbLd ? [crumbLd] : []), ...jsonld];
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
     {isProduction && ANALYTICS.gsc && <meta name="google-site-verification" content={ANALYTICS.gsc} />}
-    <script is:inline>document.documentElement.classList.replace('no-js','js');</script>
+    <link rel="preload" href="/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin />
+    {chrome === 'portail' && <link rel="preload" href="/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin />}
+    <script is:inline>
+      // « motion » n'est posé que si le mouvement est autorisé : sans JS, aucun contenu n'est masqué.
+      (function (d) { d.classList.replace('no-js', 'js'); if ('IntersectionObserver' in window && matchMedia('(prefers-reduced-motion: no-preference)').matches) d.classList.add('motion'); })(document.documentElement);
+    </script>
     {ld.map((o) => <script type="application/ld+json" set:html={JSON.stringify(o)} />)}
     {ANALYTICS.provider === 'plausible' && <script defer data-domain={ANALYTICS.domain} src="https://plausible.io/js/script.tagged-events.js"></script>}
   </head>
-  <body data-pole={pole} data-env={SITE_ENV}>
+  <body data-pole={pole} data-env={SITE_ENV} class={chrome === 'portail' ? 'is-portail' : undefined}>
     <a class="skip-link" href="#content">Aller au contenu</a>
-    {!isProduction && <div class="env-banner" role="note">Site de préproduction — contenu en cours de validation, non indexé. Les formulaires fonctionnent en mode test.</div>}
-    <Header active={navActive} />
+    {!isProduction && <div class="env-banner" role="note">Site de préproduction<span class="env-long"> — contenu en cours de validation, non indexé. Les formulaires fonctionnent en mode test.</span><span class="env-short"> · non indexé, formulaires en test</span></div>}
+    {chrome === 'site' ? <Header active={navActive} /> : <slot name="entete" />}
     <main id="content" tabindex="-1">
       {breadcrumbs.length > 0 && <div class="container"><Breadcrumb items={breadcrumbs} /></div>}
       <slot />
     </main>
-    <Footer />
+    {chrome === 'site' ? <Footer /> : <slot name="pied" />}
     <script is:inline>
       // Mesure des conversions : aucun paramètre de campagne sur les liens internes.
       // Les événements partent vers Plausible si configuré (production uniquement), sinon vers dataLayer.
@@ -113,14 +121,11 @@ const ld = [orgLd, ...(crumbLd ? [crumbLd] : []), ...jsonld];
           var href = a.getAttribute('href') || '';
           if (href.indexOf('tel:') === 0) track('clic_telephone', { emplacement: a.dataset.place || 'page' });
           else if (href.indexOf('mailto:') === 0) track('clic_email', { emplacement: a.dataset.place || 'page' });
-          else if (a.dataset.track === 'passerelle') track('clic_site_specialise', { destination: a.hostname, pole: a.dataset.pole || '' });
-        });
-        var t = document.querySelector('.nav-toggle'), n = document.getElementById('main-nav');
-        if (t && n) t.addEventListener('click', function () {
-          var open = n.classList.toggle('is-open');
-          t.setAttribute('aria-expanded', open ? 'true' : 'false');
+          else if (a.hostname === 'wa.me') track('clic_whatsapp', { emplacement: a.dataset.place || 'page' });
+          else if (a.dataset.track === 'passerelle' || a.dataset.track === 'univers') track('clic_site_specialise', { destination: a.hostname, pole: a.dataset.pole || '' });
         });
       })();
     </script>
+    <script>import '../scripts/motion.ts';</script>
   </body>
 </html>

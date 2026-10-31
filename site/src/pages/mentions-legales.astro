@@ -5,7 +5,7 @@ const org = organisme();
 ---
 <Base title="Mentions légales" description="Mentions légales du site techformanord.fr : éditeur Tech Formation Nord (SAS), déclaration d’activité, directeur de la publication, hébergeur et propriété intellectuelle." breadcrumbs={[{ name: 'Mentions légales', url: '/mentions-legales/' }]}>
   <section class="section">
-    <div class="container narrow">
+    <div class="container narrow prose">
       <h1>Mentions légales</h1>
       <h2>Éditeur du site</h2>
       <p>{org.nom}, {org.forme_juridique}<br />Siège : {org.adresse.rue}, {org.adresse.code_postal} {org.adresse.ville}<br />SIREN {org.siren} — SIRET {org.siret} — Code APE {org.code_ape}<br />N° de TVA intracommunautaire : {org.tva}<br />Téléphone : <a href={`tel:${org.telephone.lien}`}>{org.telephone.affiche}</a> — E-mail : <a href={`mailto:${org.email}`}>{org.email}</a></p>

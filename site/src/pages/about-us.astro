@@ -1,25 +1,28 @@
 ---
 // URL historique « À propos de nous » conservée.
 import Base from '../layouts/Base.astro';
-import PoleIcon from '../components/PoleIcon.astro';
+import Picture from '../components/Picture.astro';
+// Vignette de chaque famille de formations automobile.
+const thumbs: Record<string, any> = { 'maintenance-diagnostic': 'auto-cle-paysage', commerce: 'auto-showroom-paysage', 'carrosserie-peinture': 'auto-peinture-paysage', reconversion: 'auto-cle-portrait' };
 import CtaBand from '../components/CtaBand.astro';
-import { organisme, poles } from '../lib/data';
+import { organisme, pole } from '../lib/data';
 const org = organisme();
+const auto = pole('automobile');
 ---
-<Base title="Notre organisme de formation à Vendeville" description="Tech Formation Nord, organisme de formation certifié Qualiopi à Vendeville, près de Lille : notre mission, nos trois pôles de formation, notre démarche qualité et nos coordonnées." breadcrumbs={[{ name: 'Notre organisme', url: '/about-us/' }]} navActive="organisme">
+<Base title="Notre organisme de formation à Vendeville" description="Tech Formation Nord, organisme de formation aux métiers de l’automobile certifié Qualiopi à Vendeville, près de Lille : notre mission, nos formations, notre démarche qualité et nos coordonnées." breadcrumbs={[{ name: 'Notre organisme', url: '/about-us/' }]} navActive="organisme">
   <section class="page-hero">
-    <div class="container">
+    <div class="container hero-enter">
       <span class="eyebrow">À propos de nous</span>
       <h1>Formez-vous aujourd’hui, accélérez votre carrière demain</h1>
-      <p class="lead">Tech Formation Nord est un organisme de formation professionnelle installé à Vendeville, au sud de Lille. D’abord spécialisé dans les métiers de l’automobile, il propose aujourd’hui des formations dans trois domaines.</p>
+      <p class="lead">Tech Formation Nord est un organisme de formation professionnelle installé à Vendeville, au sud de Lille. Il forme aux métiers de l’automobile : maintenance et diagnostic, carrosserie et peinture, commerce de véhicules, et reconversion vers les métiers de l’atelier.</p>
     </div>
   </section>
 
   <section class="section">
-    <div class="container grid grid-2">
+    <div class="container grid grid-2" data-reveal>
       <div>
         <h2>Notre mission</h2>
-        <p>Former des professionnels compétents et polyvalents, prêts à relever les défis de leur métier. Que vous souhaitiez exceller dans la maintenance, le commerce de véhicules neufs et d’occasion (VN/VO), la carrosserie et la peinture, les techniques esthétiques ou les usages de l’intelligence artificielle, nous vous accompagnons avec des parcours adaptés aux besoins des entreprises.</p>
+        <p>Former des professionnels compétents et polyvalents, prêts à relever les défis de leur métier. Que vous souhaitiez exceller dans la maintenance, le commerce de véhicules neufs et d’occasion (VN/VO), ou la carrosserie et la peinture, nous vous accompagnons avec des parcours adaptés aux besoins des entreprises.</p>
         <h2 style="margin-top:1.5rem">Pourquoi nous choisir ?</h2>
         <p>Nous croyons que chaque apprenant mérite de développer ses compétences dans un environnement stimulant, propice à la réussite. Que vous soyez débutant ou professionnel cherchant à se perfectionner, nous construisons avec vous une formation adaptée à vos ambitions.</p>
         <ul>
@@ -30,10 +33,10 @@ const org = organisme();
         </ul>
       </div>
       <div class="stack">
-        {poles().map((p) => (
-          <a class="card card--link" href={p.url} data-accent={p.accent} style="flex-direction:row;gap:16px;align-items:center;text-decoration:none;color:inherit">
-            <span style="width:72px;flex:none;color:var(--accent)" aria-hidden="true"><PoleIcon id={p.id} /></span>
-            <span><strong>{p.nom}</strong><br /><span class="small muted">{p.accroche}</span></span>
+        {auto.familles.map((f: any) => (
+          <a class="card card--link" href={f.url} data-accent="auto" style="flex-direction:row;gap:16px;align-items:center;text-decoration:none;color:inherit">
+            <span class="pole-thumb" aria-hidden="true"><Picture id={thumbs[f.id]} sizes="112px" decorative /></span>
+            <span><strong>{f.nom}</strong><br /><span class="small muted">Voir les formations</span></span>
           </a>
         ))}
       </div>
@@ -41,7 +44,7 @@ const org = organisme();
   </section>
 
   <section class="section section--surface">
-    <div class="container grid grid-3">
+    <div class="container grid grid-3" data-reveal>
       <div class="card">
         <h2 style="font-size:1.2rem">Qualité</h2>
         <img src={org.qualiopi.logo} alt="Qualiopi — processus certifié — République française" width="430" height="183" loading="lazy" style="width:180px;margin-bottom:12px" />

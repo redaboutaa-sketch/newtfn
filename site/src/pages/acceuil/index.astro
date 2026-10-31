@@ -1,0 +1,174 @@
+---
+// Accueil du site Tech Formation Nord, orienté vers l'univers automobile.
+// Chemin « /acceuil/ » conservé tel que demandé ; la racine « / » est le portail des trois univers.
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Picture from '../../components/Picture.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import Reviews from '../../components/Reviews.astro';
+import FormationCard from '../../components/FormationCard.astro';
+import WhatsAppLink from '../../components/WhatsAppLink.astro';
+import { organisme, pole } from '../../lib/data';
+import { autoCards } from '../../lib/cards';
+
+const org = organisme();
+const fiches = (await getCollection('fiches')).map((f) => f.data).sort((a, b) => a.ordre - b.ordre);
+const fiche = (url: string) => fiches.find((f) => f.url === url)!;
+const maint = fiche('/service/maintenance/');
+const carro = fiche('/service/interior-cleaning/');
+const msr = fiche('/m-grid-col-3/');
+const auto = pole('automobile');
+const p44992 = maint.programmes[0];
+const p08 = carro.programmes[0];
+const cards = autoCards(fiches);
+
+// Sélection de formations réelles, issues des contenus vérifiés.
+const selection = [
+  { titre: p44992.titre, meta: `${p44992.duree} · salariés et tout public`, url: `${maint.url}#prog-${p44992.id}` },
+  { titre: p08.titre, meta: 'Carrossiers, peintres, préparateurs VO', url: `${carro.url}#prog-${p08.id}` },
+  { titre: 'Parcours de reconversion : mécanicien service rapide', meta: '224 h + 50 h de soft skills · sans prérequis', url: msr.url },
+];
+---
+<Base title="Tech Formation Nord — Formations automobile près de Lille" description="Formations aux métiers de l’automobile à Vendeville, près de Lille : maintenance, diagnostic, carrosserie, peinture, commerce et parcours de reconversion. Organisme certifié Qualiopi." navActive="accueil" pole="automobile">
+  <section class="home-hero" data-accent="auto">
+    <div class="container hero-grid">
+      <div class="hero-enter">
+        <span class="eyebrow" style="--i:0">Tech Formation Nord · Automobile · Vendeville, près de Lille</span>
+        <h1 style="--i:1">Des formations concrètes <span class="h1-sub">aux métiers de l’<em>automobile</em>.</span></h1>
+        <p class="lead" style="--i:2">Maintenance, diagnostic, carrosserie, peinture et commerce : Tech Formation Nord forme les salariés de l’après-vente, accompagne les ateliers et prépare les personnes en reconversion, avec des formations construites autour des gestes du métier.</p>
+        <div class="btn-row">
+          <a class="btn btn--primary" href="#formations">Voir les formations</a>
+          <a class="btn btn--ghost" href="/contact-us/?sujet=Formation%20automobile#formulaire">Être conseillé</a>
+        </div>
+        {org.qualiopi.afficher && (
+          <p class="trust-line" style="--i:4">
+            <img src={org.qualiopi.logo} alt="Qualiopi — processus certifié — République française" width="430" height="183" />
+            <span>Organisme certifié Qualiopi au titre des actions de formation. <a href="/qualite/">Voir notre certification</a></span>
+          </p>
+        )}
+      </div>
+      <div class="hero-media hero-enter"><Picture id="auto-cle-paysage" priority sizes="(max-width: 900px) 92vw, 44vw" /></div>
+    </div>
+  </section>
+
+  <nav class="audience-band" aria-label="Accès selon votre situation">
+    <ul class="container">
+      <li><a href="/formations/automobile/"><strong>Salariés</strong><span>Se perfectionner sur un geste, une technique, un outil.</span></a></li>
+      <li><a href="/entreprises/"><strong>Ateliers et entreprises</strong><span>Former vos équipes et intégrer de nouveaux collaborateurs.</span></a></li>
+      <li><a href="/infinite-grid-col-2/"><strong>Reconversion</strong><span>Changer de métier vers l’atelier automobile, sans prérequis.</span></a></li>
+      <li><a href="/financer-sa-formation/"><strong>Financement</strong><span>Identifier les solutions selon votre statut.</span></a></li>
+    </ul>
+  </nav>
+
+  <section class="section" id="formations" aria-labelledby="formations-titre" data-accent="auto">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <div><span class="eyebrow">Automobile</span><h2 id="formations-titre">Nos formations automobile</h2></div>
+        <p>Des modules courts pour se perfectionner et des parcours longs pour changer de métier. <a class="link-arrow" href="/formations/automobile/">Présentation du pôle</a></p>
+      </div>
+      <ul class="fcards" data-reveal="fade">
+        {cards.map((c) => <FormationCard {...c} />)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section--white" aria-labelledby="f-auto">
+    <div class="container">
+      <article class="feature" data-accent="auto">
+        <div class="feature-media" data-reveal="mask">
+          <div class="frame"><span data-parallax style="position:absolute;inset:0;display:block"><Picture id="auto-peinture-paysage" sizes="(max-width: 900px) 92vw, 56vw" decorative /></span></div>
+          <div class="inset inset--showroom" aria-hidden="true"><Picture id="auto-showroom-paysage" sizes="20vw" decorative /></div>
+        </div>
+        <div class="feature-body" data-reveal style="--i:1">
+          <span class="num">Le métier dans la main</span>
+          <h2 id="f-auto" class="h3-like">Maintenance, carrosserie, commerce&nbsp;: des gestes précis, en atelier.</h2>
+          <p>{auto.accroche}</p>
+          <ul class="family-list">
+            {auto.familles.map((f: any) => <li><a href={f.url}>{f.nom}</a></li>)}
+          </ul>
+        </div>
+      </article>
+      <div class="section-head" data-reveal style="margin-top:clamp(48px,6vw,80px)">
+        <div><span class="eyebrow">Exemples</span><h2 id="selection-titre">Une sélection de formations</h2></div>
+        <p>Du module de cinq jours au parcours de reconversion.</p>
+      </div>
+      <ul class="prog-list" data-reveal="fade" aria-labelledby="selection-titre">
+        {selection.map((s) => (
+          <li data-accent="auto">
+            <a class="prog-row" href={s.url}>
+              <span class="tag">Automobile</span>
+              <span class="prog-title">{s.titre}</span>
+              <span class="prog-meta">{s.meta}</span>
+              <span class="prog-go" aria-hidden="true">→</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section--night" aria-labelledby="accomp-titre">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <div><span class="eyebrow">Accompagnement</span><h2 id="accomp-titre">Un parcours adapté à votre situation</h2></div>
+        <p>Un entretien préalable permet de vérifier l’adéquation du projet, de personnaliser la formation et d’identifier les financements envisageables.</p>
+      </div>
+      <div class="grid grid-2">
+        <article class="card card--flat" data-accent="auto" data-reveal>
+          <h3>Ateliers, concessions et entreprises</h3>
+          <p>Faire monter en compétences vos techniciens, carrossiers ou conseillers commerciaux, et intégrer de nouveaux collaborateurs grâce aux parcours de reconversion.</p>
+          <ul>
+            <li>Analyse du besoin et devis personnalisé</li>
+            <li>Parcours en alternance entre le centre et l’entreprise</li>
+            <li>Dossier pédagogique pour votre demande de prise en charge</li>
+          </ul>
+          <div class="card-foot"><a class="btn btn--on-night" href="/entreprises/">Former vos équipes</a></div>
+        </article>
+        <article class="card card--flat" data-accent="auto" data-reveal style="--i:1">
+          <h3>Particuliers et personnes en reconversion</h3>
+          <p>Changer de métier ou se spécialiser : un entretien préalable permet de vérifier l’adéquation de votre projet et d’identifier les financements possibles selon votre statut.</p>
+          <ul>
+            <li>Entretien de positionnement avant l’entrée en formation</li>
+            <li>Parcours de reconversion vers les métiers de l’atelier</li>
+            <li>Étude des financements : France Travail, OPCO, financement personnel…</li>
+          </ul>
+          <div class="card-foot btn-row" style="margin-top:0"><a class="btn btn--on-night" href="/infinite-grid-col-2/">Se reconvertir</a><a class="btn btn--on-night" href="/financer-sa-formation/">Financer sa formation</a></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="qualite-titre">
+    <div class="container grid grid-2" style="align-items:center">
+      <div data-reveal>
+        <span class="eyebrow">Qualité</span>
+        <h2 id="qualite-titre">Un organisme de formation certifié</h2>
+        <p>Tech Formation Nord est certifié Qualiopi par {org.qualiopi.certificateur} (certificat n° {org.qualiopi.numero}). {org.qualiopi.mention}</p>
+        <p class="small muted">La certification Qualiopi porte sur les processus de l’organisme. Elle ne constitue ni une certification professionnelle des formations, ni une garantie de prise en charge financière.</p>
+        <a class="link-arrow" href="/qualite/">Notre démarche qualité</a>
+      </div>
+      <div data-reveal style="--i:1"><Reviews /></div>
+    </div>
+  </section>
+
+  <section class="section section--surface" aria-labelledby="centre-titre">
+    <div class="container grid grid-2" style="align-items:center">
+      <div data-reveal>
+        <span class="eyebrow">Le centre</span>
+        <h2 id="centre-titre">À Vendeville, aux portes de Lille</h2>
+        <p>Le centre de formation est situé {org.adresse.rue} à {org.adresse.ville}, au sud de la métropole lilloise, à proximité de l’A1 (sortie 20 Seclin) et desservi par le bus L1. Un parking est disponible sur place.</p>
+        <p>Les formations automobiles s’appuient sur des ateliers pratiques et des mises en situation proches des conditions réelles de l’entreprise.</p>
+        <div class="btn-row"><a class="btn btn--ghost" href="/about-us/">Découvrir l’organisme</a><a class="btn btn--ghost" href="/informations-pratiques/">Accès et horaires</a></div>
+      </div>
+      <div class="card" data-reveal style="--i:1">
+        <h3>Nous contacter</h3>
+        <p style="margin-bottom:.6rem"><strong>{org.nom}</strong><br />{org.adresse.rue}<br />{org.adresse.code_postal} {org.adresse.ville}</p>
+        <p style="margin-bottom:.6rem">Téléphone : <a href={`tel:${org.telephone.lien}`} data-place="accueil-contact">{org.telephone.affiche}</a><br />E-mail : <a href={`mailto:${org.email}`} data-place="accueil-contact">{org.email}</a></p>
+        <ul class="small muted" style="list-style:none;padding:0">{org.horaires.map((h: any) => <li>{h.jours} : {h.heures}</li>)}</ul>
+        <div class="card-foot btn-row" style="margin-top:0"><a class="btn btn--primary" href="/contact-us/#formulaire">Envoyer une demande</a><WhatsAppLink contexte="automobile" place="accueil-contact" /></div>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand titre="Un projet de formation automobile ?" sujet="Formation automobile" />
+</Base>

@@ -19,6 +19,9 @@ RUN npm run build
 # Étape 2 : service nginx
 FROM nginx:1.28.0-alpine
 COPY --from=build /app/dist /usr/share/nginx/html
+# Version livrée, vérifiable à distance (/version.txt).
+ARG GIT_COMMIT=dev
+RUN echo "$GIT_COMMIT" > /usr/share/nginx/html/version.txt
 COPY deploy/nginx/default.conf.template /etc/nginx/templates/default.conf.template
 COPY deploy/nginx/legacy-rules.inc /etc/nginx/conf.d/legacy-rules.inc
 RUN rm -f /etc/nginx/conf.d/default.conf

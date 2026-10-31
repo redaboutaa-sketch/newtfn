@@ -1,0 +1,97 @@
+{
+ "auto-cle-portrait": {
+  "alt": "Main gantée tenant une clé plate, dans un atelier automobile",
+  "widths": [
+   420,
+   720,
+   1000
+  ],
+  "ratio": 0.809,
+  "width": 1000,
+  "height": 1236,
+  "source": "https://techformanord.fr/wp-content/uploads/2024/09/hands-car-mechanic-with-wrench-garage.jpg"
+ },
+ "auto-cle-paysage": {
+  "alt": "Mécanicien tenant une clé plate dans un atelier automobile",
+  "widths": [
+   640,
+   1100,
+   1600
+  ],
+  "ratio": 1.7422,
+  "width": 1600,
+  "height": 918,
+  "source": "https://techformanord.fr/wp-content/uploads/2024/09/hands-car-mechanic-with-wrench-garage.jpg"
+ },
+ "auto-peinture-portrait": {
+  "alt": "Pistolet de peinture en action au-dessus d’un élément de carrosserie",
+  "widths": [
+   420,
+   720,
+   1000
+  ],
+  "ratio": 0.7896,
+  "width": 1000,
+  "height": 1267,
+  "source": "https://techformanord.fr/wp-content/uploads/2024/09/man-painting-car-door-side-view.jpg"
+ },
+ "auto-peinture-paysage": {
+  "alt": "Application de peinture au pistolet sur un élément de carrosserie",
+  "widths": [
+   640,
+   1100,
+   1600
+  ],
+  "ratio": 1.7857,
+  "width": 1600,
+  "height": 896,
+  "source": "https://techformanord.fr/wp-content/uploads/2024/09/man-painting-car-door-side-view.jpg"
+ },
+ "auto-showroom-paysage": {
+  "alt": "Vente d’un véhicule dans un showroom automobile",
+  "widths": [
+   640,
+   1100,
+   1600
+  ],
+  "ratio": 1.5,
+  "width": 1600,
+  "height": 1067,
+  "source": "https://techformanord.fr/wp-content/uploads/2024/09/stylish-elegant-woman-car-salon.jpg"
+ },
+ "portail-automobile": {
+  "alt": "Atelier de carrosserie : préparation d’un véhicule et d’un pare-chocs avant peinture",
+  "widths": [
+   440,
+   720,
+   840
+  ],
+  "ratio": 1.3333,
+  "width": 840,
+  "height": 630,
+  "source": "media-src/portail/automobile.jpeg"
+ },
+ "portail-esthetique": {
+  "alt": "Cabine de soins esthétiques avec deux tables de soin et un miroir éclairé",
+  "widths": [
+   440,
+   720,
+   1080
+  ],
+  "ratio": 1.3325,
+  "width": 1080,
+  "height": 810,
+  "source": "media-src/portail/esthetique.jpeg"
+ },
+ "portail-ia": {
+  "alt": "Personne travaillant sur un ordinateur portable",
+  "widths": [
+   440,
+   720
+  ],
+  "ratio": 1.3327,
+  "width": 720,
+  "height": 540,
+  "source": "media-src/portail/intelligence-artificielle.jpeg"
+ }
+}

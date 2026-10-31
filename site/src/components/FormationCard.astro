@@ -1,0 +1,24 @@
+---
+// Carte formation : un seul lien (visuel, nom, durée). Les détails restent sur la fiche ou le site du pôle.
+// Visuel : photo (src/data/photos.json).
+import Picture from './Picture.astro';
+interface Props {
+  href: string; titre: string; duree?: string | null; accent: string;
+  photo?: any;
+  ext?: string; pole?: string; level?: 2 | 3;
+}
+const { href, titre, duree, accent, photo, ext, pole, level = 3 } = Astro.props;
+const H = `h${level}`;
+---
+<li class="fcard" data-accent={accent}>
+  <a class="fcard-link" href={href} data-track={ext ? 'passerelle' : undefined} data-pole={ext ? pole : undefined}>
+    <span class="fcard-media">
+      {photo && <Picture id={photo} sizes="(max-width: 600px) 92vw, (max-width: 1000px) 46vw, 300px" decorative />}
+    </span>
+    <span class="fcard-body">
+      <H class="fcard-title">{titre}</H>
+      {duree && <span class="fcard-meta">{duree}</span>}
+      {ext && <span class="fcard-ext">Programme sur {ext} <span aria-hidden="true">↗</span></span>}
+    </span>
+  </a>
+</li>

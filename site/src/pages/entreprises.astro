@@ -1,21 +1,21 @@
 ---
 import Base from '../layouts/Base.astro';
 import CtaBand from '../components/CtaBand.astro';
-import { poles } from '../lib/data';
-const [auto, beaute, ia] = poles();
+import { pole } from '../lib/data';
+const auto = pole('automobile');
 ---
-<Base title="Former vos salariés : formations pour les entreprises" description="Formations pour les entreprises près de Lille : montée en compétences des ateliers automobiles, intégration par la reconversion, formation des équipes à l’IA. Analyse du besoin et devis." breadcrumbs={[{ name: 'Entreprises', url: '/entreprises/' }]} navActive="entreprises">
+<Base title="Former vos salariés : formations automobile pour les entreprises" description="Formations automobile pour les entreprises près de Lille : montée en compétences des ateliers, garages et concessions, intégration de nouveaux collaborateurs par la reconversion. Analyse du besoin et devis." breadcrumbs={[{ name: 'Entreprises', url: '/entreprises/' }]} navActive="entreprises">
   <section class="page-hero">
-    <div class="container">
+    <div class="container hero-enter">
       <span class="eyebrow">Entreprises</span>
       <h1>Développer les compétences de vos équipes</h1>
-      <p class="lead">Ateliers, concessions, instituts ou TPE : nous construisons avec vous une réponse de formation adaptée à vos métiers, à vos contraintes de planning et à vos possibilités de financement.</p>
+      <p class="lead">Ateliers, garages, concessions et carrosseries : nous construisons avec vous une réponse de formation adaptée à vos métiers, à vos contraintes de planning et à vos possibilités de financement.</p>
       <div class="btn-row"><a class="btn btn--primary" href="/contact-us/?profil=entreprise&sujet=Formation%20de%20salari%C3%A9s#formulaire">Décrire mon besoin</a></div>
     </div>
   </section>
 
   <section class="section">
-    <div class="container grid grid-3">
+    <div class="container grid grid-2" data-reveal>
       <article class="card" data-accent="auto">
         <span class="tag">{auto.nom}</span>
         <h2 style="font-size:1.25rem">Perfectionner vos techniciens</h2>
@@ -28,17 +28,11 @@ const [auto, beaute, ia] = poles();
         <p>Les parcours de reconversion « Mécanicien service rapide » et « Aide carrossier » alternent centre de formation et entreprise. Une partie du parcours Aide carrossier est définie avec vous lors de l’analyse du besoin.</p>
         <div class="card-foot"><a class="link-arrow" href="/infinite-grid-col-2/">Parcours de reconversion</a></div>
       </article>
-      <article class="card" data-accent="ia">
-        <span class="tag">{ia.nom}</span>
-        <h2 style="font-size:1.25rem">Former vos équipes à l’IA</h2>
-        <p>Formations par fonction, accompagnement des dirigeants, sessions pour comités de direction et programmes pour les collaborateurs, en intra ou en inter-entreprises.</p>
-        <div class="card-foot"><a class="link-arrow" href={ia.url}>Formations intelligence artificielle</a></div>
-      </article>
     </div>
   </section>
 
   <section class="section section--surface">
-    <div class="container grid grid-2">
+    <div class="container grid grid-2" data-reveal>
       <div>
         <h2>Notre démarche</h2>
         <ol>

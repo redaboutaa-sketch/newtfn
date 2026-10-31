@@ -1,0 +1,15 @@
+---
+// Image responsive AVIF/WebP issue de src/data/photos.json (scripts/prepare-media.mjs).
+import photos from '../data/photos.json';
+interface Props { id: keyof typeof photos; sizes?: string; priority?: boolean; alt?: string; class?: string; decorative?: boolean }
+const { id, sizes = '100vw', priority = false, alt, class: cls, decorative = false } = Astro.props;
+const p = (photos as any)[id];
+const set = (ext: string) => p.widths.map((w: number) => `/img/photos/${id}-${w}.${ext} ${w}w`).join(', ');
+const fallback = `/img/photos/${id}-${p.widths[Math.min(1, p.widths.length - 1)]}.webp`;
+---
+<picture class={cls}>
+  <source type="image/avif" srcset={set('avif')} sizes={sizes} />
+  <source type="image/webp" srcset={set('webp')} sizes={sizes} />
+  <img src={fallback} alt={decorative ? '' : (alt ?? p.alt)} width={p.width} height={p.height}
+    loading={priority ? 'eager' : 'lazy'} decoding={priority ? 'sync' : 'async'} fetchpriority={priority ? 'high' : undefined} />
+</picture>

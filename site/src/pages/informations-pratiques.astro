@@ -1,21 +1,20 @@
 ---
 import Base from '../layouts/Base.astro';
 import CtaBand from '../components/CtaBand.astro';
-import { organisme, pole } from '../lib/data';
+import { organisme } from '../lib/data';
 const org = organisme();
-const mbl = pole('beaute').site_externe;
 const osm = `https://www.openstreetmap.org/?mlat=${org.adresse.geo.lat}&mlon=${org.adresse.geo.lon}#map=17/${org.adresse.geo.lat}/${org.adresse.geo.lon}`;
 ---
 <Base title="Informations pratiques : accès, horaires, restauration" description="Venir à Tech Formation Nord, 21 rue de Faches à Vendeville : accès en voiture par l’A1, bus L1, parking, horaires d’ouverture et restauration à proximité." breadcrumbs={[{ name: 'Informations pratiques', url: '/informations-pratiques/' }]} navActive="organisme">
   <section class="page-hero">
-    <div class="container">
+    <div class="container hero-enter">
       <span class="eyebrow">Accès</span>
       <h1>Informations pratiques</h1>
       <p class="lead">{org.nom} — {org.adresse.rue}, {org.adresse.code_postal} {org.adresse.ville}, au sud de Lille.</p>
     </div>
   </section>
   <section class="section">
-    <div class="container grid grid-3">
+    <div class="container grid grid-3" data-reveal>
       <div class="card"><h2 style="font-size:1.2rem">En voiture</h2><ul>{org.acces.voiture.map((x: string) => <li>{x}</li>)}</ul></div>
       <div class="card"><h2 style="font-size:1.2rem">En transports en commun</h2><ul>{org.acces.transports.map((x: string) => <li>{x}</li>)}</ul></div>
       <div class="card"><h2 style="font-size:1.2rem">À pied</h2><ul>{org.acces.pied.map((x: string) => <li>{x}</li>)}</ul></div>
@@ -26,11 +25,10 @@ const osm = `https://www.openstreetmap.org/?mlat=${org.adresse.geo.lat}&mlon=${o
     </div>
   </section>
   <section class="section section--surface">
-    <div class="container grid grid-2">
+    <div class="container grid grid-2" data-reveal>
       <div>
         <h2>Horaires d’ouverture</h2>
         <table class="info-table"><caption class="sr-only">Horaires de Tech Formation Nord</caption><tbody>{org.horaires.map((h: any) => <tr><th scope="row">{h.jours}</th><td>{h.heures}</td></tr>)}</tbody></table>
-        <p class="small muted" style="margin-top:12px">Les formations esthétiques se déroulent chez Maison Beauxlieux ({mbl.adresse}), dont les horaires sont différents : {mbl.horaires}.</p>
       </div>
       <div>
         <h2>Restauration</h2>

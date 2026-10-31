@@ -12,6 +12,10 @@ def get(path):
     try:
         r = op.open(urllib.request.Request(base + path, method='GET'), timeout=15); return r.status, r.headers.get('Location')
     except urllib.error.HTTPError as e: return e.code, e.headers.get('Location')
+def ext(url):
+    # Destination externe (site spécialisé) : statut final après redirections éventuelles.
+    try: return urllib.request.urlopen(urllib.request.Request(url, headers={'User-Agent': 'tfn-recette'}), timeout=20).status
+    except urllib.error.HTTPError as e: return e.code
 ok = ko = 0
 for row in csv.DictReader(open(os.path.join(root, 'docs/mapping-redirections.csv'))):
     old, new, code = row['ancienne_url'], row['nouvelle_url'], int(row['code_http'])
@@ -19,7 +23,7 @@ for row in csv.DictReader(open(os.path.join(root, 'docs/mapping-redirections.csv
     if st != code and not (mode == 'preprod' and old == '/sitemap.xml'): errs.append(f'statut {st} au lieu de {code}')
     if code == 301:
         if loc != new: errs.append(f'Location {loc} au lieu de {new}')
-        st2, _ = get(new)
+        st2 = ext(new) if new.startswith('http') else get(new)[0]
         if st2 != 200 and not (mode == 'preprod' and new == '/sitemap.xml'): errs.append(f'destination {new} -> {st2}')
     if errs: ko += 1; print('KO', old, '|', '; '.join(errs))
     else: ok += 1

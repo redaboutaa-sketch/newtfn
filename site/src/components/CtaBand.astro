@@ -1,19 +1,22 @@
 ---
 import { organisme } from '../lib/data';
+import WhatsAppLink from './WhatsAppLink.astro';
 interface Props { titre?: string; texte?: string; sujet?: string }
 const org = organisme();
 const { titre = 'Besoin d’aide pour choisir votre formation ?', texte = 'Décrivez votre projet : nous vous orientons vers le parcours adapté et étudions avec vous les possibilités de financement.', sujet } = Astro.props;
 const href = sujet ? `/contact-us/?sujet=${encodeURIComponent(sujet)}#formulaire` : '/contact-us/#formulaire';
 ---
-<section class="section section--tight" style="background:var(--night);color:#e6edf5">
-  <div class="container" style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between">
-    <div style="max-width:62ch">
-      <h2 style="color:#fff">{titre}</h2>
-      <p style="margin:0">{texte}</p>
+<section class="cta-band" aria-labelledby="cta-titre">
+  <div class="container">
+    <div data-reveal>
+      <span class="eyebrow" style="color:var(--auto-on-night)">Conseil</span>
+      <h2 id="cta-titre">{titre}</h2>
+      <p>{texte}</p>
     </div>
-    <div class="btn-row" style="margin:0">
-      <a class="btn btn--light" href={href}>Demander un conseil</a>
-      <a class="btn btn--ghost" style="color:#fff" href={`tel:${org.telephone.lien}`} data-place="bandeau-cta">Appeler le {org.telephone.affiche}</a>
+    <div class="btn-row" data-reveal style="--i:1">
+      <a class="btn btn--light" href={href}>Demander un conseil <span aria-hidden="true">→</span></a>
+      <a class="btn btn--on-night" href={`tel:${org.telephone.lien}`} data-place="bandeau-cta">Appeler le <span class="num">{org.telephone.affiche}</span></a>
+      <WhatsAppLink contexte={sujet} place="bandeau-cta" class="btn btn--on-night btn--wa-night" />
     </div>
   </div>
 </section>
