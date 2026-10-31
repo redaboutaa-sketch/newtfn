@@ -536,8 +536,8 @@ details.more > summary:hover, details.prog-more > summary:hover { color: var(--a
 @media (max-width: 640px) { .env-long { display: none; } .env-short { display: inline; } }
 
 /* ---------- Portail des trois univers (/) ---------- */
-/* Portail : aplats bleus (zone principale très claire, partie basse un peu plus soutenue), cartes blanches. */
-body.is-portail { --portail-bg: #f0f7ff; --portail-foot: #dfecf9; --portail-line: #c7dbee; display: flex; flex-direction: column; min-height: 100vh; min-height: 100dvh; background: var(--portail-bg); }
+/* Portail : fond principal blanc, pied bleu clair et cartes blanches. */
+body.is-portail { --portail-bg: #ffffff; --portail-foot: #dfecf9; --portail-line: #c7dbee; display: flex; flex-direction: column; min-height: 100vh; min-height: 100dvh; background: var(--portail-bg); }
 /* Typographie du portail hors cartes (en-tête, titre, pied) : Manrope, sans héritage depuis body. */
 body.is-portail { --portail-title: #173b63; --portail-text: #476582; --portail-link: #214f78; --font-portail: 'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; }
 .portail-top, .portail-intro, .portail-foot { font-family: var(--font-portail); }
