@@ -34,7 +34,7 @@ curl -fsSL https://chatgpt.com/codex/install.sh | sh
 
 git clone https://github.com/redaboutaa-sketch/newtfn.git
 cd newtfn
-git switch feat/portail-trois-univers      # branche de production actuelle (deviendra « main » après fusion)
+git switch main                            # branche de production
 git switch -c modif/ma-modification         # votre branche de travail
 
 codex                                       # premier lancement : choisir « Sign in with ChatGPT »
@@ -57,14 +57,14 @@ Proposer :
 git add -A && git commit -m "Horaires du samedi"
 git push -u origin modif/ma-modification
 ```
-Puis ouvrez une **pull request** sur GitHub vers la branche de production (actuellement `feat/portail-trois-univers`), en décrivant le changement et les tests faits.
+Puis ouvrez une **pull request** sur GitHub vers `main` (branche de production), en décrivant le changement et les tests faits.
 
 ## 4. Option B — Codex dans le navigateur, avec GitHub
 
 1. Ouvrez Codex sur le web avec votre compte ChatGPT.
 2. Connectez votre compte GitHub quand Codex le demande et autorisez l'accès au dépôt `redaboutaa-sketch/newtfn` (l'invitation doit être acceptée).
 3. Créez un environnement pour ce dépôt. Si un script d'installation est demandé : `cd site && npm ci`.
-4. Décrivez la modification dans un prompt, en partant de la branche `feat/portail-trois-univers`. Demandez à Codex de lancer `npm run build` dans `site/`.
+4. Décrivez la modification dans un prompt, en partant de la branche `main`. Demandez à Codex de lancer `npm run build` dans `site/`.
 5. Relisez le diff proposé, puis utilisez le bouton de création de **pull request** (libellé à confirmer dans l'interface).
 
 Important : connecter Codex à GitHub donne accès **au dépôt uniquement**. Cela ne donne **aucun accès au serveur** et **ne met rien en ligne**.

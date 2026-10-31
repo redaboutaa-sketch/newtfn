@@ -6,7 +6,7 @@ Document destiné à l'administrateur du VPS et au développeur. État vérifié
 
 | Élément | Rôle | Détail |
 |---|---|---|
-| GitHub `redaboutaa-sketch/newtfn` | Source du code, revue (PR) | Dépôt **public**. Branche de production actuelle : `feat/portail-trois-univers` (PR #3 → #2 → #1 non fusionnées ; `main` est en retard). |
+| GitHub `redaboutaa-sketch/newtfn` | Source du code, revue (PR) | Dépôt **public**. Branche de production : `main` (PR #1, #2, #3 fusionnées le 31/10/2026). |
 | VPS `76.13.44.177` | Héberge le site **et d'autres sites/services** | Clone de travail de l'administrateur : `/opt/newtfn` (root). |
 | Docker | Exécute le site | Production : `tfn-prod-web` (nginx, site statique) + `tfn-prod-forms` (formulaire). Préproduction : `tfn-preprod-web` + `tfn-preprod-forms`. Réseaux internes `tfn-prod-internal`, `tfn-preprod-internal`. |
 | Traefik (`/opt/traefik`) | Reverse proxy **commun à tous les sites**, certificats Let's Encrypt | Réseau `traefik-public`, partagé avec ~15 conteneurs d'autres projets. Routeurs TFN déclarés par labels dans `deploy/docker-compose.*.yml`. |
@@ -67,7 +67,7 @@ Ce que fait le script :
 1. récupère GitHub (`git fetch`) et refuse tout commit absent de GitHub ;
 2. construit dans un worktree temporaire (`/var/lib/tfn-deploy/`) : le clone `/opt/newtfn` n'est pas modifié ;
 3. **bloque si un fichier d'infrastructure a changé** depuis la dernière relecture (Compose, Dockerfile, `.dockerignore`, le script lui-même ; empreintes dans `/etc/techformanord/deploy-reviewed.sha256`). L'administrateur relit le diff puis relance avec `--approve-infra` et tape « J'AI RELU » ;
-4. production : commit présent sur `origin/<branche de production>` (fichier `/etc/techformanord/prod-branch`, actuellement `feat/portail-trois-univers`, à passer à `main` après fusion), et **déjà servi en préproduction** ; demande de taper le commit ;
+4. production : commit présent sur `origin/<branche de production>` (fichier `/etc/techformanord/prod-branch` : `main`), et **déjà servi en préproduction** ; demande de taper le commit ;
 5. teste l'image candidate sur `127.0.0.1:8098` (version, pages clés) avant de remplacer quoi que ce soit ;
 6. étiquette l'image en cours `tfn-site:<env>-rollback`, redémarre la pile TFN, attend l'état « healthy » et vérifie `/version.txt` sur l'URL publique ;
 7. journal : `/var/log/tfn-deploy.log`.
@@ -91,7 +91,7 @@ Images de production présentes au 31/10/2026 : `tfn-site:prod-d2029a5` (premiè
 
 ## 6. À configurer (décisions de l'administrateur)
 
-1. **Fusion des PR** #3 → #2 → #1 → `main` (ou avance de `main` sur `feat/portail-trois-univers`), puis `echo main > /etc/techformanord/prod-branch`. Jusque-là, le développeur part de `feat/portail-trois-univers`.
+1. ~~Fusion des PR~~ : fait le 31/10/2026, `main` est la branche de production. Pour mettre `main` en production : `tfn-deploy preprod main`, validation, puis `tfn-deploy production <commit de main>`.
 2. **Protection de la branche de production** sur GitHub (Settings → Branches / Rules) : PR obligatoire, 1 approbation, pas de push direct ni de force push. Sans elle, le rôle *write* permet de pousser directement (le déploiement reste manuel, donc rien ne part en ligne sans l'administrateur).
 3. **Visibilité du dépôt** : public. Aucun secret trouvé (fichiers suivis + historique, 31/10/2026), mais l'architecture et les noms d'hôte sont visibles. Le passer en privé est possible sans gêner Codex.
 4. **Formulaire** : créer `/etc/techformanord/production.env` (adresse de réception, identifiants SMTP), puis `tfn-deploy production <commit>` (relire la sortie : la pile passe en mode `smtp`).
