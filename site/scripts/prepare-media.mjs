@@ -33,7 +33,7 @@ const CROPS = [
   // Portail : même format 4:3 pour les trois univers, sans déformation (recadrage seul).
   { id: 'portail-automobile', src: 'portail-automobile', region: [0.14, 0.04, 0.7, 0.837], widths: [440, 720, 840], saturation: 1, alt: 'Atelier de carrosserie : préparation d’un véhicule et d’un pare-chocs avant peinture' },
   { id: 'portail-esthetique', src: 'portail-esthetique', region: [0, 0.2, 1, 0.5625], widths: [440, 720, 1080], saturation: 1, alt: 'Cabine de soins esthétiques avec deux tables de soin et un miroir éclairé' },
-  { id: 'portail-ia', src: 'portail-ia', region: [0, 0.18, 1, 0.4198], widths: [440, 720], saturation: 1, alt: 'Personne travaillant sur un ordinateur portable' },
+  { id: 'portail-ia', src: 'portail-ia', region: [0, 0.14, 1, 0.5625], widths: [440, 720], saturation: 1, alt: 'Personne travaillant sur un ordinateur portable' },
 ];
 const only = process.argv[2];
 
