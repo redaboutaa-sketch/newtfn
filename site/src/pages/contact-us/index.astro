@@ -2,7 +2,7 @@
 // URL historique « Contactez-nous » conservée (/contact y redirigeait déjà).
 import Base from '../../layouts/Base.astro';
 import WhatsAppLink from '../../components/WhatsAppLink.astro';
-import { organisme, pole, isProduction, FORM_ENDPOINT } from '../../lib/data';
+import { organisme, pole, isProduction, FORM_ENDPOINT, IS_PREVIEW } from '../../lib/data';
 const org = organisme();
 const auto = pole('automobile');
 ---
@@ -19,8 +19,8 @@ const auto = pole('automobile');
       <div class="card" style="grid-column:span 1" id="formulaire">
         <h2 style="font-size:1.4rem">Formulaire de contact</h2>
         <p class="small muted">Les champs marqués d’un astérisque (<span class="req">*</span>) sont obligatoires.</p>
-        {!isProduction && <p class="form-banner form-banner--test" role="note">Préproduction : formulaire en mode test. Les demandes sont enregistrées dans une boîte de test et ne sont transmises à personne.</p>}
-        <form class="form" method="post" action={FORM_ENDPOINT} novalidate={false}>
+        {IS_PREVIEW && <p class="form-banner form-banner--test" role="note">Aperçu de pull request : formulaire désactivé. Aucune donnée n’est envoyée ni enregistrée ; l’envoi se teste en préproduction.</p>}{!isProduction && !IS_PREVIEW && <p class="form-banner form-banner--test" role="note">Préproduction : formulaire en mode test. Les demandes sont enregistrées dans une boîte de test et ne sont transmises à personne.</p>}
+        <form class="form" method="post" action={IS_PREVIEW ? '#formulaire' : FORM_ENDPOINT} novalidate={false}>
           <div class="row">
             <div class="field"><label for="f-nom">Nom et prénom <span class="req" aria-hidden="true">*</span></label><input id="f-nom" name="nom" type="text" autocomplete="name" required maxlength="120" /></div>
             <div class="field"><label for="f-email">E-mail <span class="req" aria-hidden="true">*</span><span class="hint">Format attendu : nom@exemple.fr</span></label><input id="f-email" name="email" type="email" autocomplete="email" required maxlength="160" /></div>
@@ -50,7 +50,7 @@ const auto = pole('automobile');
           <div class="hp-field" aria-hidden="true"><label for="f-site">Ne pas remplir ce champ</label><input id="f-site" name="site_web" type="text" tabindex="-1" autocomplete="off" /></div>
           <input type="hidden" name="t" value="" />
           <div class="field"><label class="choice"><input type="checkbox" name="consentement" value="oui" required /> <span>J’accepte que mes données soient utilisées pour traiter ma demande, conformément à la <a href="/politique-de-confidentialite/">politique de confidentialité</a>. <span class="req" aria-hidden="true">*</span></span></label></div>
-          <div><button class="btn btn--primary" type="submit"><span class="label">Envoyer ma demande</span></button></div>
+          <div><button class="btn btn--primary" type="submit" disabled={IS_PREVIEW}><span class="label">{IS_PREVIEW ? 'Envoi désactivé (aperçu)' : 'Envoyer ma demande'}</span></button></div>
         </form>
       </div>
       <div class="stack">

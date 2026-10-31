@@ -7,14 +7,13 @@ Site **Tech Formation Nord** (https://techformanord.fr). Lire aussi `README.md` 
 - `site/` : site **statique Astro** (Node 22). Contenus en YAML sous `site/src/content/` (schéma : `site/src/content.config.ts`). Pas de base de données.
 - `forms/` : micro-service Node du formulaire de contact (`FORM_MODE=test` : enregistrement local ; `smtp` : envoi par e-mail).
 - `deploy/` : Docker Compose (préproduction, production), gabarit nginx, règles de redirection générées depuis `docs/mapping-redirections.csv`.
-- Sur le VPS (partagé avec d'autres sites) : conteneurs nginx + formulaire derrière le **Traefik** commun, qui gère HTTPS. Déploiement **manuel par l'administrateur** avec `tfn-deploy` (voir `docs/acces-et-deploiement-tfn.md`). Aucun déploiement automatique depuis GitHub.
+- Sur le VPS (partagé avec d'autres sites) : conteneurs nginx + formulaire derrière le **Traefik** commun, qui gère HTTPS. Déploiement **manuel par l'administrateur** avec `tfn-deploy` (voir `docs/acces-et-deploiement-tfn.md`). Aucun déploiement automatique vers le VPS depuis GitHub. Aperçus des PR : Cloudflare Pages (`CF_PAGES=1` → formulaire désactivé, noindex, jamais de build de production ; `docs/apercus-cloudflare-pages.md`). Ne jamais ajouter de secret au projet Pages.
 
 ## Commandes de vérification
 
 ```bash
 cd site && npm ci && npm run build                    # build complet (échoue si un contenu ou une canonical est invalide)
 cd site && PUBLIC_SITE_ENV=production npm run build   # build de production (sitemap, robots, index)
-cd site && npm run check:content
 cd forms && npm ci && npm test
 python3 -I deploy/scripts/gen_nginx_rules.py          # après toute modification de docs/mapping-redirections.csv
 ```

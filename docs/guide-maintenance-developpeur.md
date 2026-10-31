@@ -8,7 +8,7 @@ Bienvenue. Ce guide explique comment modifier le site avec **Codex** (votre comp
 - Formulaire de contact : petit service Node, dossier `forms/`.
 - Hébergement : conteneurs Docker sur un VPS partagé, derrière le proxy Traefik qui gère le HTTPS. Vous n'y avez pas accès et n'en avez pas besoin.
 - Adresses : production https://techformanord.fr ; préproduction https://tfn.iatechformanord.fr (non indexée).
-- Règles pour l'agent : `AGENTS.md` (lu automatiquement par Codex). Architecture et déploiement : `docs/acces-et-deploiement-tfn.md`.
+- Règles pour l'agent : `AGENTS.md` (lu automatiquement par Codex). Architecture et déploiement : `docs/acces-et-deploiement-tfn.md`. Aperçus des PR : `docs/apercus-cloudflare-pages.md`.
 
 | Je veux… | Fichier |
 |---|---|
@@ -71,7 +71,13 @@ Important : connecter Codex à GitHub donne accès **au dépôt uniquement**. Ce
 
 ## 5. De la pull request à la mise en ligne
 
-1. Vous ouvrez la PR (tests faits, captures si changement visuel).
+1. Vous ouvrez la PR vers `main` (tests faits, captures si changement visuel).
+   **Aperçu automatique** : quelques minutes après, Cloudflare Pages construit votre branche. Le lien apparaît dans la PR, dans les vérifications (ligne **Cloudflare Pages** → **Details**, onglet **Checks**) et en général dans un commentaire de Cloudflare. Chaque nouveau commit sur la branche met l'aperçu à jour. L'adresse `https://<branche>.<projet>.pages.dev` suit toujours le dernier commit.
+   - Accès : page de connexion Cloudflare Access. Saisissez votre adresse e-mail autorisée, puis le code reçu par e-mail. Aucun compte Cloudflare n'est nécessaire.
+   - Le bandeau « Aperçu de pull request » affiche la branche et le commit. `/version.txt` donne le commit servi.
+   - **Le formulaire est désactivé sur l'aperçu** : rien n'est envoyé. L'envoi et les redirections des anciennes URL se vérifient en préproduction.
+   - Les PR ouvertes depuis un fork n'ont pas d'aperçu : travaillez sur une branche du dépôt.
+   - Si le build échoue, ouvrez **Details** pour lire le journal. Corrigez, puis poussez un nouveau commit.
 2. L'administrateur relit. Toute modification de `deploy/`, des `Dockerfile` ou de `.dockerignore` est relue avec une attention particulière et doit être justifiée dans la PR.
 3. L'administrateur publie la branche en **préproduction** : https://tfn.iatechformanord.fr (vérifiable via `/version.txt`, qui affiche le commit servi).
 4. Le responsable du site valide sur la préproduction.

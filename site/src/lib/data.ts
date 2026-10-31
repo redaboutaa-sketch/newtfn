@@ -19,6 +19,10 @@ export const documents = (): any[] => load('documents');
 // Environnement : « production » uniquement lorsque explicitement demandé au build.
 export const SITE_ENV = (process.env.PUBLIC_SITE_ENV || 'preprod') as 'production' | 'preprod' | 'development';
 export const isProduction = SITE_ENV === 'production';
+// Aperçu Cloudflare Pages (variable CF_PAGES=1 fournie par la plateforme) : jamais de production, formulaire désactivé.
+export const IS_PREVIEW = process.env.CF_PAGES === '1';
+if (IS_PREVIEW && isProduction) throw new Error('Build de production interdit sur Cloudflare Pages (aperçus uniquement).');
+export const PREVIEW = { branche: process.env.CF_PAGES_BRANCH || '', commit: (process.env.CF_PAGES_COMMIT_SHA || '').slice(0, 7) };
 export const FORM_ENDPOINT = process.env.PUBLIC_FORM_ENDPOINT || '/api/contact';
 export const ANALYTICS = {
   // Seul Plausible (sans cookie, sans consentement requis) est intégré. Un outil à cookies (GA4…)
