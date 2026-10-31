@@ -98,10 +98,10 @@ cmd_deploy() {
   trap 'git -C "$REPO" worktree remove --force "$SRC" >/dev/null 2>&1 || true; docker rm -f tfn-cand >/dev/null 2>&1 || true' EXIT
 
   # Épinglage des fichiers d'infrastructure.
-  local now; now=$(cd "$src" && sha256sum "${PINNED_FILES[@]}" 2>/dev/null || true)
+  local now f; now=$(cd "$src" && for f in "${PINNED_FILES[@]}"; do if [ -f "$f" ]; then sha256sum "$f"; else echo "absent  $f"; fi; done)
   if ! diff -q <(echo "$now") "$PINS" >/dev/null 2>&1; then
     echo "Fichiers d'infrastructure modifiés depuis la dernière relecture :"
-    diff <(cat "$PINS" 2>/dev/null) <(echo "$now") | sed -n 's/^> /  /p' || true
+    diff <(cat "$PINS" 2>/dev/null) <(echo "$now") | sed -n 's/^> [^ ]*  /  /p' || true
     echo "Voir : git -C $REPO diff <dernier-commit-relu> $short -- ${PINNED_FILES[*]}"
     [ $approve = 1 ] || die "relire ces fichiers (volumes, privileged, réseaux, ports, labels Traefik, sudo/setuid) puis relancer avec --approve-infra."
     [ $dry = 1 ] || { read -r -p "Tapez « J'AI RELU » pour approuver : " ok; [ "$ok" = "J'AI RELU" ] || die "non approuvé."; echo "$now" > "$PINS"; chmod 600 "$PINS"; log "INFRA approuvée pour $short"; }
