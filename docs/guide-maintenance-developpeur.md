@@ -81,7 +81,9 @@ Important : connecter Codex à GitHub donne accès **au dépôt uniquement**. Ce
 2. L'administrateur relit. Toute modification de `deploy/`, des `Dockerfile` ou de `.dockerignore` est relue avec une attention particulière et doit être justifiée dans la PR.
 3. L'administrateur publie la branche en **préproduction** : https://tfn.iatechformanord.fr (vérifiable via `/version.txt`, qui affiche le commit servi).
 4. Le responsable du site valide sur la préproduction.
-5. L'administrateur fusionne la PR, puis met en **production**. En cas de problème, il revient à la version précédente en une commande.
+5. L'administrateur approuve et fusionne la PR, puis met en **production**. En cas de problème, il revient à la version précédente en une commande.
+
+`main` est **protégée** sur GitHub : un push direct est refusé, et une PR ne peut être fusionnée qu'avec une approbation et une vérification **Cloudflare Pages** réussie. **Tout nouveau commit poussé après l'approbation l'annule** : une fois la validation demandée, ne poussez plus rien sur la branche ; proposez les ajustements suivants dans une nouvelle PR, ou prévenez l'administrateur.
 
 ## 6. Check-list avant de demander une mise en ligne
 

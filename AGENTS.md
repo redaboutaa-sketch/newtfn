@@ -32,7 +32,7 @@ Plusieurs ajustements à valider ensemble peuvent rester dans une même branche 
 ## Règles impératives
 
 - **Ne jamais déployer en production** ni proposer de commande de déploiement à exécuter sans validation explicite du responsable du site. Un agent ne lance pas `tfn-deploy`.
-- Travailler sur une **branche** et proposer une **pull request** ; ne pas pousser directement sur la branche de production ; pas de `reset --hard` partagé ni de `push --force`.
+- Travailler sur une **branche** et proposer une **pull request** ; ne pas pousser directement sur la branche de production ; pas de `reset --hard` partagé ni de `push --force`. `main` est protégée (PR approuvée et vérification Cloudflare Pages obligatoires) ; un commit poussé après l'approbation l'annule : une fois la validation demandée, ne plus pousser sur la branche sans accord.
 - **Secrets** : aucun mot de passe, jeton, clé ou identifiant SMTP dans le dépôt, les logs ou les PR. Les valeurs réelles vivent hors dépôt sur le VPS (`/etc/techformanord/`, root uniquement). Modèle : `.env.example`.
 - Ne pas modifier sans le signaler explicitement dans la PR : `deploy/docker-compose.*.yml`, `site/Dockerfile`, `forms/Dockerfile`, `.dockerignore`, `deploy/scripts/tfn-deploy.sh`. Ces fichiers décident de ce qui s'exécute sur un serveur partagé : jamais de volume vers l'hôte, `privileged`, socket Docker, `network_mode: host`, port public, ni nouvel hôte Traefik.
 - Le VPS héberge **d'autres sites** : rien dans ce dépôt ne doit les référencer, les lire ou les modifier.

@@ -6,7 +6,7 @@ Document destiné à l'administrateur du VPS et au développeur. État vérifié
 
 | Élément | Rôle | Détail |
 |---|---|---|
-| GitHub `redaboutaa-sketch/newtfn` | Source du code, revue (PR) | Dépôt **public**. Branche de production : `main` (PR #1, #2, #3 fusionnées le 31/10/2026). |
+| GitHub `redaboutaa-sketch/newtfn` | Source du code, revue (PR) | Dépôt **public**. Branche de production : `main` (PR #1, #2, #3 fusionnées le 31/10/2026), **protégée** depuis le 15/11/2026 (§6). |
 | VPS `76.13.44.177` | Héberge le site **et d'autres sites/services** | Clone de travail de l'administrateur : `/opt/newtfn` (root). |
 | Docker | Exécute le site | Production : `tfn-prod-web` (nginx, site statique) + `tfn-prod-forms` (formulaire). Préproduction : `tfn-preprod-web` + `tfn-preprod-forms`. Réseaux internes `tfn-prod-internal`, `tfn-preprod-internal`. |
 | Traefik (`/opt/traefik`) | Reverse proxy **commun à tous les sites**, certificats Let's Encrypt | Réseau `traefik-public`, partagé avec ~15 conteneurs d'autres projets. Routeurs TFN déclarés par labels dans `deploy/docker-compose.*.yml`. |
@@ -32,7 +32,7 @@ Le VPS est partagé avec d'autres sites et services. Les vérifications du 31/10
 | Accès | Développeur | Administrateur |
 |---|---|---|
 | Dépôt GitHub (lecture, branches, PR) | oui (invitation, rôle *write*) | oui (admin) |
-| Fusion vers la branche de production | à restreindre (voir §6) | oui |
+| Fusion vers la branche de production | non : PR approuvée obligatoire (§6) | oui |
 | VPS, Docker, Traefik, `/etc/techformanord` | **non** | oui (root) |
 | Préproduction (consultation) | oui : https://tfn.iatechformanord.fr | oui |
 | Déploiement | non : il le demande | `tfn-deploy` |
@@ -47,7 +47,7 @@ Le VPS est partagé avec d'autres sites et services. Les vérifications du 31/10
 | Branche + pull request | développeur (Codex) | oui |
 | Aperçu automatique de la PR | Cloudflare Pages | préparé : activation par l'administrateur (`docs/apercus-cloudflare-pages.md`) ; le build Pages sert aussi de test de build |
 | Tests automatiques sur la PR | — | **non configuré** (pas de GitHub Actions) : tests lancés localement, voir le guide |
-| Revue et approbation de la PR | administrateur / responsable | oui (manuel) |
+| Revue et approbation de la PR | administrateur / responsable | oui : approbation GitHub obligatoire avant fusion |
 | Déploiement en préproduction | administrateur : `tfn-deploy preprod <branche>` | oui |
 | Validation | responsable du site, sur https://tfn.iatechformanord.fr | oui |
 | Fusion vers la branche de production | administrateur | oui |
@@ -93,7 +93,13 @@ Images de production présentes au 31/10/2026 : `tfn-site:prod-d2029a5` (premiè
 ## 6. À configurer (décisions de l'administrateur)
 
 1. ~~Fusion des PR~~ : fait le 31/10/2026, `main` est la branche de production. Pour mettre `main` en production : `tfn-deploy preprod main`, validation, puis `tfn-deploy production <commit de main>`.
-2. **Protection de la branche de production** sur GitHub (Settings → Branches / Rules) : PR obligatoire, 1 approbation, pas de push direct ni de force push. Sans elle, le rôle *write* permet de pousser directement (le déploiement reste manuel, donc rien ne part en ligne sans l'administrateur).
+2. ~~Protection de la branche de production~~ : fait le 15/11/2026 (GitHub → Settings → Branches → `main`) :
+   - pull request obligatoire : aucun push direct sur `main` ;
+   - 1 approbation ; toute approbation est annulée par un nouveau commit, et le dernier commit doit être approuvé par une autre personne que son auteur ;
+   - vérification **Cloudflare Pages** réussie obligatoire ; conversations de revue résolues ;
+   - force push et suppression de `main` interdits.
+
+   Les administrateurs ne sont pas soumis à ces règles (« Do not allow bypassing » désactivé) : GitHub ne permet pas d'approuver sa propre PR, et l'administrateur doit pouvoir fusionner les PR qu'il ouvre. Il continue néanmoins à passer par des PR. Pour une PR du développeur : **Files changed** → **Review changes** → **Approve**, puis fusion.
 3. **Visibilité du dépôt** : public. Aucun secret trouvé (fichiers suivis + historique, 31/10/2026), mais l'architecture et les noms d'hôte sont visibles. Le passer en privé est possible sans gêner Codex.
 4. **Formulaire** : créer `/etc/techformanord/production.env` (adresse de réception, identifiants SMTP), puis `tfn-deploy production <commit>` (relire la sortie : la pile passe en mode `smtp`).
 5. Facultatif : tests automatiques sur les PR (GitHub Actions : `npm ci && npm run build`, `forms npm test`) — sans aucun secret ni accès au VPS.
