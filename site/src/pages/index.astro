@@ -39,11 +39,18 @@ const univers = poles();
     </ul>
 
     <section class="portail-training container" aria-labelledby="trainingforme-titre">
-      <h2 id="trainingforme-titre">{org.trainingforme.titre}</h2>
-      <p>{org.trainingforme.sous_titre}</p>
-      <img src={org.trainingforme.image.src} alt={org.trainingforme.image.alt}
-        width={org.trainingforme.image.width} height={org.trainingforme.image.height}
-        loading="lazy" decoding="async" />
+      <h2 id="trainingforme-titre">{org.trainingforme.sous_titre}</h2>
+      <div class="training-card">
+        <div class="training-copy">
+          <span class="training-dots" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+          <h3 class="training-name">{org.trainingforme.marque}<span>{org.trainingforme.marque_accent}</span></h3>
+          <p>{org.trainingforme.accroche}</p>
+        </div>
+        <div class="training-photo">
+          <img src={org.trainingforme.image.src} alt="" width={org.trainingforme.image.width}
+            height={org.trainingforme.image.height} loading="lazy" decoding="async" />
+        </div>
+      </div>
     </section>
 
     <footer class="portail-foot" slot="pied">

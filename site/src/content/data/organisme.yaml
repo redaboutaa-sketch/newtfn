@@ -96,7 +96,10 @@ google_business_url: ""
 # Visuel fourni par le responsable ; aucun lien activé à ce stade.
 trainingforme:
   titre: TrainingForMe
-  sous_titre: Nos formations en ligne
+  sous_titre: Nos Formations en Ligne
+  marque: TrainingFor
+  marque_accent: Me
+  accroche: "Apprenez aujourd’hui, réussissez demain."
   image:
     src: /img/trainingforme/presentation.png
     alt: "TrainingForMe — Apprenez aujourd’hui, réussissez demain. Visuel de présentation avec une formatrice."
