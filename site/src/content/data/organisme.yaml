@@ -93,7 +93,8 @@ hebergeur:
 # Renseigner l'URL de partage de la fiche pour activer le lien « Voir nos avis sur Google ».
 google_business_url: ""
 
-# Proposition de visuel avec logo validée pour aperçu ; aucun lien actif.
+# TrainingForMe : section retirée de l’accueil (non validée par le client). Données et visuels
+# (site/public/img/trainingforme/) conservés pour une réutilisation éventuelle ; non affichés.
 trainingforme:
   titre: TrainingForMe
   sous_titre: Nos Formations en Ligne
