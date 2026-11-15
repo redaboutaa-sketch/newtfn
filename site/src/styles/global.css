@@ -536,24 +536,24 @@ details.more > summary:hover, details.prog-more > summary:hover { color: var(--a
 @media (max-width: 640px) { .env-long { display: none; } .env-short { display: inline; } }
 
 /* ---------- Portail des trois univers (/) ---------- */
-/* Portail : aplats bleus (zone principale très claire, partie basse un peu plus soutenue), cartes blanches. */
-body.is-portail { --portail-bg: #f0f7ff; --portail-foot: #dfecf9; --portail-line: #c7dbee; display: flex; flex-direction: column; min-height: 100vh; min-height: 100dvh; background: var(--portail-bg); }
+/* Portail : bleu nuit inspiré de la référence vidéo, cartes blanches. */
+body.is-portail { --portail-bg: #07132f; --portail-foot: #0b1938; --portail-line: #30405f; display: flex; flex-direction: column; min-height: 100vh; min-height: 100dvh; background: var(--portail-bg); }
 /* Typographie du portail hors cartes (en-tête, titre, pied) : Manrope, sans héritage depuis body. */
-body.is-portail { --portail-title: #173b63; --portail-text: #476582; --portail-link: #214f78; --font-portail: 'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; }
+body.is-portail { --portail-title: #ffffff; --portail-text: #b8c5dd; --portail-link: #a8d5ff; --font-portail: 'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; }
 .portail-top, .portail-intro, .portail-foot { font-family: var(--font-portail); }
 body.is-portail main { flex: 1; display: flex; flex-direction: column; justify-content: center; }
 .portail-top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: clamp(12px, 2vh, 22px); padding-bottom: 4px; }
 .portail-brand { display: block; flex: 0 1 auto; min-width: 0; border-radius: var(--radius-xs); }
-.portail-brand img { width: clamp(96px, 9vw, 136px); }
+.portail-brand img { width: clamp(96px, 9vw, 136px); padding: 6px; background: var(--white); border-radius: var(--radius-xs); }
 .portail-call { flex: none; color: var(--portail-link); text-decoration: none; font-weight: 500; font-size: .95rem; padding: 10px 2px; font-variant-numeric: tabular-nums; }
 .portail-call:hover { color: var(--portail-title); text-decoration: underline; }
 .portail-intro { text-align: center; padding-top: clamp(4px, 1.6vh, 20px); padding-bottom: clamp(16px, 3.2vh, 36px); }
 .portail-intro h1 { font-family: var(--font-portail); font-weight: 700; color: var(--portail-title); letter-spacing: -0.025em; line-height: 1.12; font-size: clamp(1.85rem, 1.3rem + 2.4vw, 3.2rem); margin-bottom: .22em; text-wrap: balance; overflow-wrap: break-word; }
-/* Bleu nuit satiné : reflet doux et fixe, avec une couleur unie de repli. */
-.portail-intro h1 { color: #102d50; }
+/* Reflet clair et fixe pour garder le titre lisible sur le fond bleu nuit. */
+.portail-intro h1 { color: var(--portail-title); }
 @supports ((background-clip: text) or (-webkit-background-clip: text)) {
   .portail-intro h1 {
-    background-image: linear-gradient(165deg, #102d50 15%, #244e75 46%, #183b60 58%, #102d50 85%);
+    background-image: linear-gradient(165deg, #ffffff 15%, #b8dcff 46%, #e0edff 58%, #ffffff 85%);
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
@@ -605,8 +605,8 @@ body.is-portail main { flex: 1; display: flex; flex-direction: column; justify-c
 .portail-contact li { margin: 0; }
 .pc-item { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: var(--portail-link); text-decoration: none; font-weight: 500; }
 a.pc-item:hover { color: var(--portail-title); text-decoration: underline; }
-.pc-item svg { color: var(--brand); flex: none; }
-.pc-whatsapp .wa-icon { color: #1a7f45; }
+.pc-item svg { color: var(--portail-link); flex: none; }
+.pc-whatsapp .wa-icon { color: #65db95; }
 .portail-legal { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 24px; margin-top: 10px; padding-top: 12px; border-top: 1px solid var(--portail-line); color: var(--portail-text); font-weight: 400; font-size: .84rem; }
 .portail-legal p { margin: 0; display: flex; flex-wrap: wrap; gap: 4px 18px; }
 .portail-legal a { color: var(--portail-link); font-weight: 500; }
