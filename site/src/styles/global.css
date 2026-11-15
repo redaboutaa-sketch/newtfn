@@ -536,24 +536,24 @@ details.more > summary:hover, details.prog-more > summary:hover { color: var(--a
 @media (max-width: 640px) { .env-long { display: none; } .env-short { display: inline; } }
 
 /* ---------- Portail des trois univers (/) ---------- */
-/* Portail : aplats bleus (zone principale très claire, partie basse un peu plus soutenue), cartes blanches. */
-body.is-portail { --portail-bg: #f0f7ff; --portail-foot: #dfecf9; --portail-line: #c7dbee; display: flex; flex-direction: column; min-height: 100vh; min-height: 100dvh; background: var(--portail-bg); }
+/* Portail : fond bleu nuit inspiré du visuel de référence, cartes blanches. */
+body.is-portail { --portail-bg: #07132f; --portail-foot: #dfecf9; --portail-line: #c7dbee; display: flex; flex-direction: column; min-height: 100vh; min-height: 100dvh; background: var(--portail-bg); }
 /* Typographie du portail hors cartes (en-tête, titre, pied) : Manrope, sans héritage depuis body. */
 body.is-portail { --portail-title: #173b63; --portail-text: #476582; --portail-link: #214f78; --font-portail: 'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; }
 .portail-top, .portail-intro, .portail-foot { font-family: var(--font-portail); }
 body.is-portail main { flex: 1; display: flex; flex-direction: column; justify-content: center; }
 .portail-top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: clamp(12px, 2vh, 22px); padding-bottom: 4px; }
-.portail-brand { display: block; flex: 0 1 auto; min-width: 0; border-radius: var(--radius-xs); }
+.portail-brand { display: block; flex: 0 1 auto; min-width: 0; border-radius: var(--radius-xs); background: var(--white); }
 .portail-brand img { width: clamp(96px, 9vw, 136px); }
-.portail-call { flex: none; color: var(--portail-link); text-decoration: none; font-weight: 500; font-size: .95rem; padding: 10px 2px; font-variant-numeric: tabular-nums; }
-.portail-call:hover { color: var(--portail-title); text-decoration: underline; }
+.portail-call { flex: none; color: #e3edff; text-decoration: none; font-weight: 500; font-size: .95rem; padding: 10px 2px; font-variant-numeric: tabular-nums; }
+.portail-call:hover { color: #ffffff; text-decoration: underline; }
 .portail-intro { text-align: center; padding-top: clamp(4px, 1.6vh, 20px); padding-bottom: clamp(16px, 3.2vh, 36px); }
 .portail-intro h1 { font-family: var(--font-portail); font-weight: 700; color: var(--portail-title); letter-spacing: -0.025em; line-height: 1.12; font-size: clamp(1.85rem, 1.3rem + 2.4vw, 3.2rem); margin-bottom: .22em; text-wrap: balance; overflow-wrap: break-word; }
-/* Bleu nuit satiné : reflet doux et fixe, avec une couleur unie de repli. */
-.portail-intro h1 { color: #102d50; }
+/* Titre lumineux sur le fond bleu nuit, avec une couleur unie de repli. */
+.portail-intro h1 { color: #ffffff; }
 @supports ((background-clip: text) or (-webkit-background-clip: text)) {
   .portail-intro h1 {
-    background-image: linear-gradient(165deg, #102d50 15%, #244e75 46%, #183b60 58%, #102d50 85%);
+    background-image: linear-gradient(165deg, #ffffff 15%, #d5e8ff 46%, #e7f2ff 58%, #ffffff 85%);
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
@@ -562,7 +562,7 @@ body.is-portail main { flex: 1; display: flex; flex-direction: column; justify-c
 @media (forced-colors: active) {
   .portail-intro h1 { background-image: none; color: CanvasText; }
 }
-.portail-intro p { margin: 0; color: var(--portail-text); font-weight: 400; font-size: clamp(1.05rem, .95rem + .45vw, 1.3rem); text-wrap: balance; }
+.portail-intro p { margin: 0; color: #c2d0e8; font-weight: 400; font-size: clamp(1.05rem, .95rem + .45vw, 1.3rem); text-wrap: balance; }
 .universes { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(14px, 1.8vw, 28px); margin: 0 auto; padding-bottom: clamp(20px, 4vh, 48px); }
 .universe { margin: 0; }
 .universe-link { position: relative; isolation: isolate; overflow: hidden; display: flex; flex-direction: column; align-items: center; height: 100%; padding: clamp(16px, 2.2vh, 26px) clamp(14px, 1.6vw, 24px) clamp(18px, 2.4vh, 26px); background: var(--white); border: 1px solid var(--line-2); border-radius: var(--radius); color: var(--ink); text-decoration: none; text-align: center; outline-offset: 4px; transition: border-color var(--t-mid) var(--ease), box-shadow 420ms var(--ease), transform 420ms var(--ease); }
