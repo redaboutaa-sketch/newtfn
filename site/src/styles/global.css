@@ -608,7 +608,7 @@ body.is-portail main { flex: 1; display: flex; flex-direction: column; justify-c
 .training-dots { display: flex; gap: 7px; margin-bottom: clamp(28px, 5vw, 64px); }
 .training-dots i { width: 12px; height: 12px; border-radius: 3px; background: #287bff; }
 .training-name { margin: 0 0 16px; font-family: var(--font-portail); color: #102d50; font-size: clamp(28px, 3.4vw, 46px); font-weight: 800; letter-spacing: -.045em; line-height: 1.12; overflow-wrap: anywhere; }
-.training-name span { color: #0875a1; }
+.training-name span { color: #287bff; }
 .training-copy p { margin: 0; color: #476582; font-size: clamp(1rem, 1.5vw, 1.15rem); line-height: 1.6; text-wrap: balance; }
 .training-photo { position: relative; overflow: hidden; aspect-ratio: 503 / 598; }
 .training-photo img { position: absolute; right: 0; top: 0; display: block; width: auto; height: 100%; max-width: none; }
