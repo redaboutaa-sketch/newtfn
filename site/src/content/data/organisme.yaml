@@ -93,7 +93,7 @@ hebergeur:
 # Renseigner l'URL de partage de la fiche pour activer le lien « Voir nos avis sur Google ».
 google_business_url: ""
 
-# Visuel fourni par le responsable ; aucun lien activé à ce stade.
+# Proposition de visuel avec logo validée pour aperçu ; aucun lien actif.
 trainingforme:
   titre: TrainingForMe
   sous_titre: Nos Formations en Ligne
@@ -101,7 +101,7 @@ trainingforme:
   marque_accent: Me
   accroche: "Apprenez aujourd’hui, réussissez demain."
   image:
-    src: /img/trainingforme/presentation.png
-    alt: "TrainingForMe — Apprenez aujourd’hui, réussissez demain. Visuel de présentation avec une formatrice."
-    width: 1111
-    height: 598
+    src: /img/trainingforme/proposition-logo.png
+    alt: "Tech Formation Nord — TrainingForMe, plateforme de formation en ligne. Apprenez aujourd’hui, réussissez demain. Logo de formation en ligne à gauche, portrait à droite."
+    width: 1672
+    height: 941
