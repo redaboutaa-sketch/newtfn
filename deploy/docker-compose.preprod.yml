@@ -18,9 +18,11 @@ services:
     restart: unless-stopped
     environment:
       NGINX_ROBOTS_HEADER: "noindex, nofollow"
+      NGINX_LMS_HOST: "${PREPROD_HOST:?PREPROD_HOST requis}"
+      NGINX_LMS_UPSTREAM: "lms:4330"
     ports:
       - "127.0.0.1:${PREPROD_LOCAL_PORT:-8095}:8080"   # accès local de recette uniquement
-    depends_on: [forms]
+    depends_on: [forms, lms]
     networks: [traefik-public, internal]
     labels:
       traefik.enable: "true"
@@ -49,6 +51,19 @@ services:
       - tfn_preprod_forms:/data
     networks: [internal]
 
+
+  lms:
+    build:
+      context: ..
+      dockerfile: lms/Dockerfile
+    image: tfn-lms:preprod
+    restart: unless-stopped
+    environment:
+      LMS_ORIGIN: "https://${PREPROD_HOST:?PREPROD_HOST requis}"
+    volumes:
+      - lms_data:/data
+    networks: [internal]
+
 networks:
   traefik-public:
     external: true
@@ -56,5 +71,6 @@ networks:
     name: tfn-preprod-internal
 
 volumes:
+  lms_data:
   tfn_preprod_forms:
     name: tfn_preprod_forms

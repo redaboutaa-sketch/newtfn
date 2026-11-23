@@ -27,7 +27,7 @@ LOG=/var/log/tfn-deploy.log
 # Branche dont doivent provenir les commits de production (à passer à « main » après fusion des PR).
 PROD_BRANCH=${TFN_PROD_BRANCH:-$(cat "$CONF_DIR/prod-branch" 2>/dev/null || echo main)}
 PINNED_FILES=(deploy/docker-compose.preprod.yml deploy/docker-compose.preprod.alias.yml deploy/docker-compose.production.yml
-  deploy/docker-compose.production.predns.yml site/Dockerfile forms/Dockerfile .dockerignore deploy/scripts/tfn-deploy.sh)
+  deploy/docker-compose.production.predns.yml site/Dockerfile forms/Dockerfile lms/Dockerfile deploy/nginx/default.conf.template .dockerignore deploy/scripts/tfn-deploy.sh)
 
 die() { echo "ERREUR : $*" >&2; exit 1; }
 log() { echo "$(date -Is) $*" | tee -a "$LOG"; }
@@ -66,6 +66,9 @@ cmd_rollback() {
   docker image inspect "tfn-site:$p-$sha" >/dev/null 2>&1 || die "image tfn-site:$p-$sha absente."
   docker tag "tfn-site:$p-$sha" "tfn-site:$([ $env = production ] && echo production || echo preprod)"
   docker image inspect "tfn-forms:$p-$sha" >/dev/null 2>&1 && docker tag "tfn-forms:$p-$sha" "tfn-forms:$([ $env = production ] && echo production || echo preprod)"
+  if docker image inspect "tfn-lms:$p-$sha" >/dev/null 2>&1; then
+    docker tag "tfn-lms:$p-$sha" "tfn-lms:$([ "$env" = production ] && echo production || echo preprod)"
+  fi
   local v; v=$(docker run --rm --entrypoint cat "tfn-site:$p-$sha" /usr/share/nginx/html/version.txt 2>/dev/null || echo "?")
   cd "$REPO"
   # shellcheck disable=SC2046
@@ -118,6 +121,7 @@ cmd_deploy() {
   # shellcheck disable=SC2046
   GIT_COMMIT=$short docker compose $(env_args "$env") build
   docker tag "tfn-site:$img" "tfn-site:$p-$short"; docker tag "tfn-forms:$img" "tfn-forms:$p-$short"
+  docker tag "tfn-lms:$img" "tfn-lms:$p-$short"
 
   # Test de l'image candidate, hors Traefik, sur un port local.
   docker rm -f tfn-cand >/dev/null 2>&1 || true

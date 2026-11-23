@@ -23,7 +23,8 @@ services:
     restart: unless-stopped
     environment:
       NGINX_ROBOTS_HEADER: ""     # en-tête X-Robots-Tag omis en production
-    depends_on: [forms]
+      NGINX_LMS_UPSTREAM: "lms:4330"
+    depends_on: [forms, lms]
     networks: [traefik-public, internal]
     labels:
       traefik.enable: "true"
@@ -63,8 +64,30 @@ services:
       SMTP_PASS: ${SMTP_PASS:?SMTP_PASS requis}
     networks: [internal]
 
+
+  lms:
+    build:
+      context: ..
+      dockerfile: lms/Dockerfile
+    image: tfn-lms:production
+    restart: unless-stopped
+    environment:
+      LMS_ORIGIN: "https://techformanord.fr"
+      LMS_SMTP_HOST: ${SMTP_HOST:?SMTP_HOST requis}
+      LMS_SMTP_PORT: ${SMTP_PORT:-587}
+      LMS_SMTP_SECURE: ${SMTP_SECURE:-false}
+      LMS_SMTP_USER: ${SMTP_USER:?SMTP_USER requis}
+      LMS_SMTP_PASS: ${SMTP_PASS:?SMTP_PASS requis}
+      LMS_MAIL_FROM: ${FORM_FROM:?FORM_FROM requis}
+    volumes:
+      - lms_data:/data
+    networks: [internal]
+
 networks:
   traefik-public:
     external: true
   internal:
     name: tfn-prod-internal
+
+volumes:
+  lms_data:

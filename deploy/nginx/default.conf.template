@@ -64,6 +64,30 @@ server {
         proxy_set_header X-Real-IP $remote_addr;
     }
 
+    location = /trainingforme { return 308 /trainingforme/; }
+
+    location ^~ /trainingforme/ {
+        # L’alias public de préproduction sert le catalogue statique.
+        set $lms_upstream "${NGINX_LMS_UPSTREAM}";
+        set $lms_host "${NGINX_LMS_HOST}";
+        if ($host = $lms_host) { set $lms_host ""; }
+        if ($lms_host != "") { set $lms_upstream ""; }
+        error_page 418 = @trainingforme;
+        if ($lms_upstream != "") { return 418; }
+        try_files $uri $uri/ =404;
+    }
+
+    location @trainingforme {
+        resolver 127.0.0.11 valid=30s ipv6=off;
+        access_log off;
+        client_max_body_size 21m;
+        proxy_read_timeout 40s;
+        proxy_pass http://$lms_upstream;
+        proxy_set_header Host $host;
+        proxy_hide_header X-Robots-Tag;
+        add_header X-Robots-Tag "noindex, nofollow" always;
+    }
+
     location /_astro/ {
         add_header Cache-Control "public, max-age=31536000, immutable";
         add_header X-Robots-Tag $tfn_robots always;
