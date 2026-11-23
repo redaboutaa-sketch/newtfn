@@ -67,6 +67,7 @@ server {
     location = /trainingforme { return 308 /trainingforme/; }
 
     location ^~ /trainingforme/ {
+        client_max_body_size 21m;
         # L’alias public de préproduction sert le catalogue statique.
         set $lms_upstream "${NGINX_LMS_UPSTREAM}";
         set $lms_host "${NGINX_LMS_HOST}";
