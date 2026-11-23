@@ -1,6 +1,6 @@
 import { all, audit, get, transaction, write } from './db.mjs';
 import { attachment, download, field, forbidden, found, pdf, redirect, requireThat } from './http.mjs';
-import { area, esc, form, input, kinds, link, page, paragraph, root, select } from './view.mjs';
+import { area, details, esc, form, input, kinds, link, page, paragraph, root, select } from './view.mjs';
 
 export const enrollmentSelect = `SELECT e.id,e.user_id,c.id course_id,c.title,c.objectives,c.threshold,
   s.title session,s.trainer_id,u.name FROM enrollments e JOIN cohorts s ON s.id=e.cohort_id
@@ -15,6 +15,25 @@ export function activities(row) {
   return all(`SELECT a.*,m.title module,p.completed FROM modules m JOIN activities a ON a.module_id=m.id
     LEFT JOIN progress p ON p.activity_id=a.id AND p.enrollment_id=? WHERE m.course_id=? ORDER BY m.id,a.id`, row.id, row.course_id);
 }
+function learnerSummary(row, items) {
+  const completedModules = all('SELECT id,title FROM modules WHERE course_id=? ORDER BY id',row.course_id)
+    .filter((mod) => items.some((item) => item.module_id === mod.id) &&
+      items.every((item) => item.module_id !== mod.id || item.completed));
+  const pending = items.filter((item) => !item.completed);
+  const resources = items.filter((item) => item.asset_id);
+  const latest = all(`SELECT t.score,t.passed,a.id,a.title FROM attempts t JOIN activities a ON a.id=t.activity_id
+    WHERE t.enrollment_id=? AND t.id IN (SELECT max(id) FROM attempts WHERE enrollment_id=? GROUP BY activity_id)
+    ORDER BY t.id DESC`,row.id,row.id);
+  const list = (heading, entries, empty) => `<h3>${heading}</h3>${entries.length ?
+    '<ul>' + entries.map((item) => '<li>' + item + '</li>').join('') + '</ul>' : '<p>' + empty + '</p>'}`;
+  return details('Modules, activités, résultats et supports',
+    list('Modules terminés',completedModules.map((mod) => esc(mod.title)),'Aucun module terminé.') +
+    list('Activités restantes',pending.map((item) => link(`cours/${row.id}/${item.id}`,item.title)),'Aucune activité en attente.') +
+    list('Derniers résultats',latest.map((result) => link(`cours/${row.id}/${result.id}`,result.title) + ' · ' +
+      (result.passed === null ? 'En attente' : result.passed ? 'Validée' : 'À retravailler') +
+      (result.score === null ? '' : ' · ' + result.score + ' %')),'Aucune évaluation remise.') +
+    list('Supports à télécharger',resources.map((item) => link(`support/${row.id}/${item.asset_id}`,item.title)),'Aucun support disponible.'));
+}
 export function dashboard(user) {
   const rows = all(enrollmentSelect + (user.role === 'learner' ? ' WHERE e.user_id=?' : ' WHERE s.trainer_id=?'), user.id);
   const courses = rows.map((row) => {
@@ -26,7 +45,8 @@ export function dashboard(user) {
       <label>${completed} / ${items.length} activités terminées<progress value="${completed}" max="${items.length || 1}"></progress></label>
       <div class="actions">${link(user.role === 'learner' && next ? target + '/' + next.id : target,
         user.role === 'learner' ? (next ? 'Reprendre ma formation' : 'Voir la formation') : 'Voir le suivi', 'button')}
-      ${get('SELECT 1 FROM certificates WHERE enrollment_id=?', row.id) ? link('attestation/' + row.id,'Attestation PDF') : ''}</div></article>`;
+      ${get('SELECT 1 FROM certificates WHERE enrollment_id=?', row.id) ? link('attestation/' + row.id,'Attestation PDF') : ''}</div>
+      ${user.role === 'learner' ? learnerSummary(row,items) : ''}</article>`;
   }).join('');
   return page(user.role === 'learner' ? 'Mes formations' : 'Suivi des apprenants',
     `<p>Bonjour ${esc(user.name)}.</p><div class="grid">${courses || '<p>Aucune formation attribuée pour le moment.</p>'}</div>

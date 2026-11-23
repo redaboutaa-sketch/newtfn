@@ -95,6 +95,11 @@ test('parcours des trois rôles, intégrité des évaluations et confidentialit�
   await expect(303,'cours/1/4',learner,{answer:'Travail final'});
   await expect(303,'corriger/1/4',trainer,{passed:'1',feedback:'Évaluation validée.'});
   await expect(303,'attestation/1',admin,{});
+  const dashboard = await (await expect(200,'espace',learner)).text();
+  assert.match(dashboard,/4 \/ 4 activités terminées/);
+  assert.match(dashboard,/Modules terminés/);
+  assert.match(dashboard,/100 %/);
+  assert.match(dashboard,/Attestation PDF/);
   assert.match(await (await expect(200,'attestation/1',learner)).text(),/^%PDF/);
   await expect(403,'attestation/1',other);
   await expect(303,'retour/1',learner,{kind:'reclamation',message:'Une question sur les supports'});
