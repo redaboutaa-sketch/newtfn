@@ -1,7 +1,3 @@
-body.is-portail:has(.espaces) {
-  --portail-bg: #f4f8fd;
-}
-
 .espaces-header,
 .espaces-footer {
   display: flex;
@@ -13,7 +9,12 @@ body.is-portail:has(.espaces) {
 
 .espaces-header {
   justify-content: space-between;
-  border-bottom: 1px solid #cfdeed;
+  border-bottom: 1px solid #334561;
+}
+
+.espaces-header > a {
+  border-radius: .5rem;
+  background: #fff;
 }
 
 .espaces-header img {
@@ -28,13 +29,18 @@ body.is-portail:has(.espaces) {
   gap: 1rem;
 }
 
+.espaces-header nav a,
+.espaces-footer a {
+  color: #e3edff;
+}
+
 .espaces {
   padding-block: clamp(1.75rem, 4vw, 3.5rem);
 }
 
 .espaces h1 {
   margin: 0 0 clamp(1.25rem, 3vw, 2rem);
-  color: #102c50;
+  color: #fff;
   font: 700 clamp(2rem, 4.5vw, 3.5rem)/1.1 Manrope, sans-serif;
   letter-spacing: -.04em;
 }
@@ -63,8 +69,10 @@ body.is-portail:has(.espaces) {
   box-shadow: 0 8px 24px #102c5024;
 }
 
-.espace:focus-visible {
-  outline: 3px solid #124d82;
+.espace:focus-visible,
+.espaces-header a:focus-visible,
+.espaces-footer a:focus-visible {
+  outline: 3px solid #c2d8ff;
   outline-offset: 3px;
 }
 
@@ -112,7 +120,7 @@ body.is-portail:has(.espaces) {
 }
 
 .espaces-footer {
-  border-top: 1px solid #cfdeed;
+  border-top: 1px solid #334561;
   font-size: .9rem;
 }
 
