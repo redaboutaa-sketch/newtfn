@@ -30,7 +30,7 @@ function catalogue(user) {
     ${link(user ? 'espace' : 'connexion', user ? 'Ouvrir mon espace' : 'Se connecter', 'button')}</section>
     <h2>Catalogue des formations</h2><div class="grid">${cards}</div>
     <p><strong>Pack des quatre niveaux</strong> · 1 790 € HT indicatifs</p>
-    <p><a href="/contact-us/">Renseignements et inscriptions</a></p>`,user);
+    <p><a href="/contact-us/">Renseignements et inscriptions</a></p>`,user,200,'catalogue-page');
 }
 async function readBody(req, path) {
   requireThat(req.headers.origin === origin, 'La requête doit provenir de TrainingForMe.',403);

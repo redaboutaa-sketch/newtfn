@@ -104,6 +104,11 @@
   letter-spacing: -.025em;
 }
 
+.espace[data-pole="automobile"] .espace-corps strong {
+  align-self: stretch;
+  text-align: center;
+}
+
 .espace-action {
   margin-top: auto;
   padding: .55rem .8rem;
