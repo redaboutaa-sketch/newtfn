@@ -1,0 +1,27 @@
+---
+import Base from '../../layouts/Base.astro';
+import catalog from '../../data/trainingforme.json';
+---
+<Base chrome="portail" title="TrainingForMe — Espace pédagogique" description="Catalogue des formations TrainingForMe." noindex>
+  <section class="container lms-catalog">
+    <a href="/">Retour à l’accueil</a>
+    <h1>TrainingForMe</h1>
+    <p>Espace pédagogique de Tech Formation Nord.</p>
+    <p role="status">Les accès apprenant, formateur et administrateur sont disponibles sur l’environnement pédagogique connecté. Cette page présente le catalogue.</p>
+    <h2>Catalogue</h2>
+    <ul>
+      {catalog.map((course, index) => <li><span>Niveau {index + 1}</span><h3>{course.title}</h3><p>{course.hours} h · {course.price} € HT indicatifs</p></li>)}
+    </ul>
+    <p><strong>Pack des quatre niveaux</strong> · 1 790 € HT indicatifs</p>
+    <a href="/contact-us/">Renseignements et inscriptions</a>
+  </section>
+</Base>
+<style>
+  :global(body.is-portail:has(.lms-catalog)){--portail-bg:#f4f8fd}
+  .lms-catalog{padding-block:2rem 4rem}
+  h1{margin-top:1rem}
+  ul{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%, 16rem),1fr));gap:1rem;list-style:none;padding:0}
+  li{padding:1.25rem;border:1px solid #cfdeed;border-radius:1rem;background:#f2f7ff}
+  li span{color:#185b95;font-weight:700}
+  h3{margin:.5rem 0}
+</style>

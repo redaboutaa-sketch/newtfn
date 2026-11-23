@@ -58,7 +58,7 @@ const page = async (opts = {}) => {
 // 3. Portail : destinations, survol, clavier (Tab + Entrée), entrée animée.
 {
   const p = await page({ viewport: { width: 1440, height: 900 }, reducedMotion: 'no-preference' });
-  await p.goto(BASE + '/');
+  await p.goto(BASE + '/tech-formation-nord/');
   const links = await p.$$eval('.universe-link', (as) => as.map((a) => ({ href: a.getAttribute('href'), target: a.target, name: a.textContent.replace(/\s+/g, ' ').trim(), img: !!a.querySelector('.u-logo img'), photo: !!a.querySelector('.u-photo img') })));
   check('portail : trois univers, un lien chacun', links.length === 3 && links.every((l) => l.img && l.photo && !l.target), JSON.stringify(links.map((l) => l.href)));
   check('portail : destinations', links[0].href === '/acceuil/' && links[1].href === 'https://maisonbeauxlieux.com/' && links[2].href === 'https://iatechformanord.fr/');
@@ -92,16 +92,16 @@ const page = async (opts = {}) => {
   check('portail : Entrée ouvre /acceuil/ dans le même onglet', p.url().endsWith('/acceuil/'));
   const wa = await p.$eval('.site-footer a[href^="https://wa.me/"]', (a) => a.href).catch(() => null);
   check('WhatsApp : lien professionnel configuré', !!wa && wa.startsWith('https://wa.me/33686158933?text='), wa || 'absent');
-  await p.goto(BASE + '/');
+  await p.goto(BASE + '/tech-formation-nord/');
   const kb = [];
   for (let i = 0; i < 6; i++) { await p.keyboard.press('Tab'); kb.push(await p.evaluate(() => document.activeElement?.getAttribute('href'))); }
   check('portail : ordre clavier des trois univers', kb.slice(3, 6).join(' ') === '/acceuil/ https://maisonbeauxlieux.com/ https://iatechformanord.fr/', kb.join(' '));
-  await p.goto(BASE + '/');
+  await p.goto(BASE + '/tech-formation-nord/');
   for (let i = 0; i < 4; i++) await p.keyboard.press('Tab');
   await p.waitForTimeout(900);
   const fz = await p.evaluate(() => getComputedStyle(document.activeElement.querySelector('.u-photo img')).transform);
   check('portail : zoom aussi au focus clavier', fz.startsWith('matrix(1.05'), fz);
-  await p.goto(BASE + '/');
+  await p.goto(BASE + '/tech-formation-nord/');
   const pc = await p.$$eval('.portail-contact a', (as) => as.map((a) => a.getAttribute('href')));
   check('portail : WhatsApp, téléphone fixe et e-mail distincts', pc.some((h) => h.startsWith('https://wa.me/33686158933')) && pc.includes('tel:+33320160915') && pc.some((h) => h.startsWith('mailto:')), JSON.stringify(pc));
   const waAll = await p.goto(BASE + '/contact-us/').then(() => p.$$eval('a[href*="wa.me"]', (as) => as.map((a) => a.getAttribute('href'))));
@@ -111,13 +111,13 @@ const page = async (opts = {}) => {
 {
   // Mobile : un seul appui ouvre la destination.
   const p = await page({ viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true, reducedMotion: 'no-preference' });
-  await p.goto(BASE + '/');
+  await p.goto(BASE + '/tech-formation-nord/');
   const mob = await p.$$eval('.u-photo img', (is) => is.map((i) => { const r = i.getBoundingClientRect(); return { ok: i.complete && i.naturalWidth > 0, w: Math.round(r.width), h: Math.round(r.height), right: r.right }; }));
   check('mobile : trois photos chargées, même format, dans l’écran', mob.length === 3 && mob.every((x) => x.ok && x.w === mob[0].w && Math.abs(x.w / x.h - 4 / 3) < 0.03 && x.right <= 390) && await p.evaluate(() => document.documentElement.scrollWidth <= 390), JSON.stringify(mob));
   await p.locator('.universe-link').first().locator('.u-photo').tap();
   await p.waitForURL('**/acceuil/', { timeout: 5000 }).catch(() => {});
   check('mobile : un appui sur la photo ouvre /acceuil/', p.url().endsWith('/acceuil/'));
-  await p.goto(BASE + '/');
+  await p.goto(BASE + '/tech-formation-nord/');
   const [req] = await Promise.all([p.waitForRequest((r) => r.url().startsWith('https://maisonbeauxlieux.com/'), { timeout: 5000 }).catch(() => null), p.locator('.universe-link').nth(1).locator('.u-logo').tap()]);
   check('mobile : un appui sur le logo beauté ouvre maisonbeauxlieux.com', !!req);
   await p.context().close();
@@ -127,7 +127,7 @@ const page = async (opts = {}) => {
   // Petits écrans et texte agrandi (réglage du téléphone) : les numéros ne se coupent jamais.
   const p = await page({ viewport: { width: 320, height: 700 }, isMobile: true, hasTouch: true });
   const coupes = [];
-  for (const u of ['/', '/acceuil/', '/contact-us/', '/service/maintenance/']) {
+  for (const u of ['/', '/tech-formation-nord/', '/acceuil/', '/contact-us/', '/service/maintenance/']) {
     await p.goto(BASE + u);
     await p.addStyleTag({ content: 'html{font-size:130% !important}' });
     coupes.push(...await p.evaluate(() => [...document.querySelectorAll('a[href^="tel:"]:not(.btn), .num')].filter((el) => {
@@ -178,19 +178,34 @@ const page = async (opts = {}) => {
 // 4. Mouvement réduit : aucun contenu masqué, pas de classe motion.
 {
   const p = await page({ viewport: { width: 1440, height: 900 }, reducedMotion: 'reduce' });
-  for (const u of ['/', '/acceuil/', '/service/interior-cleaning/', '/formations/automobile/']) {
+  for (const u of ['/', '/tech-formation-nord/', '/acceuil/', '/service/interior-cleaning/', '/formations/automobile/']) {
     await p.goto(BASE + u);
     const hidden = await p.evaluate(() => [...document.querySelectorAll('[data-reveal]')].filter((e) => getComputedStyle(e).opacity !== '1').length);
     check(`mouvement réduit ${u} : tout visible`, hidden === 0 && !(await p.evaluate(() => document.documentElement.classList.contains('motion'))));
-    if (u === '/') check('mouvement réduit : aucune animation ni transition sur le portail', await p.evaluate(() => [...document.querySelectorAll('.universe, .u-photo img')].every((e) => getComputedStyle(e).animationName === 'none')));
+    if (u === '/tech-formation-nord/') check('mouvement réduit : aucune animation ni transition sur le portail', await p.evaluate(() => [...document.querySelectorAll('.universe, .u-photo img')].every((e) => getComputedStyle(e).animationName === 'none')));
   }
+  await p.context().close();
+}
+
+// Le choix des espaces et le volet esthétique restent utilisables au clavier et sur mobile.
+for (const width of [390, 1440]) {
+  const p = await page({ viewport: { width, height: 900 }, javaScriptEnabled: false });
+  await p.goto(BASE + '/');
+  const hrefs = await p.locator('.espace').evaluateAll((links) => links.map((a) => a.getAttribute('href')));
+  check(`accueil ${width}px : les trois volets sont accessibles`, hrefs.join(' ') ===
+    '/tech-formation-nord/ /trainingforme/ https://maisonbeauxlieux.com/' &&
+    await p.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+  await p.locator('.espace').nth(1).focus();
+  await p.keyboard.press('Enter');
+  await p.waitForURL('**/trainingforme/');
+  check(`accueil ${width}px : accès au catalogue par le clavier`, await p.getByRole('heading', { name: 'TrainingForMe', exact:true }).isVisible());
   await p.context().close();
 }
 
 // 5. JavaScript désactivé : contenu et navigation disponibles.
 {
   const p = await page({ viewport: { width: 390, height: 844 }, javaScriptEnabled: false });
-  await p.goto(BASE + '/');
+  await p.goto(BASE + '/tech-formation-nord/');
   check('sans JavaScript : trois univers cliquables', (await p.locator('.universe-link').count()) === 3 && await p.locator('.universe-link').first().isVisible());
   await p.goto(BASE + '/acceuil/');
   const navVisible = await p.locator('#main-nav a', { hasText: 'Nos formations' }).isVisible();

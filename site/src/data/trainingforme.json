@@ -1,0 +1,6 @@
+[
+  {"id":"niveau-1","title":"Les fondamentaux du métier de formateur","hours":14,"price":390},
+  {"id":"niveau-2","title":"Concevoir une formation avec l’intelligence artificielle","hours":14,"price":490},
+  {"id":"niveau-3","title":"Animer et évaluer une formation","hours":14,"price":590},
+  {"id":"niveau-4","title":"Qualité, organisation et développement commercial","hours":14,"price":690}
+]
