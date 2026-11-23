@@ -13,19 +13,19 @@ const beaute = univers.find((pole) => pole.id === 'beaute')!;
     <nav aria-label="Navigation principale"><a href="/tech-formation-nord/">Tous nos univers</a><a href="/contact-us/">Contact</a></nav>
   </header>
   <section class="espaces container" aria-labelledby="espaces-titre">
-    <h1 id="espaces-titre">Choisissez votre espace</h1>
+    <h1 id="espaces-titre">Choisissez votre formation</h1>
     <div class="espaces-grid">
       <a class="espace" href={automobile.portail.destination} data-track="univers" data-pole={automobile.id}>
-        <span class="espace-image"><Picture id="portail-automobile" sizes="(max-width: 680px) 90vw, 400px" priority decorative /></span>
-        <span class="espace-corps"><strong>{automobile.portail.titre}</strong><span class="espace-action">Découvrir les formations</span></span>
+        <span class="espace-image"><Picture id="portail-automobile" sizes="(max-width: 820px) 120px, 400px" priority decorative /></span>
+        <span class="espace-corps"><strong>{automobile.portail.titre}</strong><span class="espace-action">Voir les formations auto</span></span>
       </a>
       <a class="espace espace-lms" href="/trainingforme/">
-        <span class="espace-image"><Picture id="portail-ia" sizes="(max-width: 680px) 90vw, 400px" priority decorative /></span>
-        <span class="espace-corps"><strong>TrainingForMe</strong><span>Formation IA et création, gestion de site</span><span class="espace-action">Accéder à la plateforme</span></span>
+        <span class="espace-image"><Picture id="portail-ia" sizes="(max-width: 820px) 120px, 400px" priority decorative /></span>
+        <span class="espace-corps"><strong>TrainingForMe</strong><span>Formation IA et création, gestion de site</span><span class="espace-action">Accéder à TrainingForMe</span></span>
       </a>
       <a class="espace" href={beaute.portail.destination} data-track="univers" data-pole={beaute.id}>
-        <span class="espace-image"><Picture id="portail-esthetique" sizes="(max-width: 680px) 90vw, 400px" priority decorative /></span>
-        <span class="espace-corps"><strong>{beaute.portail.titre}</strong><span>{beaute.portail.marque}</span><span class="espace-action">Découvrir les formations</span></span>
+        <span class="espace-image"><Picture id="portail-esthetique" sizes="(max-width: 820px) 120px, 400px" priority decorative /></span>
+        <span class="espace-corps"><strong>{beaute.portail.titre}</strong><span>{beaute.portail.marque}</span><span class="espace-action">Voir les formations beauté</span></span>
       </a>
     </div>
   </section>
