@@ -192,9 +192,15 @@ for (const width of [390, 1440]) {
   const p = await page({ viewport: { width, height: 900 }, javaScriptEnabled: false });
   await p.goto(BASE + '/');
   const hrefs = await p.locator('.espace').evaluateAll((links) => links.map((a) => a.getAttribute('href')));
+  const titles = await p.locator('.espace strong').allTextContents();
   check(`accueil ${width}px : les trois volets sont accessibles`, hrefs.join(' ') ===
-    '/tech-formation-nord/ /trainingforme/ https://maisonbeauxlieux.com/' &&
+    '/acceuil/ /trainingforme/ https://maisonbeauxlieux.com/' &&
+    titles.join(' | ') === 'Automobile | TrainingForMe | Esthétique et bien-être' &&
     await p.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+  await p.locator('.espace').first().focus();
+  await p.keyboard.press('Enter');
+  await p.waitForURL('**/acceuil/');
+  await p.goto(BASE + '/');
   await p.locator('.espace').nth(1).focus();
   await p.keyboard.press('Enter');
   await p.waitForURL('**/trainingforme/');

@@ -15,3 +15,4 @@
 @media(max-width:680px){.espaces-grid{grid-template-columns:1fr}}
 body.is-portail:has(.espaces){--portail-bg:#f4f8fd}
 .espaces-header img{display:block}
+.espaces-header nav{display:flex;flex-wrap:wrap;gap:1rem}
