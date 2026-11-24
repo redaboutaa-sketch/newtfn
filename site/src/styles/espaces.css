@@ -46,9 +46,10 @@
 }
 
 .espaces-grid {
+  --gap: clamp(.75rem, 2vw, 1.5rem);
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(.75rem, 2vw, 1.5rem);
+  gap: var(--gap);
 }
 
 .espace {
@@ -104,8 +105,9 @@
   letter-spacing: -.025em;
 }
 
-.espace[data-pole="automobile"] .espace-corps strong {
-  align-self: stretch;
+/* Trois univers : titre et bouton centrés (le titre Automobile l'était déjà). */
+.espace:not(.espace-transversal) .espace-corps {
+  align-items: center;
   text-align: center;
 }
 
@@ -120,8 +122,47 @@
   line-height: 1.35;
 }
 
-.espace-lms .espace-corps {
+/* Carte transversale « Formations en ligne » : sous les trois univers, sur toute la largeur. */
+.espace-transversal {
+  grid-column: 1 / -1;
+  display: grid;
+  /* Visuel de la largeur d'une carte du dessus, texte sur les deux colonnes restantes. */
+  grid-template-columns: calc((100% - 2 * var(--gap)) / 3) minmax(0, 1fr);
+}
+
+.espace-transversal .espace-image {
+  position: relative;
+  aspect-ratio: auto;
+  min-height: 10rem;
+}
+
+.espace-transversal .espace-image {
+  background: #fff;
+}
+
+/* Le visuel contient du texte : jamais recadré. */
+.espace-transversal .espace-image img {
+  position: absolute;
+  inset: 0;
+  object-fit: contain;
+}
+
+.espace-transversal .espace-corps {
+  justify-content: center;
+  gap: .8rem;
+  padding: clamp(1.25rem, 3vw, 2.5rem);
   background: #eff6ff;
+}
+
+.espace-transversal .espace-corps > span:not(.espace-action) {
+  max-width: 34ch;
+  color: #2b4a6f;
+  font-size: 1.0625rem;
+  line-height: 1.5;
+}
+
+.espace-transversal .espace-action {
+  margin-top: .4rem;
 }
 
 .espaces-footer {
@@ -151,6 +192,28 @@
   .espace-image img {
     position: absolute;
     inset: 0;
+  }
+
+  .espace:not(.espace-transversal) .espace-corps {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .espace-transversal {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  }
+}
+
+@media (max-width: 560px) {
+  /* Le visuel TrainingForMe contient du texte : affiché en entier, au-dessus du texte. */
+  .espace-transversal {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .espace-transversal .espace-image {
+    aspect-ratio: 1.7768;
+    min-height: 0;
   }
 }
 

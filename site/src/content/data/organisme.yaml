@@ -93,8 +93,9 @@ hebergeur:
 # Renseigner l'URL de partage de la fiche pour activer le lien « Voir nos avis sur Google ».
 google_business_url: ""
 
-# TrainingForMe : section retirée de l’accueil (non validée par le client). Données et visuels
-# (site/public/img/trainingforme/) conservés pour une réutilisation éventuelle ; non affichés.
+# TrainingForMe : section retirée de l’accueil (non validée par le client). Données conservées.
+# Depuis le 24/11/2026, le visuel proposition-logo.png sert à la carte « Formations en ligne » de
+# l’accueil (recadrages public/img/photos/portail-en-ligne-*, lien https://trainingforme.fr/).
 trainingforme:
   titre: TrainingForMe
   sous_titre: Nos Formations en Ligne
