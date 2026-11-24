@@ -25,6 +25,6 @@ RUN echo "$GIT_COMMIT" > /usr/share/nginx/html/version.txt
 COPY deploy/nginx/default.conf.template /etc/nginx/templates/default.conf.template
 COPY deploy/nginx/legacy-rules.inc /etc/nginx/conf.d/legacy-rules.inc
 RUN rm -f /etc/nginx/conf.d/default.conf
-ENV NGINX_ROBOTS_HEADER="noindex, nofollow" NGINX_ENVSUBST_FILTER="NGINX_"
+ENV NGINX_ROBOTS_HEADER="noindex, nofollow" NGINX_LMS_UPSTREAM="" NGINX_LMS_HOST="" NGINX_ENVSUBST_FILTER="NGINX_"
 EXPOSE 8080
 HEALTHCHECK --interval=30s --timeout=3s CMD wget -qO- http://127.0.0.1:8080/healthz || exit 1

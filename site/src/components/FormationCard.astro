@@ -8,7 +8,7 @@ interface Props {
   ext?: string; pole?: string; level?: 2 | 3;
 }
 const { href, titre, duree, accent, photo, ext, pole, level = 3 } = Astro.props;
-const H = `h${level}`;
+const H = level === 2 ? 'h2' : 'h3';
 ---
 <li class="fcard" data-accent={accent}>
   <a class="fcard-link" href={href} data-track={ext ? 'passerelle' : undefined} data-pole={ext ? pole : undefined}>

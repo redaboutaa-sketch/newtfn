@@ -7,3 +7,5 @@ site/.astro/
 *.log
 deploy/secrets/
 .cache/
+
+lms/data/
