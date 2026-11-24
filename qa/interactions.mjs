@@ -187,24 +187,22 @@ const page = async (opts = {}) => {
   await p.context().close();
 }
 
-// Le choix des espaces et le volet esthétique restent utilisables au clavier et sur mobile.
-for (const width of [390, 1440]) {
+// Les quatre cartes de l'accueil restent utilisables au clavier et sur mobile ; plus de lien « Tous nos univers ».
+for (const width of [390, 820, 1440]) {
   const p = await page({ viewport: { width, height: 900 }, javaScriptEnabled: false });
   await p.goto(BASE + '/');
   const hrefs = await p.locator('.espace').evaluateAll((links) => links.map((a) => a.getAttribute('href')));
   const titles = await p.locator('.espace strong').allTextContents();
-  check(`accueil ${width}px : les trois volets sont accessibles`, hrefs.join(' ') ===
-    '/acceuil/ /trainingforme/ https://maisonbeauxlieux.com/' &&
-    titles.join(' | ') === 'Automobile | TrainingForMe | Esthétique et bien-être' &&
-    await p.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+  check(`accueil ${width}px : les quatre cartes sont accessibles`, hrefs.join(' ') ===
+    '/acceuil/ https://iatechformanord.fr/ https://maisonbeauxlieux.com/ https://trainingforme.fr/' &&
+    titles.join(' | ') === 'Automobile | Intelligence artificielle | Esthétique et bien-être | Formations en ligne' &&
+    await p.evaluate(() => document.documentElement.scrollWidth <= innerWidth), `${hrefs.join(' ')} — ${titles.join(' | ')}`);
+  check(`accueil ${width}px : en-tête sans « Tous nos univers », avec Contact`,
+    (await p.locator('.espaces-header nav a').allTextContents()).join('|') === 'Contact');
   await p.locator('.espace').first().focus();
   await p.keyboard.press('Enter');
   await p.waitForURL('**/acceuil/');
-  await p.goto(BASE + '/');
-  await p.locator('.espace').nth(1).focus();
-  await p.keyboard.press('Enter');
-  await p.waitForURL('**/trainingforme/');
-  check(`accueil ${width}px : accès au catalogue par le clavier`, await p.getByRole('heading', { name: 'TrainingForMe', exact:true }).isVisible());
+  check(`accueil ${width}px : accès à l'automobile par le clavier`, await p.locator('h1').isVisible());
   await p.context().close();
 }
 
