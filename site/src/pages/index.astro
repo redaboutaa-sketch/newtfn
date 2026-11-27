@@ -1,16 +1,20 @@
 ---
 import Base from '../layouts/Base.astro';
-import { poles } from '../lib/data';
+import { organisme, poles } from '../lib/data';
 import Picture from '../components/Picture.astro';
 import '../styles/espaces.css';
 // Accueil : trois univers (Automobile, Intelligence artificielle, Esthétique et bien-être),
-// puis une carte transversale « Formations en ligne » (TrainingForMe) commune aux univers.
+// puis une carte transversale « Formations en ligne » (TrainingForMe) commune aux univers,
+// et un court paragraphe factuel sur l'organisme (identité, lieu, Qualiopi) : seul texte que
+// moteurs et assistants peuvent citer pour la requête « Tech Formation Nord ». Toutes les
+// valeurs viennent de organisme.yaml (source unique, voir docs/registre-sources.csv).
 const univers = poles();
+const org = organisme();
 const automobile = univers.find((pole) => pole.id === 'automobile')!;
 const ia = univers.find((pole) => pole.id === 'ia')!;
 const beaute = univers.find((pole) => pole.id === 'beaute')!;
 ---
-<Base chrome="portail" title="Tech Formation Nord — Formations près de Lille et espace pédagogique" description="Accédez aux formations automobiles de Tech Formation Nord à Vendeville près de Lille, aux formations en intelligence artificielle, aux formations esthétique et bien-être de Maison Beauxlieux et aux formations en ligne TrainingForMe.">
+<Base chrome="portail" title="Tech Formation Nord : organisme de formation près de Lille" description="Accédez aux formations automobiles de Tech Formation Nord à Vendeville près de Lille, aux formations en intelligence artificielle, aux formations esthétique et bien-être de Maison Beauxlieux et aux formations en ligne TrainingForMe.">
   <header slot="entete" class="espaces-header container">
     <a href="/"><img src="/img/logo-tfn.png" alt="Tech Formation Nord" width="200" height="68" /></a>
     <nav aria-label="Navigation principale"><a href="/contact-us/">Contact</a></nav>
@@ -35,6 +39,20 @@ const beaute = univers.find((pole) => pole.id === 'beaute')!;
         <span class="espace-corps"><strong>Formations en ligne</strong><span>Retrouvez nos formations en ligne, accessibles à votre rythme.</span><span class="espace-action">Découvrir les formations en ligne</span></span>
       </a>
     </div>
+  </section>
+  <section class="espaces-organisme container" aria-labelledby="organisme-titre">
+    <h2 id="organisme-titre">{org.nom}, organisme de formation près de Lille</h2>
+    <p>
+      {org.nom} est un organisme de formation professionnelle installé {org.adresse.rue}, {org.adresse.code_postal} {org.adresse.ville}, au sud de Lille.
+      Il forme aux <a href="/acceuil/">métiers de l’automobile</a>, à l’<a href={ia.portail.destination}>intelligence artificielle</a>
+      et, avec Maison Beauxlieux, à l’<a href={beaute.portail.destination}>esthétique et au bien-être</a>.
+      Ses formations en ligne sont regroupées sur <a href="https://trainingforme.fr/">TrainingForMe</a>.
+    </p>
+    <p>
+      {org.qualiopi.afficher && <><a href="/qualite/">Organisme certifié Qualiopi au titre des actions de formation</a>. </>}
+      Déclaration d’activité n° {org.nda}.
+      <a href="/about-us/">Notre organisme</a> · <a href="/financer-sa-formation/">Financer sa formation</a> · <a href={`tel:${org.telephone.lien}`} data-place="portail-organisme">{org.telephone.affiche}</a>
+    </p>
   </section>
   <footer slot="pied" class="espaces-footer container"><a href="/mentions-legales/">Mentions légales</a><a href="/politique-de-confidentialite/">Confidentialité</a><a href="/accessibilite-handicap/">Accessibilité</a></footer>
 </Base>
