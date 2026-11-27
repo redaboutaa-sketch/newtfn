@@ -45,6 +45,29 @@
   letter-spacing: -.04em;
 }
 
+.espaces-organisme {
+  padding-block: 0 clamp(1.5rem, 3vw, 2.5rem);
+  color: #e3edff;
+  line-height: 1.6;
+}
+
+.espaces-organisme h2 {
+  margin: 0 0 .75rem;
+  color: #fff;
+  font: 700 clamp(1.25rem, 2.4vw, 1.6rem)/1.25 Manrope, sans-serif;
+}
+
+.espaces-organisme p {
+  max-width: 62rem;
+  margin: 0 0 .75rem;
+}
+
+.espaces-organisme a {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: .15em;
+}
+
 .espaces-grid {
   --gap: clamp(.75rem, 2vw, 1.5rem);
   display: grid;
