@@ -27,4 +27,4 @@ principale des intentions « marque / organisme », « automobile » et « finan
   `/acceuil/`, `/about-us/`, `/contact-us/`, `/services/`, `/service/*`, `/infinite-grid-col-2/`, `/m-grid-col-2/`,
   `/m-grid-col-3/` sont de vraies pages réécrites, gardées pour leurs liens : ni noindex, ni retrait du sitemap.
 - Contrôles automatiques : `tfn-seo-daily.timer` (lecture seule) ; passage hebdomadaire `tfn-seo-weekly.timer`
-  (voir `/usr/local/lib/tfn-seo/README.md` sur le VPS).
+  (voir `/usr/local/lib/tfn-seo/README.md` sur le VPS), qui collecte aussi Search Console (`sc-domain:techformanord.fr`, lecture seule).
