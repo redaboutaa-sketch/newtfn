@@ -24,5 +24,7 @@ principale des intentions « marque / organisme », « automobile » et « finan
 - Une modification = une branche + une PR vers `main` ; jamais de fusion ni de déploiement par un agent.
 - Aucun chiffre, prix, financement, avis ou certification qui ne figure pas dans `kb/brand-ssot.md` avec sa source.
 - Conserver les URL historiques (même en anglais) : toute suppression passe par `docs/mapping-redirections.csv`.
+  `/acceuil/`, `/about-us/`, `/contact-us/`, `/services/`, `/service/*`, `/infinite-grid-col-2/`, `/m-grid-col-2/`,
+  `/m-grid-col-3/` sont de vraies pages réécrites, gardées pour leurs liens : ni noindex, ni retrait du sitemap.
 - Contrôles automatiques : `tfn-seo-daily.timer` (lecture seule) ; passage hebdomadaire `tfn-seo-weekly.timer`
   (voir `/usr/local/lib/tfn-seo/README.md` sur le VPS).
